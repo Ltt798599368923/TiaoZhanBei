@@ -1,0 +1,43 @@
+<!--message.wxml-->
+<view class="container">
+  <!-- 顶部标题 -->
+  <view style="background-color: #f5222d; width: 100%; padding: 15px; text-align: center; color: white; font-size: 18px; font-weight: bold;">
+    消息中心
+  </view>
+
+  <!-- 消息列表 -->
+  <view style="width: 100%;">
+    <view style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0; background-color: white;">
+      <image src="../../images/avatar.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;"></image>
+      <view style="flex: 1;">
+        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+          <text style="font-size: 16px; font-weight: 500;">张三律师</text>
+          <text style="font-size: 12px; color: #999999;">10:00</text>
+        </view>
+        <text style="font-size: 14px; color: #666666; line-height: 1.4;">您好，请问有什么法律问题需要咨询？</text>
+      </view>
+    </view>
+
+    <view style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0; background-color: white;">
+      <image src="../../images/avatar.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;"></image>
+      <view style="flex: 1;">
+        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+          <text style="font-size: 16px; font-weight: 500;">系统通知</text>
+          <text style="font-size: 12px; color: #999999;">昨天</text>
+        </view>
+        <text style="font-size: 14px; color: #666666; line-height: 1.4;">您的法律咨询已收到，我们将尽快为您安排律师回复。</text>
+      </view>
+    </view>
+
+    <view style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0; background-color: white;">
+      <image src="../../images/avatar.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;"></image>
+      <view style="flex: 1;">
+        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+          <text style="font-size: 16px; font-weight: 500;">李四律师</text>
+          <text style="font-size: 12px; color: #999999;">09:30</text>
+        </view>
+        <text style="font-size: 14px; color: #666666; line-height: 1.4;">关于您的合同审查，我已经完成了初步分析，需要与您进一步沟通。</text>
+      </view>
+    </view>
+  </view>
+</view>

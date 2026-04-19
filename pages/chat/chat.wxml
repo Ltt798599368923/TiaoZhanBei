@@ -1,0 +1,60 @@
+<!--chat.wxml-->
+<view class="container">
+  <!-- 顶部聊天对象信息 -->
+  <view style="background-color: #f5222d; width: 100%; padding: 15px; display: flex; align-items: center; color: white;">
+    <image src="../../images/avatar.png" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;"></image>
+    <view>
+      <text style="font-size: 16px; font-weight: bold;">张三</text>
+      <text style="font-size: 12px; opacity: 0.8; display: block;">婚姻家庭律师</text>
+    </view>
+  </view>
+
+  <!-- 聊天消息列表 -->
+  <view class="chat-container">
+    <!-- 对方消息 -->
+    <view class="chat-message left">
+      <image src="../../images/avatar.png" class="chat-avatar"></image>
+      <view class="chat-bubble left">
+        <text>您好，请问有什么法律问题需要咨询？</text>
+      </view>
+    </view>
+
+    <!-- 我方消息 -->
+    <view class="chat-message right">
+      <view class="chat-bubble right">
+        <text>我想咨询一下婚姻家庭方面的问题，关于离婚财产分割的</text>
+      </view>
+      <image src="../../images/my-avatar.png" class="chat-avatar"></image>
+    </view>
+
+    <!-- 对方消息 -->
+    <view class="chat-message left">
+      <image src="../../images/avatar.png" class="chat-avatar"></image>
+      <view class="chat-bubble left">
+        <text>好的，请问您是协议离婚还是诉讼离婚？财产主要包括哪些？</text>
+      </view>
+    </view>
+
+    <!-- 我方消息 -->
+    <view class="chat-message right">
+      <view class="chat-bubble right">
+        <text>是诉讼离婚，财产包括房产、车辆和存款</text>
+      </view>
+      <image src="../../images/my-avatar.png" class="chat-avatar"></image>
+    </view>
+
+    <!-- 对方消息 -->
+    <view class="chat-message left">
+      <image src="../../images/avatar.png" class="chat-avatar"></image>
+      <view class="chat-bubble left">
+        <text>好的，根据我国《民法典》的相关规定，夫妻共同财产在离婚时一般会平均分割，但会考虑照顾子女和女方权益的原则。具体情况需要根据您的实际情况进行分析。</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 输入框 -->
+  <view class="chat-input">
+    <input placeholder="请输入消息..." style="flex: 1; height: 40px; border: 1px solid #e8e8e8; border-radius: 20px; padding: 0 15px; margin-right: 10px;"></input>
+    <button style="width: 60px; height: 40px; background-color: #f5222d; color: white; border: none; border-radius: 20px; font-size: 14px;">发送</button>
+  </view>
+</view>
