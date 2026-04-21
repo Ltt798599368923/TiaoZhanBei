@@ -3,39 +3,7 @@
     <text class="header-title">律师咨询</text>
     <text class="header-subtitle">专业律师一对一解答</text>
   </view>
-
-  <view class="filter-bar">
-    <view class="filter-item active">全部</view>
-    <view class="filter-item">婚姻家庭</view>
-    <view class="filter-item">劳动纠纷</view>
-    <view class="filter-item">房产纠纷</view>
-    <view class="filter-item">刑事辩护</view>
-  </view>
-
-  <view class="lawyer-list">
-    <view class="lawyer-card" wx:for="{{lawyers}}" wx:key="id">
-      <view class="lawyer-avatar">
-        <text>{{item.name[0]}}</text>
-      </view>
-      <view class="lawyer-info">
-        <view class="lawyer-header">
-          <text class="lawyer-name">{{item.name}}</text>
-          <text class="lawyer-title">{{item.title}}</text>
-        </view>
-        <text class="lawyer-specialty">擅长：{{item.specialty}}</text>
-        <view class="lawyer-stats">
-          <text class="lawyer-rating">⭐ {{item.rating}}</text>
-          <text class="lawyer-cases">办案 {{item.cases}}+</text>
-        </view>
-      </view>
-      <view class="lawyer-actions">
-        <view class="action-btn call" bindtap="onCallTap" data-id="{{item.id}}">
-          <text>📞</text>
-        </view>
-        <view class="action-btn chat" bindtap="onChatTap" data-id="{{item.id}}">
-          <text>💬 咨询</text>
-        </view>
-      </view>
-    </view>
+  <view class="content">
+    <text>律师列表加载中...</text>
   </view>
 </view>
