@@ -1,0 +1,202 @@
+/* lawsearch.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* 顶部搜索栏 */
+.search-header {
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 25rpx;
+  padding: 0 20rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+
+.search-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+  color: #999999;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+  height: 100%;
+}
+
+.placeholder-text {
+  color: #999999;
+}
+
+.clear-btn {
+  font-size: 24rpx;
+  color: #999999;
+  padding: 0 10rpx;
+}
+
+.search-btn {
+  font-size: 28rpx;
+  color: #f5222d;
+  font-weight: bold;
+  padding: 0 20rpx;
+}
+
+/* 热门搜索 */
+.hot-search {
+  background-color: #ffffff;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.hot-search-header {
+  margin-bottom: 20rpx;
+}
+
+.hot-search-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.hot-search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.hot-tag {
+  background-color: #f0f0f0;
+  padding: 12rpx 24rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: #666666;
+  transition: all 0.2s;
+}
+
+.hot-tag:active {
+  background-color: #e0e0e0;
+  transform: scale(0.96);
+}
+
+/* 搜索结果 */
+.search-results {
+  background-color: #ffffff;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.search-results-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.search-results-count {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.result-item {
+  padding: 24rpx;
+  background-color: #f9f9f9;
+  border-radius: 12rpx;
+  transition: all 0.2s;
+  border-left: 4rpx solid #f5222d;
+}
+
+.result-item:active {
+  background-color: #f0f0f0;
+  transform: scale(0.98);
+}
+
+.result-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.law-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.article-number {
+  font-size: 24rpx;
+  color: #f5222d;
+  font-weight: 500;
+}
+
+.result-content {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  background-color: #ffffff;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 30rpx;
+  color: #cccccc;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #cccccc;
+}

@@ -14,7 +14,8 @@
     "pages/lawyer/lawyer",
     "pages/official/official",
     "pages/contract/contract",
-    "pages/enterprise/enterprise"
+    "pages/enterprise/enterprise",
+    "pages/lawsearch/lawsearch"
   ],
   "window": {
     "backgroundTextStyle": "light",

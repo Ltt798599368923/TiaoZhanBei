@@ -1,0 +1,69 @@
+<!-- lawsearch.wxml -->
+<view class="container">
+  <!-- 顶部搜索栏 -->
+  <view class="search-header">
+    <view class="search-bar">
+      <text class="search-icon">🔍</text>
+      <input 
+        class="search-input" 
+        placeholder="请输入法条关键词" 
+        placeholder-class="placeholder-text"
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="onSearch"
+      />
+      <text class="clear-btn" wx:if="{{searchKeyword}}" bindtap="onClearSearch">✕</text>
+    </view>
+    <text class="search-btn" bindtap="onSearch">搜索</text>
+  </view>
+
+  <!-- 热门搜索 -->
+  <view class="hot-search" wx:if="{{!searchKeyword && !searchResults.length}}">
+    <view class="hot-search-header">
+      <text class="hot-search-title">热门搜索</text>
+    </view>
+    <view class="hot-search-tags">
+      <text 
+        class="hot-tag" 
+        wx:for="{{hotKeywords}}" 
+        wx:key="index"
+        bindtap="onHotKeywordTap"
+        data keyword="{{item}}"
+      >
+        {{item}}
+      </text>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view class="search-results" wx:if="{{searchResults.length}}">
+    <view class="search-results-header">
+      <text class="search-results-title">搜索结果</text>
+      <text class="search-results-count">共 {{searchResults.length}} 条</text>
+    </view>
+    <view class="result-list">
+      <view 
+        class="result-item" 
+        wx:for="{{searchResults}}" 
+        wx:key="id"
+        bindtap="onResultTap"
+        data-result="{{item}}"
+      >
+        <view class="result-title">
+          <text class="law-name">{{item.lawName}}</text>
+          <text class="article-number">第 {{item.article}} 条</text>
+        </view>
+        <view class="result-content">
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{searchKeyword && !searchResults.length}}">
+    <text class="empty-icon">🔍</text>
+    <text class="empty-text">未找到相关法条</text>
+    <text class="empty-hint">请尝试其他关键词</text>
+  </view>
+</view>
