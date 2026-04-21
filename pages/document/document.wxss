@@ -1,0 +1,103 @@
+.container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.header {
+  background: linear-gradient(180deg, #ff7a45 0%, #ffa940 100%);
+  padding: 40rpx 30rpx;
+  text-align: center;
+}
+
+.header-title {
+  display: block;
+  color: #ffffff;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.header-subtitle {
+  display: block;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+}
+
+.category-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.category-name {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.category-count {
+  font-size: 22rpx;
+  color: #999999;
+  margin-top: 6rpx;
+}
+
+.doc-list {
+  padding: 0 20rpx;
+}
+
+.doc-header {
+  padding: 20rpx 0;
+}
+
+.doc-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.doc-item {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  margin-bottom: 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doc-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-name {
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.doc-category {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 6rpx;
+}
+
+.doc-action {
+  display: flex;
+  align-items: center;
+}
+
+.doc-download {
+  font-size: 24rpx;
+  color: #ff7a45;
+}

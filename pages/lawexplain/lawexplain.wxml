@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">法理白话</text>
+    <text class="header-subtitle">专业法律知识通俗解读</text>
+  </view>
+
+  <view class="article-list">
+    <view class="article-item" wx:for="{{articles}}" wx:key="id" bindtap="onArticleTap" data-id="{{item.id}}">
+      <view class="article-content">
+        <text class="article-title">{{item.title}}</text>
+        <text class="article-summary">{{item.summary}}</text>
+      </view>
+      <view class="article-meta">
+        <text class="article-read">👁 {{item.readCount}}</text>
+        <text class="article-date">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+</view>

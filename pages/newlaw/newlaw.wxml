@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">法治新程</text>
+    <text class="header-subtitle">最新法律法规动态</text>
+  </view>
+
+  <view class="law-list">
+    <view class="law-item" wx:for="{{laws}}" wx:key="id" bindtap="onLawTap" data-id="{{item.id}}">
+      <view class="law-header">
+        <text class="law-title">{{item.title}}</text>
+        <text class="law-effect">{{item.effect}}</text>
+      </view>
+      <text class="law-summary">{{item.summary}}</text>
+      <view class="law-footer">
+        <text class="law-date">发布日期：{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+</view>

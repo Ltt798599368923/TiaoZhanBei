@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">法文阅读</text>
+    <text class="header-subtitle">法律法规在线阅读</text>
+  </view>
+
+  <view class="book-list">
+    <view class="book-item" wx:for="{{books}}" wx:key="id" bindtap="onBookTap" data-id="{{item.id}}">
+      <view class="book-cover">
+        <text class="book-cover-text">{{item.title}}</text>
+      </view>
+      <view class="book-info">
+        <text class="book-title">{{item.title}}</text>
+        <text class="book-author">{{item.author}}</text>
+        <view class="book-meta">
+          <text class="book-category">{{item.category}}</text>
+          <text class="book-read">👁 {{item.readCount}}</text>
+        </view>
+        <view class="book-progress">
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.progress}}%"></view>
+          </view>
+          <text class="progress-text">{{item.progress}}%</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
