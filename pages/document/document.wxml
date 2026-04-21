@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">文书模板</text>
+    <text class="header-subtitle">专业文书参考模板</text>
+  </view>
+
+  <view class="category-list">
+    <view class="category-item" wx:for="{{categories}}" wx:key="id">
+      <text class="category-name">{{item.name}}</text>
+      <text class="category-count">{{item.count}}份</text>
+    </view>
+  </view>
+
+  <view class="doc-list">
+    <view class="doc-header">
+      <text class="doc-title">热门文书</text>
+    </view>
+    <view class="doc-item" wx:for="{{documents}}" wx:key="id" bindtap="onDocumentTap" data-id="{{item.id}}">
+      <view class="doc-info">
+        <text class="doc-name">{{item.title}}</text>
+        <text class="doc-category">{{item.category}}</text>
+      </view>
+      <view class="doc-action">
+        <text class="doc-download">📥 {{item.download}}</text>
+      </view>
+    </view>
+  </view>
+</view>

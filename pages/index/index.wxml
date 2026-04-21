@@ -1,115 +1,140 @@
 <!--index.wxml-->
 <view class="container">
   <!-- 顶部红色背景区域 -->
-  <view style="background-color: #f5222d; width: 100%; padding: 15px 20px 15px; position: relative;">
-    <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-      <view style="display: flex; align-items: center;">
-        <text style="color: white; font-size: 13px;">📍 河南省郑州市</text>
+  <view class="header">
+    <view class="header-top">
+      <view class="header-location" bindtap="onLocationTap">
+        <text class="location-icon">📍</text>
+        <text class="location-text">{{locationText}}</text>
       </view>
-      <view style="display: flex; align-items: center;">
-        <text style="color: white; font-size: 16px; font-weight: bold;">法视界</text>
+      <view class="header-title">
+        <text>法视界</text>
       </view>
-      <view style="display: flex; align-items: center;">
-        <text style="color: white; font-size: 14px; margin-right: 12px;">•••</text>
-        <text style="color: white; font-size: 14px;">⚙️</text>
-      </view>
-    </view>
-
-    <!-- 刑法书籍图片 -->
-    <view style="display: flex; justify-content: center; margin-bottom: 12px;">
-      <view style="width: 80px; height: 100px; background-color: #d40000; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.4); position: relative; transform: rotate(-2deg);">
-        <text style="color: #ffd700; font-size: 12px; font-weight: bold; writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 1px;">中华人民共和国刑法</text>
-        <view style="position: absolute; left: -7px; top: 0; bottom: 0; width: 7px; background-color: #ffd700;"></view>
-        <view style="position: absolute; right: 0; top: 5px; bottom: 5px; width: 1px; background-color: rgba(255,255,255,0.3);"></view>
+      <view class="header-actions">
+        <text class="icon-more" bindtap="onMoreTap">•••</text>
+        <text class="icon-setting" bindtap="onSettingTap">⚙️</text>
       </view>
     </view>
 
-    <!-- 宣传语 -->
-    <view style="text-align: center; color: white; font-size: 11px; line-height: 1.4; padding: 0 10px;">
-      <text>弘扬法治精神，提供法律支援。免费法律咨询、法律知识学习、文书指导与参考。守护公平正义，构建法治社会。</text>
+    <!-- 民法典书籍 -->
+    <view class="book-container">
+      <view class="book book-left">
+        <text class="book-text">中华人民共和国\n民法典</text>
+        <view class="book-spine"></view>
+      </view>
+      <view class="book book-right">
+        <text class="book-text">中华人民共和国\n刑法</text>
+        <view class="book-spine"></view>
+      </view>
+    </view>
+
+    <!-- 滚动宣传语 -->
+    <view class="marquee-container">
+      <text class="marquee-text" style="opacity: {{sloganOpacity}};">
+        {{slogans[currentSloganIndex]}}
+      </text>
     </view>
   </view>
 
   <!-- 在线咨询和法条检索按钮 -->
-  <view style="width: 90%; margin: -20px auto 25px; display: flex; justify-content: space-between;">
-    <view style="background-color: #ff4d4f; color: white; padding: 20px; border-radius: 12px; flex: 1; margin-right: 12px; box-shadow: 0 4px 12px rgba(255,77,79,0.4); transition: all 0.3s ease;">
-      <view style="display: flex; align-items: center; margin-bottom: 8px;">
-        <text style="font-size: 18px; font-weight: bold; margin-right: 12px;">📞</text>
-        <text style="font-size: 18px; font-weight: bold;">在线咨询</text>
+  <view class="action-cards">
+    <view class="action-card action-card-consult" bindtap="onOnlineConsult">
+      <view class="action-card-inner">
+        <view class="action-icon-wrapper">
+          <text class="action-icon">📞</text>
+        </view>
+        <view class="action-text-wrapper">
+          <text class="action-title">在线咨询</text>
+          <text class="action-desc">专业律师在线解答</text>
+        </view>
       </view>
-      <text style="font-size: 13px; opacity: 0.95;">专业律师在线解答</text>
     </view>
-    <view style="background-color: #ff7a45; color: white; padding: 20px; border-radius: 12px; flex: 1; margin-left: 12px; box-shadow: 0 4px 12px rgba(255,122,69,0.4); transition: all 0.3s ease;">
-      <view style="display: flex; align-items: center; margin-bottom: 8px;">
-        <text style="font-size: 18px; font-weight: bold; margin-right: 12px;">🔍</text>
-        <text style="font-size: 18px; font-weight: bold;">法条检索</text>
+    <view class="action-card action-card-search" bindtap="onLawSearch">
+      <view class="action-card-inner">
+        <view class="action-icon-wrapper">
+          <text class="action-icon">🔍</text>
+        </view>
+        <view class="action-text-wrapper">
+          <text class="action-title">法条检索</text>
+          <text class="action-desc">法条信息速查直达</text>
+        </view>
       </view>
-      <text style="font-size: 13px; opacity: 0.95;">发条信息速查直达</text>
     </view>
   </view>
 
   <!-- 功能入口 -->
-  <view style="width: 90%; background-color: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-    <view style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-      <view style="width: 30%; display: flex; flex-direction: column; align-items: center; margin-bottom: 25px;">
-        <view style="width: 65px; height: 65px; background-color: #f5222d; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(245,34,45,0.3); transition: all 0.3s ease;">
-          <text style="color: white; font-size: 28px;">👨‍⚖️</text>
-        </view>
-        <text style="font-size: 13px; text-align: center; font-weight: 500;">律师咨询</text>
+  <view class="feature-grid">
+    <view class="feature-item" bindtap="onFeatureTap" data-type="lawyer">
+      <view class="feature-icon" style="background-color: #f5222d;">
+        <text>👨‍️</text>
       </view>
-      <view style="width: 30%; display: flex; flex-direction: column; align-items: center; margin-bottom: 25px;">
-        <view style="width: 65px; height: 65px; background-color: #ff7a45; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(255,122,69,0.3); transition: all 0.3s ease;">
-          <text style="color: white; font-size: 28px;">📄</text>
-        </view>
-        <text style="font-size: 13px; text-align: center; font-weight: 500;">文书模板</text>
+      <text class="feature-label">律师咨询</text>
+    </view>
+    <view class="feature-item" bindtap="onFeatureTap" data-type="document">
+      <view class="feature-icon" style="background-color: #ff7a45;">
+        <text>📄</text>
       </view>
-      <view style="width: 30%; display: flex; flex-direction: column; align-items: center; margin-bottom: 25px;">
-        <view style="width: 65px; height: 65px; background-color: #ffa940; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(255,169,64,0.3); transition: all 0.3s ease;">
-          <text style="color: white; font-size: 28px;">💡</text>
-        </view>
-        <text style="font-size: 13px; text-align: center; font-weight: 500;">法理白话</text>
+      <text class="feature-label">文书模板</text>
+    </view>
+    <view class="feature-item" bindtap="onFeatureTap" data-type="lawexplain">
+      <view class="feature-icon" style="background-color: #ffa940;">
+        <text>💡</text>
       </view>
-      <view style="width: 30%; display: flex; flex-direction: column; align-items: center; margin-bottom: 25px;">
-        <view style="width: 65px; height: 65px; background-color: #73d13d; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(115,209,61,0.3); transition: all 0.3s ease;">
-          <text style="color: white; font-size: 28px;">📚</text>
-        </view>
-        <text style="font-size: 13px; text-align: center; font-weight: 500;">法治新程</text>
+      <text class="feature-label">法理白话</text>
+    </view>
+    <view class="feature-item" bindtap="onFeatureTap" data-type="newlaw">
+      <view class="feature-icon" style="background-color: #73d13d;">
+        <text>📚</text>
       </view>
-      <view style="width: 30%; display: flex; flex-direction: column; align-items: center; margin-bottom: 25px;">
-        <view style="width: 65px; height: 65px; background-color: #40a9ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(64,169,255,0.3); transition: all 0.3s ease;">
-          <text style="color: white; font-size: 28px;">📖</text>
-        </view>
-        <text style="font-size: 13px; text-align: center; font-weight: 500;">法文阅读</text>
+      <text class="feature-label">法治新程</text>
+    </view>
+    <view class="feature-item" bindtap="onFeatureTap" data-type="lawread">
+      <view class="feature-icon" style="background-color: #40a9ff;">
+        <text>📖</text>
       </view>
-      <view style="width: 30%; display: flex; flex-direction: column; align-items: center; margin-bottom: 25px;">
-        <view style="width: 65px; height: 65px; background-color: #9254de; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(146,84,222,0.3); transition: all 0.3s ease;">
-          <text style="color: white; font-size: 28px;">🎬</text>
-        </view>
-        <text style="font-size: 13px; text-align: center; font-weight: 500;">小视讲堂</text>
+      <text class="feature-label">法文阅读</text>
+    </view>
+    <view class="feature-item" bindtap="onFeatureTap" data-type="video">
+      <view class="feature-icon" style="background-color: #9254de;">
+        <text>🎬</text>
       </view>
+      <text class="feature-label">小视讲堂</text>
     </view>
   </view>
 
   <!-- 热点咨询 -->
-  <view style="width: 90%; background-color: white; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-    <view style="display: flex; align-items: center; margin-bottom: 18px;">
-      <text style="font-size: 18px; font-weight: bold; color: #f5222d; margin-right: 12px;">🔥</text>
-      <text style="font-size: 18px; font-weight: bold;">热点咨询</text>
+  <view class="hot-news">
+    <view class="hot-news-header">
+      <text class="hot-news-icon">🔥</text>
+      <text class="hot-news-title">热点咨询</text>
     </view>
-    <view style="display: flex; flex-direction: column;">
-      <view style="background-color: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 12px; transition: all 0.3s ease; border-left: 4px solid #f5222d;">
-        <text style="font-size: 15px; line-height: 1.5;">反外国不当域外管辖条例（4月13日施行）</text>
+    <view class="news-list">
+      <view class="news-item" bindtap="onNewsTap" data-index="0">
+        <text class="news-text">反外国不当域外管辖条例（4月13日施行）</text>
       </view>
-      <view style="background-color: #f9f9f9; padding: 15px; border-radius: 10px; transition: all 0.3s ease; border-left: 4px solid #f5222d;">
-        <text style="font-size: 15px; line-height: 1.5;">&quot;机闹&quot;正式入刑（4月9日施行）</text>
+      <view class="news-item" bindtap="onNewsTap" data-index="1">
+        <text class="news-text">"机闹"正式入刑（4月9日施行）</text>
+      </view>
+      <view class="news-item" bindtap="onNewsTap" data-index="2">
+        <text class="news-text">全国"4·2行动"严打非法放贷（4月启动）</text>
+      </view>
+      <view class="news-item" bindtap="onNewsTap" data-index="3">
+        <text class="news-text">AI拟人化服务新规（7月15日施行）</text>
+      </view>
+      <view class="news-item" bindtap="onNewsTap" data-index="4">
+        <text class="news-text">贪污贿赂新解释（5月1日施行）</text>
+      </view>
+      <view class="news-item" bindtap="onNewsTap" data-index="5">
+        <text class="news-text">信用修复管理办法（4月1日施行）</text>
       </view>
     </view>
   </view>
 
   <!-- 免责声明 -->
-  <view style="width: 90%; margin-bottom: 80px;">
-    <text style="font-size: 12px; color: #999999; text-align: center; line-height: 1.6;">
-      免责声明：本平台所有内容仅位学习与参考，不构成正式法律意见。
-    </text>
+  <view class="disclaimer">
+    <text>免责声明：本平台所有内容仅供学习与参考，不构成正式法律意见。具体法律问题请咨询专业律师。</text>
   </view>
+
+  <!-- 底部占位 -->
+  <view class="bottom-spacer"></view>
 </view>

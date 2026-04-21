@@ -4,7 +4,13 @@
     "pages/service/service",
     "pages/chat/chat",
     "pages/message/message",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/consult/consult",
+    "pages/document/document",
+    "pages/lawexplain/lawexplain",
+    "pages/newlaw/newlaw",
+    "pages/lawread/lawread",
+    "pages/video/video"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,8 +34,7 @@
       },
       {
         "pagePath": "pages/chat/chat",
-        "text": "AI",
-        "selectedColor": "#f5222d"
+        "text": "AI"
       },
       {
         "pagePath": "pages/message/message",
