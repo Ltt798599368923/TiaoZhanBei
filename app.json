@@ -10,7 +10,11 @@
     "pages/lawexplain/lawexplain",
     "pages/newlaw/newlaw",
     "pages/lawread/lawread",
-    "pages/video/video"
+    "pages/video/video",
+    "pages/lawyer/lawyer",
+    "pages/official/official",
+    "pages/contract/contract",
+    "pages/enterprise/enterprise"
   ],
   "window": {
     "backgroundTextStyle": "light",
