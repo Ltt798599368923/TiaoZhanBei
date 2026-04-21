@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">小视讲堂</text>
+    <text class="header-subtitle">法律知识视频讲解</text>
+  </view>
+
+  <view class="video-list">
+    <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="onVideoTap" data-id="{{item.id}}">
+      <view class="video-thumbnail">
+        <text class="video-play">▶</text>
+        <text class="video-duration">{{item.duration}}</text>
+      </view>
+      <view class="video-info">
+        <text class="video-title">{{item.title}}</text>
+        <view class="video-meta">
+          <text class="video-author">{{item.author}}</text>
+          <text class="video-views">👁 {{item.views}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
