@@ -58,76 +58,29 @@ Page({
 
   // ===== 定位功能 =====
   initLocation() {
-    wx.getLocation({
-      type: 'wgs84',
-      success: (res) => {
-        this.setData({
-          latitude: res.latitude,
-          longitude: res.longitude
-        });
-        this.getAddress(res.latitude, res.longitude);
-      },
-      fail: () => {
-        this.setData({
-          locationText: '点击获取位置'
-        });
-      }
+    this.setData({
+      locationText: '点击获取位置'
     });
   },
 
-  // 通过经纬度获取地址
-  getAddress(lat, lng) {
-    // 使用腾讯地图逆地址解析
-    wx.request({
-      url: 'https://apis.map.qq.com/ws/geocoder/v1/',
-      data: {
-        location: `${lat},${lng}`,
-        key: '',
-        get_poi: 0
-      },
+  // 点击定位 - 获取位置
+  onLocationTap() {
+    wx.chooseLocation({
       success: (res) => {
-        if (res.data.status === 0 && res.data.result) {
-          const addr = res.data.result.address_component;
-          const city = addr.city || addr.province || '';
-          this.setData({
-            locationText: city || '当前位置'
-          });
-        } else {
-          this.setData({
-            locationText: '定位成功'
+        this.setData({
+          locationText: res.name || res.address,
+          latitude: res.latitude,
+          longitude: res.longitude
+        });
+      },
+      fail: (err) => {
+        if (err.errCode === 1) {
+          wx.showModal({
+            title: '提示',
+            content: '请开启位置权限以获取当前位置',
+            showCancel: false
           });
         }
-      },
-      fail: () => {
-        this.setData({
-          locationText: '定位成功'
-        });
-      }
-    });
-  },
-
-  // 点击定位 - 重新获取位置
-  onLocationTap() {
-    wx.showLoading({
-      title: '定位中...'
-    });
-    wx.getLocation({
-      type: 'wgs84',
-      success: (res) => {
-        this.setData({
-          latitude: res.latitude,
-          longitude: res.longitude
-        });
-        this.getAddress(res.latitude, res.longitude);
-        wx.hideLoading();
-      },
-      fail: () => {
-        wx.hideLoading();
-        wx.showModal({
-          title: '提示',
-          content: '请开启位置权限以获取当前位置',
-          showCancel: false
-        });
       }
     });
   },
@@ -195,9 +148,8 @@ Page({
 
   // 法条检索
   onLawSearch() {
-    wx.showToast({
-      title: '法条检索功能',
-      icon: 'none'
+    wx.navigateTo({
+      url: '/pages/lawsearch/lawsearch'
     });
   },
 
