@@ -1,4 +1,5 @@
-// chat.js
+
+
 Page({
   data: {
     messages: [
@@ -7,30 +8,6 @@ Page({
         content: '您好，请问有什么法律问题需要咨询？',
         type: 'left',
         time: '10:00'
-      },
-      {
-        id: 2,
-        content: '我想咨询一下婚姻家庭方面的问题，关于离婚财产分割的',
-        type: 'right',
-        time: '10:01'
-      },
-      {
-        id: 3,
-        content: '好的，请问您是协议离婚还是诉讼离婚？财产主要包括哪些？',
-        type: 'left',
-        time: '10:02'
-      },
-      {
-        id: 4,
-        content: '是诉讼离婚，财产包括房产、车辆和存款',
-        type: 'right',
-        time: '10:03'
-      },
-      {
-        id: 5,
-        content: '好的，根据我国《民法典》的相关规定，夫妻共同财产在离婚时一般会平均分割，但会考虑照顾子女和女方权益的原则。具体情况需要根据您的实际情况进行分析。',
-        type: 'left',
-        time: '10:04'
       }
     ],
     inputValue: ''
@@ -46,7 +23,7 @@ Page({
   sendMessage() {
     if (this.data.inputValue.trim() === '') return
     
-    const newMessage = {
+    const userMessage = {
       id: this.data.messages.length + 1,
       content: this.data.inputValue,
       type: 'right',
@@ -54,8 +31,38 @@ Page({
     }
     
     this.setData({
-      messages: [...this.data.messages, newMessage],
+      messages: [...this.data.messages, userMessage],
       inputValue: ''
     })
+    
+    // 显示加载状态
+    wx.showLoading({
+      title: '正在发送...',
+      mask: true
+    });
+    
+    // 发送消息到后端
+    api.sendMessage({ content: userMessage.content }).then(res => {
+      wx.hideLoading();
+      
+      // 添加机器人回复
+      const botMessage = {
+        id: this.data.messages.length + 1,
+        content: res.reply || '感谢您的咨询，我们会尽快为您解答。',
+        type: 'left',
+        time: new Date().toLocaleTimeString().substr(0, 5)
+      };
+      
+      this.setData({
+        messages: [...this.data.messages, botMessage]
+      });
+    }).catch(err => {
+      wx.hideLoading();
+      wx.showToast({
+        title: '发送失败，请重试',
+        icon: 'none'
+      });
+      console.error('发送消息失败:', err);
+    });
   }
 })

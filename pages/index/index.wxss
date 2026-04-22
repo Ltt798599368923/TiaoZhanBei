@@ -249,18 +249,41 @@
 }
 
 .feature-icon {
-  width: 110rpx;
-  height: 110rpx;
-  border-radius: 22rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 28rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8rpx 20rpx rgba(245, 34, 45, 0.25);
+  background: linear-gradient(145deg, #ff4d4f 0%, #f5222d 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+  border-radius: 50%;
 }
 
 .feature-icon text {
-  font-size: 50rpx;
+  font-size: 48rpx;
+  color: #ffffff;
+}
+
+.feature-image {
+  width: 70rpx;
+  height: 70rpx;
+  filter: brightness(0) invert(1);
+  position: relative;
+  z-index: 1;
 }
 
 .feature-label {

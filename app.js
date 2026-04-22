@@ -1,19 +1,15 @@
-// app.js
+const api = require('./utils/api.js')
+
 App({
   onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
+    console.log('小程序启动，开始测试后端连接...')
+    
+    api.health().then(res => {
+      console.log('✅ 后端连接成功！', res)
+      wx.showToast({ title: '后端连接成功', icon: 'success' })
+    }).catch(err => {
+      console.error('❌ 后端连接失败！', err)
+      wx.showToast({ title: '后端连接失败', icon: 'none' })
     })
-  },
-  globalData: {
-    userInfo: null
   }
 })
