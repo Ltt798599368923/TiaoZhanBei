@@ -65,37 +65,37 @@
   <!-- 功能入口 -->
   <view class="feature-grid">
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawyer">
-      <view class="feature-icon" style="background-color: #f5222d;">
-        <text>👨‍️</text>
+      <view class="feature-icon">
+        <text>👨‍⚖️</text>
       </view>
       <text class="feature-label">律师咨询</text>
     </view>
     <view class="feature-item" bindtap="onFeatureTap" data-type="document">
-      <view class="feature-icon" style="background-color: #ff7a45;">
+      <view class="feature-icon">
         <text>📄</text>
       </view>
       <text class="feature-label">文书模板</text>
     </view>
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawexplain">
-      <view class="feature-icon" style="background-color: #ffa940;">
+      <view class="feature-icon">
         <text>💡</text>
       </view>
       <text class="feature-label">法理白话</text>
     </view>
     <view class="feature-item" bindtap="onFeatureTap" data-type="newlaw">
-      <view class="feature-icon" style="background-color: #73d13d;">
+      <view class="feature-icon">
         <text>📚</text>
       </view>
       <text class="feature-label">法治新程</text>
     </view>
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawread">
-      <view class="feature-icon" style="background-color: #40a9ff;">
+      <view class="feature-icon">
         <text>📖</text>
       </view>
       <text class="feature-label">法文阅读</text>
     </view>
     <view class="feature-item" bindtap="onFeatureTap" data-type="video">
-      <view class="feature-icon" style="background-color: #9254de;">
+      <view class="feature-icon">
         <text>🎬</text>
       </view>
       <text class="feature-label">小视讲堂</text>

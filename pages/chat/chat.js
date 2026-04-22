@@ -1,5 +1,4 @@
-// chat.js
-import { api } from '../../utils/api';
+
 
 Page({
   data: {
