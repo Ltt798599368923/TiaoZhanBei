@@ -1,28 +1,81 @@
-<view class="container">
-  <view class="header">
-    <text class="header-title">文书模板</text>
-    <text class="header-subtitle">专业文书参考模板</text>
+<view class="container" style="background-color: #F5F7FA; min-height: 100vh; padding-bottom: 80px;">
+  <!-- 顶部区域 -->
+  <view style="padding: 20px 55px; background-color: white; margin-bottom: 20px;">
+    <view style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+      <text style="font-size: 24px; font-weight: bold; color: #1A3A5F;">法律文书代写</text>
+      <text style="font-size: 14px; color: #999; margin-top: 8px;">专业法律文书代写</text>
+    </view>
+    <view style="width: 60px; height: 3px; background-color: #D4AF37; margin-bottom: 16px;"></view>
+    <text style="font-size: 14px; color: #666; line-height: 1.4;">律师代写，确保专业性与合法性</text>
   </view>
 
-  <view class="category-list">
-    <view class="category-item" wx:for="{{categories}}" wx:key="id">
-      <text class="category-name">{{item.name}}</text>
-      <text class="category-count">{{item.count}}份</text>
+  <!-- 搜索入口 -->
+  <view style="padding: 0 12px; margin-bottom: 20px;">
+    <view style="background-color: #F0F0F0; border-radius: 30px; padding: 12px 16px; display: flex; align-items: center; width: 100%;">
+      <text style="font-size: 16px; color: #999; margin-right: 8px;">🔍</text>
+      <text style="font-size: 14px; color: #999; flex: 1;">搜索文书模板</text>
     </view>
   </view>
 
-  <view class="doc-list">
-    <view class="doc-header">
-      <text class="doc-title">热门文书</text>
-    </view>
-    <view class="doc-item" wx:for="{{documents}}" wx:key="id" bindtap="onDocumentTap" data-id="{{item.id}}">
-      <view class="doc-info">
-        <text class="doc-name">{{item.title}}</text>
-        <text class="doc-category">{{item.category}}</text>
-      </view>
-      <view class="doc-action">
-        <text class="doc-download">📥 {{item.download}}</text>
+  <!-- 文书类型统计区 -->
+  <view style="padding: 0 12px; margin-bottom: 20px;">
+    <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+      <text style="font-size: 18px; font-weight: bold; color: #1A3A5F;">文书类型</text>
+      <view bindtap="viewAllTemplates" style="display: flex; align-items: center; font-size: 14px; color: #1A3A5F;">
+        <text>查看全部模板</text>
+        <text style="margin-left: 4px;">></text>
       </view>
     </view>
+    <view style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+      <view bindtap="selectCategory" data-id="{{item.id}}" wx:for="{{categories}}" wx:key="id" style="background-color: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <view style="font-size: 20px; margin-bottom: 8px;">📄</view>
+        <text style="font-size: 14px; color: #666; margin-bottom: 4px;">{{item.name}}</text>
+        <text style="font-size: 28px; font-weight: bold; color: #1A3A5F; margin-bottom: 2px;">{{item.count}}</text>
+        <text style="font-size: 11px; color: #999;">可用模板</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门文书区域 -->
+  <view style="padding: 0 12px; margin-bottom: 20px;">
+    <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+      <text style="font-size: 18px; font-weight: bold; color: #1A3A5F;">🔥 热门推荐</text>
+      <view bindtap="viewMoreDocuments" style="display: flex; align-items: center; font-size: 14px; color: #1A3A5F;">
+        <text>更多</text>
+        <text style="margin-left: 4px;">></text>
+      </view>
+    </view>
+    <view style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <view bindtap="onDocumentTap" data-id="{{item.id}}" wx:for="{{documents}}" wx:key="id" wx:if="{{index < 4}}" style="background-color: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; flex-direction: column;">
+        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <text style="font-size: 15px; font-weight: 500; color: #333; flex: 1; margin-right: 8px;">{{item.title}}</text>
+          <view style="background-color: #EBF4FF; color: #1A3A5F; padding: 4px 10px; border-radius: 12px; font-size: 11px;">{{item.category}}</view>
+        </view>
+        <view style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+          <text style="font-size: 13px; color: #999; display: flex; align-items: center;">
+            <text style="margin-right: 4px;">👀</text>
+            {{item.download}}次
+          </text>
+          <view bindtap="useDocument" data-id="{{item.id}}" style="background-color: #1A3A5F; color: white; padding: 4px 12px; border-radius: 30px; font-size: 12px; font-weight: 500; transition: all 0.3s;">
+            立即使用
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部行动区 -->
+  <view style="padding: 0 12px; margin-bottom: 20px;">
+    <view style="background-color: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;">
+      <text style="font-size: 15px; color: #333; margin-bottom: 10px; display: block;">没有找到合适的模板？</text>
+      <button bindtap="contactLawyer" style="background-color: #1A3A5F; color: white; border: none; padding: 10px 20px; border-radius: 30px; font-size: 15px; font-weight: 500; transition: all 0.3s;">
+        联系律师定制文书
+      </button>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view style="padding: 12px; text-align: center;">
+    <text style="font-size: 12px; color: #999;">专业律师团队 · 24小时内完成起草</text>
   </view>
 </view>

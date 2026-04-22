@@ -102,5 +102,31 @@ Page({
         }
       }
     });
+  },
+  contactAdviser() {
+    wx.showModal({
+      title: '联系顾问',
+      content: '我们的专业顾问将为您提供一对一的法律咨询服务。',
+      confirmText: '立即咨询',
+      cancelText: '取消',
+      success: (res) => {
+        if (res.confirm) {
+          wx.showToast({
+            title: '顾问联系功能开发中',
+            icon: 'info'
+          });
+        }
+      }
+    });
+  },
+  buttonDown(e) {
+    // 按钮按下效果
+    const button = e.currentTarget;
+    button.style.opacity = '0.7';
+  },
+  buttonUp(e) {
+    // 按钮释放效果
+    const button = e.currentTarget;
+    button.style.opacity = '1';
   }
 })

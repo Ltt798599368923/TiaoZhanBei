@@ -32,5 +32,54 @@ Page({
       title: '查看文书详情',
       icon: 'none'
     });
+  },
+
+  selectCategory(e) {
+    const id = e.currentTarget.dataset.id;
+    const category = this.data.categories.find(item => item.id === id);
+    wx.showToast({
+      title: `查看${category.name}模板`,
+      icon: 'none'
+    });
+  },
+
+  viewAllTemplates() {
+    wx.showToast({
+      title: '查看全部模板',
+      icon: 'none'
+    });
+  },
+
+  viewMoreDocuments() {
+    wx.showToast({
+      title: '查看更多文书',
+      icon: 'none'
+    });
+  },
+
+  useDocument(e) {
+    const id = e.currentTarget.dataset.id;
+    const document = this.data.documents.find(item => item.id === id);
+    wx.showToast({
+      title: `使用${document.title}`,
+      icon: 'none'
+    });
+  },
+
+  contactLawyer() {
+    wx.showModal({
+      title: '联系律师',
+      content: '我们的专业律师将为您提供一对一的文书定制服务。',
+      confirmText: '立即联系',
+      cancelText: '取消',
+      success: (res) => {
+        if (res.confirm) {
+          wx.showToast({
+            title: '联系功能开发中',
+            icon: 'info'
+          });
+        }
+      }
+    });
   }
 })

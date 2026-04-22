@@ -1,118 +1,185 @@
 <!--enterprise.wxml-->
-<view class="container">
-  <!-- 顶部标题 -->
-  <view style="background-color: #f5222d; width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold;">
-    <view bindtap="goBack" style="margin-right: 15px; font-size: 20px;">←</view>
-    <text>企业法律服务</text>
+<view class="container" style="background-color: #F5F7FA; min-height: 100vh; padding-bottom: 80px;">
+  <!-- 顶部区域 -->
+  <view style="background: linear-gradient(135deg, #1A3A5F 0%, #2A4A6F 100%); width: 100%; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <view style="display: flex; align-items: center; margin-bottom: 10px;">
+      <text style="color: white; font-size: 14px; opacity: 0.9;">法律咨询</text>
+    </view>
+    <text style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 5px;">企业法律服务</text>
+    <text style="color: white; font-size: 16px; opacity: 0.8;">从创立到上市，一站式法律保障</text>
   </view>
 
-  <!-- 服务介绍 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <view style="text-align: center; margin-bottom: 20px;">
-      <view style="font-size: 48px; margin-bottom: 15px;">💼</view>
-      <text style="font-size: 20px; font-weight: bold; color: #333;">企业法律服务</text>
-    </view>
-    <view style="font-size: 14px; line-height: 1.6; color: #666; margin-bottom: 20px;">
-      <text>我们为企业提供全方位的法律服务，包括企业设立、合同管理、知识产权保护、劳动人事等方面的专业法律支持。</text>
-    </view>
-  </view>
-
-  <!-- 服务内容 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">服务内容</text>
-
-    <view bindtap="selectService" data-type="setup" style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0;">
-      <view style="width: 50px; height: 50px; background-color: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-        <text style="font-size: 24px;">🏢</text>
+  <!-- 服务内容区域 -->
+  <view style="padding: 20px;">
+    <text style="font-size: 18px; font-weight: bold; color: #1A3A5F; margin-bottom: 16px; display: block;">核心服务范围</text>
+    <view style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <!-- 企业设立 -->
+      <view style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+        <view style="font-size: 28px; margin-bottom: 12px;">🏢</view>
+        <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px; display: block;">企业设立</text>
+        <text style="font-size: 14px; color: #666; line-height: 1.5;">公司注册、股权结构设计</text>
       </view>
-      <view style="flex: 1;">
-        <text style="font-size: 16px; font-weight: 500; margin-bottom: 5px; display: block;">企业设立</text>
-        <text style="font-size: 12px; color: #666;">公司注册、股权结构设计</text>
+      <!-- 合同管理 -->
+      <view style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+        <view style="font-size: 28px; margin-bottom: 12px;">📄</view>
+        <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px; display: block;">合同管理</text>
+        <text style="font-size: 14px; color: #666; line-height: 1.5;">合同起草、审查、管理</text>
       </view>
-      <text style="font-size: 16px; color: #999;">→</text>
-    </view>
-
-    <view bindtap="selectService" data-type="contract" style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0;">
-      <view style="width: 50px; height: 50px; background-color: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-        <text style="font-size: 24px;">📝</text>
+      <!-- 知识产权 -->
+      <view style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+        <view style="font-size: 28px; margin-bottom: 12px;">⚖️</view>
+        <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px; display: block;">知识产权</text>
+        <text style="font-size: 14px; color: #666; line-height: 1.5;">商标、专利、著作权保护</text>
       </view>
-      <view style="flex: 1;">
-        <text style="font-size: 16px; font-weight: 500; margin-bottom: 5px; display: block;">合同管理</text>
-        <text style="font-size: 12px; color: #666;">合同起草、审查、管理</text>
+      <!-- 劳动人事 -->
+      <view style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+        <view style="font-size: 28px; margin-bottom: 12px;">👥</view>
+        <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px; display: block;">劳动人事</text>
+        <text style="font-size: 14px; color: #666; line-height: 1.5;">劳动合同、社保、工伤处理</text>
       </view>
-      <text style="font-size: 16px; color: #999;">→</text>
-    </view>
-
-    <view bindtap="selectService" data-type="ip" style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0;">
-      <view style="width: 50px; height: 50px; background-color: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-        <text style="font-size: 24px;">🔒</text>
-      </view>
-      <view style="flex: 1;">
-        <text style="font-size: 16px; font-weight: 500; margin-bottom: 5px; display: block;">知识产权</text>
-        <text style="font-size: 12px; color: #666;">商标、专利、著作权保护</text>
-      </view>
-      <text style="font-size: 16px; color: #999;">→</text>
-    </view>
-
-    <view bindtap="selectService" data-type="labor" style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0;">
-      <view style="width: 50px; height: 50px; background-color: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-        <text style="font-size: 24px;">👥</text>
-      </view>
-      <view style="flex: 1;">
-        <text style="font-size: 16px; font-weight: 500; margin-bottom: 5px; display: block;">劳动人事</text>
-        <text style="font-size: 12px; color: #666;">劳动合同、社保、工伤处理</text>
-      </view>
-      <text style="font-size: 16px; color: #999;">→</text>
     </view>
   </view>
 
-  <!-- 服务方案 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">服务方案</text>
-
-    <view bindtap="selectPlan" data-plan="basic" style="padding: 15px; border: 1px solid #e8e8e8; border-radius: 8px; margin-bottom: 15px;">
-      <text style="font-size: 16px; font-weight: 500; margin-bottom: 10px; display: block;">基础服务</text>
-      <text style="font-size: 14px; color: #f5222d; font-weight: bold; margin-bottom: 10px; display: block;">¥2999/年</text>
-      <text style="font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 10px; display: block;">
-        • 企业法律咨询\n• 合同审查（5份/年）\n• 法律文书起草（3份/年）
-      </text>
-      <button style="background-color: #f5222d; color: white; border: none; padding: 8px 20px; border-radius: 16px; font-size: 14px;">选择方案</button>
-    </view>
-
-    <view bindtap="selectPlan" data-plan="standard" style="padding: 15px; border: 2px solid #f5222d; border-radius: 8px; margin-bottom: 15px; background-color: #fff5f5;">
-      <text style="font-size: 16px; font-weight: 500; margin-bottom: 10px; display: block;">标准服务</text>
-      <text style="font-size: 14px; color: #f5222d; font-weight: bold; margin-bottom: 10px; display: block;">¥5999/年</text>
-      <text style="font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 10px; display: block;">
-        • 企业法律咨询\n• 合同审查（10份/年）\n• 法律文书起草（6份/年）\n• 劳动人事咨询\n• 知识产权咨询
-      </text>
-      <button style="background-color: #f5222d; color: white; border: none; padding: 8px 20px; border-radius: 16px; font-size: 14px;">选择方案</button>
-    </view>
-
-    <view bindtap="selectPlan" data-plan="premium" style="padding: 15px; border: 1px solid #e8e8e8; border-radius: 8px; margin-bottom: 15px;">
-      <text style="font-size: 16px; font-weight: 500; margin-bottom: 10px; display: block;">高级服务</text>
-      <text style="font-size: 14px; color: #f5222d; font-weight: bold; margin-bottom: 10px; display: block;">¥9999/年</text>
-      <text style="font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 10px; display: block;">
-        • 企业法律咨询\n• 合同审查（不限）\n• 法律文书起草（不限）\n• 劳动人事咨询\n• 知识产权咨询\n• 企业法律风险评估
-      </text>
-      <button style="background-color: #f5222d; color: white; border: none; padding: 8px 20px; border-radius: 16px; font-size: 14px;">选择方案</button>
+  <!-- 服务方案对比区域 -->
+  <view style="padding: 20px;">
+    <text style="font-size: 18px; font-weight: bold; color: #1A3A5F; margin-bottom: 8px; display: block;">选择适合您的方案</text>
+    <text style="font-size: 14px; color: #666; margin-bottom: 16px; display: block;">年度订阅，按年付费</text>
+    
+    <!-- 横向滑动方案卡片 -->
+    <view style="position: relative; overflow: hidden;">
+      <view class="plan-scroll" style="display: flex; gap: 12px; padding: 0 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory;">
+        <!-- 基础服务 -->
+        <view style="flex: 0 0 280px; background-color: white; border: 1px solid #E8E8E8; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; flex-direction: column; scroll-snap-align: start;">
+          <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">基础服务</text>
+          <view style="margin-bottom: 20px;">
+            <text style="font-size: 28px; font-weight: bold; color: #1A3A5F; margin-bottom: 4px; display: block; flex-wrap: wrap;">¥2999</text>
+            <text style="font-size: 14px; color: #666; display: block;">/年</text>
+          </view>
+          <view style="flex: 1; margin-bottom: 20px;">
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">企业法律咨询</text>
+            </view>
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">合同审查（5份/年）</text>
+            </view>
+            <view style="display: flex; align-items: flex-start;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">法律文书起草（3份/年）</text>
+            </view>
+          </view>
+          <button style="background-color: #F0F0F0; color: #333; border: 1px solid #E8E8E8; padding: 12px 16px; border-radius: 30px; font-size: 16px; width: 100%; font-weight: 500; transition: all 0.3s; opacity: 1;" bindtap="selectPlan" data-plan="basic" catch:touchstart="buttonDown" catch:touchend="buttonUp">选择方案</button>
+        </view>
+        
+        <!-- 标准服务（主推） -->
+        <view style="flex: 0 0 280px; background-color: #EBF4FF; border: 1px solid #D4AF37; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; display: flex; flex-direction: column; scroll-snap-align: start;">
+          <view style="position: absolute; top: -10px; right: 20px; background-color: #1A3A5F; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">热门推荐</view>
+          <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">标准服务</text>
+          <view style="margin-bottom: 20px;">
+            <text style="font-size: 28px; font-weight: bold; color: #D4AF37; margin-bottom: 4px; display: block; flex-wrap: wrap;">¥5999</text>
+            <text style="font-size: 14px; color: #666; display: block;">/年</text>
+          </view>
+          <view style="flex: 1; margin-bottom: 20px;">
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">企业法律咨询</text>
+            </view>
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">合同审查（10份/年）</text>
+            </view>
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">法律文书起草（6份/年）</text>
+            </view>
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">劳动人事咨询</text>
+            </view>
+            <view style="display: flex; align-items: flex-start;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">知识产权咨询</text>
+            </view>
+          </view>
+          <button style="background-color: #1A3A5F; color: white; border: none; padding: 12px 16px; border-radius: 30px; font-size: 16px; width: 100%; font-weight: 500; transition: all 0.3s; opacity: 1;" bindtap="selectPlan" data-plan="standard" catch:touchstart="buttonDown" catch:touchend="buttonUp">选择方案</button>
+        </view>
+        
+        <!-- 高级服务 -->
+        <view style="flex: 0 0 280px; background-color: white; border: 1px solid #E8E8E8; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; flex-direction: column; scroll-snap-align: start;">
+          <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">高级服务</text>
+          <view style="margin-bottom: 20px;">
+            <text style="font-size: 28px; font-weight: bold; color: #1A3A5F; margin-bottom: 4px; display: block; flex-wrap: wrap;">¥9999</text>
+            <text style="font-size: 14px; color: #666; display: block;">/年</text>
+          </view>
+          <view style="flex: 1; margin-bottom: 20px;">
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">企业法律咨询</text>
+            </view>
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">合同审查（不限）</text>
+            </view>
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">法律文书起草（不限）</text>
+            </view>
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">劳动人事咨询</text>
+            </view>
+            <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">知识产权咨询</text>
+            </view>
+            <view style="display: flex; align-items: flex-start;">
+              <text style="font-size: 14px; color: #52C41A; margin-right: 8px; flex-shrink: 0;">✓</text>
+              <text style="font-size: 14px; color: #333; line-height: 1.8; flex: 1;">企业法律风险评估</text>
+            </view>
+          </view>
+          <button style="background-color: #F0F0F0; color: #333; border: 1px solid #E8E8E8; padding: 12px 16px; border-radius: 30px; font-size: 16px; width: 100%; font-weight: 500; transition: all 0.3s; opacity: 1;" bindtap="selectPlan" data-plan="premium" catch:touchstart="buttonDown" catch:touchend="buttonUp">选择方案</button>
+        </view>
+      </view>
+      
+      <!-- 滑动指示点 -->
+      <view style="display: flex; justify-content: center; margin-top: 16px; gap: 8px;">
+        <view style="width: 8px; height: 8px; border-radius: 50%; background-color: #1A3A5F;"></view>
+        <view style="width: 8px; height: 8px; border-radius: 50%; background-color: #E8E8E8;"></view>
+        <view style="width: 8px; height: 8px; border-radius: 50%; background-color: #E8E8E8;"></view>
+      </view>
     </view>
   </view>
 
-  <!-- 联系我们 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">联系我们</text>
-    <view style="display: flex; align-items: center; margin-bottom: 15px;">
-      <view style="width: 40px; height: 40px; background-color: #f5f5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-        <text style="font-size: 16px;">📞</text>
-      </view>
-      <text style="font-size: 14px; color: #666;">400-123-4567</text>
+  <!-- 底部悬浮行动按钮 -->
+  <view style="position: fixed; bottom: calc(70px + 16px); right: 20px; z-index: 100;">
+    <button bindtap="contactAdviser" style="background-color: #1A3A5F; color: white; border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(26,58,95,0.3); transition: all 0.3s; opacity: 1;" catch:touchstart="buttonDown" catch:touchend="buttonUp">
+      <text style="font-size: 18px; margin-bottom: 2px;">💬</text>
+      <text style="font-size: 10px;">联系顾问</text>
+    </button>
+  </view>
+
+  <!-- 底部导航栏 -->
+  <view style="position: fixed; bottom: 0; left: 0; right: 0; background-color: white; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); padding: 10px 0; display: flex; justify-content: space-around; z-index: 100;">
+    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
+      <text style="font-size: 20px; margin-bottom: 2px;">🏠</text>
+      <text style="font-size: 12px; color: #666;">首页</text>
     </view>
-    <view style="display: flex; align-items: center; margin-bottom: 15px;">
-      <view style="width: 40px; height: 40px; background-color: #f5f5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-        <text style="font-size: 16px;">📧</text>
-      </view>
-      <text style="font-size: 14px; color: #666;">service@falv.com</text>
+    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
+      <text style="font-size: 20px; margin-bottom: 2px;">📋</text>
+      <text style="font-size: 12px; color: #1A3A5F; font-weight: 500;">服务</text>
     </view>
-    <button bindtap="contactUs" style="background-color: #f5222d; color: white; border: none; padding: 10px; border-radius: 8px; font-size: 16px; width: 100%;">立即咨询</button>
+    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
+      <text style="font-size: 20px; margin-bottom: 2px;">🤖</text>
+      <text style="font-size: 12px; color: #666;">AI</text>
+    </view>
+    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
+      <text style="font-size: 20px; margin-bottom: 2px;">💬</text>
+      <text style="font-size: 12px; color: #666;">消息</text>
+    </view>
+    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
+      <text style="font-size: 20px; margin-bottom: 2px;">👤</text>
+      <text style="font-size: 12px; color: #666;">我的</text>
+    </view>
   </view>
 </view>
