@@ -1,9 +1,97 @@
 <view class="container">
+  <!-- 顶部标题 -->
   <view class="header">
-    <text class="header-title">律师咨询</text>
-    <text class="header-subtitle">专业律师一对一解答</text>
+    <text class="header-title">律师咨询与预约</text>
   </view>
-  <view class="content">
-    <text>律师列表加载中...</text>
+
+  <!-- 服务介绍 -->
+  <view class="service-intro">
+    <view class="intro-icon">👨‍⚖️</view>
+    <text class="intro-title">专业律师在线咨询</text>
+    <text class="intro-desc">由经验丰富的律师为您提供一对一专业法律咨询服务，解答您的法律疑问</text>
+  </view>
+
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-item active">全部</view>
+    <view class="filter-item">民事</view>
+    <view class="filter-item">刑事</view>
+    <view class="filter-item">经济</view>
+    <view class="filter-item">婚姻</view>
+    <view class="filter-item">房产</view>
+  </view>
+
+  <!-- 律师列表 -->
+  <view class="lawyer-list">
+    <!-- 律师卡片 1 -->
+    <view class="lawyer-card">
+      <view class="lawyer-avatar">
+        <text>张</text>
+      </view>
+      <view class="lawyer-info">
+        <view class="lawyer-header">
+          <text class="lawyer-name">张律师</text>
+          <text class="lawyer-title">资深律师</text>
+        </view>
+        <text class="lawyer-specialty">擅长：民事纠纷、合同纠纷</text>
+        <view class="lawyer-stats">
+          <text class="lawyer-rating">⭐⭐⭐⭐⭐</text>
+          <text class="lawyer-cases">已处理 200+ 案件</text>
+        </view>
+      </view>
+      <view class="lawyer-actions">
+        <view class="action-btn call">电话咨询</view>
+        <view class="action-btn chat">在线咨询</view>
+      </view>
+    </view>
+
+    <!-- 律师卡片 2 -->
+    <view class="lawyer-card">
+      <view class="lawyer-avatar">
+        <text>李</text>
+      </view>
+      <view class="lawyer-info">
+        <view class="lawyer-header">
+          <text class="lawyer-name">李律师</text>
+          <text class="lawyer-title">高级律师</text>
+        </view>
+        <text class="lawyer-specialty">擅长：刑事辩护、知识产权</text>
+        <view class="lawyer-stats">
+          <text class="lawyer-rating">⭐⭐⭐⭐⭐</text>
+          <text class="lawyer-cases">已处理 150+ 案件</text>
+        </view>
+      </view>
+      <view class="lawyer-actions">
+        <view class="action-btn call">电话咨询</view>
+        <view class="action-btn chat">在线咨询</view>
+      </view>
+    </view>
+
+    <!-- 律师卡片 3 -->
+    <view class="lawyer-card">
+      <view class="lawyer-avatar">
+        <text>王</text>
+      </view>
+      <view class="lawyer-info">
+        <view class="lawyer-header">
+          <text class="lawyer-name">王律师</text>
+          <text class="lawyer-title">专业律师</text>
+        </view>
+        <text class="lawyer-specialty">擅长：婚姻家庭、房产纠纷</text>
+        <view class="lawyer-stats">
+          <text class="lawyer-rating">⭐⭐⭐⭐⭐</text>
+          <text class="lawyer-cases">已处理 180+ 案件</text>
+        </view>
+      </view>
+      <view class="lawyer-actions">
+        <view class="action-btn call">电话咨询</view>
+        <view class="action-btn chat">在线咨询</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="bottom-tip">
+    <text class="tip-text">专业律师团队 · 24小时在线服务</text>
   </view>
 </view>
