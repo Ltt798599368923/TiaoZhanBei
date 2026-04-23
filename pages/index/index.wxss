@@ -8,10 +8,24 @@
   background-color: #f5f5f5;  /* 背景色为浅灰色 */
 }
 
+/* ===== 自定义导航栏 ===== */
+.custom-nav {
+  width: 100%;                             /* 宽度100% */
+  background: linear-gradient(135deg, #DE1E1D 0%, #C41918 100%);  /* 红色渐变背景 */
+  padding: 20rpx 30rpx;                    /* 内边距 */
+  text-align: center;                       /* 文本居中 */
+}
+
+.nav-title {
+  color: #ffffff;             /* 白色文本 */
+  font-size: 34rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
+}
+
 /* ===== 顶部头部区域 ===== */
 .header {
   width: 100%;                             /* 宽度100% */
-  background: linear-gradient(180deg, #f5222d 0%, #d40000 100%);  /* 红色渐变背景 */
+  background: linear-gradient(135deg, #DE1E1D 0%, #C41918 100%);  /* 红色渐变背景 */
   padding: 20rpx 30rpx 40rpx;              /* 内边距 */
   position: relative;                       /* 相对定位 */
 }
@@ -19,7 +33,7 @@
 /* 头部顶部区域 */
 .header-top {
   display: flex;              /* 使用flex布局 */
-  justify-content: space-between;  /* 两端对齐 */
+  justify-content: center;    /* 居中对齐 */
   align-items: center;        /* 垂直居中 */
   margin-bottom: 24rpx;       /* 底部间距 */
 }
@@ -91,7 +105,7 @@
 
 /* 左侧书籍 */
 .book-left {
-  background-color: #c40000;  /* 深红色背景 */
+  background-color: #DE1E1D;  /* 深红色背景 */
   transform: rotate(-8deg);   /* 向左旋转8度 */
   margin-right: -15rpx;       /* 右侧负间距 */
   z-index: 1;                 /* 层级 */
@@ -99,7 +113,7 @@
 
 /* 右侧书籍 */
 .book-right {
-  background-color: #d40000;  /* 红色背景 */
+  background-color: #DE1E1D;  /* 红色背景 */
   transform: rotate(3deg);    /* 向右旋转3度 */
   z-index: 2;                 /* 层级 */
 }
@@ -188,14 +202,14 @@
 
 /* 在线咨询卡片 */
 .action-card-consult {
-  background: linear-gradient(135deg, #ff4d4f 0%, #ff7875 100%);  /* 红色渐变背景 */
-  box-shadow: 0 8rpx 24rpx rgba(255, 77, 79, 0.35);  /* 红色阴影 */
+  background: linear-gradient(135deg, #DE1E1D 0%, #C41918 100%);  /* 深红色渐变背景 */
+  box-shadow: 0 8rpx 24rpx rgba(222, 30, 29, 0.35);  /* 红色阴影 */
 }
 
 /* 法条检索卡片 */
 .action-card-search {
-  background: linear-gradient(135deg, #ff7a45 0%, #ffa940 100%);  /* 橙色渐变背景 */
-  box-shadow: 0 8rpx 24rpx rgba(255, 122, 69, 0.35);  /* 橙色阴影 */
+  background: linear-gradient(135deg, #DE1E1D 0%, #C41918 100%);  /* 深红色渐变背景 */
+  box-shadow: 0 8rpx 24rpx rgba(222, 30, 29, 0.35);  /* 红色阴影 */
 }
 
 /* 卡片内部结构 */
@@ -286,8 +300,8 @@
   align-items: center;        /* 垂直居中 */
   justify-content: center;    /* 水平居中 */
   margin-bottom: 16rpx;       /* 底部间距 */
-  box-shadow: 0 8rpx 20rpx rgba(245, 34, 45, 0.25);  /* 红色阴影 */
-  background: linear-gradient(145deg, #ff4d4f 0%, #f5222d 100%);  /* 红色渐变背景 */
+  box-shadow: 0 8rpx 20rpx rgba(222, 30, 29, 0.25);  /* 红色阴影 */
+  background: linear-gradient(145deg, #DE1E1D 0%, #C41918 100%);  /* 红色渐变背景 */
   position: relative;         /* 相对定位 */
   overflow: hidden;           /* 隐藏溢出 */
 }
@@ -314,7 +328,6 @@
 .feature-image {
   width: 70rpx;               /* 宽度 */
   height: 70rpx;              /* 高度 */
-  filter: brightness(0) invert(1);  /* 转为白色 */
   position: relative;         /* 相对定位 */
   z-index: 1;                 /* 层级 */
 }

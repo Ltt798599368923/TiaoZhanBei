@@ -3,91 +3,62 @@
 <view class="container">
   <!-- 顶部标题 -->
   <view class="header">
-    <text class="header-title">律师咨询与预约</text>
+    <view class="back-btn" bindtap="goBack">←</view>
+    <text class="header-title">在线咨询</text>
   </view>
 
   <!-- 服务介绍 -->
   <view class="service-intro">
-    <view class="intro-icon">👨‍⚖️</view>
-    <text class="intro-title">专业律师在线咨询</text>
-    <text class="intro-desc">由经验丰富的律师为您提供一对一专业法律咨询服务，解答您的法律疑问</text>
+    <view class="intro-icon">💬</view>
+    <text class="intro-title">即时在线咨询</text>
+    <text class="intro-desc">24小时在线律师为您提供即时法律咨询，快速解答您的法律疑问</text>
   </view>
 
-  <!-- 筛选栏 -->
-  <view class="filter-bar">
-    <view class="filter-item active">全部</view>
-    <view class="filter-item">民事</view>
-    <view class="filter-item">刑事</view>
-    <view class="filter-item">经济</view>
-    <view class="filter-item">婚姻</view>
-    <view class="filter-item">房产</view>
+  <!-- 咨询类型选择 -->
+  <view class="consult-types">
+    <view class="type-item active">法律问题</view>
+    <view class="type-item">合同审查</view>
+    <view class="type-item">文书指导</view>
+    <view class="type-item">其他咨询</view>
   </view>
 
-  <!-- 律师列表 -->
-  <view class="lawyer-list">
-    <!-- 律师卡片 1 -->
-    <view class="lawyer-card">
-      <view class="lawyer-avatar">
-        <text>张</text>
-      </view>
-      <view class="lawyer-info">
-        <view class="lawyer-header">
-          <text class="lawyer-name">张律师</text>
-          <text class="lawyer-title">资深律师</text>
-        </view>
-        <text class="lawyer-specialty">擅长：民事纠纷、合同纠纷</text>
-        <view class="lawyer-stats">
-          <text class="lawyer-rating">⭐⭐⭐⭐⭐</text>
-          <text class="lawyer-cases">已处理 200+ 案件</text>
-        </view>
-      </view>
-      <view class="lawyer-actions">
-        <view class="action-btn call">电话咨询</view>
-        <view class="action-btn chat">在线咨询</view>
-      </view>
+  <!-- 在线咨询表单 -->
+  <view class="consult-form">
+    <view class="form-item">
+      <text class="form-label">咨询内容</text>
+      <textarea class="form-textarea" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500"></textarea>
     </view>
-
-    <!-- 律师卡片 2 -->
-    <view class="lawyer-card">
-      <view class="lawyer-avatar">
-        <text>李</text>
-      </view>
-      <view class="lawyer-info">
-        <view class="lawyer-header">
-          <text class="lawyer-name">李律师</text>
-          <text class="lawyer-title">高级律师</text>
-        </view>
-        <text class="lawyer-specialty">擅长：刑事辩护、知识产权</text>
-        <view class="lawyer-stats">
-          <text class="lawyer-rating">⭐⭐⭐⭐⭐</text>
-          <text class="lawyer-cases">已处理 150+ 案件</text>
-        </view>
-      </view>
-      <view class="lawyer-actions">
-        <view class="action-btn call">电话咨询</view>
-        <view class="action-btn chat">在线咨询</view>
-      </view>
+    
+    <view class="form-item">
+      <text class="form-label">联系方式</text>
+      <input class="form-input" placeholder="请留下您的手机号，方便律师联系您" type="number"></input>
     </view>
+    
+    <view class="form-item">
+      <text class="form-label">咨询类型</text>
+      <picker class="form-picker" range="['民事纠纷', '刑事辩护', '经济纠纷', '婚姻家庭', '房产纠纷', '知识产权', '其他']">
+        <view class="picker-view">请选择咨询类型</view>
+      </picker>
+    </view>
+    
+    <button class="submit-btn">提交咨询</button>
+  </view>
 
-    <!-- 律师卡片 3 -->
-    <view class="lawyer-card">
-      <view class="lawyer-avatar">
-        <text>王</text>
+  <!-- 常见问题 -->
+  <view class="faq-section">
+    <text class="faq-title">常见问题</text>
+    <view class="faq-list">
+      <view class="faq-item">
+        <text class="faq-question">如何选择适合的律师？</text>
+        <text class="faq-answer">根据您的案件类型，选择有相关经验的律师，查看律师的专业领域和成功案例。</text>
       </view>
-      <view class="lawyer-info">
-        <view class="lawyer-header">
-          <text class="lawyer-name">王律师</text>
-          <text class="lawyer-title">专业律师</text>
-        </view>
-        <text class="lawyer-specialty">擅长：婚姻家庭、房产纠纷</text>
-        <view class="lawyer-stats">
-          <text class="lawyer-rating">⭐⭐⭐⭐⭐</text>
-          <text class="lawyer-cases">已处理 180+ 案件</text>
-        </view>
+      <view class="faq-item">
+        <text class="faq-question">咨询费用如何计算？</text>
+        <text class="faq-answer">首次在线咨询免费，后续咨询根据律师的收费标准而定，具体可与律师协商。</text>
       </view>
-      <view class="lawyer-actions">
-        <view class="action-btn call">电话咨询</view>
-        <view class="action-btn chat">在线咨询</view>
+      <view class="faq-item">
+        <text class="faq-question">咨询回复时间？</text>
+        <text class="faq-answer">一般情况下，律师会在24小时内回复您的咨询，紧急情况可选择电话咨询。</text>
       </view>
     </view>
   </view>

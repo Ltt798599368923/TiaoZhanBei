@@ -2,6 +2,7 @@
 <view class="container">
   <!-- 头部区域 -->
   <view class="header">
+    <view class="back-btn" bindtap="goBack">←</view>
     <text class="header-title">法文阅读</text>
     <text class="header-subtitle">法律法规在线阅读</text>
   </view>
@@ -26,7 +27,7 @@
         <!-- 阅读进度 -->
         <view class="book-progress">
           <view class="progress-bar">
-            <view class="progress-fill" style="width: {{item.progress}}%"></view>
+            <view class="progress-fill" style="width: {{item.progress}}"></view>
           </view>
           <text class="progress-text">{{item.progress}}%</text>
         </view>

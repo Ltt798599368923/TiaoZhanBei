@@ -13,6 +13,25 @@
   background: linear-gradient(180deg, #ffa940 0%, #ffc53d 100%);  /* 渐变背景 */
   padding: 40rpx 30rpx;        /* 内边距 */
   text-align: center;          /* 文本居中 */
+  position: relative;         /* 相对定位 */
+  min-height: 120rpx;         /* 最小高度 */
+}
+
+/* 返回按钮 */
+.back-btn {
+  position: absolute;
+  left: 0rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48rpx;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 头部标题样式 */

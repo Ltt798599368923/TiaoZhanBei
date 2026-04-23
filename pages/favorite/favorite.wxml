@@ -1,0 +1,61 @@
+<!-- favorite.wxml -->
+<!-- 我的收藏页面结构 -->
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">←</view>
+    <text class="header-title">我的收藏</text>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content">
+    <!-- 收藏列表 -->
+    <view class="favorite-list">
+      <!-- 收藏项1 -->
+      <view class="favorite-item">
+        <view class="item-icon">📚</view>
+        <view class="item-content">
+          <text class="item-title">民法典解读</text>
+          <text class="item-desc">民法典的核心内容和应用指南</text>
+          <text class="item-time">2026-04-20</text>
+        </view>
+        <view class="item-action" bindtap="removeFavorite" data-id="1">
+          <text class="action-icon">❤️</text>
+        </view>
+      </view>
+
+      <!-- 收藏项2 -->
+      <view class="favorite-item">
+        <view class="item-icon">⚖️</view>
+        <view class="item-content">
+          <text class="item-title">劳动合同法详解</text>
+          <text class="item-desc">劳动者权益保护指南</text>
+          <text class="item-time">2026-04-18</text>
+        </view>
+        <view class="item-action" bindtap="removeFavorite" data-id="2">
+          <text class="action-icon">❤️</text>
+        </view>
+      </view>
+
+      <!-- 收藏项3 -->
+      <view class="favorite-item">
+        <view class="item-icon">🏠</view>
+        <view class="item-content">
+          <text class="item-title">房产买卖法律指南</text>
+          <text class="item-desc">房屋交易中的法律风险防范</text>
+          <text class="item-time">2026-04-15</text>
+        </view>
+        <view class="item-action" bindtap="removeFavorite" data-id="3">
+          <text class="action-icon">❤️</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态提示 -->
+    <view class="empty-state" wx:if="{{favoriteList.length === 0}}">
+      <text class="empty-icon">🌟</text>
+      <text class="empty-text">还没有收藏内容</text>
+      <text class="empty-hint">浏览内容时点击收藏按钮即可添加</text>
+    </view>
+  </view>
+</view>

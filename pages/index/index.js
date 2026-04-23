@@ -195,19 +195,14 @@ Page({
    */
   onFeatureTap(e) {
     const type = e.currentTarget.dataset.type;
-    if (type === 'lawyer') {
-      wx.navigateTo({
-        url: '/pages/consult/consult'
-      });
-      return;
-    }
     // 功能类型映射
     const urlMap = {
-      document: '/pages/template/template',
-      lawexplain: '/pages/lawexplain/lawexplain',
-      newlaw: '/pages/newlaw/newlaw',
-      lawread: '/pages/lawread/lawread',
-      video: '/pages/video/video'
+      lawyer: '/pages/lawyer/lawyer',//律师咨询
+      document: '/pages/document/document',//文书模版
+      lawexplain: '/pages/lawexplain/lawexplain',//法理白话
+      newlaw: '/pages/newlaw/newlaw',//法治新程
+      lawread: '/pages/lawread/lawread',//法文阅读
+      video: '/pages/video/video'//小视课堂
     };
     const url = urlMap[type];
     if (url) {

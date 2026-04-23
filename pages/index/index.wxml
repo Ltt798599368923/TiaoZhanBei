@@ -1,23 +1,18 @@
 <!--index.wxml-->
 <!-- 首页页面结构 -->
 <view class="container">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav">
+    <view class="nav-title">法律咨询</view>
+  </view>
+  
   <!-- 顶部红色背景区域 -->
   <view class="header">
     <!-- 头部顶部区域 -->
     <view class="header-top">
-      <!-- 定位区域 - 点击获取位置 -->
-      <view class="header-location" bindtap="onLocationTap">
-        <text class="location-icon">📍</text>
-        <text class="location-text">{{locationText}}</text>
-      </view>
-      <!-- 页面标题 -->
+      <!-- 页面标题 - 居中对齐 -->
       <view class="header-title">
         <text>法视界</text>
-      </view>
-      <!-- 头部操作按钮 -->
-      <view class="header-actions">
-        <text class="icon-more" bindtap="onMoreTap">•••</text>
-        <text class="icon-setting" bindtap="onSettingTap">⚙️</text>
       </view>
     </view>
 
@@ -76,42 +71,42 @@
     <!-- 律师咨询 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawyer">
       <view class="feature-icon">
-        <text>👨‍⚖️</text>
+        <image class="feature-image" src="/images/Lawyer-consultation.png" mode="aspectFit"></image>
       </view>
       <text class="feature-label">律师咨询</text>
     </view>
     <!-- 文书模板 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="document">
       <view class="feature-icon">
-        <text>📄</text>
+        <image class="feature-image" src="/images/Document-template.png" mode="aspectFit"></image>
       </view>
       <text class="feature-label">文书模板</text>
     </view>
     <!-- 法理白话 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawexplain">
       <view class="feature-icon">
-        <text>💡</text>
+        <image class="feature-image" src="/images/Law-language.png" mode="aspectFit"></image>
       </view>
       <text class="feature-label">法理白话</text>
     </view>
     <!-- 法治新程 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="newlaw">
       <view class="feature-icon">
-        <text>📚</text>
+        <image class="feature-image" src="/images/Law-travel.png" mode="aspectFit"></image>
       </view>
       <text class="feature-label">法治新程</text>
     </view>
     <!-- 法文阅读 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawread">
       <view class="feature-icon">
-        <text>📖</text>
+        <image class="feature-image" src="/images/Law-reading.png" mode="aspectFit"></image>
       </view>
       <text class="feature-label">法文阅读</text>
     </view>
     <!-- 小视讲堂 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="video">
       <view class="feature-icon">
-        <text>🎬</text>
+        <image class="feature-image" src="/images/Law-lecture.png" mode="aspectFit"></image>
       </view>
       <text class="feature-label">小视讲堂</text>
     </view>

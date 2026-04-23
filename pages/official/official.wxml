@@ -7,7 +7,8 @@
   </view>
 
   <!-- 顶部标题区域 -->
-  <view style="background: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%); width: 100%; padding: 20px 16px; display: flex; align-items: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <view style="background: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%); width: 100%; padding: 20px 16px; display: flex; align-items: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative;">
+    <view bindtap="goBack" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 24px; color: #ffffff; cursor: pointer; z-index: 10; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">←</view>
     <text style="text-align: center; width: 100%;">官方服务入口</text>
   </view>
   <view style="width: 80px; height: 3px; background-color: #E63946; margin: 0 auto 20px;"></view>

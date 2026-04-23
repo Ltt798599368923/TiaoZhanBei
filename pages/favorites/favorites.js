@@ -1,3 +1,5 @@
+//首页--我的--我的收藏
+
 Page({
   data: {
     favorites: [

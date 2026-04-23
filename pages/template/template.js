@@ -1,3 +1,5 @@
+//首页--文书模版
+
 // template.js
 Page({
   data: {

@@ -10,7 +10,7 @@
 
 /* 通用样式 */
 .red-btn {
-  background-color: #f5222d;
+  background-color: #A91c22;
   color: white;
   border-radius: 20px;
   padding: 10px 20px;
@@ -20,7 +20,7 @@
 }
 
 .red-border {
-  border: 1px solid #f5222d;
+  border: 1px solid #A91c22;
   color: #f5222d;
   border-radius: 20px;
   padding: 10px 20px;
@@ -94,7 +94,7 @@
 .chat-input button {
   width: 60px;
   height: 40px;
-  background-color: #f5222d;
+  background-color: #A91c22;
   color: white;
   border: none;
   border-radius: 20px;
@@ -131,5 +131,27 @@
 }
 
 .tab-bar-item.active text {
-  color: #f5222d;
+  color: #A;
+}
+/* 自定义导航栏：和你要的顶部渐变效果完全一致 */
+.custom-nav {
+  width: 100%;
+  height: 88rpx; /* 导航栏高度 */
+  padding-top: var(--status-bar-height); /* 适配手机状态栏高度 */
+  background: linear-gradient(180deg, #A91C22 0%, #C5222A 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.nav-title {
+  color: #ffffff;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+/* 页面内容往下移，避免被导航栏挡住 */
+.page-content {
+  margin-top: 88rpx;
 }

@@ -1,3 +1,4 @@
+//首页下面五个功能的AI
 import { api } from '../../utils/api';
 
 Page({

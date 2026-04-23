@@ -1,30 +1,45 @@
+// about.js
+// 关于我们页面逻辑
 Page({
+  /**
+   * 页面数据
+   */
   data: {
+    // 页面数据
   },
 
+  /**
+   * 页面加载
+   */
   onLoad() {
-    wx.setNavigationBarTitle({
-      title: '关于我们'
-    });
+    // 页面加载时的初始化操作
   },
 
-  // 拨打电话
-  makeCall() {
-    wx.makePhoneCall({
-      phoneNumber: '4001234567',
-      success: function() {
-        console.log('拨打电话成功');
-      },
-      fail: function() {
-        console.log('拨打电话失败');
-      }
-    });
+  /**
+   * 页面显示
+   */
+  onShow() {
+    // 页面显示时的操作
   },
-  
-  // 返回上一页
+
+  /**
+   * 页面隐藏
+   */
+  onHide() {
+    // 页面隐藏时的操作
+  },
+
+  /**
+   * 页面卸载
+   */
+  onUnload() {
+    // 页面卸载时的操作
+  },
+
+  /**
+   * 返回上一页
+   */
   goBack() {
-    wx.navigateBack({
-      delta: 1
-    })
+    wx.navigateBack();  // 调用微信API返回上一页
   }
 })

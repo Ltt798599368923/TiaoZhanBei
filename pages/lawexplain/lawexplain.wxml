@@ -2,6 +2,7 @@
 <view class="container">
   <!-- 头部区域 -->
   <view class="header">
+    <view class="back-btn" bindtap="goBack">←</view>
     <text class="header-title">法理白话</text>
     <text class="header-subtitle">专业法律知识通俗解读</text>
   </view>

@@ -15,17 +15,22 @@
     "pages/official/official",
     "pages/contract/contract",
     "pages/enterprise/enterprise",
-    "pages/lawsearch/lawsearch"
+    "pages/lawsearch/lawsearch",
+    "pages/about/about",
+    "pages/favorite/favorite",
+    "pages/settings/settings",
+    "pages/myconsult/myconsult"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f5222d",
+    "navigationBarBackgroundColor": "#DE1E1D",
     "navigationBarTitleText": "法律咨询",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#666666",
-    "selectedColor": "#f5222d",
+    "selectedColor": "#DE1E1D",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [

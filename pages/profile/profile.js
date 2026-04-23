@@ -1,3 +1,5 @@
+//首页--我的
+
 /**
  * 个人中心页面逻辑
  * 用于展示用户个人信息和相关操作
@@ -39,7 +41,7 @@ Page({
   // 我的收藏
   goToFavorites() {
     wx.navigateTo({
-      url: '/pages/favorites/favorites'
+      url: '/pages/favorite/favorite'
     })
   },
   
