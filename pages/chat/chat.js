@@ -1,3 +1,5 @@
+import { api } from '../../utils/api';
+
 Page({
   /**
    * 页面数据
@@ -71,14 +73,16 @@ Page({
       };
       
       this.setData({
-        id: options.id,
-        name: options.name || '律师'
+        messages: [...this.data.messages, botMessage]
       });
-      // 设置导航栏标题
-      wx.setNavigationBarTitle({
-        title: options.name || '聊天'
+    }).catch(err => {
+      wx.hideLoading();
+      wx.showToast({
+        title: '发送失败，请重试',
+        icon: 'none'
       });
-    }
+      console.error('发送消息失败:', err);
+    });
   },
 
   // 返回上一页
