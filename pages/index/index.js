@@ -165,7 +165,7 @@ Page({
       return;
     }
     const urlMap = {
-      document: '/pages/document/document',
+      document: '/pages/template/template',
       lawexplain: '/pages/lawexplain/lawexplain',
       newlaw: '/pages/newlaw/newlaw',
       lawread: '/pages/lawread/lawread',

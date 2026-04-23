@@ -44,7 +44,7 @@ Page({
     switch(serviceId) {
       case 1:
         wx.navigateTo({
-          url: '/pages/lawyer/lawyer'
+          url: '/pages/consult/consult'
         });
         break;
       case 2:

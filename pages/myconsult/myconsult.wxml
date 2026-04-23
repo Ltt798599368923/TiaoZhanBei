@@ -1,0 +1,43 @@
+<view class="container" style="background-color: #f5f5f5; min-height: 100vh; padding-bottom: 80px;">
+  <!-- 顶部标题 -->
+  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold; box-shadow: 0 2px 8px rgba(245, 34, 45, 0.3);">
+    <view bindtap="goBack" style="padding: 8px; margin-right: 16px;">
+      <text style="font-size: 24px;">←</text>
+    </view>
+    <text style="flex: 1; text-align: center;">我的咨询</text>
+    <view style="padding: 8px;"></view>
+  </view>
+
+  <!-- 咨询列表 -->
+  <view style="background-color: white; margin-top: 10px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <view style="padding: 15px; border-bottom: 1px solid #f0f0f0;">
+      <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <text style="font-size: 15px; font-weight: 500; color: #333;">婚姻财产分割咨询</text>
+        <text style="font-size: 12px; color: #999;">2026-04-22</text>
+      </view>
+      <text style="font-size: 14px; color: #666; line-height: 1.4; margin-bottom: 10px;">咨询内容：我想了解离婚时财产如何分割，特别是房产和存款的处理方式。</text>
+      <view style="display: flex; justify-content: space-between; align-items: center;">
+        <text style="font-size: 12px; color: #f5222d;">已回复</text>
+        <button style="background-color: #f5f5f5; color: #333; border: 1px solid #d9d9d9; padding: 4px 12px; border-radius: 16px; font-size: 12px;">查看详情</button>
+      </view>
+    </view>
+    <view style="padding: 15px; border-bottom: 1px solid #f0f0f0;">
+      <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <text style="font-size: 15px; font-weight: 500; color: #333;">劳动合同纠纷咨询</text>
+        <text style="font-size: 12px; color: #999;">2026-04-20</text>
+      </view>
+      <text style="font-size: 14px; color: #666; line-height: 1.4; margin-bottom: 10px;">咨询内容：公司拖欠工资，我想了解如何维护自己的权益。</text>
+      <view style="display: flex; justify-content: space-between; align-items: center;">
+        <text style="font-size: 12px; color: #f5222d;">已回复</text>
+        <button style="background-color: #f5f5f5; color: #333; border: 1px solid #d9d9d9; padding: 4px 12px; border-radius: 16px; font-size: 12px;">查看详情</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view style="display: none; padding: 60px 20px; text-align: center; margin-top: 30px;">
+    <view style="font-size: 60px; margin-bottom: 20px;">💬</view>
+    <text style="font-size: 16px; color: #999;">暂无咨询记录</text>
+    <text style="font-size: 14px; color: #ccc; margin-top: 10px; display: block;">您的咨询记录会显示在这里</text>
+  </view>
+</view>

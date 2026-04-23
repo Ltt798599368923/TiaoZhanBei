@@ -1,43 +1,62 @@
 <!--message.wxml-->
 <view class="container">
   <!-- 顶部标题 -->
-  <view style="background-color: #f5222d; width: 100%; padding: 15px; text-align: center; color: white; font-size: 18px; font-weight: bold;">
+  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 20px; text-align: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(245, 34, 45, 0.3);">
     消息中心
+  </view>
+
+  <!-- 搜索框 -->
+  <view style="padding: 12px; background-color: white;">
+    <view style="display: flex; align-items: center; background-color: #f5f5f5; border-radius: 20px; padding: 10px 16px;">
+      <text style="font-size: 16px; color: #999; margin-right: 10px;">🔍</text>
+      <input 
+        style="flex: 1; font-size: 14px; color: #333;" 
+        placeholder="搜索联系人或消息" 
+        placeholder-style="color: #999;" 
+        bindinput="onSearchInput"
+      />
+      <text 
+        wx:if="{{searchText}}" 
+        style="font-size: 16px; color: #999; padding: 5px;" 
+        bindtap="clearSearch"
+      >✕</text>
+    </view>
   </view>
 
   <!-- 消息列表 -->
   <view style="width: 100%;">
-    <view style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0; background-color: white;">
-      <image src="../../images/avatar.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;"></image>
-      <view style="flex: 1;">
-        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-          <text style="font-size: 16px; font-weight: 500;">张三律师</text>
-          <text style="font-size: 12px; color: #999999;">10:00</text>
-        </view>
-        <text style="font-size: 14px; color: #666666; line-height: 1.4;">您好，请问有什么法律问题需要咨询？</text>
-      </view>
+    <!-- 消息分组标题 -->
+    <view style="padding: 12px 16px; background-color: #f5f7fa; font-size: 14px; color: #999;">
+      最近消息
     </view>
 
-    <view style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0; background-color: white;">
-      <image src="../../images/avatar.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;"></image>
-      <view style="flex: 1;">
-        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-          <text style="font-size: 16px; font-weight: 500;">系统通知</text>
-          <text style="font-size: 12px; color: #999999;">昨天</text>
-        </view>
-        <text style="font-size: 14px; color: #666666; line-height: 1.4;">您的法律咨询已收到，我们将尽快为您安排律师回复。</text>
+    <!-- 消息项 - 动态渲染 -->
+    <view 
+      wx:for="{{filteredMessages}}" 
+      wx:key="{{item.id}}"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+      data-name="{{item.name}}"
+      data-type="{{item.name === '系统通知' ? 'system' : 'chat'}}"
+      style="display: flex; align-items: center; padding: 16px; border-bottom: 1px solid #f0f0f0; background-color: white; transition: all 0.3s;"
+    >
+      <view class="avatar {{item.name === '系统通知' ? 'avatar-system' : item.id === 1 ? 'avatar-blue' : 'avatar-yellow'}}">
+        <text style="font-size: 24px; color: white;">{{item.name === '系统通知' ? '📢' : item.name.charAt(0)}}</text>
       </view>
+      <view style="flex: 1;">
+        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <text style="font-size: 16px; font-weight: 500; color: #333;">{{item.name}}</text>
+          <text style="font-size: 12px; color: #999;">{{item.time}}</text>
+        </view>
+        <text style="font-size: 14px; color: #666; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{item.content}}</text>
+      </view>
+      <!-- 未读标记 -->
+      <view wx:if="{{item.unread}}" style="width: 8px; height: 8px; border-radius: 50%; background-color: #f5222d; margin-left: 12px;"></view>
     </view>
 
-    <view style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0; background-color: white;">
-      <image src="../../images/avatar.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;"></image>
-      <view style="flex: 1;">
-        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-          <text style="font-size: 16px; font-weight: 500;">李四律师</text>
-          <text style="font-size: 12px; color: #999999;">09:30</text>
-        </view>
-        <text style="font-size: 14px; color: #666666; line-height: 1.4;">关于您的合同审查，我已经完成了初步分析，需要与您进一步沟通。</text>
-      </view>
+    <!-- 无搜索结果提示 -->
+    <view wx:if="{{filteredMessages.length === 0 && searchText}}" style="padding: 60px 0; text-align: center; color: #999; font-size: 14px;">
+      未找到相关消息
     </view>
   </view>
 </view>
