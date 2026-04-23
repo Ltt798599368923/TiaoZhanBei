@@ -1,61 +1,64 @@
-<!--chat.wxml-->
-<!-- 智能法律咨询页面结构 -->
-<view class="container">
-  <!-- 顶部聊天对象信息 -->
-  <view style="background-color: #f5222d; width: 100%; padding: 15px; display: flex; align-items: center; color: white;">
-    <image src="../../images/avatar.png" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;"></image>
-    <view>
-      <text style="font-size: 16px; font-weight: bold;">张三</text>
-      <text style="font-size: 12px; opacity: 0.8; display: block;">婚姻家庭律师</text>
+<view class="container" style="background-color: #f5f7fa; min-height: 100vh; display: flex; flex-direction: column;">
+  <!-- 顶部标题 -->
+  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 16px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold; box-shadow: 0 2px 8px rgba(245, 34, 45, 0.3);">
+    <view bindtap="goBack" style="padding: 8px; margin-right: 16px;">
+      <text style="font-size: 24px;">←</text>
+    </view>
+    <text style="flex: 1; text-align: center;">{{name}}</text>
+    <view style="padding: 8px;">
+      <text style="font-size: 16px;">⋯</text>
     </view>
   </view>
 
-  <!-- 聊天消息列表 -->
-  <view class="chat-container">
+  <!-- 聊天内容区域 -->
+  <view style="flex: 1; padding: 16px; overflow-y: auto;">
     <!-- 对方消息 -->
-    <view class="chat-message left">
-      <image src="../../images/avatar.png" class="chat-avatar"></image>
-      <view class="chat-bubble left">
-        <text>您好，请问有什么法律问题需要咨询？</text>
+    <view style="display: flex; margin-bottom: 16px;">
+      <view style="width: 40px; height: 40px; border-radius: 50%; background-color: #1890ff; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+        <text style="font-size: 18px; color: white;">{{name.charAt(0)}}</text>
+      </view>
+      <view style="max-width: 70%;">
+        <view style="background-color: white; border-radius: 16px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+          <text style="font-size: 14px; color: #333; line-height: 1.5;">您好，请问有什么法律问题需要咨询？</text>
+        </view>
+        <text style="font-size: 12px; color: #999; margin-top: 4px; margin-left: 8px;">10:00</text>
       </view>
     </view>
 
-    <!-- 我方消息 -->
-    <view class="chat-message right">
-      <view class="chat-bubble right">
-        <text>我想咨询一下婚姻家庭方面的问题，关于离婚财产分割的</text>
+    <!-- 我的消息 -->
+    <view style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
+      <view style="max-width: 70%;">
+        <view style="background-color: #f5222d; border-radius: 16px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+          <text style="font-size: 14px; color: white; line-height: 1.5;">我想咨询一下关于劳动合同的问题，公司无故解除劳动合同，我该如何维权？</text>
+        </view>
+        <text style="font-size: 12px; color: #999; margin-top: 4px; text-align: right; margin-right: 8px;">10:05</text>
       </view>
-      <image src="../../images/my-avatar.png" class="chat-avatar"></image>
-    </view>
-
-    <!-- 对方消息 -->
-    <view class="chat-message left">
-      <image src="../../images/avatar.png" class="chat-avatar"></image>
-      <view class="chat-bubble left">
-        <text>好的，请问您是协议离婚还是诉讼离婚？财产主要包括哪些？</text>
+      <view style="width: 40px; height: 40px; border-radius: 50%; background-color: #52c41a; display: flex; align-items: center; justify-content: center; margin-left: 12px;">
+        <text style="font-size: 18px; color: white;">我</text>
       </view>
-    </view>
-
-    <!-- 我方消息 -->
-    <view class="chat-message right">
-      <view class="chat-bubble right">
-        <text>是诉讼离婚，财产包括房产、车辆和存款</text>
-      </view>
-      <image src="../../images/my-avatar.png" class="chat-avatar"></image>
     </view>
 
     <!-- 对方消息 -->
-    <view class="chat-message left">
-      <image src="../../images/avatar.png" class="chat-avatar"></image>
-      <view class="chat-bubble left">
-        <text>好的，根据我国《民法典》的相关规定，夫妻共同财产在离婚时一般会平均分割，但会考虑照顾子女和女方权益的原则。具体情况需要根据您的实际情况进行分析。</text>
+    <view style="display: flex; margin-bottom: 16px;">
+      <view style="width: 40px; height: 40px; border-radius: 50%; background-color: #1890ff; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+        <text style="font-size: 18px; color: white;">{{name.charAt(0)}}</text>
+      </view>
+      <view style="max-width: 70%;">
+        <view style="background-color: white; border-radius: 16px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+          <text style="font-size: 14px; color: #333; line-height: 1.5;">根据《劳动合同法》，公司无故解除劳动合同属于违法解除，您可以要求公司支付赔偿金，标准为经济补偿金的二倍。建议您先与公司协商，协商不成可以向劳动监察部门投诉或申请劳动仲裁。</text>
+        </view>
+        <text style="font-size: 12px; color: #999; margin-top: 4px; margin-left: 8px;">10:10</text>
       </view>
     </view>
   </view>
 
-  <!-- 输入框 -->
-  <view class="chat-input">
-    <input placeholder="请输入消息..." style="flex: 1; height: 40px; border: 1px solid #e8e8e8; border-radius: 20px; padding: 0 15px; margin-right: 10px;"></input>
-    <button style="width: 60px; height: 40px; background-color: #f5222d; color: white; border: none; border-radius: 20px; font-size: 14px;">发送</button>
+  <!-- 输入区域 -->
+  <view style="background-color: white; padding: 12px; border-top: 1px solid #f0f0f0;">
+    <view style="display: flex; align-items: center;">
+      <input placeholder="输入消息..." style="flex: 1; border: 1px solid #e8e8e8; border-radius: 20px; padding: 10px 16px; font-size: 14px; margin-right: 12px;"></input>
+      <button style="background-color: #f5222d; color: white; border: none; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+        <text style="font-size: 20px;">发送</text>
+      </button>
+    </view>
   </view>
 </view>

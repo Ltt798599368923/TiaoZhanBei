@@ -1,0 +1,156 @@
+<view class="container" style="background-color: #f5f7fa; min-height: 100vh; padding: 0; margin: 0;">
+  <!-- 用户信息卡片 -->
+  <view bindtap="editProfile" style="background-color: white; padding: 20px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; width: 100%; box-sizing: border-box;">
+    <view style="width: 64px; height: 64px; border-radius: 50%; background-color: #e8e8e8; display: flex; align-items: center; justify-content: center; margin-right: 16px;">
+      <text style="font-size: 32px;">👤</text>
+    </view>
+    <view style="flex: 1;">
+      <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333;">张三</text>
+        <text style="font-size: 14px; color: #999;">编辑</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">138****1234</text>
+    </view>
+  </view>
+
+  <!-- 第一组：账号与安全 -->
+  <view style="background-color: white; margin-top: 10px; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; width: 100%; box-sizing: border-box;">
+    <view bindtap="changePassword" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🔐</text>
+        <text style="font-size: 15px; color: #333;">修改密码</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">›</text>
+    </view>
+    <view bindtap="bindPhone" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">📱</text>
+        <text style="font-size: 15px; color: #333;">绑定手机号</text>
+      </view>
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 14px; color: #999; margin-right: 8px;">138****1234</text>
+        <text style="font-size: 14px; color: #999;">›</text>
+      </view>
+    </view>
+    <view bindtap="bindThirdParty" style="padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🔗</text>
+        <text style="font-size: 15px; color: #333;">第三方账号绑定</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">›</text>
+    </view>
+  </view>
+
+  <!-- 第二组：通知与隐私 -->
+  <view style="background-color: white; margin-top: 10px; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; width: 100%; box-sizing: border-box;">
+    <view style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🔔</text>
+        <text style="font-size: 15px; color: #333;">消息通知</text>
+      </view>
+      <view bindtap="toggleNotification" style="width: 44px; height: 24px; background-color: #e8e8e8; border-radius: 12px; position: relative;">
+        <view style="width: 20px; height: 20px; background-color: white; border-radius: 50%; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.3);"></view>
+      </view>
+    </view>
+    <view bindtap="privacySettings" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🔒</text>
+        <text style="font-size: 15px; color: #333;">隐私设置</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">›</text>
+    </view>
+    <view bindtap="blacklist" style="padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🚫</text>
+        <text style="font-size: 15px; color: #333;">黑名单管理</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">›</text>
+    </view>
+  </view>
+
+  <!-- 第三组：通用设置 -->
+  <view style="background-color: white; margin-top: 10px; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; width: 100%; box-sizing: border-box;">
+    <view bindtap="clearCache" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🗑️</text>
+        <text style="font-size: 15px; color: #333;">清除缓存</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">5.2MB</text>
+    </view>
+    <view bindtap="language" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🌐</text>
+        <text style="font-size: 15px; color: #333;">语言选择</text>
+      </view>
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 14px; color: #999; margin-right: 8px;">简体中文</text>
+        <text style="font-size: 14px; color: #999;">›</text>
+      </view>
+    </view>
+    <view bindtap="darkMode" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🌙</text>
+        <text style="font-size: 15px; color: #333;">深色模式</text>
+      </view>
+      <view bindtap="toggleDarkMode" style="width: 44px; height: 24px; background-color: #e8e8e8; border-radius: 12px; position: relative;">
+        <view style="width: 20px; height: 20px; background-color: white; border-radius: 50%; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.3);"></view>
+      </view>
+    </view>
+    <view bindtap="fontSize" style="padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">📝</text>
+        <text style="font-size: 15px; color: #333;">字体大小</text>
+      </view>
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 14px; color: #999; margin-right: 8px;">标准</text>
+        <text style="font-size: 14px; color: #999;">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 第四组：关于与反馈 -->
+  <view style="background-color: white; margin-top: 10px; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; width: 100%; box-sizing: border-box;">
+    <view style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">📱</text>
+        <text style="font-size: 15px; color: #333;">版本号</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">1.0.0</text>
+    </view>
+    <view bindtap="userAgreement" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">📄</text>
+        <text style="font-size: 15px; color: #333;">用户协议</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">›</text>
+    </view>
+    <view bindtap="privacyPolicy" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">🔒</text>
+        <text style="font-size: 15px; color: #333;">隐私政策</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">›</text>
+    </view>
+    <view bindtap="feedback" style="padding: 16px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">💬</text>
+        <text style="font-size: 15px; color: #333;">意见反馈</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">›</text>
+    </view>
+    <view bindtap="rate" style="padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center;">
+        <text style="font-size: 20px; margin-right: 12px; color: #999;">⭐</text>
+        <text style="font-size: 15px; color: #333;">去评分</text>
+      </view>
+      <text style="font-size: 14px; color: #999;">›</text>
+    </view>
+  </view>
+
+  <!-- 底部退出登录按钮 -->
+  <view style="padding: 20px 0; width: 100%; box-sizing: border-box;">
+    <view bindtap="logout" style="background-color: white; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; padding: 16px; text-align: center; width: 100%; box-sizing: border-box;">
+      <text style="font-size: 16px; color: #f5222d; font-weight: 500;">退出登录</text>
+    </view>
+  </view>
+</view>
