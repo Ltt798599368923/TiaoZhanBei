@@ -36,28 +36,67 @@ Page({
         time: '09:30',
         unread: false
       }
-    ]
+    ],
+    filteredMessages: [],
+    searchText: ''
   },
-
-  /**
-   * 页面加载
-   * 页面加载时的逻辑
-   */
+  
   onLoad() {
-    // 页面加载时的逻辑
-  },
-
-  /**
-   * 打开聊天
-   * @param {Object} e - 事件对象，包含消息ID
-   * 点击消息项时触发，跳转到聊天页面
-   */
-  openChat(e) {
-    const messageId = e.currentTarget.dataset.id;
-    console.log('打开聊天:', messageId);
-    // 跳转到聊天页面
-    wx.navigateTo({
-      url: '../chat/chat'
+    // 页面加载时初始化消息列表
+    this.setData({
+      filteredMessages: this.data.messages
     });
+  },
+  
+  // 搜索输入处理
+  onSearchInput(e) {
+    const searchText = e.detail.value;
+    this.setData({ searchText });
+    
+    // 过滤消息
+    if (searchText) {
+      const filtered = this.data.messages.filter(item => 
+        item.name.includes(searchText) || 
+        item.content.includes(searchText)
+      );
+      this.setData({ filteredMessages: filtered });
+    } else {
+      this.setData({ filteredMessages: this.data.messages });
+    }
+  },
+  
+  // 清除搜索
+  clearSearch() {
+    this.setData({ 
+      searchText: '',
+      filteredMessages: this.data.messages
+    });
+  },
+  
+  // 跳转到详情页面
+  goToDetail(e) {
+    const id = e.currentTarget.dataset.id;
+    const name = e.currentTarget.dataset.name;
+    const type = e.currentTarget.dataset.type;
+    
+    // 标记为已读（非系统通知）
+    if (type === 'chat') {
+      const messages = [...this.data.messages];
+      const index = messages.findIndex(item => item.id === id);
+      if (index !== -1) {
+        messages[index].unread = false;
+        this.setData({ messages, filteredMessages: messages });
+      }
+      
+      // 跳转到聊天页面
+      wx.navigateTo({
+        url: `/pages/chat/chat?id=${id}&name=${name}`
+      });
+    } else if (type === 'system') {
+      // 跳转到系统通知页面
+      wx.navigateTo({
+        url: `/pages/systemnotice/systemnotice?id=${id}`
+      });
+    }
   }
 })

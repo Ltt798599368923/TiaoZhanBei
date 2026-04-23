@@ -1,7 +1,3 @@
-// chat.js
-// 智能法律咨询页面逻辑
-import { api } from '../../utils/api';
-
 Page({
   /**
    * 页面数据
@@ -75,15 +71,20 @@ Page({
       };
       
       this.setData({
-        messages: [...this.data.messages, botMessage]
+        id: options.id,
+        name: options.name || '律师'
       });
-    }).catch(err => {
-      wx.hideLoading();
-      wx.showToast({
-        title: '发送失败，请重试',
-        icon: 'none'
+      // 设置导航栏标题
+      wx.setNavigationBarTitle({
+        title: options.name || '聊天'
       });
-      console.error('发送消息失败:', err);
+    }
+  },
+
+  // 返回上一页
+  goBack() {
+    wx.navigateBack({
+      delta: 1
     });
   }
 })

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>法律助手</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --red: #c8191e;
+      --red-dark: #a01218;
+      --red-light: #f9e5e5;
+      --red-mid: #f2c4c4;
+      --gold: #d4a017;
+      --text: #222;
+      --subtext: #666;
+      --bg: #f5f5f5;
+      --white: #fff;
+      --radius: 16px;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: #e8e8e8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+
+    .phone {
+      width: 390px;
+      background: var(--bg);
+      border-radius: 44px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35), 0 0 0 10px #222, 0 0 0 12px #444;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* STATUS BAR */
+    .status-bar {
+      background: var(--red);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px 8px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .status-left { display: flex; align-items: center; gap: 5px; }
+    .status-right { display: flex; align-items: center; gap: 6px; }
+    .battery {
+      width: 24px; height: 12px;
+      border: 1.5px solid white;
+      border-radius: 2px;
+      position: relative;
+      display: flex; align-items: center;
+    }
+    .battery::after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      width: 3px; height: 6px;
+      background: white;
+      border-radius: 0 1px 1px 0;
+    }
+    .battery-fill {
+      background: white;
+      height: 100%;
+      width: 90%;
+      border-radius: 1px;
+    }
+
+    /* LOCATION BAR */
+    .location-bar {
+      background: var(--red);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 20px 14px;
+    }
+    .location-left {
+      display: flex; align-items: center; gap: 6px;
+      color: white; font-size: 15px; font-weight: 500;
+    }
+    .location-right { display: flex; gap: 14px; }
+    .location-right span {
+      color: white; font-size: 18px; cursor: pointer;
+    }
+    .pin-icon { font-size: 16px; }
+
+    /* HERO BANNER */
+    .hero {
+      background: linear-gradient(160deg, #c8191e 0%, #a01218 60%, #7a0d10 100%);
+      padding: 24px 0 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .book {
+      width: 130px;
+      background: linear-gradient(145deg, #c8191e 0%, #8b0000 100%);
+      border-radius: 4px 10px 10px 4px;
+      padding: 18px 16px 22px;
+      box-shadow: -4px 4px 12px rgba(0,0,0,0.4), 2px 0 6px rgba(0,0,0,0.3);
+      text-align: center;
+      position: relative;
+      border-left: 5px solid var(--gold);
+    }
+    .book::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 8px;
+      background: linear-gradient(to right, #8b7000, #d4a017, #8b7000);
+      border-radius: 0 0 0 2px;
+    }
+    .book-title {
+      color: var(--gold);
+      font-family: 'Noto Serif SC', serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    /* TICKER */
+    .ticker-wrap {
+      background: rgba(0,0,0,0.15);
+      margin: 16px 16px 0;
+      border-radius: 20px;
+      padding: 7px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+    }
+    .ticker-icon { font-size: 16px; flex-shrink: 0; }
+    .ticker-text {
+      color: rgba(255,255,255,0.92);
+      font-size: 12.5px;
+      white-space: nowrap;
+      animation: ticker 12s linear infinite;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .dots { display: flex; gap: 5px; margin-top: 12px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.4); }
+    .dot.active { background: white; }
+
+    /* MAIN CARD */
+    .main-card {
+      background: var(--white);
+      margin: -16px 12px 0;
+      border-radius: var(--radius);
+      padding: 18px 16px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* QUICK BTNS */
+    .quick-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .quick-btn {
+      background: var(--red-light);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      border: 1.5px solid transparent;
+    }
+    .quick-btn:hover {
+      background: var(--red-mid);
+      border-color: var(--red);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(200,25,30,0.2);
+    }
+    .quick-btn .q-icon {
+      font-size: 22px;
+      color: var(--red);
+    }
+    .quick-btn .q-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--red-dark);
+    }
+    .quick-btn .q-text span {
+      font-size: 11px;
+      color: var(--subtext);
+    }
+
+    /* ICON GRID */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px 8px;
+    }
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .icon-box {
+      width: 64px; height: 64px;
+      background: var(--red);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 12px rgba(200,25,30,0.3);
+      transition: all 0.2s ease;
+    }
+    .icon-item:hover .icon-box {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(200,25,30,0.4);
+    }
+    .icon-label {
+      font-size: 12.5px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* HOT SECTION */
+    .section {
+      background: var(--white);
+      margin: 12px 12px 0;
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .hot-item {
+      background: var(--red-light);
+      border-radius: 12px;
+      padding: 13px 16px;
+      margin-bottom: 10px;
+      font-size: 14.5px;
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .hot-item:last-child { margin-bottom: 0; }
+    .hot-item:hover {
+      background: var(--red-mid);
+      transform: translateX(4px);
+    }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      text-align: center;
+      padding: 14px 16px 6px;
+      font-size: 11px;
+      color: #999;
+      line-height: 1.6;
+    }
+    .disclaimer strong { color: #777; display: block; margin-bottom: 3px; font-size: 12px; }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      background: var(--white);
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0 20px;
+      margin-top: 12px;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      flex: 1;
+    }
+    .nav-icon { font-size: 22px; color: #aaa; }
+    .nav-item.active .nav-icon { color: var(--red); }
+    .nav-label { font-size: 11px; color: #aaa; }
+    .nav-item.active .nav-label { color: var(--red); font-weight: 600; }
+    .nav-ai {
+      width: 52px; height: 52px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 16px;
+      box-shadow: 0 4px 14px rgba(200,25,30,0.4);
+      margin-top: -16px;
+      letter-spacing: 0.5px;
+    }
+    .nav-item:nth-child(3) .nav-label { color: var(--red); font-size: 11px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <div class="status-left">
+        <svg width="17" height="13" viewBox="0 0 17 13" fill="white">
+          <rect x="0" y="5" width="3" height="8" rx="1"/>
+          <rect x="4.5" y="3" width="3" height="10" rx="1"/>
+          <rect x="9" y="1" width="3" height="12" rx="1"/>
+          <rect x="13.5" y="0" width="3" height="13" rx="1"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="white">
+          <path d="M8 3C10.2 3 12.2 3.9 13.6 5.4L15 4C13.2 2.1 10.7 1 8 1C5.3 1 2.8 2.1 1 4L2.4 5.4C3.8 3.9 5.8 3 8 3Z"/>
+          <path d="M8 6C9.4 6 10.6 6.6 11.5 7.5L12.9 6.1C11.6 4.8 9.9 4 8 4C6.1 4 4.4 4.8 3.1 6.1L4.5 7.5C5.4 6.6 6.6 6 8 6Z"/>
+          <circle cx="8" cy="10" r="1.5"/>
+        </svg>
+        <span>10:30</span>
+      </div>
+      <div class="status-right">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="white"><path d="M1 5h2v5H1zm3-2h2v7H4zm3-2h2v9H7zm3-1h2v10h-2z"/></svg>
+        <div class="battery"><div class="battery-fill"></div></div>
+        <span>100%</span>
+      </div>
+    </div>
+
+    <!-- LOCATION BAR -->
+    <div class="location-bar">
+      <div class="location-left">
+        <span class="pin-icon">📍</span>
+        <span>河南省郑州市</span>
+      </div>
+      <div class="location-right">
+        <span>···</span>
+        <span>⊙</span>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="book">
+        <div class="book-title">中华人民共和国<br>刑法</div>
+      </div>
+      <div class="ticker-wrap">
+        <span class="ticker-icon">📢</span>
+        <div class="ticker-text">弘扬法治精神，提供法律支援。免费法律咨询、法律知识学习、文书指导</div>
+      </div>
+      <div class="dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- MAIN CARD -->
+    <div class="main-card">
+      <div class="quick-row">
+        <div class="quick-btn">
+          <div class="q-icon">💬</div>
+          <div class="q-text">
+            <strong>在线咨询</strong>
+            <span>专业律师在线解答</span>
+          </div>
+        </div>
+        <div class="quick-btn">
+          <div class="q-icon">🔍</div>
+          <div class="q-text">
+            <strong>法条检索</strong>
+            <span>发条信息速查直达</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="icon-grid">
+        <div class="icon-item">
+          <div class="icon-box">⚖️</div>
+          <span class="icon-label">律师咨询</span>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box">📋</div>
+          <span class="icon-label">文书模板</span>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box">💡</div>
+          <span class="icon-label">法理白话</span>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box">📚</div>
+          <span class="icon-label">法治新程</span>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box">📱</div>
+          <span class="icon-label">法文阅读</span>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box">🐼</div>
+          <span class="icon-label">小视讲堂</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOT TOPICS -->
+    <div class="section">
+      <div class="section-title">热点咨询</div>
+      <div class="hot-item">中华人民共和国宪法</div>
+      <div class="hot-item">中华人民共和国民法典</div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <strong>免责声明</strong>
+      本平台所有内容仅供学习与参考，不构成正式法律意见。
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+      <div class="nav-item active">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">首页</span>
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">📋</span>
+        <span class="nav-label">服务</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-ai">AI</div>
+        <span class="nav-label" style="color:var(--red)"></span>
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">消息</span>
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">我的</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

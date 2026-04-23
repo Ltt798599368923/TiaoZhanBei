@@ -66,7 +66,7 @@ Page({
       case 1:
         // 跳转到律师咨询与预约页面
         wx.navigateTo({
-          url: '/pages/lawyer/lawyer'
+          url: '/pages/consult/consult'
         });
         break;
       case 2:

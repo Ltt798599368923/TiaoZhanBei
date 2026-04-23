@@ -1,0 +1,114 @@
+<view class="container" style="background-color: #f5f7fa; min-height: 100vh; padding-bottom: 80px;">
+  <!-- 顶部标题 -->
+  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold; box-shadow: 0 2px 8px rgba(245, 34, 45, 0.3);">
+    <view bindtap="goBack" style="padding: 8px; margin-right: 16px;">
+      <text style="font-size: 24px;">←</text>
+    </view>
+    <text style="flex: 1; text-align: center;">文书模板</text>
+    <view style="padding: 8px;"></view>
+  </view>
+
+  <!-- 搜索框 -->
+  <view style="padding: 15px; background-color: white;">
+    <view style="background-color: #f5f5f5; border-radius: 20px; padding: 10px 15px; display: flex; align-items: center;">
+      <text style="font-size: 16px; color: #999; margin-right: 10px;">🔍</text>
+      <text style="font-size: 14px; color: #999; flex: 1;">搜索文书模板</text>
+    </view>
+  </view>
+
+  <!-- 模板分类 -->
+  <view style="background-color: white; margin-top: 10px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 15px;">
+    <text style="font-size: 16px; font-weight: bold; color: #333; padding: 15px; border-bottom: 1px solid #f0f0f0; display: block;">模板分类</text>
+    <view style="padding: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+      <view bindtap="selectCategory" data-category="civil" style="background-color: #f5f5f5; border-radius: 12px; padding: 15px; text-align: center; transition: all 0.3s;">
+        <text style="font-size: 32px; display: block; margin-bottom: 8px;">⚖️</text>
+        <text style="font-size: 14px; color: #333;">民事类</text>
+      </view>
+      <view bindtap="selectCategory" data-category="criminal" style="background-color: #f5f5f5; border-radius: 12px; padding: 15px; text-align: center; transition: all 0.3s;">
+        <text style="font-size: 32px; display: block; margin-bottom: 8px;">🔒</text>
+        <text style="font-size: 14px; color: #333;">刑事类</text>
+      </view>
+      <view bindtap="selectCategory" data-category="contract" style="background-color: #f5f5f5; border-radius: 12px; padding: 15px; text-align: center; transition: all 0.3s;">
+        <text style="font-size: 32px; display: block; margin-bottom: 8px;">📄</text>
+        <text style="font-size: 14px; color: #333;">合同类</text>
+      </view>
+      <view bindtap="selectCategory" data-category="administrative" style="background-color: #f5f5f5; border-radius: 12px; padding: 15px; text-align: center; transition: all 0.3s;">
+        <text style="font-size: 32px; display: block; margin-bottom: 8px;">🏛️</text>
+        <text style="font-size: 14px; color: #333;">行政类</text>
+      </view>
+      <view bindtap="selectCategory" data-category="company" style="background-color: #f5f5f5; border-radius: 12px; padding: 15px; text-align: center; transition: all 0.3s;">
+        <text style="font-size: 32px; display: block; margin-bottom: 8px;">🏢</text>
+        <text style="font-size: 14px; color: #333;">公司类</text>
+      </view>
+      <view bindtap="selectCategory" data-category="other" style="background-color: #f5f5f5; border-radius: 12px; padding: 15px; text-align: center; transition: all 0.3s;">
+        <text style="font-size: 32px; display: block; margin-bottom: 8px;">📋</text>
+        <text style="font-size: 14px; color: #333;">其他类</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门模板 -->
+  <view style="background-color: white; margin-top: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 15px;">
+    <view style="padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0;">
+      <text style="font-size: 16px; font-weight: bold; color: #333;">热门模板</text>
+      <text bindtap="viewAllTemplates" style="font-size: 14px; color: #f5222d;">查看全部 ></text>
+    </view>
+    <view style="padding: 15px;">
+      <view bindtap="viewTemplateDetail" data-id="1" style="padding: 15px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
+        <view style="flex: 1;">
+          <text style="font-size: 15px; font-weight: 500; color: #333; margin-bottom: 5px; display: block;">民事起诉状</text>
+          <text style="font-size: 13px; color: #999;">使用次数：1250次</text>
+        </view>
+        <view style="background-color: #f5f5f5; padding: 8px 16px; border-radius: 16px;">
+          <text style="font-size: 13px; color: #f5222d;">立即使用</text>
+        </view>
+      </view>
+      <view bindtap="viewTemplateDetail" data-id="2" style="padding: 15px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
+        <view style="flex: 1;">
+          <text style="font-size: 15px; font-weight: 500; color: #333; margin-bottom: 5px; display: block;">离婚协议书</text>
+          <text style="font-size: 13px; color: #999;">使用次数：980次</text>
+        </view>
+        <view style="background-color: #f5f5f5; padding: 8px 16px; border-radius: 16px;">
+          <text style="font-size: 13px; color: #f5222d;">立即使用</text>
+        </view>
+      </view>
+      <view bindtap="viewTemplateDetail" data-id="3" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;">
+        <view style="flex: 1;">
+          <text style="font-size: 15px; font-weight: 500; color: #333; margin-bottom: 5px; display: block;">房屋租赁合同</text>
+          <text style="font-size: 13px; color: #999;">使用次数：860次</text>
+        </view>
+        <view style="background-color: #f5f5f5; padding: 8px 16px; border-radius: 16px;">
+          <text style="font-size: 13px; color: #f5222d;">立即使用</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 模板使用指南 -->
+  <view style="background-color: white; margin-top: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 15px;">
+    <text style="font-size: 16px; font-weight: bold; color: #333; padding: 15px; border-bottom: 1px solid #f0f0f0; display: block;">使用指南</text>
+    <view style="padding: 15px;">
+      <view style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+        <view style="width: 24px; height: 24px; border-radius: 50%; background-color: #f5222d; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; margin-right: 12px; flex-shrink: 0;">1</view>
+        <view>
+          <text style="font-size: 14px; color: #333; font-weight: 500; margin-bottom: 5px; display: block;">选择模板类型</text>
+          <text style="font-size: 13px; color: #666; line-height: 1.4;">根据您的需求选择合适的模板分类</text>
+        </view>
+      </view>
+      <view style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+        <view style="width: 24px; height: 24px; border-radius: 50%; background-color: #f5222d; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; margin-right: 12px; flex-shrink: 0;">2</view>
+        <view>
+          <text style="font-size: 14px; color: #333; font-weight: 500; margin-bottom: 5px; display: block;">填写模板内容</text>
+          <text style="font-size: 13px; color: #666; line-height: 1.4;">根据提示填写相关信息，生成专属法律文书</text>
+        </view>
+      </view>
+      <view style="display: flex; align-items: flex-start;">
+        <view style="width: 24px; height: 24px; border-radius: 50%; background-color: #f5222d; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; margin-right: 12px; flex-shrink: 0;">3</view>
+        <view>
+          <text style="font-size: 14px; color: #333; font-weight: 500; margin-bottom: 5px; display: block;">下载或分享</text>
+          <text style="font-size: 13px; color: #666; line-height: 1.4;">生成文书后可直接下载或分享给他人</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

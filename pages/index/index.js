@@ -203,11 +203,11 @@ Page({
     }
     // 功能类型映射
     const urlMap = {
-      document: '/pages/document/document',      // 文书模板
-      lawexplain: '/pages/lawexplain/lawexplain',  // 法理白话
-      newlaw: '/pages/newlaw/newlaw',          // 法治新程
-      lawread: '/pages/lawread/lawread',        // 法文阅读
-      video: '/pages/video/video'              // 小视讲堂
+      document: '/pages/template/template',
+      lawexplain: '/pages/lawexplain/lawexplain',
+      newlaw: '/pages/newlaw/newlaw',
+      lawread: '/pages/lawread/lawread',
+      video: '/pages/video/video'
     };
     const url = urlMap[type];
     if (url) {
