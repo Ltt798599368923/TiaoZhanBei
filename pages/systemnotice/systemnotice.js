@@ -1,6 +1,5 @@
 Page({
   data: {
-    name: '',
     id: ''
   },
 
@@ -8,12 +7,11 @@ Page({
     // 接收传递的参数
     if (options) {
       this.setData({
-        id: options.id,
-        name: options.name || '律师'
+        id: options.id
       });
       // 设置导航栏标题
       wx.setNavigationBarTitle({
-        title: options.name || '聊天'
+        title: '系统通知'
       });
     }
   },

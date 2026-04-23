@@ -13,7 +13,37 @@ Page({
   onLoad() {
     // 页面加载时的逻辑
   },
-  exitLogin() {
+  
+  // 个人设置
+  goToSettings() {
+    wx.navigateTo({
+      url: '/pages/settings/settings'
+    })
+  },
+  
+  // 我的收藏
+  goToFavorites() {
+    wx.navigateTo({
+      url: '/pages/favorites/favorites'
+    })
+  },
+  
+  // 我的咨询
+  goToMyConsult() {
+    wx.navigateTo({
+      url: '/pages/myconsult/myconsult'
+    })
+  },
+  
+  // 关于我们
+  goToAbout() {
+    wx.navigateTo({
+      url: '/pages/about/about'
+    })
+  },
+  
+  // 退出登录
+  logout() {
     wx.showModal({
       title: '退出登录',
       content: '确定要退出登录吗？',
