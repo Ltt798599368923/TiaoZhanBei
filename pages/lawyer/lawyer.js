@@ -1,14 +1,30 @@
-// lawyer.js
+/**
+ * 律师列表页面逻辑
+ * 用于展示律师列表并提供预约功能
+ */
 import { api } from '../../utils/api';
 
 Page({
+  /**
+   * 页面数据
+   */
   data: {
-    lawyers: []
+    lawyers: []  // 律师列表数据
   },
+
+  /**
+   * 页面加载
+   * 页面加载时获取律师列表
+   */
   onLoad() {
     // 页面加载时获取律师列表
     this.loadLawyers();
   },
+
+  /**
+   * 加载律师列表
+   * 从后端API获取律师数据并更新页面
+   */
   loadLawyers() {
     // 显示加载状态
     wx.showLoading({
@@ -20,7 +36,7 @@ Page({
     api.getLawyers().then(res => {
       wx.hideLoading();
       this.setData({
-        lawyers: res.data || []
+        lawyers: res.data || []  // 更新律师列表数据
       });
     }).catch(err => {
       wx.hideLoading();
@@ -31,13 +47,24 @@ Page({
       console.error('获取律师列表失败:', err);
     });
   },
-  goBack() {
-    wx.navigateBack();
-  },
-  reserveLawyer(e) {
-    const lawyerId = parseInt(e.currentTarget.dataset.id);
-    const lawyer = this.data.lawyers.find(item => item.id === lawyerId);
 
+  /**
+   * 返回上一页
+   */
+  goBack() {
+    wx.navigateBack();  // 调用微信API返回上一页
+  },
+
+  /**
+   * 预约律师
+   * @param {Object} e - 事件对象，包含律师ID
+   * 点击预约按钮时触发，显示确认对话框并调用预约API
+   */
+  reserveLawyer(e) {
+    const lawyerId = parseInt(e.currentTarget.dataset.id);  // 获取律师ID
+    const lawyer = this.data.lawyers.find(item => item.id === lawyerId);  // 查找律师详情
+
+    // 显示确认对话框
     wx.showModal({
       title: '预约确认',
       content: `您确定要预约 ${lawyer.name} 律师吗？`,
@@ -70,6 +97,11 @@ Page({
       }
     });
   },
+
+  /**
+   * 提交咨询
+   * 提交咨询信息并显示结果
+   */
   submitConsult() {
     // 显示加载状态
     wx.showLoading({
@@ -86,7 +118,7 @@ Page({
         confirmText: '确定',
         success: (res) => {
           if (res.confirm) {
-            wx.navigateBack();
+            wx.navigateBack();  // 返回上一页
           }
         }
       });

@@ -1,59 +1,71 @@
 /* chat.wxss */
+/* 智能法律咨询页面样式 */
+
+/* 容器样式 */
 .container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
+  min-height: 100vh;          /* 最小高度为屏幕高度 */
+  background-color: #f5f5f5;  /* 背景色为浅灰色 */
 }
 
+/* 聊天容器 */
 .chat-container {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
+  flex: 1;                    /* 占满剩余空间 */
+  padding: 10px;              /* 内边距 */
+  overflow-y: auto;           /* 垂直滚动 */
 }
 
+/* 聊天消息 */
 .chat-message {
-  margin: 10px 0;
-  display: flex;
-  align-items: flex-start;
+  margin: 10px 0;             /* 上下外边距 */
+  display: flex;              /* 使用flex布局 */
+  align-items: flex-start;    /* 顶部对齐 */
 }
 
+/* 左侧消息 */
 .chat-message.left {
-  justify-content: flex-start;
+  justify-content: flex-start;  /* 左对齐 */
 }
 
+/* 右侧消息 */
 .chat-message.right {
-  justify-content: flex-end;
+  justify-content: flex-end;    /* 右对齐 */
 }
 
+/* 头像 */
 .chat-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin: 0 10px;
+  width: 40px;               /* 宽度 */
+  height: 40px;              /* 高度 */
+  border-radius: 50%;         /* 圆形 */
+  margin: 0 10px;            /* 左右外边距 */
 }
 
+/* 消息气泡 */
 .chat-bubble {
-  max-width: 70%;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
+  max-width: 70%;             /* 最大宽度 */
+  padding: 10px;              /* 内边距 */
+  border-radius: 10px;        /* 圆角 */
+  font-size: 14px;            /* 字体大小 */
 }
 
+/* 左侧消息气泡 */
 .chat-bubble.left {
-  background-color: #ffffff;
-  border-top-left-radius: 0;
+  background-color: #ffffff;  /* 白色背景 */
+  border-top-left-radius: 0;  /* 左上角圆角为0 */
 }
 
+/* 右侧消息气泡 */
 .chat-bubble.right {
-  background-color: #e6f7ff;
-  border-top-right-radius: 0;
+  background-color: #e6f7ff;  /* 浅蓝色背景 */
+  border-top-right-radius: 0; /* 右上角圆角为0 */
 }
 
+/* 输入框容器 */
 .chat-input {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  background-color: #ffffff;
-  border-top: 1px solid #e8e8e8;
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  padding: 10px;              /* 内边距 */
+  background-color: #ffffff;  /* 白色背景 */
+  border-top: 1px solid #e8e8e8;  /* 顶部边框 */
 }

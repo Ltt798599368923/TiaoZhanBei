@@ -1,4 +1,4 @@
-<!--message.wxml-->
+<!-- 消息中心页面结构 -->
 <view class="container">
   <!-- 顶部标题 -->
   <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 20px; text-align: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(245, 34, 45, 0.3);">

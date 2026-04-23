@@ -1,236 +1,251 @@
+/* consult.wxss */
+/* 在线咨询页面样式 */
+
+/* 容器样式 */
 .container {
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  min-height: 100vh;          /* 最小高度为屏幕高度 */
+  background-color: #f5f5f5;  /* 背景色为浅灰色 */
 }
 
+/* 头部样式 */
 .header {
-  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
-  padding: 30rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);  /* 红色渐变背景 */
+  padding: 30rpx;              /* 内边距 */
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  justify-content: center;    /* 水平居中 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* 阴影 */
 }
 
+/* 头部标题 */
 .header-title {
-  font-size: 36rpx;
-  color: #ffffff;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
+  font-size: 36rpx;           /* 字体大小 */
+  color: #ffffff;             /* 白色文本 */
+  font-weight: bold;          /* 加粗 */
+  text-align: center;         /* 文本居中 */
+  width: 100%;                /* 宽度100% */
 }
 
+/* 服务介绍 */
 .service-intro {
-  background-color: white;
-  margin: 10rpx;
-  padding: 30rpx;
-  border-radius: 24rpx;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: white;    /* 白色背景 */
+  margin: 10rpx;              /* 外边距 */
+  padding: 30rpx;              /* 内边距 */
+  border-radius: 24rpx;       /* 圆角 */
+  text-align: center;         /* 文本居中 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* 阴影 */
 }
 
+/* 介绍图标 */
 .intro-icon {
-  font-size: 80rpx;
-  margin-bottom: 20rpx;
+  font-size: 80rpx;           /* 字体大小 */
+  margin-bottom: 20rpx;       /* 底部间距 */
 }
 
+/* 介绍标题 */
 .intro-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 15rpx;
-  display: block;
+  font-size: 32rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
+  color: #333333;             /* 深灰色文本 */
+  margin-bottom: 15rpx;       /* 底部间距 */
+  display: block;             /* 块级元素 */
 }
 
+/* 介绍描述 */
 .intro-desc {
-  font-size: 28rpx;
-  color: #666666;
-  line-height: 1.5;
+  font-size: 28rpx;           /* 字体大小 */
+  color: #666666;             /* 中灰色文本 */
+  line-height: 1.5;           /* 行高 */
 }
 
+/* 筛选栏 */
 .filter-bar {
-  display: flex;
-  background-color: #ffffff;
-  padding: 20rpx;
-  overflow-x: auto;
-  white-space: nowrap;
-  margin: 10rpx;
-  border-radius: 16rpx;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;              /* 使用flex布局 */
+  background-color: #ffffff;  /* 白色背景 */
+  padding: 20rpx;              /* 内边距 */
+  overflow-x: auto;           /* 水平滚动 */
+  white-space: nowrap;        /* 不换行 */
+  margin: 10rpx;              /* 外边距 */
+  border-radius: 16rpx;       /* 圆角 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* 阴影 */
 }
 
+/* 筛选项 */
 .filter-item {
-  padding: 12rpx 28rpx;
-  font-size: 26rpx;
-  color: #666666;
-  margin-right: 16rpx;
-  border-radius: 30rpx;
-  background-color: #f5f5f5;
-  transition: all 0.3s ease;
+  padding: 12rpx 28rpx;       /* 内边距 */
+  font-size: 26rpx;           /* 字体大小 */
+  color: #666666;             /* 中灰色文本 */
+  margin-right: 16rpx;        /* 右侧间距 */
+  border-radius: 30rpx;       /* 圆角 */
+  background-color: #f5f5f5;  /* 浅灰色背景 */
+  transition: all 0.3s ease;  /* 过渡动画 */
 }
 
+/* 筛选项悬停效果 */
 .filter-item:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-2rpx);
+  background-color: #f0f0f0;  /* 浅灰色背景 */
+  transform: translateY(-2rpx);  /* 向上移动 */
 }
 
+/* 筛选项激活状态 */
 .filter-item.active {
-  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(245,34,45,0.3);
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);  /* 红色渐变背景 */
+  color: #ffffff;             /* 白色文本 */
+  box-shadow: 0 2px 8px rgba(245,34,45,0.3);  /* 红色阴影 */
 }
 
+/* 律师列表 */
 .lawyer-list {
-  padding: 5rpx;
+  padding: 5rpx;              /* 内边距 */
 }
 
+/* 律师卡片 */
 .lawyer-card {
-  background-color: #ffffff;
-  border-radius: 24rpx;
-  padding: 24rpx 20rpx;
-  margin: 5rpx;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  background-color: #ffffff;  /* 白色背景 */
+  border-radius: 24rpx;       /* 圆角 */
+  padding: 24rpx 20rpx;       /* 内边距 */
+  margin: 5rpx;               /* 外边距 */
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* 阴影 */
+  transition: all 0.3s ease;  /* 过渡动画 */
 }
 
-.service-intro {
-  background-color: white;
-  margin: 5rpx;
-  padding: 24rpx;
-  border-radius: 24rpx;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.filter-bar {
-  display: flex;
-  background-color: #ffffff;
-  padding: 16rpx;
-  overflow-x: auto;
-  white-space: nowrap;
-  margin: 5rpx;
-  border-radius: 16rpx;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
+/* 律师卡片悬停效果 */
 .lawyer-card:hover {
-  transform: translateY(-2rpx);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-2rpx);  /* 向上移动 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);  /* 阴影变大 */
 }
 
+/* 律师头像 */
 .lawyer-avatar {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #f5222d 0%, #ff7875 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 24rpx;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(245,34,45,0.3);
+  width: 100rpx;              /* 宽度 */
+  height: 100rpx;             /* 高度 */
+  border-radius: 50%;         /* 圆形 */
+  background: linear-gradient(135deg, #f5222d 0%, #ff7875 100%);  /* 红色渐变背景 */
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  justify-content: center;    /* 水平居中 */
+  margin-right: 24rpx;        /* 右侧间距 */
+  flex-shrink: 0;             /* 不缩小 */
+  box-shadow: 0 2px 8px rgba(245,34,45,0.3);  /* 红色阴影 */
 }
 
+/* 头像文字 */
 .lawyer-avatar text {
-  color: #ffffff;
-  font-size: 40rpx;
-  font-weight: bold;
+  color: #ffffff;             /* 白色文本 */
+  font-size: 40rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
 }
 
+/* 律师信息 */
 .lawyer-info {
-  flex: 1;
+  flex: 1;                    /* 占满剩余空间 */
 }
 
+/* 律师头部信息 */
 .lawyer-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8rpx;
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  margin-bottom: 8rpx;        /* 底部间距 */
 }
 
+/* 律师姓名 */
 .lawyer-name {
-  font-size: 32rpx;
-  color: #333333;
-  font-weight: bold;
-  margin-right: 12rpx;
+  font-size: 32rpx;           /* 字体大小 */
+  color: #333333;             /* 深灰色文本 */
+  font-weight: bold;          /* 加粗 */
+  margin-right: 12rpx;        /* 右侧间距 */
 }
 
+/* 律师头衔 */
 .lawyer-title {
-  font-size: 24rpx;
-  color: #f5222d;
-  background-color: #fff1f0;
-  padding: 4rpx 12rpx;
-  border-radius: 12rpx;
+  font-size: 24rpx;           /* 字体大小 */
+  color: #f5222d;             /* 红色文本 */
+  background-color: #fff1f0;  /* 浅红色背景 */
+  padding: 4rpx 12rpx;        /* 内边距 */
+  border-radius: 12rpx;       /* 圆角 */
 }
 
+/* 律师专长 */
 .lawyer-specialty {
-  font-size: 24rpx;
-  color: #999999;
-  display: block;
-  margin-bottom: 8rpx;
+  font-size: 24rpx;           /* 字体大小 */
+  color: #999999;             /* 灰色文本 */
+  display: block;             /* 块级元素 */
+  margin-bottom: 8rpx;        /* 底部间距 */
 }
 
+/* 律师统计信息 */
 .lawyer-stats {
-  display: flex;
-  align-items: center;
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
 }
 
+/* 律师评分 */
 .lawyer-rating {
-  font-size: 24rpx;
-  color: #ffa940;
-  margin-right: 16rpx;
+  font-size: 24rpx;           /* 字体大小 */
+  color: #ffa940;             /* 橙色文本 */
+  margin-right: 16rpx;        /* 右侧间距 */
 }
 
+/* 律师案件数 */
 .lawyer-cases {
-  font-size: 24rpx;
-  color: #999999;
+  font-size: 24rpx;           /* 字体大小 */
+  color: #999999;             /* 灰色文本 */
 }
 
+/* 律师操作按钮 */
 .lawyer-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12rpx;
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
+  gap: 12rpx;                 /* 间距 */
 }
 
+/* 操作按钮 */
 .action-btn {
-  padding: 16rpx 24rpx;
-  border-radius: 30rpx;
-  font-size: 24rpx;
-  text-align: center;
-  transition: all 0.3s ease;
-  font-weight: 500;
+  padding: 16rpx 24rpx;       /* 内边距 */
+  border-radius: 30rpx;       /* 圆角 */
+  font-size: 24rpx;           /* 字体大小 */
+  text-align: center;         /* 文本居中 */
+  transition: all 0.3s ease;  /* 过渡动画 */
+  font-weight: 500;           /* 中等加粗 */
 }
 
+/* 电话咨询按钮 */
 .action-btn.call {
-  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
-  color: #ffffff;
-  box-shadow: 0 2px 4px rgba(245,34,45,0.3);
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);  /* 红色渐变背景 */
+  color: #ffffff;             /* 白色文本 */
+  box-shadow: 0 2px 4px rgba(245,34,45,0.3);  /* 红色阴影 */
 }
 
+/* 电话咨询按钮悬停效果 */
 .action-btn.call:hover {
-  transform: translateY(-2rpx);
-  box-shadow: 0 4px 8px rgba(245,34,45,0.4);
+  transform: translateY(-2rpx);  /* 向上移动 */
+  box-shadow: 0 4px 8px rgba(245,34,45,0.4);  /* 阴影变大 */
 }
 
+/* 在线咨询按钮 */
 .action-btn.chat {
-  background-color: #fff1f0;
-  color: #f5222d;
-  border: 1px solid #ffccc7;
+  background-color: #fff1f0;  /* 浅红色背景 */
+  color: #f5222d;             /* 红色文本 */
+  border: 1px solid #ffccc7;  /* 红色边框 */
 }
 
+/* 在线咨询按钮悬停效果 */
 .action-btn.chat:hover {
-  background-color: #fff2f0;
-  transform: translateY(-2rpx);
+  background-color: #fff2f0;  /* 浅红色背景 */
+  transform: translateY(-2rpx);  /* 向上移动 */
 }
 
+/* 底部提示 */
 .bottom-tip {
-  padding: 16rpx;
-  text-align: center;
-  margin: 5rpx;
+  padding: 16rpx;             /* 内边距 */
+  text-align: center;         /* 文本居中 */
+  margin: 5rpx;               /* 外边距 */
 }
 
+/* 提示文本 */
 .tip-text {
-  font-size: 22rpx;
-  color: #999999;
+  font-size: 22rpx;           /* 字体大小 */
+  color: #999999;             /* 灰色文本 */
 }

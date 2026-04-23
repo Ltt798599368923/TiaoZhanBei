@@ -1,369 +1,412 @@
 /* index.wxss */
+/* 全局容器样式 */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
+  align-items: center;        /* 水平居中 */
+  min-height: 100vh;          /* 最小高度为屏幕高度 */
+  background-color: #f5f5f5;  /* 背景色为浅灰色 */
 }
 
 /* ===== 顶部头部区域 ===== */
 .header {
-  width: 100%;
-  background: linear-gradient(180deg, #f5222d 0%, #d40000 100%);
-  padding: 20rpx 30rpx 40rpx;
-  position: relative;
+  width: 100%;                             /* 宽度100% */
+  background: linear-gradient(180deg, #f5222d 0%, #d40000 100%);  /* 红色渐变背景 */
+  padding: 20rpx 30rpx 40rpx;              /* 内边距 */
+  position: relative;                       /* 相对定位 */
 }
 
+/* 头部顶部区域 */
 .header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24rpx;
+  display: flex;              /* 使用flex布局 */
+  justify-content: space-between;  /* 两端对齐 */
+  align-items: center;        /* 垂直居中 */
+  margin-bottom: 24rpx;       /* 底部间距 */
 }
 
+/* 定位区域 */
 .header-location {
-  display: flex;
-  align-items: center;
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
 }
 
+/* 定位图标 */
 .location-icon {
-  font-size: 24rpx;
-  margin-right: 6rpx;
+  font-size: 24rpx;           /* 字体大小 */
+  margin-right: 6rpx;         /* 右侧间距 */
 }
 
+/* 定位文本 */
 .location-text {
-  color: #ffffff;
-  font-size: 24rpx;
+  color: #ffffff;             /* 白色文本 */
+  font-size: 24rpx;           /* 字体大小 */
 }
 
+/* 头部标题 */
 .header-title {
-  color: #ffffff;
-  font-size: 32rpx;
-  font-weight: bold;
+  color: #ffffff;             /* 白色文本 */
+  font-size: 32rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
 }
 
+/* 头部操作区域 */
 .header-actions {
-  display: flex;
-  align-items: center;
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
 }
 
+/* 更多图标 */
 .icon-more {
-  color: #ffffff;
-  font-size: 26rpx;
-  margin-right: 20rpx;
+  color: #ffffff;             /* 白色文本 */
+  font-size: 26rpx;           /* 字体大小 */
+  margin-right: 20rpx;        /* 右侧间距 */
 }
 
+/* 设置图标 */
 .icon-setting {
-  color: #ffffff;
-  font-size: 28rpx;
+  color: #ffffff;             /* 白色文本 */
+  font-size: 28rpx;           /* 字体大小 */
 }
 
 /* 书籍容器 */
 .book-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20rpx;
+  display: flex;              /* 使用flex布局 */
+  justify-content: center;    /* 水平居中 */
+  align-items: center;        /* 垂直居中 */
+  margin-bottom: 20rpx;       /* 底部间距 */
 }
 
+/* 书籍通用样式 */
 .book {
-  width: 150rpx;
-  height: 200rpx;
-  border-radius: 12rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.4);
-  position: relative;
+  width: 150rpx;              /* 宽度 */
+  height: 200rpx;             /* 高度 */
+  border-radius: 12rpx;       /* 圆角 */
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
+  align-items: center;        /* 水平居中 */
+  justify-content: center;    /* 垂直居中 */
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.4);  /* 阴影 */
+  position: relative;         /* 相对定位 */
 }
 
+/* 左侧书籍 */
 .book-left {
-  background-color: #c40000;
-  transform: rotate(-8deg);
-  margin-right: -15rpx;
-  z-index: 1;
+  background-color: #c40000;  /* 深红色背景 */
+  transform: rotate(-8deg);   /* 向左旋转8度 */
+  margin-right: -15rpx;       /* 右侧负间距 */
+  z-index: 1;                 /* 层级 */
 }
 
+/* 右侧书籍 */
 .book-right {
-  background-color: #d40000;
-  transform: rotate(3deg);
-  z-index: 2;
+  background-color: #d40000;  /* 红色背景 */
+  transform: rotate(3deg);    /* 向右旋转3度 */
+  z-index: 2;                 /* 层级 */
 }
 
+/* 书籍文本 */
 .book-text {
-  color: #ffd700;
-  font-size: 22rpx;
-  font-weight: bold;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  letter-spacing: 2rpx;
-  text-align: center;
+  color: #ffd700;             /* 金色文本 */
+  font-size: 22rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
+  writing-mode: vertical-rl;  /* 垂直书写 */
+  text-orientation: upright;  /* 文字方向 */
+  letter-spacing: 2rpx;       /* 字间距 */
+  text-align: center;         /* 文本居中 */
 }
 
+/* 书籍书脊 */
 .book-spine {
-  position: absolute;
-  left: -10rpx;
-  top: 0;
-  bottom: 0;
-  width: 10rpx;
-  background-color: #ffd700;
-  border-radius: 4rpx 0 0 4rpx;
+  position: absolute;         /* 绝对定位 */
+  left: -10rpx;               /* 左侧位置 */
+  top: 0;                     /* 顶部位置 */
+  bottom: 0;                  /* 底部位置 */
+  width: 10rpx;               /* 宽度 */
+  background-color: #ffd700;  /* 金色背景 */
+  border-radius: 4rpx 0 0 4rpx;  /* 左侧圆角 */
 }
 
-/* 滚动宣传语 */
+/* 滚动宣传语容器 */
 .marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 0 20rpx;
-  text-align: center;
+  overflow: hidden;           /* 隐藏溢出 */
+  white-space: nowrap;        /* 不换行 */
+  padding: 0 20rpx;           /* 左右内边距 */
+  text-align: center;         /* 文本居中 */
 }
 
+/* 滚动宣传语文本 */
 .marquee-text {
-  display: inline-block;
-  color: #ffffff;
-  font-size: 24rpx;
-  line-height: 1.6;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transform: translateY(0);
+  display: inline-block;      /* 行内块元素 */
+  color: #ffffff;             /* 白色文本 */
+  font-size: 24rpx;           /* 字体大小 */
+  line-height: 1.6;           /* 行高 */
+  transition: opacity 0.3s ease, transform 0.3s ease;  /* 过渡动画 */
+  transform: translateY(0);   /* 初始位置 */
 }
 
+/* 淡出效果 */
 .marquee-text.fade-out {
-  opacity: 0;
-  transform: translateY(-10rpx);
+  opacity: 0;                 /* 透明度为0 */
+  transform: translateY(-10rpx);  /* 向上移动 */
 }
 
+/* 淡入效果 */
 .marquee-text.fade-in {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1;                 /* 透明度为1 */
+  transform: translateY(0);   /* 回到原位 */
 }
 
-/* ===== 行动卡片 ===== */
+/* ===== 行动卡片区域 ===== */
 .action-cards {
-  width: 90%;
-  margin: 30rpx auto 40rpx;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  z-index: 10;
-  gap: 20rpx;
+  width: 90%;                 /* 宽度90% */
+  margin: 30rpx auto 40rpx;   /* 外边距 */
+  display: flex;              /* 使用flex布局 */
+  justify-content: space-between;  /* 两端对齐 */
+  position: relative;         /* 相对定位 */
+  z-index: 10;                /* 层级 */
+  gap: 20rpx;                 /* 间距 */
 }
 
+/* 行动卡片通用样式 */
 .action-card {
-  flex: 1;
-  border-radius: 28rpx;
-  padding: 32rpx 28rpx;
-  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 20rpx;
-  min-height: 180rpx;
-  display: flex;
-  align-items: center;
+  flex: 1;                    /* 等分宽度 */
+  border-radius: 28rpx;       /* 圆角 */
+  padding: 32rpx 28rpx;       /* 内边距 */
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);  /* 阴影 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* 过渡动画 */
+  margin-top: 20rpx;          /* 顶部间距 */
+  min-height: 180rpx;         /* 最小高度 */
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
 }
 
+/* 卡片点击效果 */
 .action-card:active {
-  transform: scale(0.96);
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transform: scale(0.96);     /* 缩放 */
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);  /* 阴影变小 */
 }
 
+/* 在线咨询卡片 */
 .action-card-consult {
-  background: linear-gradient(135deg, #ff4d4f 0%, #ff7875 100%);
-  box-shadow: 0 8rpx 24rpx rgba(255, 77, 79, 0.35);
+  background: linear-gradient(135deg, #ff4d4f 0%, #ff7875 100%);  /* 红色渐变背景 */
+  box-shadow: 0 8rpx 24rpx rgba(255, 77, 79, 0.35);  /* 红色阴影 */
 }
 
+/* 法条检索卡片 */
 .action-card-search {
-  background: linear-gradient(135deg, #ff7a45 0%, #ffa940 100%);
-  box-shadow: 0 8rpx 24rpx rgba(255, 122, 69, 0.35);
+  background: linear-gradient(135deg, #ff7a45 0%, #ffa940 100%);  /* 橙色渐变背景 */
+  box-shadow: 0 8rpx 24rpx rgba(255, 122, 69, 0.35);  /* 橙色阴影 */
 }
 
+/* 卡片内部结构 */
 .action-card-inner {
-  display: flex;
-  align-items: center;
-  width: 100%;
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  width: 100%;                /* 宽度100% */
 }
 
+/* 图标容器 */
 .action-icon-wrapper {
-  width: 90rpx;
-  height: 90rpx;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 20rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 24rpx;
-  flex-shrink: 0;
-  backdrop-filter: blur(10rpx);
+  width: 90rpx;               /* 宽度 */
+  height: 90rpx;              /* 高度 */
+  background: rgba(255, 255, 255, 0.2);  /* 半透明白色背景 */
+  border-radius: 20rpx;       /* 圆角 */
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  justify-content: center;    /* 水平居中 */
+  margin-right: 24rpx;        /* 右侧间距 */
+  flex-shrink: 0;             /* 不缩小 */
+  backdrop-filter: blur(10rpx);  /* 背景模糊 */
 }
 
+/* 图标 */
 .action-icon {
-  font-size: 44rpx;
+  font-size: 44rpx;           /* 字体大小 */
 }
 
+/* 文本容器 */
 .action-text-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
+  justify-content: center;    /* 垂直居中 */
+  flex: 1;                    /* 占满剩余空间 */
 }
 
+/* 标题 */
 .action-title {
-  color: #ffffff;
-  font-size: 34rpx;
-  font-weight: bold;
-  margin-bottom: 8rpx;
-  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);
+  color: #ffffff;             /* 白色文本 */
+  font-size: 34rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
+  margin-bottom: 8rpx;        /* 底部间距 */
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);  /* 文本阴影 */
 }
 
+/* 描述 */
 .action-desc {
-  color: #ffffff;
-  font-size: 24rpx;
-  opacity: 0.9;
-  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.2);
+  color: #ffffff;             /* 白色文本 */
+  font-size: 24rpx;           /* 字体大小 */
+  opacity: 0.9;               /* 透明度 */
+  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.2);  /* 文本阴影 */
 }
 
 /* ===== 功能入口网格 ===== */
 .feature-grid {
-  width: 90%;
-  background-color: #ffffff;
-  border-radius: 24rpx;
-  padding: 40rpx 20rpx;
-  margin-bottom: 40rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  width: 90%;                 /* 宽度90% */
+  background-color: #ffffff;  /* 白色背景 */
+  border-radius: 24rpx;       /* 圆角 */
+  padding: 40rpx 20rpx;       /* 内边距 */
+  margin-bottom: 40rpx;       /* 底部间距 */
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);  /* 阴影 */
+  display: flex;              /* 使用flex布局 */
+  flex-wrap: wrap;            /* 换行 */
+  justify-content: space-around;  /* 均匀分布 */
 }
 
+/* 功能项 */
 .feature-item {
-  width: 28%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 35rpx;
-  transition: transform 0.2s;
+  width: 28%;                 /* 宽度28% */
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
+  align-items: center;        /* 水平居中 */
+  margin-bottom: 35rpx;       /* 底部间距 */
+  transition: transform 0.2s; /* 过渡动画 */
 }
 
+/* 功能项点击效果 */
 .feature-item:active {
-  transform: scale(0.92);
+  transform: scale(0.92);     /* 缩放 */
 }
 
+/* 功能图标容器 */
 .feature-icon {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 28rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16rpx;
-  box-shadow: 0 8rpx 20rpx rgba(245, 34, 45, 0.25);
-  background: linear-gradient(145deg, #ff4d4f 0%, #f5222d 100%);
-  position: relative;
-  overflow: hidden;
+  width: 120rpx;              /* 宽度 */
+  height: 120rpx;             /* 高度 */
+  border-radius: 28rpx;       /* 圆角 */
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  justify-content: center;    /* 水平居中 */
+  margin-bottom: 16rpx;       /* 底部间距 */
+  box-shadow: 0 8rpx 20rpx rgba(245, 34, 45, 0.25);  /* 红色阴影 */
+  background: linear-gradient(145deg, #ff4d4f 0%, #f5222d 100%);  /* 红色渐变背景 */
+  position: relative;         /* 相对定位 */
+  overflow: hidden;           /* 隐藏溢出 */
 }
 
+/* 图标容器装饰效果 */
 .feature-icon::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
-  border-radius: 50%;
+  content: '';                /* 内容为空 */
+  position: absolute;         /* 绝对定位 */
+  top: -50%;                  /* 顶部位置 */
+  left: -50%;                 /* 左侧位置 */
+  width: 200%;                /* 宽度 */
+  height: 200%;               /* 高度 */
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);  /* 白色渐变 */
+  border-radius: 50%;         /* 圆形 */
 }
 
+/* 图标文本 */
 .feature-icon text {
-  font-size: 48rpx;
-  color: #ffffff;
+  font-size: 48rpx;           /* 字体大小 */
+  color: #ffffff;             /* 白色文本 */
 }
 
+/* 图标图片 */
 .feature-image {
-  width: 70rpx;
-  height: 70rpx;
-  filter: brightness(0) invert(1);
-  position: relative;
-  z-index: 1;
+  width: 70rpx;               /* 宽度 */
+  height: 70rpx;              /* 高度 */
+  filter: brightness(0) invert(1);  /* 转为白色 */
+  position: relative;         /* 相对定位 */
+  z-index: 1;                 /* 层级 */
 }
 
+/* 功能标签 */
 .feature-label {
-  font-size: 24rpx;
-  text-align: center;
-  font-weight: 500;
-  color: #333333;
+  font-size: 24rpx;           /* 字体大小 */
+  text-align: center;         /* 文本居中 */
+  font-weight: 500;           /* 中等加粗 */
+  color: #333333;             /* 深灰色文本 */
 }
 
-/* ===== 热点咨询 ===== */
+/* ===== 热点咨询区域 ===== */
 .hot-news {
-  width: 90%;
-  background-color: #ffffff;
-  border-radius: 24rpx;
-  padding: 30rpx 28rpx;
-  margin-bottom: 40rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  width: 90%;                 /* 宽度90% */
+  background-color: #ffffff;  /* 白色背景 */
+  border-radius: 24rpx;       /* 圆角 */
+  padding: 30rpx 28rpx;       /* 内边距 */
+  margin-bottom: 40rpx;       /* 底部间距 */
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);  /* 阴影 */
 }
 
+/* 热点咨询标题 */
 .hot-news-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 24rpx;
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  margin-bottom: 24rpx;       /* 底部间距 */
 }
 
+/* 热点咨询图标 */
 .hot-news-icon {
-  font-size: 36rpx;
-  margin-right: 12rpx;
+  font-size: 36rpx;           /* 字体大小 */
+  margin-right: 12rpx;        /* 右侧间距 */
 }
 
+/* 热点咨询标题文本 */
 .hot-news-title {
-  font-size: 34rpx;
-  font-weight: bold;
-  color: #f5222d;
+  font-size: 34rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
+  color: #f5222d;             /* 红色文本 */
 }
 
+/* 新闻列表 */
 .news-list {
-  display: flex;
-  flex-direction: column;
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
 }
 
+/* 新闻项 */
 .news-item {
-  background-color: #fef1f1;
-  padding: 24rpx 22rpx;
-  border-radius: 16rpx;
-  margin-bottom: 16rpx;
-  border-left: 6rpx solid #f5222d;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #fef1f1;  /* 浅红色背景 */
+  padding: 24rpx 22rpx;       /* 内边距 */
+  border-radius: 16rpx;       /* 圆角 */
+  margin-bottom: 16rpx;       /* 底部间距 */
+  border-left: 6rpx solid #f5222d;  /* 左侧红色边框 */
+  transition: transform 0.2s, box-shadow 0.2s;  /* 过渡动画 */
 }
 
+/* 新闻项点击效果 */
 .news-item:active {
-  transform: scale(0.98);
-  box-shadow: 0 2rpx 8rpx rgba(245, 34, 45, 0.15);
+  transform: scale(0.98);     /* 缩放 */
+  box-shadow: 0 2rpx 8rpx rgba(245, 34, 45, 0.15);  /* 红色阴影 */
 }
 
+/* 最后一个新闻项 */
 .news-item:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0;           /* 取消底部间距 */
 }
 
+/* 新闻文本 */
 .news-text {
-  font-size: 28rpx;
-  line-height: 1.6;
-  color: #333333;
+  font-size: 28rpx;           /* 字体大小 */
+  line-height: 1.6;           /* 行高 */
+  color: #333333;             /* 深灰色文本 */
 }
 
 /* ===== 免责声明 ===== */
 .disclaimer {
-  width: 90%;
-  margin-bottom: 40rpx;
+  width: 90%;                 /* 宽度90% */
+  margin-bottom: 40rpx;       /* 底部间距 */
 }
 
+/* 免责声明文本 */
 .disclaimer text {
-  font-size: 22rpx;
-  color: #999999;
-  text-align: center;
-  line-height: 1.8;
+  font-size: 22rpx;           /* 字体大小 */
+  color: #999999;             /* 灰色文本 */
+  text-align: center;         /* 文本居中 */
+  line-height: 1.8;           /* 行高 */
 }
 
 /* ===== 底部占位 ===== */
 .bottom-spacer {
-  width: 100%;
-  height: 20rpx;
+  width: 100%;                /* 宽度100% */
+  height: 20rpx;              /* 高度 */
 }

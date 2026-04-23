@@ -1,6 +1,6 @@
-<!--enterprise.wxml-->
+<!-- 企业法律服务页面结构 -->
 <view class="container" style="background-color: #F5F7FA; min-height: 100vh; padding-bottom: 80px;">
-  <!-- 顶部区域 -->
+  <!-- 顶部区域 - 渐变背景 -->
   <view style="background: linear-gradient(135deg, #1A3A5F 0%, #2A4A6F 100%); width: 100%; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <view style="display: flex; align-items: center; margin-bottom: 10px;">
       <text style="color: white; font-size: 14px; opacity: 0.9;">法律咨询</text>
@@ -13,25 +13,25 @@
   <view style="padding: 20px;">
     <text style="font-size: 18px; font-weight: bold; color: #1A3A5F; margin-bottom: 16px; display: block;">核心服务范围</text>
     <view style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-      <!-- 企业设立 -->
+      <!-- 服务卡片 - 企业设立 -->
       <view style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
         <view style="font-size: 28px; margin-bottom: 12px;">🏢</view>
         <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px; display: block;">企业设立</text>
         <text style="font-size: 14px; color: #666; line-height: 1.5;">公司注册、股权结构设计</text>
       </view>
-      <!-- 合同管理 -->
+      <!-- 服务卡片 - 合同管理 -->
       <view style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
         <view style="font-size: 28px; margin-bottom: 12px;">📄</view>
         <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px; display: block;">合同管理</text>
         <text style="font-size: 14px; color: #666; line-height: 1.5;">合同起草、审查、管理</text>
       </view>
-      <!-- 知识产权 -->
+      <!-- 服务卡片 - 知识产权 -->
       <view style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
         <view style="font-size: 28px; margin-bottom: 12px;">⚖️</view>
         <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px; display: block;">知识产权</text>
         <text style="font-size: 14px; color: #666; line-height: 1.5;">商标、专利、著作权保护</text>
       </view>
-      <!-- 劳动人事 -->
+      <!-- 服务卡片 - 劳动人事 -->
       <view style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
         <view style="font-size: 28px; margin-bottom: 12px;">👥</view>
         <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px; display: block;">劳动人事</text>
@@ -48,7 +48,7 @@
     <!-- 横向滑动方案卡片 -->
     <view style="position: relative; overflow: hidden;">
       <view class="plan-scroll" style="display: flex; gap: 12px; padding: 0 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory;">
-        <!-- 基础服务 -->
+        <!-- 基础服务方案卡片 -->
         <view style="flex: 0 0 280px; background-color: white; border: 1px solid #E8E8E8; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; flex-direction: column; scroll-snap-align: start;">
           <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">基础服务</text>
           <view style="margin-bottom: 20px;">
@@ -72,7 +72,7 @@
           <button style="background-color: #F0F0F0; color: #333; border: 1px solid #E8E8E8; padding: 12px 16px; border-radius: 30px; font-size: 16px; width: 100%; font-weight: 500; transition: all 0.3s; opacity: 1;" bindtap="selectPlan" data-plan="basic" catch:touchstart="buttonDown" catch:touchend="buttonUp">选择方案</button>
         </view>
         
-        <!-- 标准服务（主推） -->
+        <!-- 标准服务方案卡片（主推） -->
         <view style="flex: 0 0 280px; background-color: #EBF4FF; border: 1px solid #D4AF37; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; display: flex; flex-direction: column; scroll-snap-align: start;">
           <view style="position: absolute; top: -10px; right: 20px; background-color: #1A3A5F; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">热门推荐</view>
           <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">标准服务</text>
@@ -105,7 +105,7 @@
           <button style="background-color: #1A3A5F; color: white; border: none; padding: 12px 16px; border-radius: 30px; font-size: 16px; width: 100%; font-weight: 500; transition: all 0.3s; opacity: 1;" bindtap="selectPlan" data-plan="standard" catch:touchstart="buttonDown" catch:touchend="buttonUp">选择方案</button>
         </view>
         
-        <!-- 高级服务 -->
+        <!-- 高级服务方案卡片 -->
         <view style="flex: 0 0 280px; background-color: white; border: 1px solid #E8E8E8; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; flex-direction: column; scroll-snap-align: start;">
           <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">高级服务</text>
           <view style="margin-bottom: 20px;">

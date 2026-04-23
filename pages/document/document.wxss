@@ -1,184 +1,215 @@
+/* document.wxss */
+/* 文书模板页面样式 */
+
+/* 容器样式 */
 .container {
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  min-height: 100vh;          /* 最小高度为屏幕高度 */
+  background-color: #f5f5f5;  /* 背景色为浅灰色 */
 }
 
+/* 头部样式 */
 .header {
-  background: linear-gradient(135deg, #ff7a45 0%, #ffa940 100%);
-  padding: 30rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #ff7a45 0%, #ffa940 100%);  /* 橙色渐变背景 */
+  padding: 30rpx;              /* 内边距 */
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
+  justify-content: center;    /* 水平居中 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* 阴影 */
 }
 
+/* 头部标题 */
 .header-title {
-  font-size: 36rpx;
-  color: #ffffff;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
+  font-size: 36rpx;           /* 字体大小 */
+  color: #ffffff;             /* 白色文本 */
+  font-weight: bold;          /* 加粗 */
+  text-align: center;         /* 文本居中 */
+  width: 100%;                /* 宽度100% */
 }
 
+/* 服务介绍 */
 .service-intro {
-  background-color: white;
-  margin: 10rpx;
-  padding: 30rpx;
-  border-radius: 24rpx;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: white;    /* 白色背景 */
+  margin: 10rpx;              /* 外边距 */
+  padding: 30rpx;              /* 内边距 */
+  border-radius: 24rpx;       /* 圆角 */
+  text-align: center;         /* 文本居中 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* 阴影 */
 }
 
+/* 介绍图标 */
 .intro-icon {
-  font-size: 80rpx;
-  margin-bottom: 20rpx;
+  font-size: 80rpx;           /* 字体大小 */
+  margin-bottom: 20rpx;       /* 底部间距 */
 }
 
+/* 介绍标题 */
 .intro-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 15rpx;
-  display: block;
+  font-size: 32rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
+  color: #333333;             /* 深灰色文本 */
+  margin-bottom: 15rpx;       /* 底部间距 */
+  display: block;             /* 块级元素 */
 }
 
+/* 介绍描述 */
 .intro-desc {
-  font-size: 28rpx;
-  color: #666666;
-  line-height: 1.5;
+  font-size: 28rpx;           /* 字体大小 */
+  color: #666666;             /* 中灰色文本 */
+  line-height: 1.5;           /* 行高 */
 }
 
+/* 分类区域 */
 .category-section {
-  background-color: white;
-  margin: 10rpx;
-  padding: 30rpx;
-  border-radius: 24rpx;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: white;    /* 白色背景 */
+  margin: 10rpx;              /* 外边距 */
+  padding: 30rpx;              /* 内边距 */
+  border-radius: 24rpx;       /* 圆角 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* 阴影 */
 }
 
+/* 区域标题 */
 .section-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 20rpx;
-  display: block;
+  font-size: 32rpx;           /* 字体大小 */
+  font-weight: bold;          /* 加粗 */
+  color: #333333;             /* 深灰色文本 */
+  margin-bottom: 20rpx;       /* 底部间距 */
+  display: block;             /* 块级元素 */
 }
 
+/* 分类列表 */
 .category-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: flex;              /* 使用flex布局 */
+  flex-wrap: wrap;            /* 换行 */
+  justify-content: space-between;  /* 两端对齐 */
 }
 
+/* 分类项 */
 .category-item {
-  width: 23%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20rpx 10rpx;
-  background-color: #f5f5f5;
-  border-radius: 16rpx;
-  margin-bottom: 15rpx;
-  transition: all 0.3s ease;
+  width: 23%;                 /* 宽度 */
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
+  align-items: center;        /* 水平居中 */
+  padding: 20rpx 10rpx;       /* 内边距 */
+  background-color: #f5f5f5;  /* 浅灰色背景 */
+  border-radius: 16rpx;       /* 圆角 */
+  margin-bottom: 15rpx;       /* 底部间距 */
+  transition: all 0.3s ease;  /* 过渡动画 */
 }
 
+/* 分类项悬停效果 */
 .category-item:hover {
-  background-color: #ff7a45;
-  color: white;
-  transform: translateY(-2rpx);
-  box-shadow: 0 4px 12px rgba(255,122,69,0.3);
+  background-color: #ff7a45;  /* 橙色背景 */
+  color: white;               /* 白色文本 */
+  transform: translateY(-2rpx);  /* 向上移动 */
+  box-shadow: 0 4px 12px rgba(255,122,69,0.3);  /* 橙色阴影 */
 }
 
+/* 分类图标 */
 .category-icon {
-  font-size: 48rpx;
-  margin-bottom: 10rpx;
+  font-size: 48rpx;           /* 字体大小 */
+  margin-bottom: 10rpx;       /* 底部间距 */
 }
 
+/* 分类名称 */
 .category-name {
-  font-size: 24rpx;
-  color: #333333;
-  font-weight: 500;
-  margin-bottom: 5rpx;
-  text-align: center;
+  font-size: 24rpx;           /* 字体大小 */
+  color: #333333;             /* 深灰色文本 */
+  font-weight: 500;           /* 中等加粗 */
+  margin-bottom: 5rpx;        /* 底部间距 */
+  text-align: center;         /* 文本居中 */
 }
 
+/* 分类项悬停时的分类名称 */
 .category-item:hover .category-name {
-  color: white;
+  color: white;               /* 白色文本 */
 }
 
+/* 分类数量 */
 .category-count {
-  font-size: 20rpx;
-  color: #999999;
+  font-size: 20rpx;           /* 字体大小 */
+  color: #999999;             /* 灰色文本 */
 }
 
+/* 分类项悬停时的分类数量 */
 .category-item:hover .category-count {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.8);  /* 半透明白色文本 */
 }
 
+/* 文书区域 */
 .doc-section {
-  background-color: white;
-  margin: 10rpx;
-  padding: 30rpx;
-  border-radius: 24rpx;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: white;    /* 白色背景 */
+  margin: 10rpx;              /* 外边距 */
+  padding: 30rpx;              /* 内边距 */
+  border-radius: 24rpx;       /* 圆角 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* 阴影 */
 }
 
+/* 文书列表 */
 .doc-list {
-  margin-top: 10rpx;
+  margin-top: 10rpx;          /* 顶部间距 */
 }
 
+/* 文书项 */
 .doc-item {
-  background-color: #f9f9f9;
-  border-radius: 16rpx;
-  padding: 24rpx;
-  margin-bottom: 16rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.3s ease;
+  background-color: #f9f9f9;  /* 浅灰色背景 */
+  border-radius: 16rpx;       /* 圆角 */
+  padding: 24rpx;             /* 内边距 */
+  margin-bottom: 16rpx;       /* 底部间距 */
+  display: flex;              /* 使用flex布局 */
+  justify-content: space-between;  /* 两端对齐 */
+  align-items: center;        /* 垂直居中 */
+  transition: all 0.3s ease;  /* 过渡动画 */
 }
 
+/* 文书项悬停效果 */
 .doc-item:hover {
-  background-color: #f0f0f0;
-  transform: translateX(5rpx);
+  background-color: #f0f0f0;  /* 浅灰色背景 */
+  transform: translateX(5rpx);  /* 向右移动 */
 }
 
+/* 文书信息 */
 .doc-info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  display: flex;              /* 使用flex布局 */
+  flex-direction: column;     /* 垂直方向排列 */
+  flex: 1;                    /* 占满剩余空间 */
 }
 
+/* 文书名称 */
 .doc-name {
-  font-size: 28rpx;
-  color: #333333;
-  font-weight: 500;
-  margin-bottom: 8rpx;
+  font-size: 28rpx;           /* 字体大小 */
+  color: #333333;             /* 深灰色文本 */
+  font-weight: 500;           /* 中等加粗 */
+  margin-bottom: 8rpx;        /* 底部间距 */
 }
 
+/* 文书分类 */
 .doc-category {
-  font-size: 24rpx;
-  color: #999999;
+  font-size: 24rpx;           /* 字体大小 */
+  color: #999999;             /* 灰色文本 */
 }
 
+/* 文书操作 */
 .doc-action {
-  display: flex;
-  align-items: center;
+  display: flex;              /* 使用flex布局 */
+  align-items: center;        /* 垂直居中 */
 }
 
+/* 文书下载 */
 .doc-download {
-  font-size: 24rpx;
-  color: #ff7a45;
-  font-weight: 500;
+  font-size: 24rpx;           /* 字体大小 */
+  color: #ff7a45;             /* 橙色文本 */
+  font-weight: 500;           /* 中等加粗 */
 }
 
+/* 底部提示 */
 .bottom-tip {
-  padding: 20rpx;
-  text-align: center;
-  margin: 10rpx;
+  padding: 20rpx;             /* 内边距 */
+  text-align: center;         /* 文本居中 */
+  margin: 10rpx;              /* 外边距 */
 }
 
+/* 提示文本 */
 .tip-text {
-  font-size: 24rpx;
-  color: #999999;
+  font-size: 24rpx;           /* 字体大小 */
+  color: #999999;             /* 灰色文本 */
 }

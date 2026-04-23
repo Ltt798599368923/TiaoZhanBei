@@ -1,21 +1,29 @@
+<!-- 法文阅读页面结构 -->
 <view class="container">
+  <!-- 头部区域 -->
   <view class="header">
     <text class="header-title">法文阅读</text>
     <text class="header-subtitle">法律法规在线阅读</text>
   </view>
 
+  <!-- 书籍列表区域 -->
   <view class="book-list">
+    <!-- 书籍项 - 循环渲染书籍列表 -->
     <view class="book-item" wx:for="{{books}}" wx:key="id" bindtap="onBookTap" data-id="{{item.id}}">
+      <!-- 书籍封面 -->
       <view class="book-cover">
         <text class="book-cover-text">{{item.title}}</text>
       </view>
+      <!-- 书籍信息区域 -->
       <view class="book-info">
         <text class="book-title">{{item.title}}</text>
         <text class="book-author">{{item.author}}</text>
+        <!-- 书籍元数据 -->
         <view class="book-meta">
           <text class="book-category">{{item.category}}</text>
           <text class="book-read">👁 {{item.readCount}}</text>
         </view>
+        <!-- 阅读进度 -->
         <view class="book-progress">
           <view class="progress-bar">
             <view class="progress-fill" style="width: {{item.progress}}%"></view>

@@ -1,5 +1,16 @@
+/**
+ * 法理白话页面逻辑
+ * 用于展示法律知识文章列表，提供法律知识普及功能
+ */
 Page({
+  /**
+   * 页面数据
+   */
   data: {
+    /**
+     * 文章列表数据
+     * 包含文章ID、标题、摘要、阅读量和日期
+     */
     articles: [
       { id: 1, title: '什么是正当防卫？', summary: '用通俗易懂的语言解释正当防卫的构成要件和适用范围', readCount: 3250, date: '04-20' },
       { id: 2, title: '民间借贷利率新规', summary: '详解最新民间借贷司法解释的变化与影响', readCount: 2890, date: '04-19' },
@@ -10,12 +21,21 @@ Page({
     ]
   },
 
+  /**
+   * 页面加载
+   * 设置导航栏标题为"法理白话"
+   */
   onLoad() {
     wx.setNavigationBarTitle({
       title: '法理白话'
     });
   },
 
+  /**
+   * 文章点击事件
+   * @param {Object} e - 事件对象，包含文章ID
+   * 点击文章时显示提示信息
+   */
   onArticleTap(e) {
     const id = e.currentTarget.dataset.id;
     wx.showToast({
