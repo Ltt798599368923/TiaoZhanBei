@@ -1,28 +1,48 @@
-
+// chat.js
+// 智能法律咨询页面逻辑
+import { api } from '../../utils/api';
 
 Page({
+  /**
+   * 页面数据
+   */
   data: {
-    messages: [
+    messages: [  // 消息列表
       {
         id: 1,
         content: '您好，请问有什么法律问题需要咨询？',
-        type: 'left',
-        time: '10:00'
+        type: 'left',  // left: 机器人消息, right: 用户消息
+        time: '10:00'  // 消息时间
       }
     ],
-    inputValue: ''
+    inputValue: ''  // 输入框内容
   },
+
+  /**
+   * 页面加载
+   */
   onLoad() {
     // 页面加载时的逻辑
   },
+
+  /**
+   * 输入框输入事件
+   * @param {Object} e - 事件对象
+   */
   bindInput(e) {
     this.setData({
       inputValue: e.detail.value
     })
   },
+
+  /**
+   * 发送消息
+   */
   sendMessage() {
+    // 检查输入是否为空
     if (this.data.inputValue.trim() === '') return
     
+    // 创建用户消息
     const userMessage = {
       id: this.data.messages.length + 1,
       content: this.data.inputValue,
@@ -30,6 +50,7 @@ Page({
       time: new Date().toLocaleTimeString().substr(0, 5)
     }
     
+    // 更新消息列表并清空输入框
     this.setData({
       messages: [...this.data.messages, userMessage],
       inputValue: ''

@@ -1,6 +1,16 @@
-// official.js
+/**
+ * 官方服务页面逻辑
+ * 用于展示官方法律服务和网站链接
+ */
 Page({
+  /**
+   * 页面数据
+   */
   data: {
+    /**
+     * 官方服务列表数据
+     * 包含服务类型、名称和描述
+     */
     services: [
       {
         type: 'laws',
@@ -24,12 +34,28 @@ Page({
       }
     ]
   },
+
+  /**
+   * 页面加载
+   * 页面加载时的逻辑
+   */
   onLoad() {
     // 页面加载时的逻辑
   },
+
+  /**
+   * 返回上一页
+   * 点击返回按钮时触发
+   */
   goBack() {
     wx.navigateBack();
   },
+
+  /**
+   * 打开服务
+   * @param {Object} e - 事件对象，包含服务类型
+   * 点击服务项时触发，显示确认对话框
+   */
   openService(e) {
     const serviceType = e.currentTarget.dataset.type;
     const service = this.data.services.find(item => item.type === serviceType);
@@ -49,6 +75,12 @@ Page({
       }
     });
   },
+
+  /**
+   * 打开官方网站
+   * @param {Object} e - 事件对象，包含网站URL
+   * 点击网站链接时触发，显示确认对话框
+   */
   openWebsite(e) {
     const url = e.currentTarget.dataset.url;
 

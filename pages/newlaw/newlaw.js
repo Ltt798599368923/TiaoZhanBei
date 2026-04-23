@@ -1,5 +1,16 @@
+/**
+ * 法治新程页面逻辑
+ * 用于展示最新法律法规信息
+ */
 Page({
+  /**
+   * 页面数据
+   */
   data: {
+    /**
+     * 法律法规列表数据
+     * 包含法律ID、标题、发布日期、生效日期和摘要
+     */
     laws: [
       { id: 1, title: '中华人民共和国反外国制裁法', date: '2021-06-10', effect: '施行', summary: '维护国家主权、安全和发展利益' },
       { id: 2, title: '中华人民共和国个人信息保护法', date: '2021-08-20', effect: '2021-11-01', summary: '保护个人信息权益，规范个人信息处理' },
@@ -10,12 +21,21 @@ Page({
     ]
   },
 
+  /**
+   * 页面加载
+   * 设置导航栏标题为"法治新程"
+   */
   onLoad() {
     wx.setNavigationBarTitle({
       title: '法治新程'
     });
   },
 
+  /**
+   * 法律点击事件
+   * @param {Object} e - 事件对象，包含法律ID
+   * 点击法律项时显示提示信息
+   */
   onLawTap(e) {
     const id = e.currentTarget.dataset.id;
     wx.showToast({

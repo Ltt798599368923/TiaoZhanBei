@@ -1,27 +1,34 @@
 <!--index.wxml-->
+<!-- 首页页面结构 -->
 <view class="container">
   <!-- 顶部红色背景区域 -->
   <view class="header">
+    <!-- 头部顶部区域 -->
     <view class="header-top">
+      <!-- 定位区域 - 点击获取位置 -->
       <view class="header-location" bindtap="onLocationTap">
         <text class="location-icon">📍</text>
         <text class="location-text">{{locationText}}</text>
       </view>
+      <!-- 页面标题 -->
       <view class="header-title">
         <text>法视界</text>
       </view>
+      <!-- 头部操作按钮 -->
       <view class="header-actions">
         <text class="icon-more" bindtap="onMoreTap">•••</text>
         <text class="icon-setting" bindtap="onSettingTap">⚙️</text>
       </view>
     </view>
 
-    <!-- 民法典书籍 -->
+    <!-- 民法典书籍展示 -->
     <view class="book-container">
+      <!-- 左侧民法典 -->
       <view class="book book-left">
         <text class="book-text">中华人民共和国\n民法典</text>
         <view class="book-spine"></view>
       </view>
+      <!-- 右侧刑法 -->
       <view class="book book-right">
         <text class="book-text">中华人民共和国\n刑法</text>
         <view class="book-spine"></view>
@@ -38,6 +45,7 @@
 
   <!-- 在线咨询和法条检索按钮 -->
   <view class="action-cards">
+    <!-- 在线咨询卡片 -->
     <view class="action-card action-card-consult" bindtap="onOnlineConsult">
       <view class="action-card-inner">
         <view class="action-icon-wrapper">
@@ -49,6 +57,7 @@
         </view>
       </view>
     </view>
+    <!-- 法条检索卡片 -->
     <view class="action-card action-card-search" bindtap="onLawSearch">
       <view class="action-card-inner">
         <view class="action-icon-wrapper">
@@ -62,38 +71,44 @@
     </view>
   </view>
 
-  <!-- 功能入口 -->
+  <!-- 功能入口网格 -->
   <view class="feature-grid">
+    <!-- 律师咨询 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawyer">
       <view class="feature-icon">
         <text>👨‍⚖️</text>
       </view>
       <text class="feature-label">律师咨询</text>
     </view>
+    <!-- 文书模板 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="document">
       <view class="feature-icon">
         <text>📄</text>
       </view>
       <text class="feature-label">文书模板</text>
     </view>
+    <!-- 法理白话 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawexplain">
       <view class="feature-icon">
         <text>💡</text>
       </view>
       <text class="feature-label">法理白话</text>
     </view>
+    <!-- 法治新程 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="newlaw">
       <view class="feature-icon">
         <text>📚</text>
       </view>
       <text class="feature-label">法治新程</text>
     </view>
+    <!-- 法文阅读 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawread">
       <view class="feature-icon">
         <text>📖</text>
       </view>
       <text class="feature-label">法文阅读</text>
     </view>
+    <!-- 小视讲堂 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="video">
       <view class="feature-icon">
         <text>🎬</text>
@@ -104,10 +119,12 @@
 
   <!-- 热点咨询 -->
   <view class="hot-news">
+    <!-- 热点咨询标题 -->
     <view class="hot-news-header">
       <text class="hot-news-icon">🔥</text>
       <text class="hot-news-title">热点咨询</text>
     </view>
+    <!-- 新闻列表 -->
     <view class="news-list">
       <view class="news-item" bindtap="onNewsTap" data-index="0">
         <text class="news-text">反外国不当域外管辖条例（4月13日施行）</text>

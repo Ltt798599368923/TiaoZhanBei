@@ -1,6 +1,16 @@
-// message.js
+/**
+ * 消息页面逻辑
+ * 用于展示消息列表并提供聊天功能入口
+ */
 Page({
+  /**
+   * 页面数据
+   */
   data: {
+    /**
+     * 消息列表数据
+     * 包含消息ID、发送者姓名、头像、内容、时间和未读状态
+     */
     messages: [
       {
         id: 1,
@@ -28,9 +38,20 @@ Page({
       }
     ]
   },
+
+  /**
+   * 页面加载
+   * 页面加载时的逻辑
+   */
   onLoad() {
     // 页面加载时的逻辑
   },
+
+  /**
+   * 打开聊天
+   * @param {Object} e - 事件对象，包含消息ID
+   * 点击消息项时触发，跳转到聊天页面
+   */
   openChat(e) {
     const messageId = e.currentTarget.dataset.id;
     console.log('打开聊天:', messageId);

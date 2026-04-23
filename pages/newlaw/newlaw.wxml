@@ -1,16 +1,23 @@
+<!-- 法治新程页面结构 -->
 <view class="container">
+  <!-- 头部区域 -->
   <view class="header">
     <text class="header-title">法治新程</text>
     <text class="header-subtitle">最新法律法规动态</text>
   </view>
 
+  <!-- 法律法规列表区域 -->
   <view class="law-list">
+    <!-- 法律项 - 循环渲染法律法规列表 -->
     <view class="law-item" wx:for="{{laws}}" wx:key="id" bindtap="onLawTap" data-id="{{item.id}}">
+      <!-- 法律头部信息 -->
       <view class="law-header">
         <text class="law-title">{{item.title}}</text>
         <text class="law-effect">{{item.effect}}</text>
       </view>
+      <!-- 法律摘要 -->
       <text class="law-summary">{{item.summary}}</text>
+      <!-- 法律底部信息 -->
       <view class="law-footer">
         <text class="law-date">发布日期：{{item.date}}</text>
       </view>

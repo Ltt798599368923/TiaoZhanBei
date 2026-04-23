@@ -1,5 +1,16 @@
+/**
+ * 小视讲堂页面逻辑
+ * 用于展示法律相关视频列表并提供播放功能
+ */
 Page({
+  /**
+   * 页面数据
+   */
   data: {
+    /**
+     * 视频列表数据
+     * 包含视频ID、标题、作者、时长、观看量和缩略图
+     */
     videos: [
       { id: 1, title: '一分钟了解民法典', author: '法治讲堂', duration: '01:25', views: 12560, thumbnail: '' },
       { id: 2, title: '劳动纠纷维权指南', author: '法律快车', duration: '03:45', views: 9870, thumbnail: '' },
@@ -10,12 +21,21 @@ Page({
     ]
   },
 
+  /**
+   * 页面加载
+   * 设置导航栏标题为"小视讲堂"
+   */
   onLoad() {
     wx.setNavigationBarTitle({
       title: '小视讲堂'
     });
   },
 
+  /**
+   * 视频点击事件
+   * @param {Object} e - 事件对象，包含视频ID
+   * 点击视频项时显示提示信息
+   */
   onVideoTap(e) {
     const id = e.currentTarget.dataset.id;
     wx.showToast({

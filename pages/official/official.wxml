@@ -1,4 +1,4 @@
-<!--official.wxml-->
+<!-- 官方服务页面结构 -->
 <view class="container" style="background-color: #FFF7F0; min-height: 100vh; padding-bottom: 80px;">
   <!-- 顶部状态栏 -->
   <view style="padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; background-color: #F4A261;">
@@ -6,13 +6,13 @@
     <text style="font-size: 14px; color: white;">100%</text>
   </view>
 
-  <!-- 顶部标题 -->
+  <!-- 顶部标题区域 -->
   <view style="background: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%); width: 100%; padding: 20px 16px; display: flex; align-items: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <text style="text-align: center; width: 100%;">官方服务入口</text>
   </view>
   <view style="width: 80px; height: 3px; background-color: #E63946; margin: 0 auto 20px;"></view>
 
-  <!-- 服务介绍 -->
+  <!-- 服务介绍区域 -->
   <view style="padding: 20px; background-color: #FFF3E0; margin: 0 16px 20px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <view style="text-align: center; margin-bottom: 15px;">
       <view style="font-size: 40px; margin-bottom: 10px;">🏛️</view>
@@ -27,7 +27,7 @@
   <view style="padding: 0 16px; margin-bottom: 20px;">
     <text style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 16px; display: block;">官方服务</text>
     <view style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-      <!-- 法律法规查询 -->
+      <!-- 法律法规查询服务项 -->
       <view bindtap="openService" data-type="laws" style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; border-top: 4px solid #E63946;">
         <view style="position: absolute; top: -8px; right: 16px; width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(135deg, #E63946 0%, #F4A261 100%);"></view>
         <view style="font-size: 24px; margin-bottom: 12px; color: #E63946;">📚</view>
@@ -35,7 +35,7 @@
         <text style="font-size: 12px; color: #666; line-height: 1.4;">查询最新法律法规和政策文件</text>
       </view>
 
-      <!-- 法律援助申请 -->
+      <!-- 法律援助申请服务项 -->
       <view bindtap="openService" data-type="legal" style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; border-top: 4px solid #F4A261;">
         <view style="position: absolute; top: -8px; right: 16px; width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%);"></view>
         <view style="font-size: 24px; margin-bottom: 12px; color: #F4A261;">🤝</view>
@@ -43,7 +43,7 @@
         <text style="font-size: 12px; color: #666; line-height: 1.4;">申请免费法律援助服务</text>
       </view>
 
-      <!-- 公证服务 -->
+      <!-- 公证服务服务项 -->
       <view bindtap="openService" data-type="notary" style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; border-top: 4px solid #E9C46A;">
         <view style="position: absolute; top: -8px; right: 16px; width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(135deg, #E9C46A 0%, #F4A261 100%);"></view>
         <view style="font-size: 24px; margin-bottom: 12px; color: #E9C46A;">📝</view>
@@ -51,7 +51,7 @@
         <text style="font-size: 12px; color: #666; line-height: 1.4;">办理各类公证业务</text>
       </view>
 
-      <!-- 法院诉讼服务 -->
+      <!-- 法院诉讼服务服务项 -->
       <view bindtap="openService" data-type="court" style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; border-top: 4px solid #E63946;">
         <view style="position: absolute; top: -8px; right: 16px; width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(135deg, #E63946 0%, #F4A261 100%);"></view>
         <view style="font-size: 24px; margin-bottom: 12px; color: #E63946;">⚖️</view>
@@ -61,7 +61,7 @@
     </view>
   </view>
 
-  <!-- 官方网站入口 -->
+  <!-- 官方网站入口区域 -->
   <view style="padding: 0 16px; margin-bottom: 20px;">
     <text style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 16px; display: block;">官方网站</text>
     <view bindtap="openWebsite" data-url="https://www.moj.gov.cn" style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between;">
@@ -73,7 +73,7 @@
     </view>
   </view>
 
-  <!-- 底部提示 -->
+  <!-- 底部提示区域 -->
   <view style="padding: 16px; text-align: center;">
     <text style="font-size: 12px; color: #999;">官方权威渠道 · 安全可靠</text>
   </view>

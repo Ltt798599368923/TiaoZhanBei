@@ -1,3 +1,5 @@
+<!--consult.wxml-->
+<!-- 在线咨询页面结构 -->
 <view class="container">
   <!-- 顶部标题 -->
   <view class="header">

@@ -1,17 +1,24 @@
+<!-- 小视讲堂页面结构 -->
 <view class="container">
+  <!-- 头部区域 -->
   <view class="header">
     <text class="header-title">小视讲堂</text>
     <text class="header-subtitle">法律知识视频讲解</text>
   </view>
 
+  <!-- 视频列表区域 -->
   <view class="video-list">
+    <!-- 视频项 - 循环渲染视频列表 -->
     <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="onVideoTap" data-id="{{item.id}}">
+      <!-- 视频缩略图 -->
       <view class="video-thumbnail">
         <text class="video-play">▶</text>
         <text class="video-duration">{{item.duration}}</text>
       </view>
+      <!-- 视频信息 -->
       <view class="video-info">
         <text class="video-title">{{item.title}}</text>
+        <!-- 视频元数据 -->
         <view class="video-meta">
           <text class="video-author">{{item.author}}</text>
           <text class="video-views">👁 {{item.views}}</text>

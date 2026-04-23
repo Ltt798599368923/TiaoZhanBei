@@ -1,7 +1,9 @@
-
-
 // index.js
+// 首页页面逻辑
 Page({
+  /**
+   * 页面数据
+   */
   data: {
     // 定位文本
     locationText: '定位中...',
@@ -15,8 +17,8 @@ Page({
       '专业律师在线解答',
       '法条信息速查直达'
     ],
-    marqueeAnimation: null,
-    marqueeTimer: null,
+    marqueeAnimation: null,  // 滚动动画
+    marqueeTimer: null,      // 滚动定时器
 
     // 热点新闻列表
     hotNews: [
@@ -29,46 +31,66 @@ Page({
     ],
 
     // 当前位置
-    latitude: null,
-    longitude: null,
+    latitude: null,   // 纬度
+    longitude: null,  // 经度
 
     // 当前播报索引
-    currentSloganIndex: 0,
-    sloganOpacity: 0
+    currentSloganIndex: 0,  // 当前宣传语索引
+    sloganOpacity: 0        // 宣传语透明度
   },
 
+  /**
+   * 页面加载
+   */
   onLoad() {
-    this.initLocation();
-    this.startSloganScroll();
+    this.initLocation();     // 初始化定位
+    this.startSloganScroll();  // 开始宣传语滚动
   },
 
+  /**
+   * 页面卸载
+   */
   onUnload() {
+    // 清除定时器
     if (this.data.marqueeTimer) {
       clearInterval(this.data.marqueeTimer);
     }
   },
 
+  /**
+   * 页面显示
+   */
   onShow() {
-    this.startSloganScroll();
+    this.startSloganScroll();  // 重新开始宣传语滚动
   },
 
+  /**
+   * 页面隐藏
+   */
   onHide() {
+    // 清除定时器
     if (this.data.marqueeTimer) {
       clearInterval(this.data.marqueeTimer);
     }
   },
 
   // ===== 定位功能 =====
+  /**
+   * 初始化定位
+   */
   initLocation() {
     this.setData({
       locationText: '点击获取位置'
     });
   },
 
-  // 点击定位 - 获取位置
+  /**
+   * 点击定位 - 获取位置
+   */
   onLocationTap() {
     wx.chooseLocation({
       success: (res) => {
+        // 设置位置信息
         this.setData({
           locationText: res.name || res.address,
           latitude: res.latitude,
@@ -76,6 +98,7 @@ Page({
         });
       },
       fail: (err) => {
+        // 处理授权失败
         if (err.errCode === 1) {
           wx.showModal({
             title: '提示',
@@ -88,6 +111,9 @@ Page({
   },
 
   // ===== 宣传语滚动切换 =====
+  /**
+   * 开始宣传语滚动
+   */
   startSloganScroll() {
     // 清除之前的定时器
     if (this.data.marqueeTimer) {
@@ -126,7 +152,9 @@ Page({
 
   // ===== 事件处理 =====
 
-  // 点击更多
+  /**
+   * 点击更多
+   */
   onMoreTap() {
     wx.showToast({
       title: '更多功能',
@@ -134,28 +162,37 @@ Page({
     });
   },
 
-  // 点击设置
+  /**
+   * 点击设置
+   */
   onSettingTap() {
     wx.switchTab({
       url: '/pages/profile/profile'
     });
   },
 
-  // 在线咨询
+  /**
+   * 在线咨询
+   */
   onOnlineConsult() {
     wx.navigateTo({
       url: '/pages/consult/consult'
     });
   },
 
-  // 法条检索
+  /**
+   * 法条检索
+   */
   onLawSearch() {
     wx.navigateTo({
       url: '/pages/lawsearch/lawsearch'
     });
   },
 
-  // 功能入口点击
+  /**
+   * 功能入口点击
+   * @param {Object} e - 事件对象
+   */
   onFeatureTap(e) {
     const type = e.currentTarget.dataset.type;
     if (type === 'lawyer') {
@@ -164,12 +201,13 @@ Page({
       });
       return;
     }
+    // 功能类型映射
     const urlMap = {
-      document: '/pages/document/document',
-      lawexplain: '/pages/lawexplain/lawexplain',
-      newlaw: '/pages/newlaw/newlaw',
-      lawread: '/pages/lawread/lawread',
-      video: '/pages/video/video'
+      document: '/pages/document/document',      // 文书模板
+      lawexplain: '/pages/lawexplain/lawexplain',  // 法理白话
+      newlaw: '/pages/newlaw/newlaw',          // 法治新程
+      lawread: '/pages/lawread/lawread',        // 法文阅读
+      video: '/pages/video/video'              // 小视讲堂
     };
     const url = urlMap[type];
     if (url) {
@@ -177,7 +215,10 @@ Page({
     }
   },
 
-  // 热点新闻点击
+  /**
+   * 热点新闻点击
+   * @param {Object} e - 事件对象
+   */
   onNewsTap(e) {
     const index = e.currentTarget.dataset.index;
     const newsItem = this.data.hotNews[index];

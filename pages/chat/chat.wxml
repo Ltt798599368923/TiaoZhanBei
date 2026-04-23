@@ -1,4 +1,5 @@
 <!--chat.wxml-->
+<!-- 智能法律咨询页面结构 -->
 <view class="container">
   <!-- 顶部聊天对象信息 -->
   <view style="background-color: #f5222d; width: 100%; padding: 15px; display: flex; align-items: center; color: white;">

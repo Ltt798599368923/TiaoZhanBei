@@ -1,6 +1,16 @@
-
+/**
+ * 法文阅读页面逻辑
+ * 用于展示法律书籍列表，提供法律文献阅读功能
+ */
 Page({
+  /**
+   * 页面数据
+   */
   data: {
+    /**
+     * 书籍列表数据
+     * 包含书籍ID、标题、作者、分类、阅读量和阅读进度
+     */
     books: [
       { id: 1, title: '民法典', author: '全国人大常委会', category: '基础法律', readCount: 12560, progress: 75 },
       { id: 2, title: '刑法', author: '全国人大常委会', category: '基础法律', readCount: 9870, progress: 60 },
@@ -11,12 +21,21 @@ Page({
     ]
   },
 
+  /**
+   * 页面加载
+   * 设置导航栏标题为"法文阅读"
+   */
   onLoad() {
     wx.setNavigationBarTitle({
       title: '法文阅读'
     });
   },
 
+  /**
+   * 书籍点击事件
+   * @param {Object} e - 事件对象，包含书籍ID
+   * 点击书籍时显示提示信息
+   */
   onBookTap(e) {
     const id = e.currentTarget.dataset.id;
     wx.showToast({
