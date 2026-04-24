@@ -19,7 +19,8 @@
     "pages/about/about",
     "pages/favorite/favorite",
     "pages/settings/settings",
-    "pages/myconsult/myconsult"
+    "pages/myconsult/myconsult",
+    "pages/template/template"
   ],
   "window": {
     "backgroundTextStyle": "light",
