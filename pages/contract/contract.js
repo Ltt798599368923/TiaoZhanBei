@@ -69,26 +69,82 @@ Page({
    * 上传合同
    */
   uploadContract() {
-    // 显示上传方式选择对话框
-    wx.showModal({
-      title: '上传合同',  // 对话框标题
-      content: '请选择上传方式',  // 对话框内容
-      confirmText: '拍照上传',  // 确认按钮文本
-      cancelText: '选择文件',  // 取消按钮文本
+    // 显示操作菜单，让用户选择上传方式
+    wx.showActionSheet({
+      itemList: ['从文件选择', '拍照上传'],
       success: (res) => {
-        if (res.confirm) {
-          // 显示提示信息
-          wx.showToast({
-            title: '拍照上传功能开发中',
-            icon: 'info'
+        if (res.tapIndex === 0) {
+          // 从文件选择
+          wx.chooseMessageFile({
+            count: 1,
+            type: 'file',
+            extension: ['.pdf', '.doc', '.docx'],
+            success: (res) => {
+              const tempFilePaths = res.tempFilePaths;
+              console.log('选择的文件:', tempFilePaths);
+              
+              // 显示选择的文件信息
+              wx.showModal({
+                title: '文件选择成功',
+                content: `已选择文件: ${res.tempFiles[0].name}`,
+                confirmText: '确定',
+                success: (res) => {
+                  if (res.confirm) {
+                    // 这里可以添加文件上传逻辑
+                    wx.showToast({
+                      title: '文件上传成功',
+                      icon: 'success'
+                    });
+                  }
+                }
+              });
+            },
+            fail: (err) => {
+              console.log('选择文件失败:', err);
+              wx.showToast({
+                title: '选择文件失败',
+                icon: 'error'
+              });
+            }
           });
-        } else if (res.cancel) {
-          // 显示提示信息
-          wx.showToast({
-            title: '文件选择功能开发中',
-            icon: 'info'
+        } else if (res.tapIndex === 1) {
+          // 拍照上传
+          wx.chooseImage({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['camera'],
+            success: (res) => {
+              const tempFilePaths = res.tempFilePaths;
+              console.log('拍摄的照片:', tempFilePaths);
+              
+              // 显示拍摄成功信息
+              wx.showModal({
+                title: '拍照成功',
+                content: '照片已准备上传',
+                confirmText: '确定',
+                success: (res) => {
+                  if (res.confirm) {
+                    // 这里可以添加照片上传逻辑
+                    wx.showToast({
+                      title: '照片上传成功',
+                      icon: 'success'
+                    });
+                  }
+                }
+              });
+            },
+            fail: (err) => {
+              console.log('拍照失败:', err);
+              wx.showToast({
+                title: '拍照失败',
+                icon: 'error'
+              });
+            }
           });
         }
+      },
+      fail: (err) => {
+        console.log('选择上传方式失败:', err);
       }
     });
   },

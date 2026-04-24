@@ -7,14 +7,14 @@
   </view>
 
   <!-- 顶部标题区域 -->
-  <view style="background: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%); width: 100%; padding: 20px 16px; display: flex; align-items: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative;">
-    <view bindtap="goBack" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 24px; color: #ffffff; cursor: pointer; z-index: 10; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">←</view>
-    <text style="text-align: center; width: 100%;">官方服务入口</text>
+  <view style="background: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%); width: 100%; padding: 20px 16px; display: flex; align-items: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; height: 177rpx; box-sizing: border-box; left: 2rpx; top: -74rpx">
+    <view bindtap="goBack" style="position: absolute; left: 31rpx; top: 127rpx; transform: translateY(-50%); font-size: 24px; color: #ffffff; cursor: pointer; z-index: 10; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center">←</view>
+    <text style="text-align: center; width: 100%; position: relative; left: 0rpx; top: 36rpx">官方服务入口</text>
   </view>
-  <view style="width: 80px; height: 3px; background-color: #E63946; margin: 0 auto 20px;"></view>
+  <view style="width: 80px; height: 3px; background-color: #E63946; margin: 0 auto 20px; position: relative; left: 0rpx; top: -74rpx"></view>
 
   <!-- 服务介绍区域 -->
-  <view style="padding: 20px; background-color: #FFF3E0; margin: 0 16px 20px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <view style="padding: 20px; background-color: #FFF3E0; margin: 0 16px 20px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; left: 10rpx; top: -112rpx">
     <view style="text-align: center; margin-bottom: 15px;">
       <view style="font-size: 40px; margin-bottom: 10px;">🏛️</view>
       <text style="font-size: 18px; font-weight: bold; color: #333;">政府法律服务官方通道</text>
@@ -25,9 +25,9 @@
   </view>
 
   <!-- 官方服务区域 -->
-  <view style="padding: 0 16px; margin-bottom: 20px;">
-    <text style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 16px; display: block;">官方服务</text>
-    <view style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+  <view style="padding: 0 16px; margin-bottom: 20px; position: relative; left: 2rpx; top: -89rpx">
+    <text style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 16px; display: block; position: relative; left: 0rpx; top: -47rpx">官方服务</text>
+    <view style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; position: relative; left: 0rpx; top: -31rpx">
       <!-- 法律法规查询服务项 -->
       <view bindtap="openService" data-type="laws" style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; border-top: 4px solid #E63946;">
         <view style="position: absolute; top: -8px; right: 16px; width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(135deg, #E63946 0%, #F4A261 100%);"></view>

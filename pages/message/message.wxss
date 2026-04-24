@@ -9,3 +9,176 @@
   min-height: 100vh;            /* 最小高度为屏幕高度 */
   background-color: #f5f5f5;    /* 背景色为浅灰色 */
 }
+
+/* 顶部标题栏 */
+.header {
+  background: linear-gradient(135deg, #C0190E, #DE1E1D); /* 红色渐变背景 */
+  padding: 40rpx 30rpx;         /* 内边距 */
+  text-align: center;           /* 文本居中 */
+  color: white;                 /* 文字颜色 */
+  box-shadow: 0 2px 8px rgba(192, 25, 14, 0.3); /* 阴影效果 */
+  position: relative;           /* 相对定位 */
+}
+
+.header-title {
+  font-size: 36rpx;             /* 字体大小 */
+  font-weight: bold;            /* 加粗 */
+}
+
+/* 搜索框容器 */
+.search-container {
+  padding: 16rpx;               /* 内边距 */
+  background-color: white;       /* 白色背景 */
+  border-bottom: 1rpx solid #f0f0f0; /* 底部边框 */
+}
+
+/* 搜索框 */
+.search-box {
+  display: flex;                /* 使用flex布局 */
+  align-items: center;          /* 垂直居中 */
+  background-color: #f5f5f5;    /* 浅灰色背景 */
+  border-radius: 30rpx;         /* 圆角 */
+  padding: 14rpx 20rpx;         /* 内边距 */
+}
+
+.search-icon {
+  font-size: 24rpx;             /* 图标大小 */
+  color: #999;                  /* 图标颜色 */
+  margin-right: 12rpx;          /* 右侧间距 */
+}
+
+.search-input {
+  flex: 1;                      /* 占满剩余空间 */
+  font-size: 28rpx;             /* 字体大小 */
+  color: #333;                  /* 文字颜色 */
+  padding: 0;                   /* 清除默认内边距 */
+  border: none;                 /* 清除边框 */
+  outline: none;                /* 清除轮廓 */
+}
+
+.search-clear {
+  font-size: 24rpx;             /* 字体大小 */
+  color: #999;                  /* 文字颜色 */
+  padding: 8rpx;                /* 内边距 */
+  margin-left: 8rpx;            /* 左侧间距 */
+}
+
+/* 消息列表 */
+.message-list {
+  flex: 1;                      /* 占满剩余空间 */
+  background-color: #f5f5f5;    /* 背景色 */
+}
+
+/* 分组标题 */
+.section-title {
+  padding: 20rpx 24rpx;         /* 内边距 */
+  background-color: #f5f7fa;    /* 背景色 */
+  font-size: 28rpx;             /* 字体大小 */
+  color: #999;                  /* 文字颜色 */
+  font-weight: 500;             /* 中等加粗 */
+}
+
+/* 消息项 */
+.message-item {
+  display: flex;                /* 使用flex布局 */
+  align-items: center;          /* 垂直居中 */
+  padding: 24rpx;               /* 内边距 */
+  background-color: white;       /* 白色背景 */
+  border-bottom: 1rpx solid #f0f0f0; /* 底部边框 */
+  transition: all 0.2s ease;    /* 过渡动画 */
+}
+
+/* 消息项点击效果 */
+.message-item:active {
+  background-color: #f5f5f5;    /* 点击时背景色 */
+}
+
+/* 头像 */
+.avatar {
+  width: 80rpx;                 /* 宽度 */
+  height: 80rpx;                /* 高度 */
+  border-radius: 50%;           /* 圆形 */
+  display: flex;                /* 使用flex布局 */
+  align-items: center;          /* 垂直居中 */
+  justify-content: center;      /* 水平居中 */
+  margin-right: 20rpx;          /* 右侧间距 */
+}
+
+.avatar-text {
+  font-size: 36rpx;             /* 字体大小 */
+  color: white;                 /* 文字颜色 */
+}
+
+/* 不同类型头像颜色 */
+.avatar-system {
+  background-color: #1890ff;    /* 系统通知头像颜色 */
+}
+
+.avatar-blue {
+  background-color: #1890ff;    /* 蓝色头像 */
+}
+
+.avatar-yellow {
+  background-color: #faad14;    /* 黄色头像 */
+}
+
+/* 消息内容 */
+.message-content {
+  flex: 1;                      /* 占满剩余空间 */
+  min-width: 0;                 /* 防止flex子元素溢出 */
+}
+
+/* 消息头部 */
+.message-header {
+  display: flex;                /* 使用flex布局 */
+  justify-content: space-between; /* 两端对齐 */
+  align-items: center;          /* 垂直居中 */
+  margin-bottom: 8rpx;          /* 底部间距 */
+}
+
+/* 消息名称 */
+.message-name {
+  font-size: 32rpx;             /* 字体大小 */
+  font-weight: 500;             /* 中等加粗 */
+  color: #333;                  /* 文字颜色 */
+  flex: 1;                      /* 占满剩余空间 */
+  margin-right: 16rpx;          /* 右侧间距 */
+}
+
+/* 消息时间 */
+.message-time {
+  font-size: 24rpx;             /* 字体大小 */
+  color: #999;                  /* 文字颜色 */
+  white-space: nowrap;          /* 不换行 */
+}
+
+/* 消息预览 */
+.message-preview {
+  font-size: 28rpx;             /* 字体大小 */
+  color: #666;                  /* 文字颜色 */
+  line-height: 1.4;             /* 行高 */
+  display: -webkit-box;         /* 多行文本截断 */
+  -webkit-line-clamp: 1;        /* 只显示一行 */
+  -webkit-box-orient: vertical; /* 垂直方向 */
+  overflow: hidden;             /* 隐藏溢出 */
+  text-overflow: ellipsis;      /* 省略号 */
+}
+
+/* 未读标记 */
+.unread-badge {
+  width: 12rpx;                 /* 宽度 */
+  height: 12rpx;                /* 高度 */
+  border-radius: 50%;           /* 圆形 */
+  background-color: #C0190E;    /* 红色背景 */
+  margin-left: 16rpx;           /* 左侧间距 */
+}
+
+/* 无搜索结果提示 */
+.empty-state {
+  padding: 120rpx 0;            /* 内边距 */
+  text-align: center;           /* 文本居中 */
+  color: #999;                  /* 文字颜色 */
+  font-size: 28rpx;             /* 字体大小 */
+  background-color: white;       /* 白色背景 */
+  margin-top: 1rpx;             /* 顶部间距 */
+}

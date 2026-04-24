@@ -90,9 +90,9 @@ Page({
         this.setData({ messages, filteredMessages: messages });
       }
       
-      // 跳转到聊天页面
+      // 跳转到律师聊天页面
       wx.navigateTo({
-        url: `/pages/chat/chat?id=${id}&name=${name}`
+        url: `/pages/lawyerchat/lawyerchat?id=${id}&name=${name}`
       });
     } else if (type === 'system') {
       // 跳转到系统通知页面

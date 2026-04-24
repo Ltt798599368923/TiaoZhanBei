@@ -1,11 +1,11 @@
 //首页下面五个功能的AI
-import { api } from '../../utils/api';
 
 Page({
   /**
    * 页面数据
    */
   data: {
+    name: '', // 联系人名称
     messages: [  // 消息列表
       {
         id: 1,
@@ -20,8 +20,15 @@ Page({
   /**
    * 页面加载
    */
-  onLoad() {
-    // 页面加载时的逻辑
+  onLoad(options) {
+    // AI聊天界面固定显示"AI"
+    this.setData({
+      name: 'AI'
+    });
+    // 设置导航栏标题
+    wx.setNavigationBarTitle({
+      title: 'AI'
+    });
   },
 
   /**
@@ -61,14 +68,14 @@ Page({
       mask: true
     });
     
-    // 发送消息到后端
-    api.sendMessage({ content: userMessage.content }).then(res => {
+    // 模拟发送消息到后端
+    setTimeout(() => {
       wx.hideLoading();
       
       // 添加机器人回复
       const botMessage = {
         id: this.data.messages.length + 1,
-        content: res.reply || '感谢您的咨询，我们会尽快为您解答。',
+        content: '感谢您的咨询，我们会尽快为您解答。',
         type: 'left',
         time: new Date().toLocaleTimeString().substr(0, 5)
       };
@@ -76,14 +83,7 @@ Page({
       this.setData({
         messages: [...this.data.messages, botMessage]
       });
-    }).catch(err => {
-      wx.hideLoading();
-      wx.showToast({
-        title: '发送失败，请重试',
-        icon: 'none'
-      });
-      console.error('发送消息失败:', err);
-    });
+    }, 1000);
   },
 
   // 返回上一页

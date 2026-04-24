@@ -2,13 +2,13 @@
 <!-- 合同审查页面结构 -->
 <view class="container" style="background-color: #f5f5f5; min-height: 100vh;">
   <!-- 顶部标题 -->
-  <view style="background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%); width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative;">
-    <view bindtap="goBack" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 24px; color: #ffffff; cursor: pointer; z-index: 10; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">←</view>
-    <text style="text-align: center; width: 100%;">合同审查服务</text>
+  <view style="background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%); width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; height: 187rpx; box-sizing: border-box; left: 0rpx; top: 0rpx">
+    <view bindtap="goBack" style="position: absolute; left: 29rpx; top: 132rpx; transform: translateY(-50%); font-size: 24px; color: #ffffff; cursor: pointer; z-index: 10; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center">←</view>
+    <text style="text-align: center; width: 100%; position: relative; left: 0rpx; top: 39rpx">合同审查服务</text>
   </view>
 
   <!-- 服务介绍 -->
-  <view style="padding: 15px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <view style="padding: 15px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); width: 593rpx; display: block; box-sizing: content-box">
     <view style="text-align: center; margin-bottom: 15px;">
       <view style="font-size: 48px; margin-bottom: 10px;">🔍</view>
       <text style="font-size: 18px; font-weight: bold; color: #333;">专业合同审查服务</text>
@@ -19,7 +19,7 @@
   </view>
 
   <!-- 审查流程 -->
-  <view style="padding: 15px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <view style="padding: 65px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">审查流程</text>
     <view style="display: flex; flex-direction: column; gap: 16px;">
       <view style="display: flex; align-items: center;">
@@ -87,7 +87,7 @@
   </view>
 
   <!-- 上传合同 -->
-  <view style="padding: 15px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <view style="padding: 15px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); width: 654rpx; display: block; box-sizing: border-box">
     <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">上传合同</text>
     <view bindtap="uploadContract" style="width: 100%; padding: 32px 0; border: 2px dashed #d9d9d9; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 15px; background-color: #fafafa; transition: all 0.3s;">
       <view style="font-size: 48px; margin-bottom: 10px;">📁</view>
@@ -96,9 +96,9 @@
     </view>
     <view style="margin-bottom: 15px;">
       <text style="font-size: 14px; color: #666; margin-bottom: 5px; display: block;">合同描述</text>
-      <textarea placeholder="请简要描述合同内容和您的关注点..." style="width: 100%; height: 100px; border: 1px solid #e8e8e8; border-radius: 8px; padding: 12px; font-size: 14px; resize: none;"></textarea>
+      <textarea placeholder="请简要描述合同内容和您的关注点..." style="width: 593rpx; height: 100px; border: 1px solid #e8e8e8; border-radius: 8px; padding: 12px; font-size: 14px; resize: none; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></textarea>
     </view>
-    <view style="margin-bottom: 20px;">
+    <view style="margin-bottom: 20px; width: 535rpx; display: block; box-sizing: border-box">
       <text style="font-size: 14px; color: #666; margin-bottom: 5px; display: block;">联系方式</text>
       <input placeholder="请留下您的手机号" style="width: 100%; height: 48px; border: 1px solid #e8e8e8; border-radius: 8px; padding: 0 12px; font-size: 14px;"></input>
     </view>

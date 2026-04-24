@@ -127,5 +127,28 @@ Page({
    */
   goBack() {
     wx.navigateBack();  // 调用微信API返回上一页
+  },
+
+  /**
+   * 切换标签页
+   * @param {Object} e - 事件对象，包含标签信息
+   */
+  switchTab(e) {
+    const tab = e.currentTarget.dataset.tab;
+    // 根据不同标签执行不同操作
+    switch (tab) {
+      case 'home':
+        wx.switchTab({ url: '/pages/index/index' });
+        break;
+      case 'template':
+        // 已在当前页面
+        break;
+      case 'mydoc':
+        wx.navigateTo({ url: '/pages/favorite/favorite' });
+        break;
+      case 'mine':
+        wx.switchTab({ url: '/pages/profile/profile' });
+        break;
+    }
   }
 })
