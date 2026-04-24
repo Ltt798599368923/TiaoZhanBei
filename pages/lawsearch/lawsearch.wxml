@@ -1,7 +1,7 @@
 <!-- lawsearch.wxml -->
 <view class="container">
   <!-- 顶部搜索栏 -->
-  <view class="search-header">
+  <view class="search-header" style="position: sticky; left: NaNrpx; top: 97rpx">
     <view class="search-bar">
       <text class="search-icon">🔍</text>
       <input 
@@ -18,7 +18,7 @@
   </view>
 
   <!-- 热门搜索 -->
-  <view class="hot-search" wx:if="{{!searchKeyword && !searchResults.length}}">
+  <view class="hot-search" wx:if="{{!searchKeyword && !searchResults.length}}" style="position: relative; left: 0rpx; top: 77rpx">
     <view class="hot-search-header">
       <text class="hot-search-title">热门搜索</text>
     </view>

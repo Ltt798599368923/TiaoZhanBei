@@ -2,12 +2,12 @@
 <!-- 首页页面结构 -->
 <view class="container">
   <!-- 自定义导航栏 -->
-  <view class="custom-nav">
-    <view class="nav-title">法律咨询</view>
+  <view class="custom-nav" style="height: 138rpx; display: flex; box-sizing: border-box">
+    <view class="nav-title" style="position: relative; left: 0rpx; top: 47rpx">法律咨询</view>
   </view>
   
   <!-- 顶部红色背景区域 -->
-  <view class="header">
+  <view class="header" style="position: relative; left: 0rpx; top: 0rpx">
     <!-- 头部顶部区域 -->
     <view class="header-top">
       <!-- 页面标题 - 居中对齐 -->

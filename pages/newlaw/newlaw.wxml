@@ -1,10 +1,10 @@
 <!-- 法治新程页面结构 -->
 <view class="container">
   <!-- 头部区域 -->
-  <view class="header">
-    <view class="back-btn" bindtap="goBack">←</view>
-    <text class="header-title">法治新程</text>
-    <text class="header-subtitle">最新法律法规动态</text>
+  <view class="header" style="position: relative; left: 0rpx; top: 0rpx; width: 750rpx; height: 222rpx; display: block; box-sizing: border-box">
+    <view class="back-btn" bindtap="goBack" style="position: absolute; left: 66rpx; top: 154rpx">←</view>
+    <text class="header-title" style="position: relative; left: -29rpx; top: 72rpx">法治新程</text>
+    <text class="header-subtitle" style="position: relative; left: -29rpx; top: 79rpx">最新法律法规动态</text>
   </view>
 
   <!-- 法律法规列表区域 -->

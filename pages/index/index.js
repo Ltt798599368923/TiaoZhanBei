@@ -198,7 +198,7 @@ Page({
     // 功能类型映射
     const urlMap = {
       lawyer: '/pages/lawyer/lawyer',//律师咨询
-      document: '/pages/document/document',//文书模版
+      document: '/pages/template/template',//文书模版
       lawexplain: '/pages/lawexplain/lawexplain',//法理白话
       newlaw: '/pages/newlaw/newlaw',//法治新程
       lawread: '/pages/lawread/lawread',//法文阅读

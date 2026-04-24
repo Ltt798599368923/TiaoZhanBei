@@ -2,9 +2,9 @@
   <!-- 顶部标题 -->
   <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold; box-shadow: 0 2px 8px rgba(245, 34, 45, 0.3);">
     <view bindtap="goBack" style="padding: 8px; margin-right: 16px;">
-      <text style="font-size: 24px;">←</text>
+      <text style="font-size: 24px; position: relative; left: 27rpx; top: 34rpx">←</text>
     </view>
-    <text style="flex: 1; text-align: center;">我的咨询</text>
+    <text style="flex: 1; text-align: center; position: relative; left: -44rpx; top: 27rpx">我的咨询</text>
     <view style="padding: 8px;"></view>
   </view>
 

@@ -1,18 +1,18 @@
 <!-- 小视讲堂页面结构 -->
-<view class="container">
+<view class="container" style="width: 750rpx; height: 297rpx; display: flex; box-sizing: border-box">
   <!-- 头部区域 -->
-  <view class="header">
-    <view class="back-btn" bindtap="goBack">←</view>
-    <text class="header-title">小视讲堂</text>
-    <text class="header-subtitle">法律知识视频讲解</text>
+  <view class="header" style="position: relative; left: 4rpx; top: 0rpx; width: 742rpx; height: 154rpx; display: block; box-sizing: border-box">
+    <view class="back-btn" bindtap="goBack" style="position: absolute; left: 44rpx; top: 150rpx">←</view>
+    <text class="header-title" style="position: relative; left: -29rpx; top: 30rpx">小视讲堂</text>
+    <text class="header-subtitle" style="position: relative; left: -29rpx; top: 70rpx">法律知识视频讲解</text>
   </view>
 
   <!-- 视频列表区域 -->
-  <view class="video-list">
+  <view class="video-list" style="height: 3027rpx; display: block; box-sizing: border-box">
     <!-- 视频项 - 循环渲染视频列表 -->
     <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="onVideoTap" data-id="{{item.id}}">
       <!-- 视频缩略图 -->
-      <view class="video-thumbnail">
+      <view class="video-thumbnail" style="position: relative; left: 0rpx; top: 0rpx; width: 349rpx; height: 373rpx; display: flex; box-sizing: border-box">
         <text class="video-play">▶</text>
         <text class="video-duration">{{item.duration}}</text>
       </view>

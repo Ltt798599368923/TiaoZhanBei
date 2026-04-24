@@ -1,10 +1,10 @@
 <!-- 法理白话页面结构 -->
 <view class="container">
   <!-- 头部区域 -->
-  <view class="header">
-    <view class="back-btn" bindtap="goBack">←</view>
-    <text class="header-title">法理白话</text>
-    <text class="header-subtitle">专业法律知识通俗解读</text>
+  <view class="header" style="position: relative; left: -7rpx; top: 0rpx; width: 748rpx; height: 217rpx; display: block; box-sizing: border-box">
+    <view class="back-btn" bindtap="goBack" style="position: absolute; left: 29rpx; top: 126rpx">←</view>
+    <text class="header-title" style="position: relative; left: -29rpx; top: 61rpx">法理白话</text>
+    <text class="header-subtitle" style="position: relative; left: -29rpx; top: 66rpx">专业法律知识通俗解读</text>
   </view>
 
   <!-- 文章列表区域 -->
