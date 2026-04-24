@@ -10,7 +10,7 @@
 
 /* 头部区域样式 */
 .header {
-  background: linear-gradient(180deg, #40a9ff 0%, #69c0ff 100%);  /* 渐变背景 */
+  background: linear-gradient(180deg, #DE1E1D  0%, #DE1E1D 100%);  /* 渐变背景 */
   padding: 40rpx 30rpx;        /* 内边距 */
   text-align: center;          /* 文本居中 */
   position: relative;         /* 相对定位 */
@@ -68,7 +68,7 @@
 .book-cover {
   width: 120rpx;               /* 宽度 */
   height: 160rpx;              /* 高度 */
-  background: linear-gradient(180deg, #40a9ff 0%, #1890ff 100%);  /* 渐变背景 */
+  background: linear-gradient(180deg, #DE1E1D  0%, #DE1E1D  100%);  /* 渐变背景 */
   border-radius: 8rpx;          /* 圆角 */
   display: flex;                /* 使用flex布局 */
   align-items: center;          /* 垂直居中 */
@@ -118,8 +118,8 @@
 /* 书籍分类样式 */
 .book-category {
   font-size: 22rpx;            /* 字体大小 */
-  color: #40a9ff;              /* 文字颜色 */
-  background-color: #e6f7ff;    /* 背景色 */
+  color: #DE1E1D ;              /* 文字颜色 */
+  background-color: #DE1E1D ;    /* 背景色 */
   padding: 4rpx 10rpx;          /* 内边距 */
   border-radius: 4rpx;          /* 圆角 */
   margin-right: 16rpx;          /* 右侧margin */
@@ -142,7 +142,7 @@
 .progress-bar {
   flex: 1;                     /* 占满剩余空间 */
   height: 8rpx;                /* 高度 */
-  background-color: #f0f0f0;    /* 背景色 */
+  background-color: #DE1E1D ;    /* 背景色 */
   border-radius: 4rpx;          /* 圆角 */
   overflow: hidden;             /* 溢出隐藏 */
   margin-right: 12rpx;          /* 右侧margin */
@@ -151,7 +151,7 @@
 /* 进度条填充样式 */
 .progress-fill {
   height: 100%;                /* 高度 */
-  background: linear-gradient(90deg, #40a9ff 0%, #1890ff 100%);  /* 渐变背景 */
+  background: linear-gradient(90deg, #DE1E1D  0%, #DE1E1D  100%);  /* 渐变背景 */
   border-radius: 4rpx;          /* 圆角 */
 }
 

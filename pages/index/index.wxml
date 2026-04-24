@@ -7,7 +7,7 @@
   </view>
   
   <!-- 顶部红色背景区域 -->
-  <view class="header" style="position: relative; left: 0rpx; top: 0rpx">
+  <view class="header" style="position: relative; left: 0rpx; top: 0rpx; height: 575rpx; display: block; box-sizing: border-box">
     <!-- 头部顶部区域 -->
     <view class="header-top">
       <!-- 页面标题 - 居中对齐 -->
@@ -16,23 +16,26 @@
       </view>
     </view>
 
-    <!-- 民法典书籍展示 -->
-    <view class="book-container">
-      <!-- 左侧民法典 -->
-      <view class="book book-left">
-        <text class="book-text">中华人民共和国\n民法典</text>
-        <view class="book-spine"></view>
-      </view>
-      <!-- 右侧刑法 -->
-      <view class="book book-right">
-        <text class="book-text">中华人民共和国\n刑法</text>
-        <view class="book-spine"></view>
-      </view>
+ <!-- 单本书籍展示 + 两行文字轮播 -->
+<view class="book-container-single" style="height: 400rpx; display: flex; box-sizing: border-box; width: 693rpx">
+  <view class="book-single" style="position: relative; left: 10rpx; top: -2rpx">
+    <!-- 书脊效果 -->
+    <view class="book-spine-single" style="position: absolute; left: 1rpx; top: -35rpx; height: 339rpx; display: block; box-sizing: border-box"></view>
+    <!-- 书籍封面 -->
+    <view class="book-cover-single" style="position: relative; left: 19rpx; top: -35rpx; width: 224rpx; height: 339rpx; display: flex; box-sizing: border-box">
+      <!-- 第一行：中华人民共和国（小字） -->
+      <text class="book-line1">{{currentBook.line1}}</text>
+      <!-- 第二行：刑法 / 民法典等（大字） -->
+      <text class="book-line2">{{currentBook.line2}}</text>
     </view>
+    <!-- 底部显示完整书名（替代原来的轻触换书） -->
+    
+  </view>
+</view>
 
     <!-- 滚动宣传语 -->
-    <view class="marquee-container">
-      <text class="marquee-text" style="opacity: {{sloganOpacity}};">
+    <view class="marquee-container" style="height: 68rpx; display: block; box-sizing: border-box">
+      <text class="marquee-text" style="opacity: {{sloganOpacity}}; position: relative; left: 0rpx; top: -36rpx">
         {{slogans[currentSloganIndex]}}
       </text>
     </view>
@@ -41,7 +44,7 @@
   <!-- 在线咨询和法条检索按钮 -->
   <view class="action-cards">
     <!-- 在线咨询卡片 -->
-    <view class="action-card action-card-consult" bindtap="onOnlineConsult">
+    <view class="action-card action-card-consult" bindtap="onOnlineConsult" style="width: 306rpx; height: 150rpx; display: flex; box-sizing: border-box">
       <view class="action-card-inner">
         <view class="action-icon-wrapper">
           <text class="action-icon">📞</text>
@@ -53,7 +56,7 @@
       </view>
     </view>
     <!-- 法条检索卡片 -->
-    <view class="action-card action-card-search" bindtap="onLawSearch">
+    <view class="action-card action-card-search" bindtap="onLawSearch" style="width: 306rpx; height: 179rpx; display: flex; box-sizing: border-box">
       <view class="action-card-inner">
         <view class="action-icon-wrapper">
           <text class="action-icon">🔍</text>

@@ -4,10 +4,37 @@ Page({
   /**
    * 页面数据
    */
+  onNextBook() {
+    let newIndex = this.data.currentBookIndex + 1;
+    if (newIndex >= this.data.bookList.length) {
+      newIndex = 0;
+    }
+  
+    const newBook = this.data.bookList[newIndex];
+  
+    // 添加轻微触感反馈
+    wx.vibrateShort({ type: 'light' });
+  
+    this.setData({
+      currentBookIndex: newIndex,
+      currentBook: newBook
+    });
+  },
   data: {
     // 定位文本
     locationText: '定位中...',
-
+    
+    // 👇 书籍轮播数据（三行文字格式）- 只保留这一个
+    bookList: [
+      { line1: '中华人民共和国', line2: '宪法', line3: '中华人民共和国宪法' },
+      { line1: '中华人民共和国', line2: '民法典', line3: '中华人民共和国民法典' },
+      { line1: '中华人民共和国', line2: '刑法', line3: '中华人民共和国刑法' },
+      { line1: '中华人民共和国', line2: '行政法', line3: '中华人民共和国行政法' },
+      { line1: '中华人民共和国', line2: '劳动法', line3: '中华人民共和国劳动法' }
+    ],
+    currentBookIndex: 0,
+    currentBook: { line1: '中华人民共和国', line2: '宪法', line3: '中华人民共和国宪法' },
+  
     // 滚动播报数据
     slogans: [
       '弘扬法治精神，提供法律支援',
@@ -17,9 +44,9 @@ Page({
       '专业律师在线解答',
       '法条信息速查直达'
     ],
-    marqueeAnimation: null,  // 滚动动画
-    marqueeTimer: null,      // 滚动定时器
-
+    marqueeAnimation: null,
+    marqueeTimer: null,
+  
     // 热点新闻列表
     hotNews: [
       { title: '反外国不当域外管辖条例（4月13日施行）', id: 1 },
@@ -29,22 +56,46 @@ Page({
       { title: '贪污贿赂新解释（5月1日施行）', id: 5 },
       { title: '信用修复管理办法（4月1日施行）', id: 6 }
     ],
-
+  
     // 当前位置
-    latitude: null,   // 纬度
-    longitude: null,  // 经度
-
+    latitude: null,
+    longitude: null,
+  
     // 当前播报索引
-    currentSloganIndex: 0,  // 当前宣传语索引
-    sloganOpacity: 0        // 宣传语透明度
+    currentSloganIndex: 0,
+    sloganOpacity: 0
   },
 
   /**
    * 页面加载
    */
+  onNextBook() {
+    let newIndex = this.data.currentBookIndex + 1;
+    if (newIndex >= this.data.bookList.length) {
+      newIndex = 0;
+    }
+  
+    const newBook = this.data.bookList[newIndex];
+  
+    // 带动画效果：先淡出再淡入（可选）
+    this.setData({
+      currentBookIndex: newIndex,
+      currentBook: newBook
+    });
+  
+    // 可选：轻微震动提示（不强制）
+    wx.vibrateShort({ type: 'light' });
+  },
   onLoad() {
     this.initLocation();     // 初始化定位
     this.startSloganScroll();  // 开始宣传语滚动
+    this.initLocation();
+  this.startSloganScroll();
+
+  // 👇 自动轮播书名（每 3.5 秒）
+  this.autoBookTimer = setInterval(() => {
+    this.onNextBook();
+  }, 3500);
   },
 
   /**

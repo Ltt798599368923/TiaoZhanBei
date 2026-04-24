@@ -1,9 +1,9 @@
 <!-- 法文阅读页面结构 -->
 <view class="container" style="width: 740rpx; height: 1323rpx; display: flex; box-sizing: border-box">
   <!-- 头部区域 -->
-  <view class="header" style="position: relative; left: -5rpx; top: 0rpx; width: 746rpx; height: 196rpx; display: block; box-sizing: border-box">
+  <view class="header" style="position: relative; left: 52rpx; top: 0rpx; width: 843rpx; height: 196rpx; display: block; box-sizing: border-box">
     <view class="back-btn" bindtap="goBack" style="position: absolute; left: 31rpx; top: 120rpx">←</view>
-    <text class="header-title" style="position: relative; left: -29rpx; top: 43rpx">法文阅读</text>
+    <text class="header-title" style="position: relative; left: -29rpx; top: 56rpx">法文阅读</text>
     <text class="header-subtitle" style="position: relative; left: -29rpx; top: 47rpx">法律法规在线阅读</text>
   </view>
 
