@@ -1,25 +1,6 @@
 // index.js
 // 首页页面逻辑
 Page({
-  /**
-   * 页面数据
-   */
-  onNextBook() {
-    let newIndex = this.data.currentBookIndex + 1;
-    if (newIndex >= this.data.bookList.length) {
-      newIndex = 0;
-    }
-  
-    const newBook = this.data.bookList[newIndex];
-  
-    // 添加轻微触感反馈
-    wx.vibrateShort({ type: 'light' });
-  
-    this.setData({
-      currentBookIndex: newIndex,
-      currentBook: newBook
-    });
-  },
   data: {
     // 定位文本
     locationText: '定位中...',

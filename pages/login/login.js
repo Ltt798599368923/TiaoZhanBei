@@ -1,66 +1,100 @@
-//登录界面
+const api = require('../../utils/api.js')
 
 Page({
   data: {
-    // 页面数据
+    userInfo: null,
+    hasLogin: false
   },
-  
+
   onLoad(options) {
-    // 页面加载时检查是否已登录
     this.checkLoginStatus();
   },
-  
-  /**
-   * 检查登录状态
-   */
+
   checkLoginStatus() {
     const token = wx.getStorageSync('token');
-    if (token) {
-      // 已登录，跳转到首页
+    const userId = wx.getStorageSync('userId');
+    if (token && userId) {
       wx.switchTab({
         url: '/pages/index/index'
       });
     }
   },
-  
-  /**
-   * 微信一键登录
-   */
+
   wechatLogin() {
     wx.showLoading({
       title: '登录中...',
       mask: true
     });
-    
-    // 模拟登录成功（不需要后端）
-    setTimeout(() => {
-      wx.hideLoading();
-      
-      // 保存登录状态
-      wx.setStorageSync('token', 'mock-token');
-      wx.setStorageSync('userInfo', {
-        nickname: '用户',
-        avatar: 'https://example.com/avatar.png'
-      });
-      
-      // 显示登录成功提示
-      wx.showToast({
-        title: '登录成功',
-        icon: 'success'
-      });
-      
-      // 跳转到首页
-      setTimeout(() => {
-        wx.switchTab({
-          url: '/pages/index/index'
+
+    wx.login({
+      success: (loginRes) => {
+        if (loginRes.code) {
+          wx.getUserProfile({
+            desc: '用于完善用户资料',
+            success: (profileRes) => {
+              const { nickName, avatarUrl } = profileRes.userInfo;
+              this.doLogin(loginRes.code, nickName, avatarUrl);
+            },
+            fail: () => {
+              this.doLogin(loginRes.code, '用户', '');
+            }
+          });
+        } else {
+          wx.hideLoading();
+          wx.showToast({
+            title: '获取登录凭证失败',
+            icon: 'none'
+          });
+        }
+      },
+      fail: () => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '登录失败',
+          icon: 'none'
         });
-      }, 1000);
-    }, 1000);
+      }
+    });
   },
-  
-  /**
-   * 显示用户协议
-   */
+
+  doLogin(code, nickname, avatar) {
+    api.login(code, nickname, avatar)
+      .then(res => {
+        wx.hideLoading();
+        
+        if (res.code === 200 && res.data) {
+          const { token, userInfo } = res.data;
+          
+          wx.setStorageSync('token', token);
+          wx.setStorageSync('userId', userInfo.id);
+          wx.setStorageSync('userInfo', userInfo);
+          
+          wx.showToast({
+            title: '登录成功',
+            icon: 'success'
+          });
+          
+          setTimeout(() => {
+            wx.switchTab({
+              url: '/pages/index/index'
+            });
+          }, 1000);
+        } else {
+          wx.showToast({
+            title: res.message || '登录失败',
+            icon: 'none'
+          });
+        }
+      })
+      .catch(err => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '网络错误，请稍后重试',
+          icon: 'none'
+        });
+      });
+  },
+
   showAgreement() {
     wx.showModal({
       title: '用户协议',
@@ -69,10 +103,7 @@ Page({
       confirmText: '我知道了'
     });
   },
-  
-  /**
-   * 显示隐私政策
-   */
+
   showPrivacy() {
     wx.showModal({
       title: '隐私政策',

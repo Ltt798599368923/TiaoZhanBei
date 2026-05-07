@@ -1,168 +1,169 @@
-//首页--服务--合同审查服务
-// contract.js
-// 合同审查页面逻辑
+const api = require('../../utils/api.js')
+
 Page({
-  /**
-   * 页面数据
-   */
   data: {
-    contractTypes: [  // 合同类型列表
+    contractTypes: [
       {
-        type: 'employment',        // 类型标识
-        name: '劳动合同',          // 类型名称
-        description: 'employment contracts'  // 类型描述
+        type: 'employment',
+        name: '劳动合同',
+        description: 'employment contracts',
+        icon: '📝'
       },
       {
-        type: 'business',          // 类型标识
-        name: '商务合同',          // 类型名称
-        description: 'business contracts'  // 类型描述
+        type: 'business',
+        name: '商务合同',
+        description: 'business contracts',
+        icon: '💼'
       },
       {
-        type: 'realestate',        // 类型标识
-        name: '房地产合同',        // 类型名称
-        description: 'real estate contracts'  // 类型描述
+        type: 'realestate',
+        name: '房地产合同',
+        description: 'real estate contracts',
+        icon: '🏠'
       }
-    ]
+    ],
+    selectedType: null,
+    title: '',
+    fileName: '',
+    filePath: '',
+    submitting: false
   },
 
-  /**
-   * 页面加载
-   */
   onLoad() {
-    // 页面加载时的逻辑
+    
   },
 
-  /**
-   * 返回上一页
-   */
   goBack() {
-    wx.navigateBack();  // 调用微信API返回上一页
+    wx.navigateBack();
   },
 
-  /**
-   * 选择合同类型
-   * @param {Object} e - 事件对象，包含选择的合同类型
-   */
   selectContractType(e) {
-    const contractType = e.currentTarget.dataset.type;  // 获取选择的合同类型
-    const contract = this.data.contractTypes.find(item => item.type === contractType);  // 查找合同类型详情
-
-    // 显示确认对话框
-    wx.showModal({
-      title: contract.name,  // 对话框标题
-      content: `您选择了${contract.name}审查，是否继续？`,  // 对话框内容
-      confirmText: '继续',  // 确认按钮文本
-      cancelText: '取消',  // 取消按钮文本
-      success: (res) => {
-        if (res.confirm) {
-          // 显示提示信息
-          wx.showToast({
-            title: `${contract.name}审查功能开发中`,
-            icon: 'info'
-          });
-        }
-      }
+    const type = e.currentTarget.dataset.type;
+    this.setData({
+      selectedType: type
     });
   },
 
-  /**
-   * 上传合同
-   */
+  onTitleInput(e) {
+    this.setData({
+      title: e.detail.value
+    });
+  },
+
   uploadContract() {
-    // 显示操作菜单，让用户选择上传方式
     wx.showActionSheet({
       itemList: ['从文件选择', '拍照上传'],
       success: (res) => {
         if (res.tapIndex === 0) {
-          // 从文件选择
           wx.chooseMessageFile({
             count: 1,
             type: 'file',
-            extension: ['.pdf', '.doc', '.docx'],
+            extension: ['.pdf', '.doc', '.docx', '.txt'],
             success: (res) => {
-              const tempFilePaths = res.tempFilePaths;
-              console.log('选择的文件:', tempFilePaths);
-              
-              // 显示选择的文件信息
-              wx.showModal({
+              const file = res.tempFiles[0];
+              this.setData({
+                fileName: file.name,
+                filePath: file.path
+              });
+              wx.showToast({
                 title: '文件选择成功',
-                content: `已选择文件: ${res.tempFiles[0].name}`,
-                confirmText: '确定',
-                success: (res) => {
-                  if (res.confirm) {
-                    // 这里可以添加文件上传逻辑
-                    wx.showToast({
-                      title: '文件上传成功',
-                      icon: 'success'
-                    });
-                  }
-                }
+                icon: 'success'
               });
             },
             fail: (err) => {
               console.log('选择文件失败:', err);
-              wx.showToast({
-                title: '选择文件失败',
-                icon: 'error'
-              });
             }
           });
         } else if (res.tapIndex === 1) {
-          // 拍照上传
           wx.chooseImage({
             count: 1,
             sizeType: ['original', 'compressed'],
             sourceType: ['camera'],
             success: (res) => {
-              const tempFilePaths = res.tempFilePaths;
-              console.log('拍摄的照片:', tempFilePaths);
-              
-              // 显示拍摄成功信息
-              wx.showModal({
+              this.setData({
+                fileName: '合同照片_' + Date.now() + '.jpg',
+                filePath: res.tempFilePaths[0]
+              });
+              wx.showToast({
                 title: '拍照成功',
-                content: '照片已准备上传',
-                confirmText: '确定',
-                success: (res) => {
-                  if (res.confirm) {
-                    // 这里可以添加照片上传逻辑
-                    wx.showToast({
-                      title: '照片上传成功',
-                      icon: 'success'
-                    });
-                  }
-                }
+                icon: 'success'
               });
             },
             fail: (err) => {
               console.log('拍照失败:', err);
-              wx.showToast({
-                title: '拍照失败',
-                icon: 'error'
-              });
             }
           });
         }
-      },
-      fail: (err) => {
-        console.log('选择上传方式失败:', err);
       }
     });
   },
 
-  /**
-   * 提交审查
-   */
   submitReview() {
-    // 显示提交成功对话框
-    wx.showModal({
-      title: '提交成功',  // 对话框标题
-      content: '您的合同审查请求已提交，我们会尽快为您审查',  // 对话框内容
-      confirmText: '确定',  // 确认按钮文本
-      success: (res) => {
-        if (res.confirm) {
-          wx.navigateBack();  // 调用微信API返回上一页
-        }
-      }
+    const { selectedType, title, fileName } = this.data;
+
+    if (!selectedType) {
+      wx.showToast({
+        title: '请选择合同类型',
+        icon: 'none'
+      });
+      return;
+    }
+
+    if (!title || !title.trim()) {
+      wx.showToast({
+        title: '请输入合同标题',
+        icon: 'none'
+      });
+      return;
+    }
+
+    const userId = wx.getStorageSync('userId');
+    if (!userId) {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      });
+      return;
+    }
+
+    this.setData({ submitting: true });
+    wx.showLoading({
+      title: '提交中...',
+      mask: true
     });
+
+    api.createContract(userId, {
+      type: selectedType,
+      title: title,
+      fileName: fileName
+    })
+      .then(res => {
+        wx.hideLoading();
+        if (res.code === 200) {
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success'
+          });
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
+        } else {
+          wx.showToast({
+            title: res.message || '提交失败',
+            icon: 'none'
+          });
+        }
+      })
+      .catch(err => {
+        wx.hideLoading();
+        console.error('提交合同审查失败', err);
+        wx.showToast({
+          title: '网络错误，请稍后重试',
+          icon: 'none'
+        });
+      })
+      .finally(() => {
+        this.setData({ submitting: false });
+      });
   }
 })

@@ -1,47 +1,114 @@
-//首页--在线咨询
+const api = require('../../utils/api.js')
 
-// consult.js
-// 在线咨询页面逻辑
 Page({
-  /**
-   * 页面数据
-   */
   data: {
-    // 页面数据
+    title: '',
+    content: '',
+    phone: '',
+    consultTypeIndex: 0,
+    consultTypes: ['民事纠纷', '刑事辩护', '经济纠纷', '婚姻家庭', '房产纠纷', '知识产权', '其他'],
+    submitting: false
   },
 
-  /**
-   * 页面加载
-   */
   onLoad() {
-    // 页面加载时的初始化操作
+    
   },
 
-  /**
-   * 页面显示
-   */
-  onShow() {
-    // 页面显示时的操作
-  },
-
-  /**
-   * 页面隐藏
-   */
-  onHide() {
-    // 页面隐藏时的操作
-  },
-
-  /**
-   * 页面卸载
-   */
-  onUnload() {
-    // 页面卸载时的操作
-  },
-
-  /**
-   * 返回上一页
-   */
   goBack() {
-    wx.navigateBack();  // 调用微信API返回上一页
+    wx.navigateBack();
+  },
+
+  onTitleInput(e) {
+    this.setData({
+      title: e.detail.value
+    });
+  },
+
+  onContentInput(e) {
+    this.setData({
+      content: e.detail.value
+    });
+  },
+
+  onPhoneInput(e) {
+    this.setData({
+      phone: e.detail.value
+    });
+  },
+
+  onTypeChange(e) {
+    this.setData({
+      consultTypeIndex: e.detail.value
+    });
+  },
+
+  submitConsult() {
+    const { title, content, phone, consultTypes, consultTypeIndex } = this.data;
+
+    if (!title || !title.trim()) {
+      wx.showToast({
+        title: '请输入咨询标题',
+        icon: 'none'
+      });
+      return;
+    }
+
+    if (!content || !content.trim()) {
+      wx.showToast({
+        title: '请输入咨询内容',
+        icon: 'none'
+      });
+      return;
+    }
+
+    const userId = wx.getStorageSync('userId');
+    if (!userId) {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      });
+      return;
+    }
+
+    this.setData({ submitting: true });
+    wx.showLoading({
+      title: '提交中...',
+      mask: true
+    });
+
+    api.createConsultation(userId, {
+      title: title,
+      content: content,
+      phone: phone,
+      type: consultTypes[consultTypeIndex]
+    })
+      .then(res => {
+        wx.hideLoading();
+        if (res.code === 200) {
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success'
+          });
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
+        } else {
+          wx.showToast({
+            title: res.message || '提交失败',
+            icon: 'none'
+          });
+        }
+      })
+      .catch(err => {
+        wx.hideLoading();
+        console.error('提交咨询失败', err);
+        wx.showToast({
+          title: '网络错误，请稍后重试',
+          icon: 'none'
+        });
+      })
+      .finally(() => {
+        this.setData({ submitting: false });
+      });
   }
 })

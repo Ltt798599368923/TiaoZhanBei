@@ -1,44 +1,105 @@
-//我的--咨询
+const api = require('../../utils/api.js')
 
 Page({
   data: {
-    consults: [
-      {
-        id: 1,
-        title: '婚姻财产分割咨询',
-        content: '我想了解离婚时财产如何分割，特别是房产和存款的处理方式。',
-        date: '2026-04-22',
-        status: '已回复'
-      },
-      {
-        id: 2,
-        title: '劳动合同纠纷咨询',
-        content: '公司拖欠工资，我想了解如何维护自己的权益。',
-        date: '2026-04-20',
-        status: '已回复'
-      }
-    ]
+    consults: [],
+    loading: false
   },
 
   onLoad() {
-    wx.setNavigationBarTitle({
-      title: '我的咨询'
+    this.loadConsults();
+  },
+
+  onShow() {
+    this.loadConsults();
+  },
+
+  loadConsults() {
+    const userId = wx.getStorageSync('userId');
+    if (!userId) {
+      return;
+    }
+
+    this.setData({ loading: true });
+
+    api.getConsultations(userId)
+      .then(res => {
+        if (res.code === 200 && res.data) {
+          this.setData({
+            consults: res.data
+          });
+        }
+      })
+      .catch(err => {
+        console.error('获取咨询列表失败', err);
+        wx.showToast({
+          title: '获取咨询失败',
+          icon: 'none'
+        });
+      })
+      .finally(() => {
+        this.setData({ loading: false });
+      });
+  },
+
+  viewDetail(e) {
+    const userId = wx.getStorageSync('userId');
+    const id = e.currentTarget.dataset.id;
+    
+    api.getConsultationDetail(userId, id)
+      .then(res => {
+        if (res.code === 200 && res.data) {
+          const consultation = res.data;
+          wx.showModal({
+            title: consultation.title,
+            content: consultation.content || '暂无内容',
+            showCancel: false,
+            confirmText: '知道了'
+          });
+        }
+      })
+      .catch(err => {
+        console.error('获取咨询详情失败', err);
+      });
+  },
+
+  deleteConsult(e) {
+    const userId = wx.getStorageSync('userId');
+    const id = e.currentTarget.dataset.id;
+    
+    wx.showModal({
+      title: '确认删除',
+      content: '确定要删除这条咨询吗？',
+      success: (res) => {
+        if (res.confirm) {
+          api.deleteConsultation(userId, id)
+            .then(res => {
+              if (res.code === 200) {
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success'
+                });
+                this.loadConsults();
+              } else {
+                wx.showToast({
+                  title: res.message || '删除失败',
+                  icon: 'none'
+                });
+              }
+            })
+            .catch(err => {
+              console.error('删除咨询失败', err);
+              wx.showToast({
+                title: '删除失败',
+                icon: 'none'
+              });
+            });
+        }
+      }
     });
   },
 
-  // 查看详情
-  viewDetail(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.showToast({
-      title: '查看咨询详情',
-      icon: 'none'
-    });
-  },
-  
-  // 返回上一页
   goBack() {
-    wx.navigateBack({
-      delta: 1
-    })
+    wx.navigateBack();
   }
 })

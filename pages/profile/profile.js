@@ -1,73 +1,85 @@
-//首页--我的
+const api = require('../../utils/api.js')
 
-/**
- * 个人中心页面逻辑
- * 用于展示用户个人信息和相关操作
- */
 Page({
-  /**
-   * 页面数据
-   */
   data: {
-    /**
-     * 用户信息数据
-     * 包含用户姓名、角色、学习目标、学习记录数、律师和热线电话
-     */
     userInfo: {
-      name: '张三',
-      role: '普通用户',
-      goal: '了解婚姻法律',
-      studyRecords: 3,
-      lawyer: '李四律师',
-      hotline: '400-123-4567'
+      nickname: '',
+      avatar: '',
+      phone: ''
     }
   },
 
-  /**
-   * 页面加载
-   * 页面加载时的逻辑
-   */
   onLoad() {
-    // 页面加载时的逻辑
+    this.loadUserInfo();
   },
-  
-  // 个人设置
+
+  onShow() {
+    this.loadUserInfo();
+  },
+
+  loadUserInfo() {
+    const userId = wx.getStorageSync('userId');
+    const cachedUserInfo = wx.getStorageSync('userInfo');
+    
+    if (cachedUserInfo) {
+      this.setData({
+        userInfo: cachedUserInfo
+      });
+    }
+
+    if (userId) {
+      api.getUserInfo(userId)
+        .then(res => {
+          if (res.code === 200 && res.data) {
+            this.setData({
+              userInfo: res.data
+            });
+            wx.setStorageSync('userInfo', res.data);
+          }
+        })
+        .catch(err => {
+          console.error('获取用户信息失败', err);
+        });
+    }
+  },
+
   goToSettings() {
     wx.navigateTo({
       url: '/pages/settings/settings'
     })
   },
-  
-  // 我的收藏
+
   goToFavorites() {
     wx.navigateTo({
       url: '/pages/favorite/favorite'
     })
   },
-  
-  // 我的咨询
+
   goToMyConsult() {
     wx.navigateTo({
       url: '/pages/myconsult/myconsult'
     })
   },
-  
-  // 关于我们
+
   goToAbout() {
     wx.navigateTo({
       url: '/pages/about/about'
     })
   },
-  
-  // 退出登录
+
   logout() {
     wx.showModal({
       title: '退出登录',
       content: '确定要退出登录吗？',
       success: (res) => {
         if (res.confirm) {
-          // 执行退出登录逻辑
-          console.log('用户点击确定');
+          wx.removeStorageSync('token');
+          wx.removeStorageSync('userId');
+          wx.removeStorageSync('userInfo');
+          
+          wx.reLaunch({
+            url: '/pages/login/login'
+          });
         }
       }
     })

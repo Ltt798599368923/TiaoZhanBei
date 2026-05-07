@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/service/service",
     "pages/chat/chat",
@@ -19,8 +20,7 @@
     "pages/about/about",
     "pages/favorite/favorite",
     "pages/settings/settings",
-    "pages/myconsult/myconsult",
-    "pages/template/template"
+    "pages/myconsult/myconsult"
   ],
   "window": {
     "backgroundTextStyle": "light",
