@@ -1,10 +1,10 @@
 <!--consult.wxml-->
 <!-- 在线咨询页面结构 -->
-<view class="container" style="width: 746rpx; display: flex; box-sizing: border-box">
+<view class="container">
   <!-- 顶部标题 -->
-  <view class="header" style="position: relative; left: -5rpx; top: 0rpx; width: 759rpx; height: 163rpx; display: flex; box-sizing: border-box">
-    <view class="back-btn" bindtap="goBack" style="position: absolute; left: 48rpx; top: 124rpx">←</view>
-    <text class="header-title" style="position: relative; left: -29rpx; top: 44rpx">在线咨询</text>
+  <view class="header" style="width: 697rpx; display: flex; box-sizing: content-box; left: 0rpx; top: 0rpx">
+    <view class="back-btn" bindtap="goBack">←</view>
+    <text class="header-title">在线咨询</text>
   </view>
 
   <!-- 服务介绍 -->
@@ -23,20 +23,20 @@
   </view>
 
   <!-- 在线咨询表单 -->
-  <view class="consult-form" style="width: 638rpx; display: block; box-sizing: border-box; height: 685rpx">
+  <view class="consult-form">
     <view class="form-item">
       <text class="form-label">咨询内容</text>
-      <textarea class="form-textarea" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" style="width: 454rpx; height: 161rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></textarea>
+      <textarea class="form-textarea" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" style="position: relative; left: -21rpx; top: 1rpx"></textarea>
     </view>
     
     <view class="form-item">
       <text class="form-label">联系方式</text>
-      <input class="form-input" placeholder="请留下您的手机号，方便律师联系您" type="number" style="width: 454rpx; height: 81rpx; display: block; box-sizing: border-box"></input>
+      <input class="form-input" placeholder="请留下您的手机号，方便律师联系您" type="number" style="width: 585rpx; display: block; box-sizing: border-box"></input>
     </view>
     
     <view class="form-item">
       <text class="form-label">咨询类型</text>
-      <picker class="form-picker" range="['民事纠纷', '刑事辩护', '经济纠纷', '婚姻家庭', '房产纠纷', '知识产权', '其他']" style="width: 454rpx; height: 87rpx; display: flex; box-sizing: border-box">
+      <picker class="form-picker" range="['民事纠纷', '刑事辩护', '经济纠纷', '婚姻家庭', '房产纠纷', '知识产权', '其他']" style="width: 607rpx; display: flex; box-sizing: border-box">
         <view class="picker-view">请选择咨询类型</view>
       </picker>
     </view>

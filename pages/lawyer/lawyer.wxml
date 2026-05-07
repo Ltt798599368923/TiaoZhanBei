@@ -1,21 +1,21 @@
 <!-- 律师咨询与预约页面结构 -->
 <view class="container">
   <!-- 顶部标题区域 -->
-  <view style="background-color: #DE1E1D; width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold; height: 180rpx; box-sizing: border-box">
-    <view bindtap="goBack" style="margin-right: 15px; font-size: 20px; position: relative; left: 29rpx; top: 29rpx">←</view>
-    <text style="position: relative; left: 189rpx; top: 27rpx">律师预约</text>
+  <view style="background-color: #DE1E1D; width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold;">
+    <view bindtap="goBack" style="margin-right: 15px; font-size: 20px;">←</view>
+    <text>律师预约</text>
   </view>
 
   <!-- 服务介绍区域 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); height: 623rpx; display: block; box-sizing: border-box">
+  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <view style="text-align: center; margin-bottom: 20px;">
-      <view style="font-size: 48px; margin-bottom: 15px; position: relative; left: 0rpx; top: -48rpx">👨‍⚖️</view>
-      <text style="font-size: 20px; font-weight: bold; color: #333; position: relative; left: 0rpx; top: -58rpx">专业律师预约服务</text>
+      <view style="font-size: 48px; margin-bottom: 15px;">👨‍⚖️</view>
+      <text style="font-size: 20px; font-weight: bold; color: #333;">专业律师预约服务</text>
     </view>
     <view style="font-size: 14px; line-height: 1.6; color: #666; margin-bottom: 20px;">
-      <text style="position: relative; left: 0rpx; top: -92rpx">我们提供专业的律师面对面咨询服务，为您提供个性化的法律解决方案。通过预约，您可以与专业律师进行深度沟通，获得针对性的法律建议。</text>
+      <text>我们提供专业的律师面对面咨询服务，为您提供个性化的法律解决方案。通过预约，您可以与专业律师进行深度沟通，获得针对性的法律建议。</text>
     </view>
-    <view style="display: flex; justify-content: space-around; margin-bottom: 20px; position: relative; left: 0rpx; top: -100rpx">
+    <view style="display: flex; justify-content: space-around; margin-bottom: 20px;">
       <view style="text-align: center;">
         <view style="font-size: 24px; margin-bottom: 5px;">📅</view>
         <text style="font-size: 12px; color: #666;">预约咨询</text>
@@ -100,7 +100,7 @@
   </view>
 
   <!-- 预约流程 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); width: 646rpx; display: block; box-sizing: border-box">
+  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">预约流程</text>
     <view style="display: flex; justify-content: space-between; align-items: center;">
       <view style="text-align: center; flex: 1;">
@@ -118,7 +118,7 @@
         <text style="font-size: 12px; color: #333;">确认时间</text>
       </view>
       <view style="width: 20px; height: 1px; background-color: #e8e8e8;"></view>
-      <view style="text-align: center; width: 109rpx; height: 172rpx; display: block; box-sizing: border-box">
+      <view style="text-align: center; flex: 1;">
         <view style="width: 30px; height: 30px; border-radius: 50%; background-color: #DE1E1D; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">4</view>
         <text style="font-size: 12px; color: #333;">面对面咨询</text>
       </view>

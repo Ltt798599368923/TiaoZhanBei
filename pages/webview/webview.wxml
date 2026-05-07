@@ -1,0 +1,4 @@
+<!-- webview.wxml -->
+<view class="container" style="width: 100%; height: 100vh;">
+  <web-view src="{{url}}" bindmessage="onMessage"></web-view>
+</view>

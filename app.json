@@ -5,6 +5,8 @@
     "pages/service/service",
     "pages/chat/chat",
     "pages/message/message",
+    "pages/systemnotice/systemnotice",
+    "pages/lawyerchat/lawyerchat",
     "pages/profile/profile",
     "pages/consult/consult",
     "pages/document/document",
@@ -20,7 +22,9 @@
     "pages/about/about",
     "pages/favorite/favorite",
     "pages/settings/settings",
-    "pages/myconsult/myconsult"
+    "pages/myconsult/myconsult",
+    "pages/webview/webview",
+    "pages/template/template"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,14 +1,14 @@
 <!-- favorite.wxml -->
 <!-- 我的收藏页面结构 -->
-<view class="container" style="width: 737rpx; height: 538rpx; display: flex; box-sizing: border-box">
+<view class="container">
   <!-- 顶部标题 -->
-  <view class="header" style="position: relative; left: -9rpx; top: 0rpx; width: 748rpx; height: 167rpx; display: flex; box-sizing: border-box">
-    <view class="back-btn" bindtap="goBack" style="position: absolute; left: 29rpx; top: 106rpx">←</view>
-    <text class="header-title" style="position: relative; left: 0rpx; top: 23rpx">我的收藏</text>
+  <view class="header" style="width: 792rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">
+    <view class="back-btn" bindtap="goBack">←</view>
+    <text class="header-title">我的收藏</text>
   </view>
 
   <!-- 内容区域 -->
-  <view class="content" style="position: relative; left: 3rpx; top: 0rpx; width: 612rpx; height: 553rpx; display: block; box-sizing: border-box">
+  <view class="content">
     <!-- 收藏列表 -->
     <view class="favorite-list">
       <!-- 收藏项1 -->

@@ -1,27 +1,27 @@
 <!-- about.wxml -->
 <!-- 关于我们页面结构 -->
-<view class="container" style="width: 742rpx; height: 187rpx; display: flex; box-sizing: border-box">
+<view class="container">
   <!-- 顶部标题 -->
-  <view class="header" style="width: 759rpx; height: 176rpx; display: flex; box-sizing: border-box; left: 7rpx; top: 0rpx; position: relative">
-    <view class="back-btn" bindtap="goBack" style="position: absolute; left: 29rpx; top: 110rpx">←</view>
-    <text class="header-title" style="position: relative; left: 0rpx; top: 23rpx">关于我们</text>
+  <view class="header" style="width: 847rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">
+    <view class="back-btn" bindtap="goBack">←</view>
+    <text class="header-title">关于我们</text>
   </view>
 
   <!-- 内容区域 -->
-  <view class="content" style="width: 532rpx; height: 332rpx; display: flex; box-sizing: border-box">
+  <view class="content">
     <!-- 应用图标 -->
     <view class="app-icon">
       <text class="icon">⚖️</text>
     </view>
 
     <!-- 应用名称 -->
-    <text class="app-name" style="height: 35rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">法律咨询</text>
+    <text class="app-name">法律咨询</text>
     
     <!-- 版本号 -->
     <text class="app-version">版本 1.0.0</text>
 
     <!-- 关于内容 -->
-    <view class="about-content" style="width: 657rpx; display: block; box-sizing: border-box">
+    <view class="about-content" style="width: 568rpx; display: block; box-sizing: content-box">
       <view class="content-section">
         <text class="section-title">我们的使命</text>
         <text class="section-desc">为用户提供便捷、专业的法律咨询服务，让法律触手可及。</text>

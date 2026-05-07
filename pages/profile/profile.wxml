@@ -1,16 +1,16 @@
 <!-- 个人中心页面结构 -->
-<view class="container" style="width: 733rpx; display: flex; box-sizing: content-box">
+<view class="container">
   <!-- 顶部用户信息区域 -->
-  <view style="background-color: #f5222d; width: 100%; padding: 20px; text-align: center; color: white; height: 431rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
-    <view style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin: 0 auto 10px; background-color: white; display: flex; align-items: center; justify-content: center; position: relative; left: 0rpx; top: 54rpx">
+  <view style="background-color: #f5222d; width: 100%; padding: 20px; text-align: center; color: white;">
+    <view style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin: 0 auto 10px; background-color: white; display: flex; align-items: center; justify-content: center;">
       <text style="font-size: 40px;">👤</text>
     </view>
-    <text style="font-size: 18px; font-weight: bold; margin-bottom: 5px; display: block; position: relative; left: 0rpx; top: 66rpx">张三</text>
-    <text style="font-size: 14px; opacity: 0.8; position: relative; left: 0rpx; top: 52rpx">普通用户</text>
+    <text style="font-size: 18px; font-weight: bold; margin-bottom: 5px; display: block;">张三</text>
+    <text style="font-size: 14px; opacity: 0.8;">普通用户</text>
   </view>
 
   <!-- 个人信息列表区域 -->
-  <view style="width: 679rpx; margin-top: -20px; background-color: white; border-radius: 10px; padding: 15px; margin-bottom: 15px; height: 254rpx; display: block; box-sizing: border-box; position: relative; left: 8rpx; top: 39rpx">
+  <view style="width: 90%; margin-top: -20px; background-color: white; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
     <!-- 学习目标 -->
     <view style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
       <text style="font-size: 14px;">学习目标</text>
@@ -27,16 +27,22 @@
       <text style="font-size: 14px; color: #f5222d;">李四律师</text>
     </view>
     <!-- 法律服务热线 -->
-    
+    <view style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
+      <text style="font-size: 14px;">法律服务热线</text>
+      <text style="font-size: 14px; color: #999999;">400-123-4567</text>
+    </view>
   </view>
 
   <!-- 操作按钮区域 -->
-  <view style="width: 90%; background-color: white; border-radius: 10px; padding: 15px; margin-bottom: 15px; height: 349rpx; display: block; box-sizing: border-box">
+  <view style="width: 90%; background-color: white; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
     <view bindtap="goToSettings" style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
       <text style="font-size: 14px;">个人设置</text>
       <text style="font-size: 14px; color: #999;">→</text>
     </view>
-    
+    <view bindtap="goToFavorites" style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+      <text style="font-size: 14px;">我的收藏</text>
+      <text style="font-size: 14px; color: #999;">→</text>
+    </view>
     <view bindtap="goToMyConsult" style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
       <text style="font-size: 14px;">我的咨询</text>
       <text style="font-size: 14px; color: #999;">→</text>

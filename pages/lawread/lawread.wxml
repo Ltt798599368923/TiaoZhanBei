@@ -21,7 +21,7 @@
         <text class="book-author">{{item.author}}</text>
         <!-- 书籍元数据 -->
         <view class="book-meta">
-          <text class="book-category">{{item.category}}</text>
+          
           <text class="book-read">👁 {{item.readCount}}</text>
         </view>
         <!-- 阅读进度 -->

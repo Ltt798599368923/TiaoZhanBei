@@ -1,20 +1,20 @@
 <!-- 官方服务页面结构 -->
 <view class="container" style="background-color: #FFF7F0; min-height: 100vh; padding-bottom: 80px;">
   <!-- 顶部状态栏 -->
-  <view style="padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; background-color: #F4A261;">
-    <text style="font-size: 14px; color: white;">10:30 AM</text>
-    <text style="font-size: 14px; color: white;">100%</text>
+  <view style="padding: 10px 190px; display: flex; justify-content: space-between; align-items: center; background-color: #F4A261; width: 562rpx; box-sizing: border-box">
+    
+    
   </view>
 
   <!-- 顶部标题区域 -->
-  <view style="background: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%); width: 100%; padding: 20px 16px; display: flex; align-items: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; height: 177rpx; box-sizing: border-box; left: 2rpx; top: -74rpx">
-    <view bindtap="goBack" style="position: absolute; left: 31rpx; top: 127rpx; transform: translateY(-50%); font-size: 24px; color: #ffffff; cursor: pointer; z-index: 10; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center">←</view>
-    <text style="text-align: center; width: 100%; position: relative; left: 0rpx; top: 36rpx">官方服务入口</text>
+  <view style="background: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%); width: 100%; padding: 20px 16px; display: flex; align-items: center; color: white; font-size: 20px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative;">
+    <view bindtap="goBack" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 24px; color: #ffffff; cursor: pointer; z-index: 10; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">←</view>
+    <text style="text-align: center; width: 100%;">官方服务入口</text>
   </view>
-  <view style="width: 80px; height: 3px; background-color: #E63946; margin: 0 auto 20px; position: relative; left: 0rpx; top: -74rpx"></view>
+  <view style="width: 80px; height: 3px; background-color: #E63946; margin: 0 auto 20px;"></view>
 
   <!-- 服务介绍区域 -->
-  <view style="padding: 20px; background-color: #FFF3E0; margin: 0 16px 20px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; left: 10rpx; top: -112rpx">
+  <view style="padding: 20px; background-color: #FFF3E0; margin: 0 16px 20px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <view style="text-align: center; margin-bottom: 15px;">
       <view style="font-size: 40px; margin-bottom: 10px;">🏛️</view>
       <text style="font-size: 18px; font-weight: bold; color: #333;">政府法律服务官方通道</text>
@@ -25,9 +25,9 @@
   </view>
 
   <!-- 官方服务区域 -->
-  <view style="padding: 0 16px; margin-bottom: 20px; position: relative; left: 2rpx; top: -89rpx">
-    <text style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 16px; display: block; position: relative; left: 0rpx; top: -47rpx">官方服务</text>
-    <view style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; position: relative; left: 0rpx; top: -31rpx">
+  <view style="padding: 0 16px; margin-bottom: 30px;">
+    <text style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 16px; display: block;">官方服务</text>
+    <view style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
       <!-- 法律法规查询服务项 -->
       <view bindtap="openService" data-type="laws" style="background-color: white; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; border-top: 4px solid #E63946;">
         <view style="position: absolute; top: -8px; right: 16px; width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(135deg, #E63946 0%, #F4A261 100%);"></view>
@@ -63,14 +63,106 @@
   </view>
 
   <!-- 官方网站入口区域 -->
-  <view style="padding: 0 16px; margin-bottom: 20px;">
+  <view style="padding: 0 16px; margin-bottom: 30px;">
     <text style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 16px; display: block;">官方网站</text>
-    <view bindtap="openWebsite" data-url="https://www.moj.gov.cn" style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between;">
-      <div>
-        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block;">司法部官网</text>
-        <text style="font-size: 12px; color: #666;">政府法律服务官方网站</text>
+    
+    <!-- 司法部官网 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">司法部官网</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">政府法律服务官方网站</text>
       </div>
-      <button style="background-color: #F4A261; color: white; border: none; padding: 8px 16px; border-radius: 30px; font-size: 14px; font-weight: 500; transition: all 0.3s;">访问</button>
+      <button bindtap="openWebsite" data-url="https://www.moj.gov.cn" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 最高人民法院官网 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">最高人民法院官网</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">国家最高审判机关官方网站</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://www.court.gov.cn" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 中国政府网 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">中国政府网</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">中央人民政府官方网站</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://www.gov.cn" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 最高人民检察院官网 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">最高人民检察院官网</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">国家最高检察机关官方网站</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://www.spp.gov.cn" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 裁判文书网 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">裁判文书网</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">全国法院裁判文书公开平台</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://wenshu.court.gov.cn" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 公安部官网 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">公安部官网</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">国家公安部门官方网站</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://www.mps.gov.cn" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 中国执行信息公开网 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">中国执行信息公开网</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">全国法院执行信息公开平台</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://zxgk.court.gov.cn" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 全国法院被执行人信息查询 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">全国法院被执行人信息查询</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">被执行人信息查询平台</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://zxgk.court.gov.cn/zhixing/" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 最高人民法院案例库 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">最高人民法院案例库</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">典型案例参考平台</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://www.court.gov.cn/zixun-xiangqing-36011.html" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 法学研究杂志社 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">法学研究杂志社</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">法学学术研究期刊</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://www.fxyj.org" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
+    </view>
+    
+    <!-- 中国国际条约数据库 -->
+    <view style="background-color: white; border-radius: 20px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <div style="flex: 1; margin-right: 16px;">
+        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block; line-height: 1.3;">中国国际条约数据库</text>
+        <text style="font-size: 12px; color: #666; line-height: 1.3;">国际条约查询平台</text>
+      </div>
+      <button bindtap="openWebsite" data-url="https://treaty.mfa.gov.cn" style="background-color: #F4A261; color: white; border: none; padding: 5px 10px; border-radius: 30px; font-size: 13px; font-weight: 500; transition: all 0.3s; min-width: 70px; text-align: center;">访问</button>
     </view>
   </view>
 
@@ -80,26 +172,5 @@
   </view>
 
   <!-- 底部导航栏 -->
-  <view style="position: fixed; bottom: 0; left: 0; right: 0; background-color: white; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); padding: 10px 0; display: flex; justify-content: space-around; z-index: 100;">
-    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
-      <text style="font-size: 20px; margin-bottom: 2px;">🏠</text>
-      <text style="font-size: 12px; color: #666;">首页</text>
-    </view>
-    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
-      <text style="font-size: 20px; margin-bottom: 2px;">📋</text>
-      <text style="font-size: 12px; color: #F4A261; font-weight: 500;">服务</text>
-    </view>
-    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
-      <text style="font-size: 20px; margin-bottom: 2px;">🤖</text>
-      <text style="font-size: 12px; color: #666;">AI</text>
-    </view>
-    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
-      <text style="font-size: 20px; margin-bottom: 2px;">💬</text>
-      <text style="font-size: 12px; color: #666;">消息</text>
-    </view>
-    <view style="display: flex; flex-direction: column; align-items: center; padding: 5px;">
-      <text style="font-size: 20px; margin-bottom: 2px;">👤</text>
-      <text style="font-size: 12px; color: #666;">我的</text>
-    </view>
-  </view>
+  
 </view>

@@ -18,15 +18,15 @@
 
  <!-- 单本书籍展示 + 两行文字轮播 -->
 <view class="book-container-single" style="height: 400rpx; display: flex; box-sizing: border-box; width: 693rpx">
-  <view class="book-single" style="position: relative; left: 10rpx; top: -2rpx">
+  <view class="book-single" style="position: relative; left: 10rpx; top: 19rpx">
     <!-- 书脊效果 -->
     <view class="book-spine-single" style="position: absolute; left: 1rpx; top: -35rpx; height: 339rpx; display: block; box-sizing: border-box"></view>
     <!-- 书籍封面 -->
-    <view class="book-cover-single" style="position: relative; left: 19rpx; top: -35rpx; width: 224rpx; height: 339rpx; display: flex; box-sizing: border-box">
+    <view class="book-cover-single" style="position: relative; left: 20rpx; top: -35rpx; width: 224rpx; height: 339rpx; display: flex; box-sizing: border-box">
       <!-- 第一行：中华人民共和国（小字） -->
-      <text class="book-line1">{{currentBook.line1}}</text>
+      <text class="book-line1" style="position: relative; left: 2rpx; top: 41rpx">{{currentBook.line1}}</text>
       <!-- 第二行：刑法 / 民法典等（大字） -->
-      <text class="book-line2">{{currentBook.line2}}</text>
+      <text class="book-line2" style="width: 158rpx; height: 106rpx; display: block; box-sizing: border-box; position: relative; left: 1rpx; top: 41rpx">{{currentBook.line2}}</text>
     </view>
     <!-- 底部显示完整书名（替代原来的轻触换书） -->
     
@@ -35,7 +35,7 @@
 
     <!-- 滚动宣传语 -->
     <view class="marquee-container" style="height: 68rpx; display: block; box-sizing: border-box">
-      <text class="marquee-text" style="opacity: {{sloganOpacity}}; position: relative; left: 0rpx; top: -36rpx">
+      <text class="marquee-text" style="opacity: {{sloganOpacity}}; position: relative; left: 0rpx; top: -39rpx">
         {{slogans[currentSloganIndex]}}
       </text>
     </view>
