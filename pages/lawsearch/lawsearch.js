@@ -49,7 +49,7 @@ Page({
           searchResults: [{
             lawName: '搜索结果',
             article: '',
-            content: res.reply
+            content: res.aiAdvice
           }]
         });
       } else {

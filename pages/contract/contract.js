@@ -99,7 +99,7 @@ Page({
   },
 
   submitReview() {
-    const { selectedType, title, fileName } = this.data;
+    const { selectedType, title, fileName, filePath } = this.data;
 
     if (!selectedType) {
       wx.showToast({
@@ -112,6 +112,14 @@ Page({
     if (!title || !title.trim()) {
       wx.showToast({
         title: '请输入合同标题',
+        icon: 'none'
+      });
+      return;
+    }
+
+    if (!filePath) {
+      wx.showToast({
+        title: '请先选择或拍照上传文件',
         icon: 'none'
       });
       return;
@@ -132,11 +140,7 @@ Page({
       mask: true
     });
 
-    api.createContract(userId, {
-      type: selectedType,
-      title: title,
-      fileName: fileName
-    })
+    api.uploadContract(userId, filePath, selectedType, title)
       .then(res => {
         wx.hideLoading();
         if (res.code === 200) {
