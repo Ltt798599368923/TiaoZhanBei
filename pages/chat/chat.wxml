@@ -1,6 +1,6 @@
-<view class="container" style="background-color: #f5f7fa; min-height: 100vh; display: flex; flex-direction: column;">
+<view class="container" style="background-color: #f5f7fa; height: 100vh; overflow: hidden; position: relative;">
   <!-- 顶部标题 -->
-  <view style="background: linear-gradient(135deg, #C0190E, #DE1E1D); width: 100%; padding: 40rpx 30rpx; display: flex; align-items: center; color: white; font-size: 36rpx; font-weight: bold; box-shadow: 0 2px 8px rgba(192, 25, 14, 0.3);">
+  <view id="chat-header" style="background: linear-gradient(135deg, #C0190E, #DE1E1D); width: 100%; padding: 40rpx 30rpx; display: flex; align-items: center; color: white; font-size: 36rpx; font-weight: bold; box-shadow: 0 2px 8px rgba(192, 25, 14, 0.3); position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
     <view bindtap="goBack" style="padding: 16rpx; margin-right: 24rpx;">
       
     </view>
@@ -11,9 +11,9 @@
   </view>
 
   <!-- 聊天内容区域 -->
-  <view style="flex: 1; padding: 24rpx; overflow-y: auto;">
+  <scroll-view scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrollIntoView}}" style="position: absolute; left: 0; right: 0; top: {{headerHeight}}px; bottom: {{inputBarHeight + keyboardHeight}}px; padding: 24rpx; box-sizing: border-box;">
     <!-- 动态渲染消息列表 -->
-    <view wx:for="{{messages}}" wx:key="{{item.id}}" class="message-item" style="display: flex; {{item.type === 'right' ? 'justify-content: flex-end' : ''}}; margin-bottom: 24rpx;">
+    <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}" class="message-item" style="display: flex; {{item.type === 'right' ? 'justify-content: flex-end' : ''}}; margin-bottom: 24rpx;">
       <!-- 对方消息 -->
       <view wx:if="{{item.type === 'left'}}">
         <image src="../../images/4b38120f3c97795437a1e773c126ed3e.jpg" style="width: 80rpx; height: 80rpx; border-radius: 50%; margin-right: 20rpx;" mode="aspectFill"></image>
@@ -34,15 +34,22 @@
         </view>
       </view>
     </view>
-  </view>
+  </scroll-view>
 
   <!-- 输入区域 -->
-  <view style="background-color: white; padding: 20rpx; border-top: 1rpx solid #f0f0f0; display: block; box-sizing: border-box; width: 669rpx">
+  <view id="chat-input-bar" style="background-color: white; padding: 20rpx 20rpx calc(20rpx + env(safe-area-inset-bottom)); border-top: 1rpx solid #f0f0f0; width: 100%; box-sizing: border-box; position: fixed; left: 0; right: 0; bottom: {{keyboardHeight}}px; z-index: 1000;">
     <view style="display: flex; align-items: center;">
       <input 
         placeholder="输入消息..." 
         style="flex: 1; border: 1rpx solid #e8e8e8; border-radius: 30rpx; padding: 16rpx 24rpx; font-size: 28rpx; margin-right: 20rpx;"
+        confirm-type="send"
+        bindconfirm="sendMessage"
         bindinput="bindInput"
+        bindfocus="onInputFocus"
+        bindblur="onInputBlur"
+        bindkeyboardheightchange="onKeyboardHeightChange"
+        adjust-position="false"
+        cursor-spacing="16"
         value="{{inputValue}}"
       ></input>
       <button 

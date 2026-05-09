@@ -5,7 +5,7 @@ Page({
     title: '',
     content: '',
     phone: '',
-    consultTypeIndex: 0,
+    consultTypeIndex: -1,
     consultTypes: ['民事纠纷', '刑事辩护', '经济纠纷', '婚姻家庭', '房产纠纷', '知识产权', '其他'],
     submitting: false
   },
@@ -56,6 +56,14 @@ Page({
     if (!content || !content.trim()) {
       wx.showToast({
         title: '请输入咨询内容',
+        icon: 'none'
+      });
+      return;
+    }
+
+    if (consultTypeIndex < 0) {
+      wx.showToast({
+        title: '请选择咨询类型',
         icon: 'none'
       });
       return;

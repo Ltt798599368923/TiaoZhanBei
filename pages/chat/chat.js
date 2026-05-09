@@ -12,7 +12,11 @@ Page({
       }
     ],
     inputValue: '',
-    isLoading: false
+    isLoading: false,
+    scrollIntoView: '',
+    headerHeight: 0,
+    inputBarHeight: 0,
+    keyboardHeight: 0
   },
 
   onLoad(options) {
@@ -24,10 +28,55 @@ Page({
     });
   },
 
+  onReady() {
+    this.measureLayout();
+  },
+
+  measureLayout() {
+    const query = wx.createSelectorQuery().in(this);
+    query.select('#chat-header').boundingClientRect();
+    query.select('#chat-input-bar').boundingClientRect();
+    query.exec((res) => {
+      const headerRect = res && res[0];
+      const inputRect = res && res[1];
+      this.setData({
+        headerHeight: headerRect ? headerRect.height : 0,
+        inputBarHeight: inputRect ? inputRect.height : 0
+      });
+    });
+  },
+
   bindInput(e) {
     this.setData({
       inputValue: e.detail.value
     })
+  },
+
+  onInputFocus() {
+    this.measureLayout();
+    const last = this.data.messages[this.data.messages.length - 1];
+    if (last) {
+      this.setData({ scrollIntoView: 'msg-' + last.id });
+    }
+  },
+
+  onInputBlur() {
+    if (this.data.keyboardHeight !== 0) {
+      this.setData({ keyboardHeight: 0 });
+    }
+    this.measureLayout();
+  },
+
+  onKeyboardHeightChange(e) {
+    const height = (e && e.detail && e.detail.height) ? e.detail.height : 0;
+    this.setData({ keyboardHeight: height });
+    if (height > 0) {
+      const last = this.data.messages[this.data.messages.length - 1];
+      if (last) {
+        this.setData({ scrollIntoView: 'msg-' + last.id });
+      }
+    }
+    this.measureLayout();
   },
 
   sendMessage() {
@@ -43,7 +92,8 @@ Page({
     this.setData({
       messages: [...this.data.messages, userMessage],
       inputValue: '',
-      isLoading: true
+      isLoading: true,
+      scrollIntoView: 'msg-' + userMessage.id
     })
     
     wx.showLoading({
@@ -70,8 +120,10 @@ Page({
           
           this.setData({
             messages: [...this.data.messages, botMessage],
-            isLoading: false
+            isLoading: false,
+            scrollIntoView: 'msg-' + botMessage.id
           });
+          this.measureLayout();
         } else {
           wx.showToast({
             title: res.message || '请求失败',

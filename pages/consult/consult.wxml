@@ -25,23 +25,28 @@
   <!-- 在线咨询表单 -->
   <view class="consult-form">
     <view class="form-item">
+      <text class="form-label">咨询标题</text>
+      <input class="form-input" placeholder="请输入咨询标题" maxlength="50" bindinput="onTitleInput"></input>
+    </view>
+
+    <view class="form-item">
       <text class="form-label">咨询内容</text>
-      <textarea class="form-textarea" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" style="position: relative; left: -21rpx; top: 1rpx"></textarea>
+      <textarea class="form-textarea" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" bindinput="onContentInput" style="position: relative; left: -21rpx; top: 1rpx"></textarea>
     </view>
     
     <view class="form-item">
       <text class="form-label">联系方式</text>
-      <input class="form-input" placeholder="请留下您的手机号，方便律师联系您" type="number" style="width: 585rpx; display: block; box-sizing: border-box"></input>
+      <input class="form-input" placeholder="请留下您的手机号，方便律师联系您" type="number" bindinput="onPhoneInput" style="width: 585rpx; display: block; box-sizing: border-box"></input>
     </view>
     
     <view class="form-item">
       <text class="form-label">咨询类型</text>
-      <picker class="form-picker" range="['民事纠纷', '刑事辩护', '经济纠纷', '婚姻家庭', '房产纠纷', '知识产权', '其他']" style="width: 607rpx; display: flex; box-sizing: border-box">
-        <view class="picker-view">请选择咨询类型</view>
+      <picker class="form-picker" range="{{consultTypes}}" value="{{consultTypeIndex}}" bindchange="onTypeChange" style="width: 607rpx; display: flex; box-sizing: border-box">
+        <view class="picker-view">{{consultTypes[consultTypeIndex] || '请选择咨询类型'}}</view>
       </picker>
     </view>
     
-    <button class="submit-btn">提交咨询</button>
+    <button class="submit-btn" bindtap="submitConsult" loading="{{submitting}}" disabled="{{submitting}}">提交咨询</button>
   </view>
 
   <!-- 常见问题 -->
