@@ -1,27 +1,16 @@
 <!--document.wxml-->
 <!-- 文书模板页面结构 -->
 <view class="container" style="background-color: #F5F4F0; min-height: 100vh; padding-bottom: 100rpx;">
-  <!-- 顶部 Header（红色背景） -->
-  <view style="background: #C0190E; width: 100%; padding: 30rpx; display: flex; flex-direction: column; align-items: center; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <!-- 顶部一行 -->
-    <view style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20rpx;">
-      <view style="display: flex; align-items: center; flex: 1;">
-        <view bindtap="goBack" style="width: 40rpx; height: 40rpx; display: flex; align-items: center; justify-content: center; margin-right: 10rpx;">
-          <text style="font-size: 28rpx; color: #FFFFFF;">←</text>
-        </view>
-        <text style="font-size: 24rpx; color: #FFFFFF; opacity: 0.8;">专业法律服务平台</text>
-      </view>
-      <view style="width: 40rpx; height: 40rpx; display: flex; align-items: center; justify-content: center; background-color: rgba(255,255,255,0.2); border-radius: 50%;">
-        <text style="font-size: 24rpx; color: #FFFFFF;">🔔</text>
-      </view>
+  <!-- 顶部 Header -->
+  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; text-align: center; color: white;">
+    <view style="display: flex; align-items: center; margin-bottom: 20rpx;">
+      <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 22rpx">←</view>
+      <text style="flex: 1; text-align: center; padding-right: 60rpx; font-size: 34rpx; font-weight: bold; position: relative; left: 0rpx; top: 22rpx">法律文书代写</text>
     </view>
-    <!-- 大标题 -->
-    <text style="font-size: 48rpx; color: #FFFFFF; font-weight: bold; text-align: center; margin-bottom: 10rpx;">法律文书代写</text>
-    <!-- 副标题 -->
-    <text style="font-size: 24rpx; color: #FFFFFF; opacity: 0.9; margin-bottom: 30rpx;">律师专业代写 · 合法合规 · 高效保密</text>
+    <text style="font-size: 24rpx; opacity: 0.9;">律师专业代写 · 合法合规 · 高效保密</text>
     <!-- 搜索框 -->
-    <view style="width: 100%; padding: 0 20rpx; margin-bottom: 20rpx;">
-      <view style="background-color: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 30px; padding: 12px 16px; display: flex; align-items: center; width: 100%;">
+    <view style="width: 100%; padding: 0 20rpx; margin-top: 20rpx;">
+      <view style="background-color: rgba(255,255,255,0.2); border-radius: 30px; padding: 12px 16px; display: flex; align-items: center;">
         <text style="font-size: 16px; color: rgba(255,255,255,0.8); margin-right: 8px;">🔍</text>
         <text style="font-size: 14px; color: rgba(255,255,255,0.8); flex: 1;">搜索文书模板…</text>
       </view>
@@ -29,7 +18,7 @@
   </view>
 
   <!-- 文书类型区块 -->
-  <view style="padding: 20rpx 10rpx; margin-bottom: 15rpx; width: 750rpx; height: 539rpx; display: block; box-sizing: border-box">
+  <view style="padding: 20rpx 10rpx; margin-bottom: 15rpx;">
     <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15rpx; padding: 0 10rpx;">
       <text style="font-size: 32rpx; font-weight: bold; color: #1a1a1a;">文书类型</text>
       <view bindtap="viewAllTemplates" style="display: flex; align-items: center; font-size: 24rpx; color: #C0190E;">
@@ -37,33 +26,14 @@
         <text style="margin-left: 8rpx;">〉</text>
       </view>
     </view>
-    <view style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15rpx; padding: 0 10rpx; height: 443rpx; box-sizing: border-box">
-      <view bindtap="selectCategory" data-id="{{item.id}}" wx:for="{{categories}}" wx:key="id" style="background-color: white; border-radius: 14px; padding: 20rpx; border: 0.5px solid #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 235rpx; box-sizing: border-box">
-        <!-- 图标区 -->
-        <view wx:if="{{item.id === 1}}" style="width: 50rpx; height: 50rpx; background-color: #FFF0EF; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; margin-bottom: 10rpx;">
-          <text style="font-size: 24rpx; color: #C0190E;">📋</text>
+    <view style="display: flex; flex-wrap: wrap; gap: 15rpx; padding: 0 10rpx;">
+      <view bindtap="selectCategory" data-id="{{item.id}}" wx:for="{{categories}}" wx:key="id" style="background-color: white; border-radius: 14px; padding: 20rpx; border: 0.5px solid #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: calc(33.33% - 10rpx); box-sizing: border-box">
+        <view style="width: 50rpx; height: 50rpx; background-color: #FFF0EF; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; margin-bottom: 10rpx;">
+          <text style="font-size: 24rpx; color: #C0190E;">{{item.icon || '📄'}}</text>
         </view>
-        <view wx:elif="{{item.id === 2}}" style="width: 50rpx; height: 50rpx; background-color: #FFF0EF; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; margin-bottom: 10rpx;">
-          <text style="font-size: 24rpx; color: #C0190E;">⚖️</text>
-        </view>
-        <view wx:elif="{{item.id === 3}}" style="width: 50rpx; height: 50rpx; background-color: #FFF0EF; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; margin-bottom: 10rpx;">
-          <text style="font-size: 24rpx; color: #C0190E;">🏛️</text>
-        </view>
-        <view wx:elif="{{item.id === 4}}" style="width: 50rpx; height: 50rpx; background-color: #FFF0EF; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; margin-bottom: 10rpx;">
-          <text style="font-size: 24rpx; color: #C0190E;">🤝</text>
-        </view>
-        <view wx:elif="{{item.id === 5}}" style="width: 50rpx; height: 50rpx; background-color: #FFF0EF; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; margin-bottom: 10rpx;">
-          <text style="font-size: 24rpx; color: #C0190E;">📄</text>
-        </view>
-        <view wx:else style="width: 50rpx; height: 50rpx; background-color: #FFF0EF; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; margin-bottom: 10rpx;">
-          <text style="font-size: 24rpx; color: #C0190E;">📑</text>
-        </view>
-        <!-- 分类名称 -->
-        <text style="font-size: 12px; color: #1a1a1a; margin-bottom: 6rpx;">{{item.name}}</text>
-        <!-- 数字 -->
-        <text style="font-size: 20px; font-weight: bold; color: #C0190E; margin-bottom: 2rpx;">{{item.count}}</text>
-        <!-- 可用模板标签 -->
-        <text style="font-size: 10px; color: #999;">可用模板</text>
+        <text style="font-size: 24rpx; color: #1a1a1a; margin-bottom: 6rpx;">{{item.name}}</text>
+        <text style="font-size: 28rpx; font-weight: bold; color: #C0190E; margin-bottom: 2rpx;">{{item.count}}</text>
+        <text style="font-size: 20rpx; color: #999;">可用模板</text>
       </view>
     </view>
   </view>
@@ -80,32 +50,25 @@
         <text style="margin-left: 8rpx;">〉</text>
       </view>
     </view>
-    <!-- 纵向文档卡片列表 -->
-    <view style="display: flex; flex-direction: column; gap: 12rpx; padding: 0 10rpx; width: 591rpx; height: 558rpx; box-sizing: border-box">
+    <view style="display: flex; flex-direction: column; gap: 12rpx; padding: 0 10rpx;">
       <view bindtap="onDocumentTap" data-id="{{item.id}}" wx:for="{{documents}}" wx:key="id" wx:if="{{index < 3}}" style="background-color: white; border-radius: 14px; padding: 20rpx; border: 0.5px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between;">
-        <!-- 左侧图标 -->
         <view style="width: 50rpx; height: 50rpx; background-color: #FFF0EF; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; margin-right: 15rpx;">
           <text style="font-size: 24rpx; color: #C0190E;">📄</text>
         </view>
-        <!-- 中间信息 -->
         <view style="flex: 1; margin-right: 15rpx;">
-          <text style="font-size: 14px; font-weight: bold; color: #1a1a1a; margin-bottom: 6rpx; display: block;">{{item.title}}</text>
+          <text style="font-size: 28rpx; font-weight: bold; color: #1a1a1a; margin-bottom: 6rpx; display: block;">{{item.title}}</text>
           <view style="display: flex; align-items: center; gap: 10rpx;">
-            <view style="background-color: #C0190E; color: white; padding: 4rpx 10rpx; border-radius: 12rpx; font-size: 10px;">{{item.category}}</view>
-            <text style="font-size: 12px; color: #999; display: flex; align-items: center;">
+            <view style="background-color: #C0190E; color: white; padding: 4rpx 10rpx; border-radius: 12rpx; font-size: 20rpx;">{{item.category}}</view>
+            <text style="font-size: 24rpx; color: #999; display: flex; align-items: center;">
               <text style="margin-right: 4rpx;">👀</text>
               {{item.download}}次
             </text>
           </view>
         </view>
-        <!-- 右侧按钮 -->
-        <view bindtap="useDocument" data-id="{{item.id}}" style="background-color: #1a1a1a; color: white; padding: 8rpx 20rpx; border-radius: 30rpx; font-size: 12px; font-weight: 500;">
+        <view bindtap="useDocument" data-id="{{item.id}}" style="background-color: #1a1a1a; color: white; padding: 8rpx 20rpx; border-radius: 30rpx; font-size: 24rpx; font-weight: 500;">
           立即使用
         </view>
       </view>
     </view>
   </view>
-
-  <!-- 底部 Tab Bar -->
-  
 </view>

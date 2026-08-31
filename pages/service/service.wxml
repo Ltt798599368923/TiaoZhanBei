@@ -1,7 +1,7 @@
 <!-- 服务中心页面结构 -->
 <view class="container">
   <!-- 顶部标题区域 -->
-  <view style="background-color: #f5222d; width: 100%; padding: 15px; text-align: center; color: white; font-size: 18px; font-weight: bold;">
+  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; justify-content: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
     服务中心
   </view>
 

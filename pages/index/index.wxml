@@ -124,23 +124,8 @@
     </view>
     <!-- 新闻列表 -->
     <view class="news-list">
-      <view class="news-item" bindtap="onNewsTap" data-index="0">
-        <text class="news-text">反外国不当域外管辖条例（4月13日施行）</text>
-      </view>
-      <view class="news-item" bindtap="onNewsTap" data-index="1">
-        <text class="news-text">"机闹"正式入刑（4月9日施行）</text>
-      </view>
-      <view class="news-item" bindtap="onNewsTap" data-index="2">
-        <text class="news-text">全国"4·2行动"严打非法放贷（4月启动）</text>
-      </view>
-      <view class="news-item" bindtap="onNewsTap" data-index="3">
-        <text class="news-text">AI拟人化服务新规（7月15日施行）</text>
-      </view>
-      <view class="news-item" bindtap="onNewsTap" data-index="4">
-        <text class="news-text">贪污贿赂新解释（5月1日施行）</text>
-      </view>
-      <view class="news-item" bindtap="onNewsTap" data-index="5">
-        <text class="news-text">信用修复管理办法（4月1日施行）</text>
+      <view class="news-item" wx:for="{{hotNews}}" wx:key="index" bindtap="onNewsTap" data-index="{{index}}">
+        <text class="news-text">{{item.title}}</text>
       </view>
     </view>
   </view>

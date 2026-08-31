@@ -25,8 +25,12 @@ Page({
     api.getConsultations(userId)
       .then(res => {
         if (res.code === 200 && res.data) {
+          const consults = res.data.map(item => {
+            item.displayTime = this.formatTime(item.time);
+            return item;
+          });
           this.setData({
-            consults: res.data
+            consults: consults
           });
         }
       })
@@ -42,10 +46,34 @@ Page({
       });
   },
 
+  formatTime(timeStr) {
+    if (!timeStr) return '';
+    var date = new Date(timeStr.replace(/-/g, '/'));
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var yesterday = new Date(today - 86400000);
+    var msgDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    var hours = String(date.getHours()).padStart(2, '0');
+    var minutes = String(date.getMinutes()).padStart(2, '0');
+    var clock = hours + ':' + minutes;
+
+    var month = String(date.getMonth() + 1).padStart(2, '0');
+    var day = String(date.getDate()).padStart(2, '0');
+
+    if (msgDate.getTime() === today.getTime()) {
+      return '今天 ' + clock;
+    } else if (msgDate.getTime() === yesterday.getTime()) {
+      return '昨天 ' + clock;
+    } else {
+      return month + '-' + day + ' ' + clock;
+    }
+  },
+
   viewDetail(e) {
     const userId = wx.getStorageSync('userId');
     const id = e.currentTarget.dataset.id;
-    
+
     api.getConsultationDetail(userId, id)
       .then(res => {
         if (res.code === 200 && res.data) {
@@ -66,7 +94,7 @@ Page({
   deleteConsult(e) {
     const userId = wx.getStorageSync('userId');
     const id = e.currentTarget.dataset.id;
-    
+
     wx.showModal({
       title: '确认删除',
       content: '确定要删除这条咨询吗？',

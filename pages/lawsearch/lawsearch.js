@@ -26,6 +26,10 @@ Page({
     });
   },
 
+  goBack() {
+    wx.navigateBack();
+  },
+
   onSearch() {
     const keyword = this.data.searchKeyword.trim();
     if (!keyword) {

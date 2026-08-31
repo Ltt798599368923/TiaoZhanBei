@@ -131,7 +131,7 @@
 }
 
 .tab-bar-item.active text {
-  color: #A;
+  color: #f5222d;
 }
 /* 自定义导航栏：和你要的顶部渐变效果完全一致 */
 .custom-nav {

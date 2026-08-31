@@ -1,43 +1,35 @@
-<view class="container" style="background-color: #f5f5f5; min-height: 100vh; padding-bottom: 80px;">
-  <!-- 顶部标题 -->
-  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 15px; display: flex; align-items: center; color: white; font-size: 18px; font-weight: bold; box-shadow: 0 2px 8px rgba(245, 34, 45, 0.3);">
-    <view bindtap="goBack" style="padding: 8px; margin-right: 16px;">
-      <text style="font-size: 24px;">←</text>
-    </view>
-    <text style="flex: 1; text-align: center; position: relative; left: -33rpx; top: 9rpx">我的咨询</text>
-    <view style="padding: 8px;"></view>
+<view class="page">
+  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
+    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 14rpx">←</view>
+    <text style="flex: 1; text-align: center; padding-right: 60rpx; position: relative; left: 0rpx; top: 22rpx">我的咨询</text>
   </view>
 
-  <!-- 咨询列表 -->
-  <view style="background-color: white; margin-top: 10px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <view style="padding: 15px; border-bottom: 1px solid #f0f0f0;">
-      <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-        <text style="font-size: 15px; font-weight: 500; color: #333;">婚姻财产分割咨询</text>
-        <text style="font-size: 12px; color: #999;">2026-04-22</text>
+  <view wx:if="{{loading}}" class="loading-wrap">加载中...</view>
+
+  <view wx:elif="{{consults.length > 0}}" class="consult-list">
+    <view wx:for="{{consults}}" wx:key="id" class="consult-card {{item.status === 'pending' ? 'pending' : 'replied'}}">
+      <view class="card-header">
+        <text class="card-title">{{item.title}}</text>
+        <text class="card-status {{item.status === 'pending' ? 'status-pending' : 'status-replied'}}">
+          {{item.status === 'pending' ? '待回复' : '已回复'}}
+        </text>
       </view>
-      <text style="font-size: 14px; color: #666; line-height: 1.4; margin-bottom: 10px;">咨询内容：我想了解离婚时财产如何分割，特别是房产和存款的处理方式。</text>
-      <view style="display: flex; justify-content: space-between; align-items: center;">
-        <text style="font-size: 12px; color: #f5222d;">已回复</text>
-        <button style="background-color: #f5f5f5; color: #333; border: 1px solid #d9d9d9; padding: 4px 12px; border-radius: 16px; font-size: 12px;">查看详情</button>
-      </view>
-    </view>
-    <view style="padding: 15px; border-bottom: 1px solid #f0f0f0;">
-      <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-        <text style="font-size: 15px; font-weight: 500; color: #333;">劳动合同纠纷咨询</text>
-        <text style="font-size: 12px; color: #999;">2026-04-20</text>
-      </view>
-      <text style="font-size: 14px; color: #666; line-height: 1.4; margin-bottom: 10px;">咨询内容：公司拖欠工资，我想了解如何维护自己的权益。</text>
-      <view style="display: flex; justify-content: space-between; align-items: center;">
-        <text style="font-size: 12px; color: #f5222d;">已回复</text>
-        <button style="background-color: #f5f5f5; color: #333; border: 1px solid #d9d9d9; padding: 4px 12px; border-radius: 16px; font-size: 12px;">查看详情</button>
+      <text class="card-content">
+        <text class="card-label">咨询内容：</text>{{item.content || '暂无内容'}}
+      </text>
+      <view class="card-footer">
+        <text class="card-time">⏱ {{item.displayTime}}</text>
+        <view class="card-actions">
+          <button class="btn-detail" data-id="{{item.id}}" bindtap="viewDetail">查看详情</button>
+          <button class="btn-delete" data-id="{{item.id}}" bindtap="deleteConsult">删除</button>
+        </view>
       </view>
     </view>
   </view>
 
-  <!-- 空状态 -->
-  <view style="display: none; padding: 60px 20px; text-align: center; margin-top: 30px;">
-    <view style="font-size: 60px; margin-bottom: 20px;">💬</view>
-    <text style="font-size: 16px; color: #999;">暂无咨询记录</text>
-    <text style="font-size: 14px; color: #ccc; margin-top: 10px; display: block;">您的咨询记录会显示在这里</text>
+  <view wx:else class="empty-wrap">
+    <view class="empty-icon">💬</view>
+    <view class="empty-text">暂无咨询记录</view>
+    <view class="empty-sub">您的咨询记录会显示在这里</view>
   </view>
 </view>

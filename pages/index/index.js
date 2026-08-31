@@ -68,24 +68,20 @@ Page({
     wx.vibrateShort({ type: 'light' });
   },
   onLoad() {
-    this.initLocation();     // 初始化定位
-    this.startSloganScroll();  // 开始宣传语滚动
     this.initLocation();
-  this.startSloganScroll();
+    this.startSloganScroll();
 
-  // 👇 自动轮播书名（每 3.5 秒）
-  this.autoBookTimer = setInterval(() => {
-    this.onNextBook();
-  }, 3500);
+    this.autoBookTimer = setInterval(() => {
+      this.onNextBook();
+    }, 3500);
   },
 
-  /**
-   * 页面卸载
-   */
   onUnload() {
-    // 清除定时器
     if (this.data.marqueeTimer) {
       clearInterval(this.data.marqueeTimer);
+    }
+    if (this.autoBookTimer) {
+      clearInterval(this.autoBookTimer);
     }
   },
 

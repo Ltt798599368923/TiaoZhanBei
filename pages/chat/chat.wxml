@@ -4,7 +4,7 @@
     <view bindtap="goBack" style="padding: 16rpx; margin-right: 24rpx;">
       
     </view>
-    <text style="flex: 1; text-align: center;">{{name}}</text>
+    <text style="flex: 1; text-align: center; position: relative; left: -39rpx; top: 39rpx">{{name}}</text>
     <view style="padding: 16rpx;">
       <text style="font-size: 32rpx;">⋯</text>
     </view>

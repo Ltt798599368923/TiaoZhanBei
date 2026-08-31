@@ -165,18 +165,10 @@ Page({
    * @param {Object} e - 事件对象
    */
   buttonDown(e) {
-    // 按钮按下效果
-    const button = e.currentTarget;
-    button.style.opacity = '0.7';
+    this.setData({ btnPressed: e.currentTarget.dataset.id });
   },
 
-  /**
-   * 按钮释放效果
-   * @param {Object} e - 事件对象
-   */
   buttonUp(e) {
-    // 按钮释放效果
-    const button = e.currentTarget;
-    button.style.opacity = '1';
+    this.setData({ btnPressed: null });
   }
 })

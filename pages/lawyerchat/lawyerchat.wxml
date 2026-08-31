@@ -1,12 +1,8 @@
 <view class="container">
-  <view class="header" style="height: 117rpx; display: flex; box-sizing: border-box">
-    <view bindtap="goBack" class="back-btn">
-      <text>←</text>
-    </view>
-    <text class="header-title">{{name}}</text>
-    <view class="header-right">
-      <text>⋯</text>
-    </view>
+  <view class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; box-sizing: border-box; color: white;">
+    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">←</view>
+    <text style="flex: 1; text-align: center; font-size: 34rpx; font-weight: bold;">{{name}}</text>
+    <view style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">⋯</view>
   </view>
 
   <view class="chat-content">

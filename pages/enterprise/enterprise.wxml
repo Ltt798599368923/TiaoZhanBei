@@ -1,16 +1,12 @@
 <!-- 企业法律服务页面结构 -->
 <view class="container" style="background-color: #F5F7FA; min-height: 100vh; padding-bottom: 80px;">
   <!-- 顶部区域 - 渐变背景 -->
-  <view style="background: linear-gradient(135deg, #1A3A5F 0%, #2A4A6F 100%); width: 100%; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <view style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-      <view bindtap="goBack" style="width: 40rpx; height: 40rpx; display: flex; align-items: center; justify-content: center; margin-right: 24rpx;">
-        <text style="color: white; font-size: 28rpx;">←</text>
-      </view>
-      <text style="color: white; font-size: 14px; opacity: 0.9; flex: 1;">法律咨询</text>
-      <view style="width: 40rpx;"></view>
+  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; text-align: center; color: white; height: 200rpx; display: block">
+    <view style="display: flex; align-items: center; margin-bottom: 20rpx;">
+      <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 22rpx">←</view>
+      <text style="flex: 1; text-align: center; padding-right: 60rpx; font-size: 34rpx; font-weight: bold; position: relative; left: -30rpx; top: 22rpx">企业法律服务</text>
     </view>
-    <text style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 5px; text-align: center; position: relative; left: 228rpx; top: -38rpx">企业法律服务</text>
-    <text style="color: white; font-size: 15px; opacity: 0.8; text-align: center; position: relative; left: -136rpx; top: 9rpx">从创立到上市，一站式法律保障</text>
+    <text style="font-size: 24rpx; opacity: 0.9; position: relative; left: 0rpx; top: 6rpx">从创立到上市，一站式法律保障</text>
   </view>
 
   <!-- 服务内容区域 -->
