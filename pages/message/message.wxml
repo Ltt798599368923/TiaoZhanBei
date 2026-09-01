@@ -34,7 +34,7 @@
       bindtap="goToDetail"
       data-id="{{item.id}}"
       data-name="{{item.name}}"
-      data-type="{{item.name === '系统通知' ? 'system' : 'chat'}}"
+      data-type="{{item.type || 'chat'}}"
      style="position: relative; left: -12rpx; top: 90rpx">
       <!-- 头像 -->
       <view class="avatar {{item.name === '系统通知' ? 'avatar-system' : item.id === 1 ? 'avatar-blue' : 'avatar-yellow'}}">

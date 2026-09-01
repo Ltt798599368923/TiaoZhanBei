@@ -12,6 +12,10 @@ Page({
     });
   },
 
+  goBack() {
+    wx.navigateBack({ delta: 1 });
+  },
+
   navigateTo(e) {
     const url = e.currentTarget.dataset.url;
     if (url) {
@@ -166,10 +170,10 @@ Page({
       cancelText: '取消',
       success: (res) => {
         if (res.confirm) {
-          wx.showToast({
-            title: '已退出登录',
-            icon: 'success'
-          });
+          wx.removeStorageSync('token');
+          wx.removeStorageSync('userId');
+          wx.removeStorageSync('userInfo');
+          wx.reLaunch({ url: '/pages/login/login' });
         }
       }
     });

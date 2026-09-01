@@ -49,12 +49,20 @@ Page({
       wx.hideLoading();
       
       if (res.code === 200) {
-        this.setData({
-          searchResults: [{
-            lawName: '搜索结果',
+        const results = (res.results || []).map((item, index) => ({
+          ...item,
+          id: item.id || 'law-' + index
+        }));
+        if (results.length === 0 && res.aiAdvice) {
+          results.push({
+            id: 'ai-advice',
+            lawName: '法律检索建议',
             article: '',
             content: res.aiAdvice
-          }]
+          });
+        }
+        this.setData({
+          searchResults: results
         });
       } else {
         wx.showToast({

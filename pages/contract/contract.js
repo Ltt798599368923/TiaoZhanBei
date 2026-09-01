@@ -26,11 +26,17 @@ Page({
     title: '',
     fileName: '',
     filePath: '',
-    submitting: false
+    submitting: false,
+    contracts: [],
+    loadingContracts: false
   },
 
   onLoad() {
-    
+    this.loadContracts();
+  },
+
+  onShow() {
+    this.loadContracts();
   },
 
   goBack() {
@@ -48,6 +54,28 @@ Page({
     this.setData({
       title: e.detail.value
     });
+  },
+
+  loadContracts() {
+    const userId = wx.getStorageSync('userId');
+    if (!userId) {
+      this.setData({ contracts: [] });
+      return;
+    }
+
+    this.setData({ loadingContracts: true });
+    api.getContracts(userId)
+      .then(res => {
+        if (res.code === 200) {
+          this.setData({ contracts: res.data || [] });
+        }
+      })
+      .catch(err => {
+        console.error('获取合同记录失败', err);
+      })
+      .finally(() => {
+        this.setData({ loadingContracts: false });
+      });
   },
 
   uploadContract() {
@@ -148,9 +176,13 @@ Page({
             title: '提交成功',
             icon: 'success'
           });
-          setTimeout(() => {
-            wx.navigateBack();
-          }, 1500);
+          this.setData({
+            selectedType: null,
+            title: '',
+            fileName: '',
+            filePath: ''
+          });
+          this.loadContracts();
         } else {
           wx.showToast({
             title: res.message || '提交失败',
@@ -169,5 +201,54 @@ Page({
       .finally(() => {
         this.setData({ submitting: false });
       });
+  },
+
+  viewContract(e) {
+    const userId = wx.getStorageSync('userId');
+    const contractId = e.currentTarget.dataset.id;
+    if (!userId || !contractId) return;
+
+    api.getContractDetail(userId, contractId)
+      .then(res => {
+        if (res.code !== 200 || !res.data) {
+          wx.showToast({ title: res.message || '加载失败', icon: 'none' });
+          return;
+        }
+        const contract = res.data;
+        wx.showModal({
+          title: contract.title,
+          content: contract.reviewResult || '当前合同正在等待审核，请留意后续消息通知。',
+          showCancel: false
+        });
+      })
+      .catch(() => {
+        wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' });
+      });
+  },
+
+  deleteContract(e) {
+    const userId = wx.getStorageSync('userId');
+    const contractId = e.currentTarget.dataset.id;
+    if (!userId || !contractId) return;
+
+    wx.showModal({
+      title: '删除合同记录',
+      content: '删除后无法恢复，确定继续吗？',
+      success: modalRes => {
+        if (!modalRes.confirm) return;
+        api.deleteContract(userId, contractId)
+          .then(res => {
+            if (res.code === 200) {
+              wx.showToast({ title: '已删除', icon: 'success' });
+              this.loadContracts();
+            } else {
+              wx.showToast({ title: res.message || '删除失败', icon: 'none' });
+            }
+          })
+          .catch(() => {
+            wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' });
+          });
+      }
+    });
   }
 })

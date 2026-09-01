@@ -31,7 +31,10 @@
           <text class="template-description">{{item.description || item.category}}</text>
           <text class="template-meta">使用 {{item.downloadCount || 0}} 次</text>
         </view>
-        <text class="template-action">使用</text>
+        <view style="display: flex; align-items: center;">
+          <text catchtap="addFavorite" data-id="{{item.id}}" data-title="{{item.title}}" data-description="{{item.description || item.category}}" style="color: #888; font-size: 24rpx; margin-right: 20rpx;">收藏</text>
+          <text class="template-action">使用</text>
+        </view>
       </view>
     </block>
   </view>

@@ -2,10 +2,7 @@ const api = require('../../utils/api.js')
 
 Page({
   data: {
-    chatMessages: [
-      { id: 'chat-1', name: '张三律师', content: '您好，请问有什么法律问题需要咨询？', time: '10:00', unread: true },
-      { id: 'chat-2', name: '李四律师', content: '合同审查已完成初步分析，请查看后续回复。', time: '09:30', unread: false }
-    ],
+    chatMessages: [],
     messages: [],
     filteredMessages: [],
     searchText: ''
@@ -25,6 +22,7 @@ Page({
         ? (res.data || []).map(item => ({
             id: item.id,
             name: '系统通知',
+            type: 'system',
             content: item.title || item.content,
             time: this.formatTime(item.createdTime),
             unread: false

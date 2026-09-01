@@ -78,9 +78,8 @@ Page({
         });
         break;
       case 3:
-        // 跳转到法律文书代写页面
         wx.navigateTo({
-          url: '/pages/document/document'
+          url: '/pages/template/template'
         });
         break;
       case 4:

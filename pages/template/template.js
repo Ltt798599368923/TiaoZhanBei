@@ -74,14 +74,43 @@ Page({
     })
   },
 
+  addFavorite(e) {
+    const userId = wx.getStorageSync('userId')
+    const id = e.currentTarget.dataset.id
+    const title = e.currentTarget.dataset.title
+    const description = e.currentTarget.dataset.description
+    if (!userId) {
+      wx.showToast({ title: '请先登录', icon: 'none' })
+      return
+    }
+
+    api.addFavorite(userId, {
+      title,
+      description,
+      icon: '📄',
+      contentType: 'template',
+      contentId: id
+    }).then(res => {
+      wx.showToast({ title: res.code === 200 ? '已收藏' : (res.message || '收藏失败'), icon: res.code === 200 ? 'success' : 'none' })
+    }).catch(() => {
+      wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' })
+    })
+  },
+
   useTemplate(template) {
-    api.downloadTemplate(template.id).finally(() => {
+    api.downloadTemplate(template.id).then(res => {
+      if (res.code !== 200) {
+        wx.showToast({ title: res.message || '操作失败', icon: 'none' })
+        return
+      }
       if (template.content) {
         wx.setClipboardData({ data: template.content })
       } else {
         wx.showToast({ title: '模板已记录使用', icon: 'success' })
       }
       this.loadTemplates(this.data.selectedCategory)
+    }).catch(() => {
+      wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' })
     })
   }
 })

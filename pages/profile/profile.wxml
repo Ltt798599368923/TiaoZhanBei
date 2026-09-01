@@ -2,34 +2,27 @@
 <view class="container">
   <!-- 顶部用户信息区域 -->
   <view style="background-color: #f5222d; width: 100%; padding: 20px; text-align: center; color: white;">
-    <view style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin: 0 auto 10px; background-color: white; display: flex; align-items: center; justify-content: center;">
-      <text style="font-size: 40px;">👤</text>
+    <view style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin: 0 auto 10px; background-color: white; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+      <image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" mode="aspectFill" style="width: 100%; height: 100%;" />
+      <text wx:else style="font-size: 40px;">👤</text>
     </view>
-    <text style="font-size: 18px; font-weight: bold; margin-bottom: 5px; display: block;">张三</text>
+    <text style="font-size: 18px; font-weight: bold; margin-bottom: 5px; display: block;">{{userInfo.nickname || '用户'}}</text>
     <text style="font-size: 14px; opacity: 0.8;">普通用户</text>
   </view>
 
   <!-- 个人信息列表区域 -->
   <view style="width: 90%; margin-top: -20px; background-color: white; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
-    <!-- 学习目标 -->
     <view style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
-      <text style="font-size: 14px;">学习目标</text>
-      <text style="font-size: 14px; color: #999999;">了解婚姻法律</text>
+      <text style="font-size: 14px;">手机号码</text>
+      <text style="font-size: 14px; color: #999999;">{{userInfo.phone || '未绑定'}}</text>
     </view>
-    <!-- 学习记录 -->
     <view style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
-      <text style="font-size: 14px;">学习记录</text>
-      <text style="font-size: 14px; color: #999999;">3次</text>
+      <text style="font-size: 14px;">账号状态</text>
+      <text style="font-size: 14px; color: #52c41a;">已登录</text>
     </view>
-    <!-- 我的专属律师 -->
-    <view style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
-      <text style="font-size: 14px;">我的专属律师</text>
-      <text style="font-size: 14px; color: #f5222d;">李四律师</text>
-    </view>
-    <!-- 法律服务热线 -->
     <view style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
       <text style="font-size: 14px;">法律服务热线</text>
-      <text style="font-size: 14px; color: #999999;">400-123-4567</text>
+      <text style="font-size: 14px; color: #999999;">12348</text>
     </view>
   </view>
 
