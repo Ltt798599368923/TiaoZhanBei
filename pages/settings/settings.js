@@ -12,6 +12,13 @@ Page({
     });
   },
 
+  navigateTo(e) {
+    const url = e.currentTarget.dataset.url;
+    if (url) {
+      wx.navigateTo({ url });
+    }
+  },
+
 
 
   // 编辑个人信息

@@ -1,61 +1,87 @@
-//首页--文书模版
+const api = require('../../utils/api.js')
 
-// template.js
 Page({
   data: {
-    // 模板分类数据
     categories: [
-      { id: 'civil', name: '民事类', icon: '⚖️' },
-      { id: 'criminal', name: '刑事类', icon: '🔒' },
-      { id: 'contract', name: '合同类', icon: '📄' },
+      { id: 'civil', name: '民事类', icon: '📄' },
+      { id: 'criminal', name: '刑事类', icon: '⚖️' },
+      { id: 'contract', name: '合同类', icon: '📝' },
       { id: 'administrative', name: '行政类', icon: '🏛️' },
       { id: 'company', name: '公司类', icon: '🏢' },
-      { id: 'other', name: '其他类', icon: '📋' }
+      { id: 'other', name: '其他类', icon: '📚' }
     ],
-    // 热门模板数据
-    hotTemplates: [
-      { id: 1, name: '民事起诉状', usage: 1250 },
-      { id: 2, name: '离婚协议书', usage: 980 },
-      { id: 3, name: '房屋租赁合同', usage: 860 }
-    ]
+    templates: [],
+    selectedCategory: '',
+    loading: false
   },
 
   onLoad() {
-    wx.setNavigationBarTitle({
-      title: '文书模板'
-    });
+    wx.setNavigationBarTitle({ title: '文书模板' })
+    this.loadTemplates()
   },
 
-  // 返回上一页
   goBack() {
-    wx.navigateBack({
-      delta: 1
-    });
+    wx.navigateBack({ delta: 1 })
   },
 
-  // 选择模板分类
   selectCategory(e) {
-    const category = e.currentTarget.dataset.category;
-    wx.showToast({
-      title: `选择了${category}分类`,
-      icon: 'none'
-    });
+    const category = e.currentTarget.dataset.category
+    this.loadTemplates(this.data.selectedCategory === category ? '' : category)
   },
 
-  // 查看模板详情
-  viewTemplateDetail(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.showToast({
-      title: '查看模板详情',
-      icon: 'none'
-    });
-  },
-
-  // 查看全部模板
   viewAllTemplates() {
-    wx.showToast({
-      title: '查看全部模板',
-      icon: 'none'
-    });
+    this.loadTemplates()
+  },
+
+  loadTemplates(category = '') {
+    this.setData({ loading: true, selectedCategory: category })
+    const request = category ? api.getTemplatesByCategory(category) : api.getAllTemplates()
+
+    request.then(res => {
+      if (res.code === 200) {
+        this.setData({ templates: res.data || [] })
+      } else {
+        wx.showToast({ title: res.message || '加载失败', icon: 'none' })
+      }
+    }).catch(() => {
+      wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' })
+    }).finally(() => {
+      this.setData({ loading: false })
+    })
+  },
+
+  viewTemplateDetail(e) {
+    const id = e.currentTarget.dataset.id
+    api.getTemplateDetail(id).then(res => {
+      if (res.code !== 200 || !res.data) {
+        wx.showToast({ title: res.message || '加载失败', icon: 'none' })
+        return
+      }
+
+      const template = res.data
+      wx.showModal({
+        title: template.title,
+        content: template.content || template.description || '该模板暂无正文内容。',
+        confirmText: '使用模板',
+        success: modalRes => {
+          if (modalRes.confirm) {
+            this.useTemplate(template)
+          }
+        }
+      })
+    }).catch(() => {
+      wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' })
+    })
+  },
+
+  useTemplate(template) {
+    api.downloadTemplate(template.id).finally(() => {
+      if (template.content) {
+        wx.setClipboardData({ data: template.content })
+      } else {
+        wx.showToast({ title: '模板已记录使用', icon: 'success' })
+      }
+      this.loadTemplates(this.data.selectedCategory)
+    })
   }
 })

@@ -1,1 +1,133 @@
-/* pages/template/template.wxss */
+.template-page {
+  min-height: 100vh;
+  background: #f6f7f9;
+  padding-bottom: 48rpx;
+}
+
+.template-header {
+  height: 128rpx;
+  background: #c0190e;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  font-weight: 600;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  left: 24rpx;
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42rpx;
+}
+
+.template-section {
+  margin: 24rpx;
+  background: #ffffff;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.section-header {
+  height: 88rpx;
+  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eeeeee;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #222222;
+}
+
+.all-link, .template-count, .template-meta, .template-description {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #888888;
+}
+
+.all-link, .template-action {
+  color: #c0190e;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+  padding: 24rpx;
+}
+
+.category-item {
+  min-height: 136rpx;
+  background: #f7f7f7;
+  border: 1rpx solid #eeeeee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.category-active {
+  border-color: #c0190e;
+  background: #fff4f2;
+  color: #c0190e;
+}
+
+.category-icon {
+  font-size: 36rpx;
+}
+
+.template-item {
+  min-height: 144rpx;
+  padding: 22rpx 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eeeeee;
+}
+
+.template-item:last-child {
+  border-bottom: 0;
+}
+
+.template-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.template-title {
+  color: #222222;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.template-description {
+  max-width: 500rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.template-action {
+  flex: 0 0 auto;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.empty-state {
+  padding: 64rpx 28rpx;
+  color: #888888;
+  text-align: center;
+  font-size: 28rpx;
+}

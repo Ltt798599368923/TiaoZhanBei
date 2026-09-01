@@ -237,6 +237,14 @@ const api = {
       url: BASE_URL + '/api/template/download/' + templateId,
       method: 'POST'
     })
+  },
+
+  getNotices: () => {
+    return request({ url: BASE_URL + '/api/notice/list', method: 'GET' })
+  },
+
+  getNoticeDetail: (noticeId) => {
+    return request({ url: BASE_URL + '/api/notice/detail/' + noticeId, method: 'GET' })
   }
 }
 

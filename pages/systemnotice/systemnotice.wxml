@@ -1,49 +1,13 @@
-<view class="container" style="background-color: #f5f7fa; min-height: 100vh;">
-  <!-- 顶部标题 -->
-  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
-    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 22rpx">←</view>
-    <text style="flex: 1; text-align: center; padding-right: 60rpx; position: relative; left: 0rpx; top: 22rpx">系统通知</text>
+<view class="container" style="min-height: 100vh; background: #f6f7f9;">
+  <view style="height: 128rpx; background: #c0190e; color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; font-size: 34rpx; font-weight: 600;">
+    <view bindtap="goBack" style="position: absolute; left: 24rpx; width: 64rpx; height: 64rpx; display: flex; align-items: center; justify-content: center; font-size: 42rpx;">←</view>
+    <text>系统通知</text>
   </view>
-
-  <!-- 通知内容 -->
-  <view style="background-color: white; margin: 16px; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <view style="display: flex; align-items: center; margin-bottom: 16px;">
-      <view style="width: 50px; height: 50px; border-radius: 50%; background-color: #52c41a; display: flex; align-items: center; justify-content: center; margin-right: 16px;">
-        <text style="font-size: 24px; color: white;">📢</text>
-      </view>
-      <view>
-        <text style="font-size: 16px; font-weight: 500; color: #333; margin-bottom: 4px; display: block;">系统通知</text>
-        <text style="font-size: 14px; color: #999;">昨天 14:30</text>
-      </view>
-    </view>
-
-    <view style="border-top: 1px solid #f0f0f0; padding-top: 16px;">
-      <text style="font-size: 15px; color: #333; line-height: 1.6;">尊敬的用户：</text>
-      <text style="font-size: 15px; color: #333; line-height: 1.6; margin-top: 8px; display: block;">您的法律咨询已收到，我们将尽快为您安排专业律师回复。</text>
-      <text style="font-size: 15px; color: #333; line-height: 1.6; margin-top: 8px; display: block;">预计回复时间：24小时内</text>
-      <text style="font-size: 15px; color: #333; line-height: 1.6; margin-top: 8px; display: block;">如有紧急情况，请拨打客服热线：400-123-4567</text>
-      <text style="font-size: 15px; color: #333; line-height: 1.6; margin-top: 8px; display: block;">感谢您对我们服务的信任与支持！</text>
-    </view>
+  <view wx:if="{{loading}}" style="padding: 80rpx; text-align: center; color: #888;">加载中...</view>
+  <view wx:elif="{{notice}}" style="margin: 24rpx; padding: 32rpx; background: #ffffff; border-radius: 8rpx;">
+    <text style="display: block; font-size: 34rpx; line-height: 1.45; color: #222; font-weight: 600;">{{notice.title}}</text>
+    <text style="display: block; margin-top: 16rpx; color: #888; font-size: 24rpx;">{{notice.createdTime}}</text>
+    <text style="display: block; margin-top: 36rpx; color: #333; font-size: 30rpx; line-height: 1.75; white-space: pre-wrap;">{{notice.content}}</text>
   </view>
-
-  <!-- 其他通知 -->
-  <view style="padding: 0 16px 20px;">
-    <text style="font-size: 14px; color: #999; margin-bottom: 12px; display: block;">其他通知</text>
-    
-    <view style="background-color: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 12px;">
-      <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-        <text style="font-size: 15px; font-weight: 500; color: #333;">服务提醒</text>
-        <text style="font-size: 12px; color: #999;">2026-04-20</text>
-      </view>
-      <text style="font-size: 14px; color: #666; line-height: 1.4;">您的合同审查服务已完成，律师已为您提供详细的审查报告。</text>
-    </view>
-
-    <view style="background-color: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 12px;">
-      <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-        <text style="font-size: 15px; font-weight: 500; color: #333;">活动通知</text>
-        <text style="font-size: 12px; color: #999;">2026-04-18</text>
-      </view>
-      <text style="font-size: 14px; color: #666; line-height: 1.4;">本周六将举办线上法律知识讲座，主题为《劳动合同权益保护》，欢迎参加。</text>
-    </view>
-  </view>
+  <view wx:else style="padding: 80rpx; text-align: center; color: #888;">通知不存在或已删除</view>
 </view>

@@ -1,112 +1,31 @@
-<!--contract.wxml-->
-<!-- 合同审查页面结构 -->
-<view class="container" style="background-color: #f5f5f5; min-height: 100vh;">
-  <!-- 顶部标题 -->
-  <view style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
-    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: -2rpx; top: 29rpx">←</view>
-    <text style="flex: 1; text-align: center; padding-right: 60rpx; position: relative; left: -30rpx; top: 30rpx">合同审查服务</text>
+<view style="min-height: 100vh; background: #f6f7f9; padding-bottom: 48rpx;">
+  <view style="height: 128rpx; background: #c0190e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34rpx; font-weight: 600; position: relative;">
+    <view bindtap="goBack" style="position: absolute; left: 24rpx; width: 64rpx; height: 64rpx; display: flex; align-items: center; justify-content: center; font-size: 42rpx;">←</view>
+    <text>合同审查</text>
   </view>
 
-  <!-- 服务介绍 -->
-  <view style="padding: 15px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); width: 593rpx; display: block; box-sizing: content-box">
-    <view style="text-align: center; margin-bottom: 15px;">
-      <view style="font-size: 48px; margin-bottom: 10px;">🔍</view>
-      <text style="font-size: 18px; font-weight: bold; color: #333;">专业合同审查服务</text>
-    </view>
-    <view style="font-size: 14px; line-height: 1.6; color: #666; text-align: justify;">
-      <text>我们提供专业的合同审查服务，由经验丰富的律师为您审查各类合同，识别潜在法律风险，确保您的权益得到充分保障。</text>
-    </view>
+  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 8rpx;">
+    <text style="display: block; color: #222; font-size: 32rpx; font-weight: 600;">提交合同审查</text>
+    <text style="display: block; margin-top: 12rpx; color: #777; font-size: 26rpx; line-height: 1.6;">选择合同类型并上传文件，审核结果会显示在合同记录中。</text>
   </view>
 
-  <!-- 审查流程 -->
-  <view style="padding: 65px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">审查流程</text>
-    <view style="display: flex; flex-direction: column; gap: 16px;">
-      <view style="display: flex; align-items: center;">
-        <view style="width: 36px; height: 36px; background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 2px 4px rgba(24,144,255,0.3);">
-          <text style="font-size: 14px; font-weight: bold;">1</text>
-        </view>
-        <text style="font-size: 14px; color: #333;">上传合同文件</text>
-      </view>
-      <view style="display: flex; align-items: center; margin-left: 18px;">
-        <text style="font-size: 16px; color: #1890ff; margin-right: 10px;">→</text>
-      </view>
-      <view style="display: flex; align-items: center;">
-        <view style="width: 36px; height: 36px; background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 2px 4px rgba(24,144,255,0.3);">
-          <text style="font-size: 14px; font-weight: bold;">2</text>
-        </view>
-        <text style="font-size: 14px; color: #333;">律师专业审查</text>
-      </view>
-      <view style="display: flex; align-items: center; margin-left: 18px;">
-        <text style="font-size: 16px; color: #1890ff; margin-right: 10px;">→</text>
-      </view>
-      <view style="display: flex; align-items: center;">
-        <view style="width: 36px; height: 36px; background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 2px 4px rgba(24,144,255,0.3);">
-          <text style="font-size: 14px; font-weight: bold;">3</text>
-        </view>
-        <text style="font-size: 14px; color: #333;">出具审查报告</text>
-      </view>
-      <view style="display: flex; align-items: center; margin-left: 18px;">
-        <text style="font-size: 16px; color: #1890ff; margin-right: 10px;">→</text>
-      </view>
-      <view style="display: flex; align-items: center;">
-        <view style="width: 36px; height: 36px; background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 2px 4px rgba(24,144,255,0.3);">
-          <text style="font-size: 14px; font-weight: bold;">4</text>
-        </view>
-        <text style="font-size: 14px; color: #333;">提供修改建议</text>
-      </view>
+  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 8rpx;">
+    <text style="display: block; margin-bottom: 20rpx; color: #333; font-size: 30rpx; font-weight: 600;">合同类型</text>
+    <view style="display: flex; gap: 16rpx;">
+      <view bindtap="selectContractType" data-type="employment" style="flex: 1; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'employment' ? '#eaf4ff' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'employment' ? '#1890ff' : '#eeeeee'}}; border-radius: 8rpx; color: #333;">劳动合同</view>
+      <view bindtap="selectContractType" data-type="business" style="flex: 1; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'business' ? '#edf9e8' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'business' ? '#52c41a' : '#eeeeee'}}; border-radius: 8rpx; color: #333;">商务合同</view>
+      <view bindtap="selectContractType" data-type="realestate" style="flex: 1; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'realestate' ? '#fff7e6' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'realestate' ? '#faad14' : '#eeeeee'}}; border-radius: 8rpx; color: #333;">房地产合同</view>
     </view>
   </view>
 
-  <!-- 合同类型 -->
-  <view style="padding: 15px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">合同类型</text>
-    <view style="display: flex; gap: 10px;">
-      <view bindtap="selectContractType" data-type="employment" style="flex: 1; padding: 15px; background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%); border-radius: 12px; text-align: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(24,144,255,0.1);">
-        <view style="width: 60px; height: 60px; background: linear-gradient(135deg, #1890ff 0%, #69c0ff 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 2px 4px rgba(24,144,255,0.3);">
-          <text style="font-size: 24px;">👔</text>
-        </view>
-        <text style="font-size: 14px; font-weight: 500; margin-bottom: 5px; display: block;">劳动合同</text>
-        <text style="font-size: 11px; color: #666;">employment contracts</text>
-      </view>
-      <view bindtap="selectContractType" data-type="business" style="flex: 1; padding: 15px; background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%); border-radius: 12px; text-align: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(82,196,26,0.1);">
-        <view style="width: 60px; height: 60px; background: linear-gradient(135deg, #52c41a 0%, #95de64 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 2px 4px rgba(82,196,26,0.3);">
-          <text style="font-size: 24px;">💼</text>
-        </view>
-        <text style="font-size: 14px; font-weight: 500; margin-bottom: 5px; display: block;">商务合同</text>
-        <text style="font-size: 11px; color: #666;">business contracts</text>
-      </view>
-      <view bindtap="selectContractType" data-type="realestate" style="flex: 1; padding: 15px; background: linear-gradient(135deg, #fffbe6 0%, #fff1b8 100%); border-radius: 12px; text-align: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(250,173,20,0.1);">
-        <view style="width: 60px; height: 60px; background: linear-gradient(135deg, #faad14 0%, #ffd666 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 2px 4px rgba(250,173,20,0.3);">
-          <text style="font-size: 24px;">🏠</text>
-        </view>
-        <text style="font-size: 14px; font-weight: 500; margin-bottom: 5px; display: block;">房地产合同</text>
-        <text style="font-size: 11px; color: #666;">real estate contracts</text>
-      </view>
+  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 8rpx;">
+    <text style="display: block; margin-bottom: 12rpx; color: #555; font-size: 28rpx;">合同标题</text>
+    <input value="{{title}}" bindinput="onTitleInput" placeholder="请输入合同标题" style="height: 84rpx; padding: 0 20rpx; border: 1rpx solid #dddddd; border-radius: 8rpx; font-size: 28rpx; box-sizing: border-box;" />
+    <view bindtap="uploadContract" style="margin-top: 24rpx; padding: 48rpx 24rpx; border: 2rpx dashed #bfc5cc; border-radius: 8rpx; display: flex; flex-direction: column; align-items: center; gap: 12rpx; color: #666;">
+      <text style="font-size: 48rpx;">上传文件</text>
+      <text style="font-size: 26rpx;">支持 PDF、DOC、DOCX、TXT 或拍照</text>
     </view>
-  </view>
-
-  <!-- 上传合同 -->
-  <view style="padding: 15px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); width: 654rpx; display: block; box-sizing: border-box">
-    <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">上传合同</text>
-    <view bindtap="uploadContract" style="width: 100%; padding: 32px 0; border: 2px dashed #d9d9d9; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 15px; background-color: #fafafa; transition: all 0.3s;">
-      <view style="font-size: 48px; margin-bottom: 10px;">📁</view>
-      <text style="font-size: 16px; color: #333; margin-bottom: 5px;">点击上传合同文件</text>
-      <text style="font-size: 12px; color: #999;">支持 PDF、Word 等格式</text>
-    </view>
-    <view style="margin-bottom: 15px;">
-      <text style="font-size: 14px; color: #666; margin-bottom: 5px; display: block;">合同描述</text>
-      <textarea placeholder="请简要描述合同内容和您的关注点..." style="width: 593rpx; height: 100px; border: 1px solid #e8e8e8; border-radius: 8px; padding: 12px; font-size: 14px; resize: none; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></textarea>
-    </view>
-    <view style="margin-bottom: 20px; width: 535rpx; display: block; box-sizing: border-box">
-      <text style="font-size: 14px; color: #666; margin-bottom: 5px; display: block;">联系方式</text>
-      <input placeholder="请留下您的手机号" style="width: 100%; height: 48px; border: 1px solid #e8e8e8; border-radius: 8px; padding: 0 12px; font-size: 14px;"></input>
-    </view>
-    <button bindtap="submitReview" style="background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%); color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; width: 100%; font-weight: 500; box-shadow: 0 2px 8px rgba(24,144,255,0.3); transition: all 0.3s;">提交审查</button>
-  </view>
-
-  <!-- 底部提示 -->
-  <view style="padding: 12px; margin: 10px; text-align: center; background-color: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <text style="font-size: 12px; color: #999;">专业律师团队 · 24小时内完成审查</text>
+    <text wx:if="{{fileName}}" style="display: block; margin-top: 16rpx; color: #52c41a; font-size: 26rpx;">已选择：{{fileName}}</text>
+    <button bindtap="submitReview" loading="{{submitting}}" disabled="{{submitting}}" style="margin-top: 28rpx; background: #1890ff; color: #fff; font-size: 30rpx;">提交审查</button>
   </view>
 </view>
