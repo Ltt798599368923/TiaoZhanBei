@@ -1,13 +1,9 @@
 <view class="container" style="background-color: #f5f7fa; height: 100vh; overflow: hidden; position: relative;">
   <!-- 顶部标题 -->
-  <view id="chat-header" style="background: linear-gradient(135deg, #C0190E, #DE1E1D); width: 100%; padding: 40rpx 30rpx; display: flex; align-items: center; color: white; font-size: 36rpx; font-weight: bold; box-shadow: 0 2px 8px rgba(192, 25, 14, 0.3); position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
-    <view bindtap="goBack" style="padding: 16rpx; margin-right: 24rpx;">
-      
-    </view>
-    <text style="flex: 1; text-align: center; position: relative; left: -39rpx; top: 39rpx">{{name}}</text>
-    <view style="padding: 16rpx;">
-      <text style="font-size: 32rpx;">⋯</text>
-    </view>
+  <view id="chat-header" style="height: 112rpx; padding: env(safe-area-inset-top) 24rpx 0; box-sizing: content-box; display: flex; align-items: center; background: #c0190e; color: #ffffff; position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
+    <view style="width: 72rpx; height: 72rpx;"></view>
+    <text style="flex: 1; min-width: 0; padding: 0 16rpx; color: #ffffff; font-size: 34rpx; font-weight: 600; line-height: 112rpx; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">AI 法律助手</text>
+    <view style="width: 72rpx; height: 72rpx;"></view>
   </view>
 
   <!-- 聊天内容区域 -->

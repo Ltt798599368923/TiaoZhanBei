@@ -1,7 +1,8 @@
 <!-- 小视讲堂页面结构 -->
-<view class="container" style="width: 750rpx; height: 297rpx; display: flex; box-sizing: border-box">
+<view class="container">
+  <app-header title="小视讲堂" back="{{true}}" />
   <!-- 头部区域 -->
-  <view class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; color: white;">
+  <view wx:if="{{false}}" class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; color: white;">
     <view style="display: flex; align-items: center; margin-bottom: 16rpx;">
       <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">←</view>
       <text style="flex: 1; text-align: center; padding-right: 60rpx; font-size: 34rpx; font-weight: bold;">小视讲堂</text>
@@ -10,11 +11,11 @@
   </view>
 
   <!-- 视频列表区域 -->
-  <view class="video-list" style="height: 3027rpx; display: block; box-sizing: border-box">
+  <view class="video-list">
     <!-- 视频项 - 循环渲染视频列表 -->
     <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="onVideoTap" data-id="{{item.id}}">
       <!-- 视频缩略图 -->
-      <view class="video-thumbnail" style="position: relative; left: 0rpx; top: 0rpx; width: 650rpx; height: 373rpx; display: flex; box-sizing: border-box">
+      <view class="video-thumbnail">
         <text class="video-play">▶</text>
         <text class="video-duration">{{item.duration}}</text>
       </view>

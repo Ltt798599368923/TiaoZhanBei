@@ -1,5 +1,6 @@
 <view style="min-height: 100vh; background: #f6f7f9; padding-bottom: 48rpx;">
-  <view style="height: 128rpx; background: #c0190e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34rpx; font-weight: 600; position: relative;">
+  <app-header title="合同审查" back="{{true}}" />
+  <view wx:if="{{false}}" style="height: 128rpx; background: #c0190e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34rpx; font-weight: 600; position: relative;">
     <view bindtap="goBack" style="position: absolute; left: 24rpx; width: 64rpx; height: 64rpx; display: flex; align-items: center; justify-content: center; font-size: 42rpx;">&lt;</view>
     <text>合同审查</text>
   </view>

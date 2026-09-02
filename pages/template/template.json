@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "文书模板"
+  "navigationBarTitleText": "文书模板",
+  "usingComponents": {
+    "app-header": "../../components/app-header/app-header"
+  }
 }

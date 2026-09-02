@@ -1,10 +1,11 @@
 <!-- 消息中心页面结构 -->
 <view class="container">
+  <app-header title="消息中心" />
   <!-- 顶部标题 -->
   
 
   <!-- 搜索框 -->
-  <view class="search-container" style="position: relative; left: 79rpx; top: 102rpx; width: 908rpx; display: block; box-sizing: border-box">
+  <view class="search-container">
     <view class="search-box">
       <text class="search-icon">🔍</text>
       <input 
@@ -22,7 +23,7 @@
   </view>
 
   <!-- 消息列表 -->
-  <view class="message-list" style="width: 699rpx; display: block; box-sizing: content-box">
+  <view class="message-list">
     <!-- 消息分组标题 -->
     
 
@@ -35,7 +36,7 @@
       data-id="{{item.id}}"
       data-name="{{item.name}}"
       data-type="{{item.type || 'chat'}}"
-     style="position: relative; left: -12rpx; top: 90rpx">
+    >
       <!-- 头像 -->
       <view class="avatar {{item.name === '系统通知' ? 'avatar-system' : item.id === 1 ? 'avatar-blue' : 'avatar-yellow'}}">
         <text class="avatar-text">{{item.name === '系统通知' ? '📢' : item.id === 1 ? '张' : item.id === 3 ? '李' : item.name.charAt(0)}}</text>

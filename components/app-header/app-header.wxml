@@ -1,0 +1,8 @@
+<view class="app-header">
+  <view wx:if="{{back}}" class="header-action" bindtap="goBack" aria-label="返回">
+    <text class="back-icon">&lt;</text>
+  </view>
+  <view wx:else class="header-spacer"></view>
+  <text class="header-title">{{title}}</text>
+  <view class="header-spacer"></view>
+</view>

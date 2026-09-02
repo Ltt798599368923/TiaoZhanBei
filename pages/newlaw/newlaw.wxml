@@ -1,7 +1,8 @@
 <!-- 法治新程页面结构 -->
 <view class="container">
+  <app-header title="法治新程" back="{{true}}" />
   <!-- 头部区域 -->
-  <view class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; color: white; height: 175rpx; display: block; left: 0rpx; top: 0rpx">
+  <view wx:if="{{false}}" class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; color: white; height: 175rpx; display: block; left: 0rpx; top: 0rpx">
     <view style="display: flex; align-items: center; margin-bottom: 16rpx;">
       <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 30rpx">←</view>
       <text style="flex: 1; text-align: center; padding-right: 60rpx; font-size: 34rpx; font-weight: bold; position: relative; left: 0rpx; top: 9rpx">法治新程</text>

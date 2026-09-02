@@ -1,13 +1,14 @@
 <!-- 个人中心页面结构 -->
 <view class="container">
+  <app-header title="我的" />
   <!-- 顶部用户信息区域 -->
-  <view style="background-color: #f5222d; width: 100%; padding: 20px; text-align: center; color: white;">
-    <view style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin: 0 auto 10px; background-color: white; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+  <view style="background-color: #fff1f0; width: 100%; padding: 32rpx 20px; text-align: center; color: #333; border-bottom: 1rpx solid #ffd6d2;">
+    <view style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #c0190e; margin: 0 auto 10px; background-color: white; display: flex; align-items: center; justify-content: center; overflow: hidden;">
       <image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" mode="aspectFill" style="width: 100%; height: 100%;" />
       <text wx:else style="font-size: 40px;">👤</text>
     </view>
     <text style="font-size: 18px; font-weight: bold; margin-bottom: 5px; display: block;">{{userInfo.nickname || '用户'}}</text>
-    <text style="font-size: 14px; opacity: 0.8;">普通用户</text>
+    <text style="font-size: 14px; color: #8c6d6a;">普通用户</text>
   </view>
 
   <!-- 个人信息列表区域 -->

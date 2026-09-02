@@ -1,7 +1,8 @@
 <!-- 法文阅读页面结构 -->
-<view class="container" style="width: 740rpx; height: 1323rpx; display: flex; box-sizing: border-box">
+<view class="container">
+  <app-header title="法文阅读" back="{{true}}" />
   <!-- 头部区域 -->
-  <view class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; color: white; height: 170rpx; display: block; left: 0rpx; top: 0rpx">
+  <view wx:if="{{false}}" class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; color: white; height: 170rpx; display: block; left: 0rpx; top: 0rpx">
     <view style="display: flex; align-items: center; margin-bottom: 16rpx;">
       <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 30rpx">←</view>
       <text style="flex: 1; text-align: center; padding-right: 60rpx; font-size: 34rpx; font-weight: bold;">法文阅读</text>
@@ -10,7 +11,7 @@
   </view>
 
   <!-- 书籍列表区域 -->
-  <view class="book-list" style="width: 599rpx; height: 1338rpx; display: block; box-sizing: border-box">
+  <view class="book-list">
     <!-- 书籍项 - 循环渲染书籍列表 -->
     <view class="book-item" wx:for="{{books}}" wx:key="id" bindtap="onBookTap" data-id="{{item.id}}">
       <!-- 书籍封面 -->
