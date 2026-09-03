@@ -26,6 +26,9 @@
     "pages/webview/webview",
     "pages/template/template"
   ],
+  "usingComponents": {
+    "app-header": "/components/app-header/app-header"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#DE1E1D",
