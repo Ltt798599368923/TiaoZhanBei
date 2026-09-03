@@ -24,6 +24,8 @@
 
   <!-- 在线咨询表单 -->
   <view class="consult-form">
+    <view wx:if="{{lawyerName}}" class="selected-lawyer">已选择：{{lawyerName}}</view>
+    <view wx:if="{{serviceName}}" class="selected-lawyer">服务意向：{{serviceName}}</view>
     <view class="form-item">
       <text class="form-label">咨询标题</text>
       <input class="form-input" placeholder="请输入咨询标题" maxlength="50" bindinput="onTitleInput"></input>
@@ -31,7 +33,7 @@
 
     <view class="form-item">
       <text class="form-label">咨询内容</text>
-      <textarea class="form-textarea" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" bindinput="onContentInput"></textarea>
+      <textarea class="form-textarea" value="{{content}}" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" bindinput="onContentInput"></textarea>
     </view>
     
     <view class="form-item">

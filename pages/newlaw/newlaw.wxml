@@ -11,19 +11,23 @@
 
   <!-- 法律法规列表区域 -->
   <view class="law-list">
-    <!-- 法律项 - 循环渲染法律法规列表 -->
+    <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
+    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
+    <view wx:elif="{{laws.length === 0}}" class="empty-state">暂无已发布的法规动态</view>
+    <block wx:else>
     <view class="law-item" wx:for="{{laws}}" wx:key="id" bindtap="onLawTap" data-id="{{item.id}}">
       <!-- 法律头部信息 -->
       <view class="law-header">
         <text class="law-title">{{item.title}}</text>
-        <text class="law-effect">{{item.effect}}</text>
+        <text class="law-effect">{{item.sourceName || '已发布'}}</text>
       </view>
       <!-- 法律摘要 -->
       <text class="law-summary">{{item.summary}}</text>
       <!-- 法律底部信息 -->
       <view class="law-footer">
-        <text class="law-date">发布日期：{{item.date}}</text>
+        <text class="law-date">发布日期：{{item.publishedTime || item.createdTime}}</text>
       </view>
     </view>
+    </block>
   </view>
 </view>

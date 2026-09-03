@@ -60,22 +60,13 @@ Page({
    */
   openService(e) {
     const serviceType = e.currentTarget.dataset.type;
-    const service = this.data.services.find(item => item.type === serviceType);
-
-    wx.showModal({
-      title: service.name,
-      content: `您将进入${service.name}服务，是否继续？`,
-      confirmText: '进入服务',
-      cancelText: '取消',
-      success: (res) => {
-        if (res.confirm) {
-          wx.showToast({
-            title: `${service.name}开发中`,
-            icon: 'info'
-          });
-        }
-      }
-    });
+    const urls = {
+      laws: 'https://flk.npc.gov.cn/',
+      legal: 'https://www.12348.gov.cn/',
+      notary: 'https://www.chinanotary.org.cn/',
+      court: 'https://www.court.gov.cn/'
+    };
+    this.openExternalSite(urls[serviceType]);
   },
 
   /**
@@ -86,19 +77,14 @@ Page({
   openWebsite(e) {
     const url = e.currentTarget.dataset.url;
 
-    wx.showModal({
-      title: '访问官方网站',
-      content: '您将跳转到官方网站，是否继续？',
-      confirmText: '访问',
-      cancelText: '取消',
-      success: (res) => {
-        if (res.confirm) {
-          wx.showToast({
-            title: '网站链接开发中',
-            icon: 'info'
-          });
-        }
-      }
-    });
+    this.openExternalSite(url);
+  },
+
+  openExternalSite(url) {
+    if (!url) {
+      wx.showToast({ title: '暂未配置服务地址', icon: 'none' });
+      return;
+    }
+    wx.navigateTo({ url: `/pages/webview/webview?url=${encodeURIComponent(url)}` });
   }
 })

@@ -1,127 +1,26 @@
-<!-- 律师咨询与预约页面结构 -->
 <view class="container">
-<!-- 顶部标题区域 -->
-  <view wx:if="{{false}}" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box; height: 135rpx">
-    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 30rpx">←</view>
-    <text style="flex: 1; text-align: center; padding-right: 60rpx; position: relative; left: 0rpx; top: 22rpx">律师预约</text>
+  <view class="lawyer-intro">
+    <text class="intro-title">律师预约</text>
+    <text class="intro-copy">选择已入驻且可预约的律师，提交咨询后由律师确认服务时间。</text>
   </view>
 
-  <!-- 服务介绍区域 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <view style="text-align: center; margin-bottom: 20px;">
-      <view style="font-size: 48px; margin-bottom: 15px;">👨‍⚖️</view>
-      <text style="font-size: 20px; font-weight: bold; color: #333;">专业律师预约服务</text>
-    </view>
-    <view style="font-size: 14px; line-height: 1.6; color: #666; margin-bottom: 20px;">
-      <text>我们提供专业的律师面对面咨询服务，为您提供个性化的法律解决方案。通过预约，您可以与专业律师进行深度沟通，获得针对性的法律建议。</text>
-    </view>
-    <view style="display: flex; justify-content: space-around; margin-bottom: 20px;">
-      <view style="text-align: center;">
-        <view style="font-size: 24px; margin-bottom: 5px;">📅</view>
-        <text style="font-size: 12px; color: #666;">预约咨询</text>
-      </view>
-      <view style="text-align: center;">
-        <view style="font-size: 24px; margin-bottom: 5px;">🏢</view>
-        <text style="font-size: 12px; color: #666;">线下会面</text>
-      </view>
-      <view style="text-align: center;">
-        <view style="font-size: 24px; margin-bottom: 5px;">📋</view>
-        <text style="font-size: 12px; color: #666;">定制方案</text>
-      </view>
-    </view>
-  </view>
-
-  <!-- 律师列表区域 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">推荐律师</text>
-    
-    <!-- 律师项 - 张律师 -->
-    <view style="border-bottom: 1px solid #f0f0f0; padding: 15px 0;">
-      <view style="display: flex; align-items: center; margin-bottom: 10px;">
-        <view style="width: 60px; height: 60px; border-radius: 50%; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-          <text style="font-size: 24px;">👨‍⚖️</text>
+  <view class="lawyer-list">
+    <view wx:if="{{loading}}" class="empty-state">律师信息加载中...</view>
+    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
+    <view wx:elif="{{lawyers.length === 0}}" class="empty-state">暂未有可预约律师</view>
+    <block wx:else>
+      <view wx:for="{{lawyers}}" wx:key="id" class="lawyer-card">
+        <view class="lawyer-avatar">
+          <image wx:if="{{item.avatarUrl}}" src="{{item.avatarUrl}}" mode="aspectFill" />
+          <text wx:else>{{item.initial}}</text>
         </view>
-        <view style="flex: 1;">
-          <text style="font-size: 16px; font-weight: bold; margin-bottom: 5px; display: block;">张律师</text>
-          <text style="font-size: 12px; color: #666; margin-bottom: 5px; display: block;">擅长领域：民事纠纷、合同纠纷</text>
-          <view style="display: flex; align-items: center;">
-            <text style="font-size: 12px; color: #ff7a45; margin-right: 5px;">⭐⭐⭐⭐⭐</text>
-            <text style="font-size: 12px; color: #999;">5.0分</text>
-          </view>
+        <view class="lawyer-copy">
+          <text class="lawyer-name">{{item.name}}</text>
+          <text class="lawyer-firm">{{item.lawFirm || '律师信息以后台发布为准'}}</text>
+          <text class="lawyer-specialties">{{item.specialties || '暂未填写擅长领域'}}</text>
         </view>
+        <button class="reserve-button" bindtap="reserveLawyer" data-id="{{item.id}}" data-name="{{item.name}}">预约</button>
       </view>
-      <view style="display: flex; justify-content: space-between;">
-        <text style="font-size: 12px; color: #999;">咨询费：¥300/小时</text>
-        <button bindtap="reserveLawyer" data-id="1" style="background-color: #DE1E1D; color: white; border: none; padding: 8px 20px; border-radius: 16px; font-size: 14px;">立即预约</button>
-      </view>
-    </view>
-    
-    <!-- 律师项 - 李律师 -->
-    <view style="border-bottom: 1px solid #f0f0f0; padding: 15px 0;">
-      <view style="display: flex; align-items: center; margin-bottom: 10px;">
-        <view style="width: 60px; height: 60px; border-radius: 50%; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-          <text style="font-size: 24px;">👩‍⚖️</text>
-        </view>
-        <view style="flex: 1;">
-          <text style="font-size: 16px; font-weight: bold; margin-bottom: 5px; display: block;">李律师</text>
-          <text style="font-size: 12px; color: #666; margin-bottom: 5px; display: block;">擅长领域：刑事辩护、知识产权</text>
-          <view style="display: flex; align-items: center;">
-            <text style="font-size: 12px; color: #ff7a45; margin-right: 5px;">⭐⭐⭐⭐</text>
-            <text style="font-size: 12px; color: #999;">4.8分</text>
-          </view>
-        </view>
-      </view>
-      <view style="display: flex; justify-content: space-between;">
-        <text style="font-size: 12px; color: #999;">咨询费：¥400/小时</text>
-        <button bindtap="reserveLawyer" data-id="2" style="background-color: #DE1E1D; color: white; border: none; padding: 8px 20px; border-radius: 16px; font-size: 14px;">立即预约</button>
-      </view>
-    </view>
-    
-    <!-- 律师项 - 王律师 -->
-    <view style="padding: 15px 0;">
-      <view style="display: flex; align-items: center; margin-bottom: 10px;">
-        <view style="width: 60px; height: 60px; border-radius: 50%; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-          <text style="font-size: 24px;">👨‍⚖️</text>
-        </view>
-        <view style="flex: 1;">
-          <text style="font-size: 16px; font-weight: bold; margin-bottom: 5px; display: block;">王律师</text>
-          <text style="font-size: 12px; color: #666; margin-bottom: 5px; display: block;">擅长领域：婚姻家庭、房产纠纷</text>
-          <view style="display: flex; align-items: center;">
-            <text style="font-size: 12px; color: #ff7a45; margin-right: 5px;">⭐⭐⭐⭐⭐</text>
-            <text style="font-size: 12px; color: #999;">4.9分</text>
-          </view>
-        </view>
-      </view>
-      <view style="display: flex; justify-content: space-between;">
-        <text style="font-size: 12px; color: #999;">咨询费：¥350/小时</text>
-        <button bindtap="reserveLawyer" data-id="3" style="background-color: #DE1E1D; color: white; border: none; padding: 8px 20px; border-radius: 16px; font-size: 14px;">立即预约</button>
-      </view>
-    </view>
-  </view>
-
-  <!-- 预约流程 -->
-  <view style="padding: 20px; background-color: white; margin: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <text style="font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block;">预约流程</text>
-    <view style="display: flex; justify-content: space-between; align-items: center;">
-      <view style="text-align: center; flex: 1;">
-        <view style="width: 30px; height: 30px; border-radius: 50%; background-color: #DE1E1D; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">1</view>
-        <text style="font-size: 12px; color: #333;">选择律师</text>
-      </view>
-      <view style="width: 20px; height: 1px; background-color: #e8e8e8;"></view>
-      <view style="text-align: center; flex: 1;">
-        <view style="width: 30px; height: 30px; border-radius: 50%; background-color: #DE1E1D; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">2</view>
-        <text style="font-size: 12px; color: #333;">提交预约</text>
-      </view>
-      <view style="width: 20px; height: 1px; background-color: #e8e8e8;"></view>
-      <view style="text-align: center; flex: 1;">
-        <view style="width: 30px; height: 30px; border-radius: 50%; background-color: #DE1E1D; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">3</view>
-        <text style="font-size: 12px; color: #333;">确认时间</text>
-      </view>
-      <view style="width: 20px; height: 1px; background-color: #e8e8e8;"></view>
-      <view style="text-align: center; flex: 1;">
-        <view style="width: 30px; height: 30px; border-radius: 50%; background-color: #DE1E1D; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">4</view>
-        <text style="font-size: 12px; color: #333;">面对面咨询</text>
-      </view>
-    </view>
+    </block>
   </view>
 </view>

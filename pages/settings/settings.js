@@ -1,15 +1,44 @@
-//首页--我的--个人设置
+const api = require('../../utils/api.js')
 
 Page({
   data: {
     isNotificationEnabled: true,
-    isDarkModeEnabled: false
+    isDarkModeEnabled: false,
+    userInfo: {},
+    avatarInitial: '用',
+    editingProfile: false,
+    nickname: '',
+    phone: '',
+    savingProfile: false
   },
 
   onLoad() {
     wx.setNavigationBarTitle({
       title: '个人设置'
     });
+    this.loadUserInfo();
+  },
+
+  loadUserInfo() {
+    const userId = wx.getStorageSync('userId');
+    const cachedUserInfo = wx.getStorageSync('userInfo') || {};
+    this.setData({
+      userInfo: cachedUserInfo,
+      avatarInitial: (cachedUserInfo.nickname || '用').slice(0, 1),
+      nickname: cachedUserInfo.nickname || '',
+      phone: cachedUserInfo.phone || ''
+    });
+    if (!userId) return;
+    api.getUserInfo(userId).then(res => {
+      if (res.code !== 200 || !res.data) return;
+      wx.setStorageSync('userInfo', res.data);
+      this.setData({
+        userInfo: res.data,
+        avatarInitial: (res.data.nickname || '用').slice(0, 1),
+        nickname: res.data.nickname || '',
+        phone: res.data.phone || ''
+      });
+    }).catch(() => {});
   },
 
   goBack() {
@@ -27,9 +56,59 @@ Page({
 
   // 编辑个人信息
   editProfile() {
-    wx.showToast({
-      title: '修改个人信息',
-      icon: 'none'
+    this.setData({ editingProfile: true });
+  },
+
+  onNicknameInput(e) {
+    this.setData({ nickname: e.detail.value });
+  },
+
+  onPhoneInput(e) {
+    this.setData({ phone: e.detail.value });
+  },
+
+  cancelEditProfile() {
+    const userInfo = this.data.userInfo || {};
+    this.setData({
+      editingProfile: false,
+      nickname: userInfo.nickname || '',
+      phone: userInfo.phone || ''
+    });
+  },
+
+  saveProfile() {
+    const userId = wx.getStorageSync('userId');
+    const nickname = this.data.nickname.trim();
+    const phone = this.data.phone.trim();
+    if (!userId) {
+      wx.showToast({ title: '请先登录', icon: 'none' });
+      return;
+    }
+    if (!nickname) {
+      wx.showToast({ title: '请输入昵称', icon: 'none' });
+      return;
+    }
+    if (phone && !/^1\d{10}$/.test(phone)) {
+      wx.showToast({ title: '请输入正确的手机号', icon: 'none' });
+      return;
+    }
+    this.setData({ savingProfile: true });
+    api.updateUser(userId, { nickname, phone }).then(res => {
+      if (res.code !== 200 || !res.data) {
+        wx.showToast({ title: res.message || '保存失败', icon: 'none' });
+        return;
+      }
+      wx.setStorageSync('userInfo', res.data);
+      this.setData({
+        userInfo: res.data,
+        avatarInitial: (res.data.nickname || '用').slice(0, 1),
+        editingProfile: false
+      });
+      wx.showToast({ title: '保存成功', icon: 'success' });
+    }).catch(() => {
+      wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' });
+    }).finally(() => {
+      this.setData({ savingProfile: false });
     });
   },
 

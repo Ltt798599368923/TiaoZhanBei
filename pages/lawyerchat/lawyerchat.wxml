@@ -1,31 +1,8 @@
 <view class="container">
-<view wx:if="{{false}}" class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; box-sizing: border-box; color: white;">
-    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">←</view>
-    <text style="flex: 1; text-align: center; font-size: 34rpx; font-weight: bold;">{{name}}</text>
-    <view style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">⋯</view>
-  </view>
-
-  <view class="chat-content">
-    <view wx:for="{{messages}}" wx:key="{{item.id}}" class="message-item" style="flex-direction: {{item.type === 'right' ? 'row-reverse' : 'row'}}">
-      <view class="avatar {{item.type === 'right' ? 'my-avatar' : 'other-avatar'}}">
-        <text>{{item.type === 'right' ? '我' : name.charAt(0)}}</text>
-      </view>
-      <view class="message-body" style="max-width: 70%; margin-{{item.type === 'right' ? 'left' : 'right'}}: 20rpx;">
-        <view class="message-bubble" style="background-color: {{item.type === 'right' ? '#C0190E' : 'white'}}">
-          <text style="color: {{item.type === 'right' ? 'white' : '#333'}}">{{item.content}}</text>
-        </view>
-        <text class="message-time" style="text-align: {{item.type === 'right' ? 'right' : 'left'}}">{{item.time}}</text>
-      </view>
-    </view>
-  </view>
-
-  <view class="input-area">
-    <input 
-      placeholder="输入消息..." 
-      class="input-box"
-      bindinput="bindInput"
-      value="{{inputValue}}"
-    />
-    <button class="send-btn" bindtap="sendMessage" style="width: 140rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">发送</button>
+  <view class="consult-entry">
+    <text class="entry-title">提交给{{name || '律师'}}的咨询</text>
+    <text class="entry-copy">平台暂未开通即时消息。提交后，咨询会保存到“我的咨询”，由后台处理后显示真实回复。</text>
+    <textarea class="entry-input" value="{{inputValue}}" placeholder="请简要说明您的法律问题" maxlength="500" bindinput="bindInput" />
+    <button class="send-btn" bindtap="sendMessage">继续填写咨询</button>
   </view>
 </view>

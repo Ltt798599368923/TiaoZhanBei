@@ -1,20 +1,14 @@
-// index.js
-// 首页页面逻辑
+const api = require('../../utils/api.js')
+const content = require('../../utils/content.js')
+
 Page({
   data: {
     // 定位文本
     locationText: '定位中...',
     
-    // 👇 书籍轮播数据（三行文字格式）- 只保留这一个
-    bookList: [
-      { line1: '中华人民共和国', line2: '宪法', line3: '中华人民共和国宪法' },
-      { line1: '中华人民共和国', line2: '民法典', line3: '中华人民共和国民法典' },
-      { line1: '中华人民共和国', line2: '刑法', line3: '中华人民共和国刑法' },
-      { line1: '中华人民共和国', line2: '行政法', line3: '中华人民共和国行政法' },
-      { line1: '中华人民共和国', line2: '劳动法', line3: '中华人民共和国劳动法' }
-    ],
+    bookList: [],
     currentBookIndex: 0,
-    currentBook: { line1: '中华人民共和国', line2: '宪法', line3: '中华人民共和国宪法' },
+    currentBook: { line1: '法律', line2: '资料', line3: '' },
   
     // 滚动播报数据
     slogans: [
@@ -28,15 +22,7 @@ Page({
     marqueeAnimation: null,
     marqueeTimer: null,
   
-    // 热点新闻列表
-    hotNews: [
-      { title: '反外国不当域外管辖条例（4月13日施行）', id: 1 },
-      { title: '"机闹"正式入刑（4月9日施行）', id: 2 },
-      { title: '全国"4·2行动"严打非法放贷（4月启动）', id: 3 },
-      { title: 'AI拟人化服务新规（7月15日施行）', id: 4 },
-      { title: '贪污贿赂新解释（5月1日施行）', id: 5 },
-      { title: '信用修复管理办法（4月1日施行）', id: 6 }
-    ],
+    hotNews: [],
   
     // 当前位置
     latitude: null,
@@ -51,6 +37,7 @@ Page({
    * 页面加载
    */
   onNextBook() {
+    if (this.data.bookList.length === 0) return;
     let newIndex = this.data.currentBookIndex + 1;
     if (newIndex >= this.data.bookList.length) {
       newIndex = 0;
@@ -70,10 +57,27 @@ Page({
   onLoad() {
     this.initLocation();
     this.startSloganScroll();
+    this.loadHomepageContent();
+  },
 
-    this.autoBookTimer = setInterval(() => {
-      this.onNextBook();
-    }, 3500);
+  loadHomepageContent() {
+    api.getContentList('book').then(res => {
+      if (res.code !== 200 || !res.data || res.data.length === 0) return;
+      const bookList = res.data.map(item => ({
+        id: item.id,
+        line1: item.sourceName || '法律资料',
+        line2: item.title,
+        line3: item.title
+      }));
+      this.setData({ bookList, currentBook: bookList[0] });
+      if (bookList.length > 1) {
+        this.autoBookTimer = setInterval(() => this.onNextBook(), 3500);
+      }
+    }).catch(() => {});
+
+    api.getContentList('law').then(res => {
+      if (res.code === 200) this.setData({ hotNews: res.data || [] });
+    }).catch(() => this.setData({ hotNews: [] }));
   },
 
   onUnload() {
@@ -245,11 +249,6 @@ Page({
   onNewsTap(e) {
     const index = e.currentTarget.dataset.index;
     const newsItem = this.data.hotNews[index];
-    if (newsItem) {
-      wx.showToast({
-        title: '查看新闻详情',
-        icon: 'none'
-      });
-    }
+    if (newsItem) content.open('law', newsItem.id);
   }
 })

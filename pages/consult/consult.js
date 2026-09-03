@@ -7,11 +7,25 @@ Page({
     phone: '',
     consultTypeIndex: -1,
     consultTypes: ['民事纠纷', '刑事辩护', '经济纠纷', '婚姻家庭', '房产纠纷', '知识产权', '其他'],
+    lawyerId: '',
+    lawyerName: '',
+    serviceName: '',
     submitting: false
   },
 
-  onLoad() {
-    
+  onLoad(options) {
+    if (options.lawyerId) {
+      this.setData({
+        lawyerId: options.lawyerId,
+        lawyerName: decodeURIComponent(options.lawyerName || '')
+      })
+    }
+    if (options.service) {
+      this.setData({ serviceName: decodeURIComponent(options.service) })
+    }
+    if (options.draft) {
+      this.setData({ content: decodeURIComponent(options.draft) })
+    }
   },
 
   goBack() {
@@ -43,7 +57,7 @@ Page({
   },
 
   submitConsult() {
-    const { title, content, phone, consultTypes, consultTypeIndex } = this.data;
+    const { title, content, phone, consultTypes, consultTypeIndex, lawyerId, serviceName } = this.data;
 
     if (!title || !title.trim()) {
       wx.showToast({
@@ -61,7 +75,7 @@ Page({
       return;
     }
 
-    if (consultTypeIndex < 0) {
+    if (!serviceName && consultTypeIndex < 0) {
       wx.showToast({
         title: '请选择咨询类型',
         icon: 'none'
@@ -88,7 +102,8 @@ Page({
       title: title,
       content: content,
       phone: phone,
-      type: consultTypes[consultTypeIndex]
+      type: serviceName || consultTypes[consultTypeIndex],
+      lawyerId: lawyerId || null
     })
       .then(res => {
         wx.hideLoading();

@@ -78,9 +78,12 @@ Page({
       .then(res => {
         if (res.code === 200 && res.data) {
           const consultation = res.data;
+          const reply = consultation.reply
+            ? '\n\n处理回复：\n' + consultation.reply
+            : '\n\n当前状态：' + (consultation.status === 'pending' ? '待回复' : '处理中');
           wx.showModal({
             title: consultation.title,
-            content: consultation.content || '暂无内容',
+            content: (consultation.content || '暂无内容') + reply,
             showCancel: false,
             confirmText: '知道了'
           });

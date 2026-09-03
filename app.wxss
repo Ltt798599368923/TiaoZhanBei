@@ -155,3 +155,11 @@
 .page-content {
   margin-top: 88rpx;
 }
+
+.empty-state {
+  padding: 96rpx 32rpx;
+  color: #8c8c8c;
+  font-size: 28rpx;
+  line-height: 1.6;
+  text-align: center;
+}

@@ -33,19 +33,19 @@ Page({
       {
         plan: 'basic',           // 方案类型
         name: '基础服务',        // 方案名称
-        price: '¥2999/年',       // 方案价格
+        price: '按需报价',
         features: ['企业法律咨询', '合同审查（5份/年）', '法律文书起草（3份/年）']  // 方案功能
       },
       {
         plan: 'standard',        // 方案类型
         name: '标准服务',        // 方案名称
-        price: '¥5999/年',       // 方案价格
+        price: '按需报价',
         features: ['企业法律咨询', '合同审查（10份/年）', '法律文书起草（6份/年）', '劳动人事咨询', '知识产权咨询']  // 方案功能
       },
       {
         plan: 'premium',         // 方案类型
         name: '高级服务',        // 方案名称
-        price: '¥9999/年',       // 方案价格
+        price: '按需报价',
         features: ['企业法律咨询', '合同审查（不限）', '法律文书起草（不限）', '劳动人事咨询', '知识产权咨询', '企业法律风险评估']  // 方案功能
       }
     ]
@@ -81,10 +81,8 @@ Page({
       cancelText: '取消',  // 取消按钮文本
       success: (res) => {
         if (res.confirm) {
-          // 显示提示信息
-          wx.showToast({
-            title: `${service.name}功能开发中`,
-            icon: 'info'
+          wx.navigateTo({
+            url: `/pages/consult/consult?service=${encodeURIComponent('企业法律服务 - ' + service.name)}`
           });
         }
       }
@@ -99,18 +97,14 @@ Page({
     const planType = e.currentTarget.dataset.plan;  // 获取方案类型
     const plan = this.data.plans.find(item => item.plan === planType);  // 查找方案详情
 
-    // 显示确认对话框
     wx.showModal({
-      title: plan.name,  // 对话框标题
-      content: `您选择了${plan.name}，价格：${plan.price}，是否继续？`,  // 对话框内容
-      confirmText: '选择方案',  // 确认按钮文本
-      cancelText: '取消',  // 取消按钮文本
+      title: plan.name,
+      content: '方案报价仅供咨询参考。确认后将进入咨询表单，由工作人员与您确认服务内容和价格。',
+      confirmText: '提交咨询',
       success: (res) => {
         if (res.confirm) {
-          // 显示提示信息
-          wx.showToast({
-            title: `${plan.name}功能开发中`,
-            icon: 'info'
+          wx.navigateTo({
+            url: `/pages/consult/consult?service=${encodeURIComponent('企业法律服务 - ' + plan.name)}`
           });
         }
       }
@@ -121,18 +115,13 @@ Page({
    * 联系我们
    */
   contactUs() {
-    // 显示联系我们对话框
     wx.showModal({
-      title: '联系我们',  // 对话框标题
-      content: '您可以通过以下方式联系我们：\n电话：400-123-4567\n邮箱：service@falv.com',  // 对话框内容
-      confirmText: '确定',  // 确认按钮文本
+      title: '提交需求',
+      content: '请通过咨询表单提交您的企业法律服务需求，工作人员会根据填写的联系方式跟进。',
+      confirmText: '去咨询',
       success: (res) => {
         if (res.confirm) {
-          // 显示提示信息
-          wx.showToast({
-            title: '联系功能开发中',
-            icon: 'info'
-          });
+          wx.navigateTo({ url: '/pages/consult/consult?service=' + encodeURIComponent('企业法律服务') });
         }
       }
     });
@@ -142,19 +131,14 @@ Page({
    * 联系顾问
    */
   contactAdviser() {
-    // 显示联系顾问对话框
     wx.showModal({
-      title: '联系顾问',  // 对话框标题
-      content: '我们的专业顾问将为您提供一对一的法律咨询服务。',  // 对话框内容
-      confirmText: '立即咨询',  // 确认按钮文本
-      cancelText: '取消',  // 取消按钮文本
+      title: '选择律师',
+      content: '可从已发布且可预约的律师中选择，提交咨询后由后台确认服务安排。',
+      confirmText: '查看律师',
+      cancelText: '取消',
       success: (res) => {
         if (res.confirm) {
-          // 显示提示信息
-          wx.showToast({
-            title: '顾问联系功能开发中',
-            icon: 'info'
-          });
+          wx.navigateTo({ url: '/pages/lawyer/lawyer' });
         }
       }
     });

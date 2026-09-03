@@ -11,22 +11,26 @@
 
   <!-- 视频列表区域 -->
   <view class="video-list">
-    <!-- 视频项 - 循环渲染视频列表 -->
+    <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
+    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
+    <view wx:elif="{{videos.length === 0}}" class="empty-state">暂无已发布的视频内容</view>
+    <block wx:else>
     <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="onVideoTap" data-id="{{item.id}}">
       <!-- 视频缩略图 -->
       <view class="video-thumbnail">
         <text class="video-play">▶</text>
-        <text class="video-duration">{{item.duration}}</text>
+        <text class="video-duration">{{item.publishedTime || item.createdTime}}</text>
       </view>
       <!-- 视频信息 -->
       <view class="video-info">
         <text class="video-title">{{item.title}}</text>
         <!-- 视频元数据 -->
         <view class="video-meta">
-          <text class="video-author">{{item.author}}</text>
-          <text class="video-views">👁 {{item.views}}</text>
+          <text class="video-author">{{item.sourceName || '视频内容'}}</text>
+          <text class="video-views">查看详情</text>
         </view>
       </view>
     </view>
+    </block>
   </view>
 </view>

@@ -34,9 +34,8 @@
 
       <view class="content-section">
         <text class="section-title">联系我们</text>
-        <text class="section-desc">客服电话：400-123-4567</text>
-        <text class="section-desc">邮箱：contact@legalconsult.com</text>
-        <text class="section-desc">地址：北京市朝阳区法律大厦</text>
+        <text class="section-desc">平台暂未提供电话客服，请通过在线咨询提交问题。</text>
+        <text class="section-desc">请勿在咨询中提交身份证号、银行卡号或密码等敏感信息。</text>
       </view>
     </view>
 

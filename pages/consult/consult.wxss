@@ -271,3 +271,12 @@
   font-size: 22rpx;           /* 字体大小 */
   color: #999999;             /* 灰色文本 */
 }
+
+.selected-lawyer {
+  margin-bottom: 24rpx;
+  padding: 16rpx 20rpx;
+  border-radius: 12rpx;
+  background: #fff1f0;
+  color: #c0190e;
+  font-size: 26rpx;
+}

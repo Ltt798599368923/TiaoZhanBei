@@ -7,11 +7,11 @@
   <view wx:if="{{loading}}" class="loading-wrap">加载中...</view>
 
   <view wx:elif="{{consults.length > 0}}" class="consult-list">
-    <view wx:for="{{consults}}" wx:key="id" class="consult-card {{item.status === 'pending' ? 'pending' : 'replied'}}">
+    <view wx:for="{{consults}}" wx:key="id" class="consult-card {{item.reply ? 'replied' : 'pending'}}">
       <view class="card-header">
         <text class="card-title">{{item.title}}</text>
-        <text class="card-status {{item.status === 'pending' ? 'status-pending' : 'status-replied'}}">
-          {{item.status === 'pending' ? '待回复' : '已回复'}}
+        <text class="card-status {{item.reply ? 'status-replied' : 'status-pending'}}">
+          {{item.reply ? '已回复' : (item.status === 'pending' ? '待回复' : '处理中')}}
         </text>
       </view>
       <text class="card-content">

@@ -5,117 +5,50 @@
   background-color: #f5f7fa;
 }
 
-.header {
-  background: linear-gradient(135deg, #C0190E, #DE1E1D);
-  padding: 80rpx 0;
-  display: flex;
-  align-items: center;
-  color: white;
-  box-shadow: 0 2px 8px rgba(192, 25, 14, 0.3);
-  width: 100%;
+.consult-entry {
+  margin: 32rpx 24rpx;
+  padding: 32rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
   box-sizing: border-box;
 }
 
-.back-btn {
-  padding: 16rpx 30rpx;
-  margin-right: 24rpx;
+.entry-title,
+.entry-copy {
+  display: block;
 }
 
-.back-btn text {
-  font-size: 40rpx;
-}
-
-.header-title {
-  flex: 1;
-  text-align: center;
-  font-size: 36rpx;
-  font-weight: bold;
-}
-
-.header-right {
-  padding: 16rpx 30rpx;
-}
-
-.header-right text {
+.entry-title {
+  color: #222222;
   font-size: 32rpx;
+  font-weight: 600;
 }
 
-.chat-content {
-  flex: 1;
-  padding: 24rpx 16rpx;
-  overflow-y: auto;
+.entry-copy {
+  margin-top: 16rpx;
+  color: #666666;
+  font-size: 26rpx;
+  line-height: 1.65;
 }
 
-.message-item {
-  display: flex;
-  margin-bottom: 24rpx;
-}
-
-.avatar {
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.other-avatar {
-  background-color: #1890ff;
-}
-
-.my-avatar {
-  background-color: #52c41a;
-}
-
-.avatar text {
-  font-size: 36rpx;
-  color: white;
-}
-
-.message-body {
-  max-width: 80%;
-}
-
-.message-bubble {
-  border-radius: 24rpx;
+.entry-input {
+  width: 100%;
+  height: 240rpx;
+  margin-top: 28rpx;
   padding: 20rpx;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.message-bubble text {
-  font-size: 30rpx;
-  line-height: 1.5;
-}
-
-.message-time {
-  font-size: 24rpx;
-  color: #999;
-  margin-top: 8rpx;
-}
-
-.input-area {
-  background-color: white;
-  padding: 20rpx;
-  border-top: 1rpx solid #f0f0f0;
-  display: flex;
-  align-items: center;
-}
-
-.input-box {
-  flex: 1;
-  border: 1rpx solid #e8e8e8;
-  border-radius: 30rpx;
-  padding: 16rpx 24rpx;
+  border: 1rpx solid #d9d9d9;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  color: #222222;
   font-size: 28rpx;
-  margin-right: 20rpx;
 }
 
 .send-btn {
+  margin-top: 24rpx;
   background-color: #C0190E;
   color: white;
   border: none;
-  border-radius: 30rpx;
+  border-radius: 12rpx;
   padding: 0 32rpx;
   height: 64rpx;
   display: flex;

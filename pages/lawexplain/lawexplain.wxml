@@ -11,7 +11,10 @@
 
   <!-- 文章列表区域 -->
   <view class="article-list">
-    <!-- 文章项 - 循环渲染文章列表 -->
+    <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
+    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
+    <view wx:elif="{{articles.length === 0}}" class="empty-state">暂无已发布的普法文章</view>
+    <block wx:else>
     <view class="article-item" wx:for="{{articles}}" wx:key="id" bindtap="onArticleTap" data-id="{{item.id}}">
       <!-- 文章内容区域 -->
       <view class="article-content">
@@ -20,9 +23,10 @@
       </view>
       <!-- 文章元数据区域 -->
       <view class="article-meta">
-        <text class="article-read">👁 {{item.readCount}}</text>
-        <text class="article-date">{{item.date}}</text>
+        <text class="article-read">{{item.sourceName || '普法内容'}}</text>
+        <text class="article-date">{{item.publishedTime || item.createdTime}}</text>
       </view>
     </view>
+    </block>
   </view>
 </view>

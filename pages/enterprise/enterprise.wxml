@@ -51,8 +51,8 @@
         <view style="flex-shrink: 0; width: 80%; max-width: 280px; background-color: white; border: 1px solid #E8E8E8; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; flex-direction: column; scroll-snap-align: start;">
           <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">基础服务</text>
           <view style="margin-bottom: 20px;">
-            <text style="font-size: 28px; font-weight: bold; color: #1A3A5F; margin-bottom: 4px; display: block; flex-wrap: wrap;">¥2999</text>
-            <text style="font-size: 14px; color: #666; display: block;">/年</text>
+            <text style="font-size: 20px; font-weight: bold; color: #c0190e; margin-bottom: 4px; display: block;">按需报价</text>
+            <text style="font-size: 14px; color: #666; display: block;">提交咨询后确认</text>
           </view>
           <view style="flex: 1; margin-bottom: 20px;">
             <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
@@ -76,8 +76,8 @@
           <view style="position: absolute; top: -10px; right: 20px; background-color: #1A3A5F; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">热门推荐</view>
           <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">标准服务</text>
           <view style="margin-bottom: 20px;">
-            <text style="font-size: 28px; font-weight: bold; color: #D4AF37; margin-bottom: 4px; display: block; flex-wrap: wrap;">¥5999</text>
-            <text style="font-size: 14px; color: #666; display: block;">/年</text>
+            <text style="font-size: 20px; font-weight: bold; color: #c0190e; margin-bottom: 4px; display: block;">按需报价</text>
+            <text style="font-size: 14px; color: #666; display: block;">提交咨询后确认</text>
           </view>
           <view style="flex: 1; margin-bottom: 20px;">
             <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">
@@ -108,8 +108,8 @@
         <view style="flex-shrink: 0; width: 80%; max-width: 280px; background-color: white; border: 1px solid #E8E8E8; border-radius: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; flex-direction: column; scroll-snap-align: start;">
           <text style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; display: block;">高级服务</text>
           <view style="margin-bottom: 20px;">
-            <text style="font-size: 28px; font-weight: bold; color: #1A3A5F; margin-bottom: 4px; display: block; flex-wrap: wrap;">¥9999</text>
-            <text style="font-size: 14px; color: #666; display: block;">/年</text>
+            <text style="font-size: 20px; font-weight: bold; color: #c0190e; margin-bottom: 4px; display: block;">按需报价</text>
+            <text style="font-size: 14px; color: #666; display: block;">提交咨询后确认</text>
           </view>
           <view style="flex: 1; margin-bottom: 20px;">
             <view style="display: flex; align-items: flex-start; margin-bottom: 8px;">

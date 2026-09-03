@@ -245,6 +245,22 @@ const api = {
 
   getNoticeDetail: (noticeId) => {
     return request({ url: BASE_URL + '/api/notice/detail/' + noticeId, method: 'GET' })
+  },
+
+  getContentList: (type) => {
+    return request({ url: BASE_URL + '/api/content/' + type, method: 'GET' })
+  },
+
+  getContentDetail: (type, contentId) => {
+    return request({ url: BASE_URL + '/api/content/' + type + '/' + contentId, method: 'GET' })
+  },
+
+  getLawyers: () => {
+    return request({ url: BASE_URL + '/api/lawyer/list', method: 'GET' })
+  },
+
+  getLawyerDetail: (lawyerId) => {
+    return request({ url: BASE_URL + '/api/lawyer/detail/' + lawyerId, method: 'GET' })
   }
 }
 

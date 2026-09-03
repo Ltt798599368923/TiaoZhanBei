@@ -6,13 +6,24 @@
     <text style="flex: 1; text-align: center; padding-right: 60rpx; position: relative; left: 0rpx; top: 22rpx">个人设置</text>
   </view>
 
-  <view bindtap="editProfile" style="background-color: white; padding: 20px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; width: 100%; box-sizing: border-box;">
-    <image src="{{userInfo.avatar || 'https://via.placeholder.com/60'}}" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;" mode="aspectFill" />
+  <view style="background-color: white; padding: 20px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; width: 100%; box-sizing: border-box;">
+    <image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;" mode="aspectFill" />
+    <view wx:else style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px; background: #fff1f0; color: #c0190e; display: flex; align-items: center; justify-content: center; font-size: 32rpx;">{{avatarInitial}}</view>
     <view style="flex: 1;">
       <text style="font-size: 16px; font-weight: bold; color: #333; display: block;">{{userInfo.nickname || '用户'}}</text>
-      <text style="font-size: 12px; color: #999;">点击编辑个人资料</text>
+      <text style="font-size: 12px; color: #999;">{{userInfo.phone || '未绑定手机号'}}</text>
     </view>
-    <text style="color: #ccc;">&gt;</text>
+    <button bindtap="editProfile" style="margin: 0; padding: 0 24rpx; height: 56rpx; line-height: 56rpx; color: #c0190e; background: #fff1f0; border-radius: 12rpx; font-size: 24rpx;">编辑</button>
+  </view>
+
+  <view wx:if="{{editingProfile}}" style="background: #ffffff; margin-top: 16rpx; padding: 28rpx 32rpx; box-sizing: border-box;">
+    <text style="display: block; color: #222; font-size: 30rpx; font-weight: 600;">编辑资料</text>
+    <input value="{{nickname}}" placeholder="昵称" maxlength="30" bindinput="onNicknameInput" style="margin-top: 24rpx; height: 76rpx; padding: 0 20rpx; border: 1rpx solid #d9d9d9; border-radius: 12rpx; font-size: 28rpx;" />
+    <input value="{{phone}}" placeholder="手机号（可选）" type="number" maxlength="11" bindinput="onPhoneInput" style="margin-top: 16rpx; height: 76rpx; padding: 0 20rpx; border: 1rpx solid #d9d9d9; border-radius: 12rpx; font-size: 28rpx;" />
+    <view style="display: flex; margin-top: 24rpx; gap: 16rpx;">
+      <button bindtap="cancelEditProfile" style="flex: 1; margin: 0; color: #595959; background: #f5f5f5; border-radius: 12rpx; font-size: 28rpx;">取消</button>
+      <button bindtap="saveProfile" loading="{{savingProfile}}" disabled="{{savingProfile}}" style="flex: 1; margin: 0; color: #ffffff; background: #c0190e; border-radius: 12rpx; font-size: 28rpx;">保存</button>
+    </view>
   </view>
 
   <view style="background-color: white; margin-top: 10px;">

@@ -11,7 +11,10 @@
 
   <!-- 书籍列表区域 -->
   <view class="book-list">
-    <!-- 书籍项 - 循环渲染书籍列表 -->
+    <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
+    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
+    <view wx:elif="{{books.length === 0}}" class="empty-state">暂无已发布的法规阅读内容</view>
+    <block wx:else>
     <view class="book-item" wx:for="{{books}}" wx:key="id" bindtap="onBookTap" data-id="{{item.id}}">
       <!-- 书籍封面 -->
       <view class="book-cover">
@@ -20,20 +23,12 @@
       <!-- 书籍信息区域 -->
       <view class="book-info">
         <text class="book-title">{{item.title}}</text>
-        <text class="book-author">{{item.author}}</text>
-        <!-- 书籍元数据 -->
+        <text class="book-author">{{item.sourceName || '已发布内容'}}</text>
         <view class="book-meta">
-          
-          <text class="book-read">👁 {{item.readCount}}</text>
-        </view>
-        <!-- 阅读进度 -->
-        <view class="book-progress">
-          <view class="progress-bar">
-            <view class="progress-fill" style="width: {{item.progress}}"></view>
-          </view>
-          <text class="progress-text">{{item.progress}}%</text>
+          <text class="book-read">{{item.publishedTime || item.createdTime}}</text>
         </view>
       </view>
     </view>
+    </block>
   </view>
 </view>
