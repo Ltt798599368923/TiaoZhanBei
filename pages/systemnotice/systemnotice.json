@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "系统通知",
-  "usingComponents": {
-    "app-header": "../../components/app-header/app-header"
-  }
+  "navigationBarTitleText": "系统通知"
 }

@@ -1,25 +1,24 @@
 <view style="min-height: 100vh; background: #f6f7f9; padding-bottom: 48rpx;">
-  <app-header title="合同审查" back="{{true}}" />
-  <view wx:if="{{false}}" style="height: 128rpx; background: #c0190e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34rpx; font-weight: 600; position: relative;">
+<view wx:if="{{false}}" style="height: 128rpx; background: #c0190e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34rpx; font-weight: 600; position: relative;">
     <view bindtap="goBack" style="position: absolute; left: 24rpx; width: 64rpx; height: 64rpx; display: flex; align-items: center; justify-content: center; font-size: 42rpx;">&lt;</view>
     <text>合同审查</text>
   </view>
 
-  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 8rpx;">
+  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 16rpx;">
     <text style="display: block; color: #222; font-size: 32rpx; font-weight: 600;">提交合同审查</text>
     <text style="display: block; margin-top: 12rpx; color: #777; font-size: 26rpx; line-height: 1.6;">选择合同类型并上传文件，审核结果会显示在合同记录中。</text>
   </view>
 
-  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 8rpx;">
+  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 16rpx;">
     <text style="display: block; margin-bottom: 20rpx; color: #333; font-size: 30rpx; font-weight: 600;">合同类型</text>
     <view style="display: flex; justify-content: space-between;">
-      <view bindtap="selectContractType" data-type="employment" style="width: 31%; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'employment' ? '#eaf4ff' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'employment' ? '#1890ff' : '#eeeeee'}}; border-radius: 8rpx; color: #333;">劳动合同</view>
-      <view bindtap="selectContractType" data-type="business" style="width: 31%; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'business' ? '#edf9e8' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'business' ? '#52c41a' : '#eeeeee'}}; border-radius: 8rpx; color: #333;">商务合同</view>
-      <view bindtap="selectContractType" data-type="realestate" style="width: 31%; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'realestate' ? '#fff7e6' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'realestate' ? '#faad14' : '#eeeeee'}}; border-radius: 8rpx; color: #333;">房产合同</view>
+      <view bindtap="selectContractType" data-type="employment" style="width: 31%; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'employment' ? '#fff1f0' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'employment' ? '#c0190e' : '#eeeeee'}}; border-radius: 12rpx; color: {{selectedType === 'employment' ? '#c0190e' : '#333'}};">劳动合同</view>
+      <view bindtap="selectContractType" data-type="business" style="width: 31%; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'business' ? '#fff1f0' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'business' ? '#c0190e' : '#eeeeee'}}; border-radius: 12rpx; color: {{selectedType === 'business' ? '#c0190e' : '#333'}};">商务合同</view>
+      <view bindtap="selectContractType" data-type="realestate" style="width: 31%; min-height: 120rpx; display: flex; align-items: center; justify-content: center; text-align: center; background: {{selectedType === 'realestate' ? '#fff1f0' : '#f7f7f7'}}; border: 1rpx solid {{selectedType === 'realestate' ? '#c0190e' : '#eeeeee'}}; border-radius: 12rpx; color: {{selectedType === 'realestate' ? '#c0190e' : '#333'}};">房产合同</view>
     </view>
   </view>
 
-  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 8rpx;">
+  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 16rpx;">
     <text style="display: block; margin-bottom: 12rpx; color: #555; font-size: 28rpx;">合同标题</text>
     <input value="{{title}}" bindinput="onTitleInput" placeholder="请输入合同标题" style="height: 84rpx; padding: 0 20rpx; border: 1rpx solid #dddddd; border-radius: 8rpx; font-size: 28rpx; box-sizing: border-box;" />
     <view bindtap="uploadContract" style="margin-top: 24rpx; padding: 48rpx 24rpx; border: 2rpx dashed #bfc5cc; border-radius: 8rpx; display: flex; flex-direction: column; align-items: center; color: #666;">
@@ -27,10 +26,10 @@
       <text style="font-size: 26rpx; margin-top: 12rpx;">支持 PDF、DOC、DOCX、TXT 或拍照</text>
     </view>
     <text wx:if="{{fileName}}" style="display: block; margin-top: 16rpx; color: #52c41a; font-size: 26rpx;">已选择：{{fileName}}</text>
-    <button bindtap="submitReview" loading="{{submitting}}" disabled="{{submitting}}" style="margin-top: 28rpx; background: #1890ff; color: #fff; font-size: 30rpx;">提交审核</button>
+    <button bindtap="submitReview" loading="{{submitting}}" disabled="{{submitting}}" style="margin-top: 28rpx; background: #c0190e; color: #fff; font-size: 30rpx; border-radius: 12rpx;">提交审核</button>
   </view>
 
-  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 8rpx;">
+  <view style="margin: 24rpx; padding: 28rpx; background: #fff; border-radius: 16rpx;">
     <text style="display: block; color: #222; font-size: 32rpx; font-weight: 600;">合同记录</text>
     <view wx:if="{{loadingContracts}}" style="padding: 28rpx 0; color: #888; font-size: 26rpx;">加载中...</view>
     <view wx:elif="{{contracts.length === 0}}" style="padding: 28rpx 0; color: #888; font-size: 26rpx;">暂无合同记录</view>
@@ -42,7 +41,7 @@
         </view>
         <text style="display: block; margin-top: 10rpx; color: #999; font-size: 24rpx;">{{item.fileName || '未命名文件'}} · {{item.time}}</text>
         <view style="display: flex; justify-content: flex-end; margin-top: 16rpx;">
-          <text bindtap="viewContract" data-id="{{item.id}}" style="color: #1890ff; font-size: 25rpx; margin-right: 28rpx;">查看</text>
+          <text bindtap="viewContract" data-id="{{item.id}}" style="color: #c0190e; font-size: 25rpx; margin-right: 28rpx;">查看</text>
           <text bindtap="deleteContract" data-id="{{item.id}}" style="color: #ff4d4f; font-size: 25rpx;">删除</text>
         </view>
       </view>

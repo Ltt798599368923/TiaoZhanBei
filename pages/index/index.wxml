@@ -1,8 +1,7 @@
 <!--index.wxml-->
 <!-- 首页页面结构 -->
 <view class="container">
-  <app-header title="法律咨询" />
-  <!-- 自定义导航栏 -->
+<!-- 自定义导航栏 -->
   <view wx:if="{{false}}" class="custom-nav" style="height: 138rpx; display: flex; box-sizing: border-box">
     <view class="nav-title" style="position: relative; left: 0rpx; top: 47rpx">法律咨询</view>
   </view>

@@ -1,8 +1,7 @@
 <!-- about.wxml -->
 <!-- 关于我们页面结构 -->
 <view class="container">
-  <app-header title="关于我们" back="{{true}}" />
-  <!-- 顶部标题 -->
+<!-- 顶部标题 -->
   <view wx:if="{{false}}" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
     <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">←</view>
     <text style="flex: 1; text-align: center; padding-right: 60rpx;">关于我们</text>
@@ -22,7 +21,7 @@
     <text class="app-version">版本 1.0.0</text>
 
     <!-- 关于内容 -->
-    <view class="about-content" style="width: 568rpx; display: block; box-sizing: content-box">
+    <view class="about-content">
       <view class="content-section">
         <text class="section-title">我们的使命</text>
         <text class="section-desc">为用户提供便捷、专业的法律咨询服务，让法律触手可及。</text>

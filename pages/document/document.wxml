@@ -1,8 +1,7 @@
 <!--document.wxml-->
 <!-- 文书模板页面结构 -->
 <view class="container" style="background-color: #F5F4F0; min-height: 100vh; padding-bottom: 100rpx;">
-  <app-header title="法律文书" back="{{true}}" />
-  <!-- 顶部 Header -->
+<!-- 顶部 Header -->
   <view wx:if="{{false}}" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; text-align: center; color: white;">
     <view style="display: flex; align-items: center; margin-bottom: 20rpx;">
       <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 22rpx">←</view>

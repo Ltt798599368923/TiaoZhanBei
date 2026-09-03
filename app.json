@@ -26,15 +26,12 @@
     "pages/webview/webview",
     "pages/template/template"
   ],
-  "usingComponents": {
-    "app-header": "/components/app-header/app-header"
-  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#DE1E1D",
     "navigationBarTitleText": "法律咨询",
     "navigationBarTextStyle": "white",
-    "navigationStyle": "custom"
+    "navigationStyle": "default"
   },
   "tabBar": {
     "color": "#666666",

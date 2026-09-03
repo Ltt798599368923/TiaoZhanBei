@@ -1,7 +1,6 @@
 <!-- 企业法律服务页面结构 -->
 <view class="container" style="background-color: #F5F7FA; min-height: 100vh; padding-bottom: 80px;">
-  <app-header title="企业法律服务" back="{{true}}" />
-  <!-- 顶部区域 - 渐变背景 -->
+<!-- 顶部区域 - 渐变背景 -->
   <view wx:if="{{false}}" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; text-align: center; color: white; height: 200rpx; display: block">
     <view style="display: flex; align-items: center; margin-bottom: 20rpx;">
       <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 22rpx">←</view>

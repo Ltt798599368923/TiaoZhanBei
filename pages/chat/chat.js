@@ -14,7 +14,6 @@ Page({
     inputValue: '',
     isLoading: false,
     scrollIntoView: '',
-    headerHeight: 0,
     inputBarHeight: 0,
     keyboardHeight: 0
   },
@@ -24,7 +23,7 @@ Page({
       name: 'AI'
     });
     wx.setNavigationBarTitle({
-      title: 'AI'
+      title: 'AI 法律助手'
     });
   },
 
@@ -34,13 +33,10 @@ Page({
 
   measureLayout() {
     const query = wx.createSelectorQuery().in(this);
-    query.select('#chat-header').boundingClientRect();
     query.select('#chat-input-bar').boundingClientRect();
     query.exec((res) => {
-      const headerRect = res && res[0];
-      const inputRect = res && res[1];
+      const inputRect = res && res[0];
       this.setData({
-        headerHeight: headerRect ? headerRect.height : 0,
         inputBarHeight: inputRect ? inputRect.height : 0
       });
     });

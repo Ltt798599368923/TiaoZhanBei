@@ -1,6 +1,5 @@
 <view class="container" style="min-height: 100vh; background: #f6f7f9;">
-  <app-header title="系统通知" back="{{true}}" />
-  <view wx:if="{{false}}" style="height: 128rpx; background: #c0190e; color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; font-size: 34rpx; font-weight: 600;">
+<view wx:if="{{false}}" style="height: 128rpx; background: #c0190e; color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; font-size: 34rpx; font-weight: 600;">
     <view bindtap="goBack" style="position: absolute; left: 24rpx; width: 64rpx; height: 64rpx; display: flex; align-items: center; justify-content: center; font-size: 42rpx;">←</view>
     <text>系统通知</text>
   </view>

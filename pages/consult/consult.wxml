@@ -1,8 +1,7 @@
 <!--consult.wxml-->
 <!-- 在线咨询页面结构 -->
 <view class="container">
-  <app-header title="在线咨询" back="{{true}}" />
-  <!-- 顶部标题 -->
+<!-- 顶部标题 -->
   <view wx:if="{{false}}" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
     <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 30rpx">←</view>
     <text style="flex: 1; text-align: center; padding-right: 60rpx; position: relative; left: -30rpx; top: 29rpx">在线咨询</text>
@@ -32,17 +31,17 @@
 
     <view class="form-item">
       <text class="form-label">咨询内容</text>
-      <textarea class="form-textarea" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" bindinput="onContentInput" style="position: relative; left: -22rpx; top: 0rpx"></textarea>
+      <textarea class="form-textarea" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" bindinput="onContentInput"></textarea>
     </view>
     
     <view class="form-item">
       <text class="form-label">联系方式</text>
-      <input class="form-input" placeholder="请留下您的手机号，方便律师联系您" type="number" bindinput="onPhoneInput" style="width: 585rpx; display: block; box-sizing: border-box"></input>
+      <input class="form-input" placeholder="请留下您的手机号，方便律师联系您" type="number" bindinput="onPhoneInput"></input>
     </view>
     
     <view class="form-item">
       <text class="form-label">咨询类型</text>
-      <picker class="form-picker" range="{{consultTypes}}" value="{{consultTypeIndex}}" bindchange="onTypeChange" style="width: 607rpx; display: flex; box-sizing: border-box">
+      <picker class="form-picker" range="{{consultTypes}}" value="{{consultTypeIndex}}" bindchange="onTypeChange">
         <view class="picker-view">{{consultTypes[consultTypeIndex] || '请选择咨询类型'}}</view>
       </picker>
     </view>

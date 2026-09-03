@@ -1,5 +1,3 @@
 {
-  "usingComponents": {
-    "app-header": "../../components/app-header/app-header"
-  }
+  "navigationBarTitleText": "法治新程"
 }

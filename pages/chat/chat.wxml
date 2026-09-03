@@ -1,13 +1,6 @@
 <view class="container" style="background-color: #f5f7fa; height: 100vh; overflow: hidden; position: relative;">
-  <!-- 顶部标题 -->
-  <view id="chat-header" style="height: 112rpx; padding: env(safe-area-inset-top) 24rpx 0; box-sizing: content-box; display: flex; align-items: center; background: #c0190e; color: #ffffff; position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
-    <view style="width: 72rpx; height: 72rpx;"></view>
-    <text style="flex: 1; min-width: 0; padding: 0 16rpx; color: #ffffff; font-size: 34rpx; font-weight: 600; line-height: 112rpx; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">AI 法律助手</text>
-    <view style="width: 72rpx; height: 72rpx;"></view>
-  </view>
-
   <!-- 聊天内容区域 -->
-  <scroll-view scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrollIntoView}}" style="position: absolute; left: 0; right: 0; top: {{headerHeight}}px; bottom: {{inputBarHeight + keyboardHeight}}px; padding: 24rpx; box-sizing: border-box;">
+  <scroll-view scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrollIntoView}}" style="position: absolute; left: 0; right: 0; top: 0; bottom: {{inputBarHeight + keyboardHeight}}px; padding: 24rpx; box-sizing: border-box;">
     <!-- 动态渲染消息列表 -->
     <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}" class="message-item" style="display: flex; {{item.type === 'right' ? 'justify-content: flex-end' : ''}}; margin-bottom: 24rpx;">
       <!-- 对方消息 -->

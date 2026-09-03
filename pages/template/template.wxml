@@ -1,6 +1,5 @@
 <view class="template-page">
-  <app-header title="文书模板" back="{{true}}" />
-  <view wx:if="{{false}}" class="template-header">
+<view wx:if="{{false}}" class="template-header">
     <view class="back-button" bindtap="goBack">←</view>
     <text>文书模板</text>
   </view>

@@ -1,7 +1,6 @@
 <!-- 个人中心页面结构 -->
 <view class="container">
-  <app-header title="我的" />
-  <!-- 顶部用户信息区域 -->
+<!-- 顶部用户信息区域 -->
   <view style="background-color: #fff1f0; width: 100%; padding: 32rpx 20px; text-align: center; color: #333; border-bottom: 1rpx solid #ffd6d2;">
     <view style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #c0190e; margin: 0 auto 10px; background-color: white; display: flex; align-items: center; justify-content: center; overflow: hidden;">
       <image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" mode="aspectFill" style="width: 100%; height: 100%;" />

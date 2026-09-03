@@ -1,7 +1,6 @@
 <!-- 法理白话页面结构 -->
 <view class="container">
-  <app-header title="法理白话" back="{{true}}" />
-  <!-- 头部区域 -->
+<!-- 头部区域 -->
   <view wx:if="{{false}}" class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; color: white; height: 170rpx; display: block; left: 0rpx; top: 0rpx">
     <view style="display: flex; align-items: center; margin-bottom: 16rpx;">
       <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">←</view>
