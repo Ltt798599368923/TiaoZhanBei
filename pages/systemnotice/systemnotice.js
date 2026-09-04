@@ -9,14 +9,18 @@ Page({
   onLoad(options) {
     wx.setNavigationBarTitle({ title: '系统通知' })
     if (options.id) {
-      this.loadNotice(options.id)
+      this.loadNotice(options.id, options.scope)
     } else {
       this.setData({ loading: false })
     }
   },
 
-  loadNotice(id) {
-    api.getNoticeDetail(id).then(res => {
+  loadNotice(id, scope) {
+    const userId = wx.getStorageSync('userId')
+    const request = scope === 'user' && userId
+      ? api.getUserNoticeDetail(userId, id)
+      : api.getNoticeDetail(id)
+    request.then(res => {
       if (res.code === 200) {
         this.setData({ notice: res.data })
       } else {

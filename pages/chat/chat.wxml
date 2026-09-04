@@ -1,6 +1,9 @@
 <view class="container" style="background-color: #f5f7fa; height: 100vh; overflow: hidden; position: relative;">
   <!-- 聊天内容区域 -->
   <scroll-view scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrollIntoView}}" style="position: absolute; left: 0; right: 0; top: 0; bottom: {{inputBarHeight + keyboardHeight}}px; padding: 24rpx; box-sizing: border-box;">
+    <view wx:if="{{messages.length === 0}}" style="padding: 88rpx 36rpx; color: #8c8c8c; font-size: 28rpx; line-height: 1.7; text-align: center;">
+      输入法律问题后，AI 将基于已配置的在线服务回复。回答仅供一般法律信息参考。
+    </view>
     <!-- 动态渲染消息列表 -->
     <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}" class="message-item" style="display: flex; {{item.type === 'right' ? 'justify-content: flex-end' : ''}}; margin-bottom: 24rpx;">
       <!-- 对方消息 -->

@@ -218,12 +218,33 @@ Page({
         wx.showModal({
           title: contract.title,
           content: contract.reviewResult || '当前合同正在等待审核，请留意后续消息通知。',
-          showCancel: false
+          confirmText: contract.fileName ? '下载原文件' : '知道了',
+          showCancel: !!contract.fileName,
+          cancelText: '关闭',
+          success: modalRes => {
+            if (!modalRes.confirm || !contract.fileName) return;
+            wx.showLoading({ title: '下载中...', mask: true });
+            api.downloadContractFile(userId, contractId).then(filePath => {
+              wx.hideLoading();
+              this.openContractFile(filePath, contract.fileName);
+            }).catch(() => {
+              wx.hideLoading();
+              wx.showToast({ title: '文件下载失败', icon: 'none' });
+            });
+          }
         });
       })
       .catch(() => {
         wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' });
       });
+  },
+
+  openContractFile(filePath, fileName) {
+    if (/\.(jpg|jpeg|png)$/i.test(fileName || '')) {
+      wx.previewImage({ current: filePath, urls: [filePath] });
+      return;
+    }
+    wx.openDocument({ filePath, showMenu: true });
   },
 
   deleteContract(e) {

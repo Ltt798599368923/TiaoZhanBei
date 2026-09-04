@@ -17,7 +17,12 @@ Page({
   },
 
   loadMessages() {
-    api.getNotices().then(res => {
+    const userId = wx.getStorageSync('userId')
+    if (!userId) {
+      this.setData({ messages: [], filteredMessages: [] })
+      return
+    }
+    api.getUserNotices(userId).then(res => {
       const notices = res.code === 200
         ? (res.data || []).map(item => ({
             id: item.id,
@@ -69,7 +74,7 @@ Page({
     const type = e.currentTarget.dataset.type
 
     if (type === 'system') {
-      wx.navigateTo({ url: `/pages/systemnotice/systemnotice?id=${id}` })
+      wx.navigateTo({ url: `/pages/systemnotice/systemnotice?id=${id}&scope=user` })
       return
     }
 

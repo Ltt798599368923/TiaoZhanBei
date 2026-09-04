@@ -3,14 +3,7 @@ const api = require('../../utils/api.js')
 Page({
   data: {
     name: '',
-    messages: [
-      {
-        id: 1,
-        content: '您好，请问有什么法律问题需要咨询？',
-        type: 'left',
-        time: '10:00'
-      }
-    ],
+    messages: [],
     inputValue: '',
     isLoading: false,
     scrollIntoView: '',

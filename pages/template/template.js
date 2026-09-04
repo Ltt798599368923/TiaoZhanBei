@@ -62,7 +62,7 @@ Page({
       wx.showModal({
         title: template.title,
         content: template.content || template.description || '该模板暂无正文内容。',
-        confirmText: '使用模板',
+        confirmText: template.hasFile ? '下载文件' : '复制模板',
         success: modalRes => {
           if (modalRes.confirm) {
             this.useTemplate(template)
@@ -98,19 +98,30 @@ Page({
   },
 
   useTemplate(template) {
+    if (template.hasFile) {
+      wx.showLoading({ title: '下载中...', mask: true })
+      api.downloadTemplateFile(template.id).then(filePath => {
+        wx.hideLoading()
+        wx.openDocument({ filePath, showMenu: true })
+        this.loadTemplates(this.data.selectedCategory)
+      }).catch(() => {
+        wx.hideLoading()
+        wx.showToast({ title: '文件下载失败', icon: 'none' })
+      })
+      return
+    }
+
+    if (!template.content) {
+      wx.showToast({ title: '该模板暂无可复制正文', icon: 'none' })
+      return
+    }
     api.downloadTemplate(template.id).then(res => {
       if (res.code !== 200) {
         wx.showToast({ title: res.message || '操作失败', icon: 'none' })
         return
       }
-      if (template.content) {
-        wx.setClipboardData({ data: template.content })
-      } else {
-        wx.showToast({ title: '模板已记录使用', icon: 'success' })
-      }
+      wx.setClipboardData({ data: template.content })
       this.loadTemplates(this.data.selectedCategory)
-    }).catch(() => {
-      wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' })
-    })
+    }).catch(() => wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' }))
   }
 })

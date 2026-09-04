@@ -82,6 +82,23 @@ function uploadFile(options) {
   })
 }
 
+function downloadFile(url) {
+  return new Promise((resolve, reject) => {
+    wx.downloadFile({
+      url,
+      header: getAuthHeader(),
+      success: (res) => {
+        if (res.statusCode === 200) {
+          resolve(res.tempFilePath)
+        } else {
+          reject(res)
+        }
+      },
+      fail: reject
+    })
+  })
+}
+
 const api = {
   health: () => {
     return request({ url: BASE_URL + '/api/ai/health', method: 'GET' })
@@ -220,6 +237,10 @@ const api = {
     })
   },
 
+  downloadContractFile: (userId, contractId) => {
+    return downloadFile(BASE_URL + '/api/contract/file/' + userId + '/' + contractId)
+  },
+
   getAllTemplates: () => {
     return request({ url: BASE_URL + '/api/template/list', method: 'GET' })
   },
@@ -239,12 +260,24 @@ const api = {
     })
   },
 
+  downloadTemplateFile: (templateId) => {
+    return downloadFile(BASE_URL + '/api/template/file/' + templateId)
+  },
+
   getNotices: () => {
     return request({ url: BASE_URL + '/api/notice/list', method: 'GET' })
   },
 
   getNoticeDetail: (noticeId) => {
     return request({ url: BASE_URL + '/api/notice/detail/' + noticeId, method: 'GET' })
+  },
+
+  getUserNotices: (userId) => {
+    return request({ url: BASE_URL + '/api/notice/user/' + userId, method: 'GET' })
+  },
+
+  getUserNoticeDetail: (userId, noticeId) => {
+    return request({ url: BASE_URL + '/api/notice/user/' + userId + '/detail/' + noticeId, method: 'GET' })
   },
 
   getContentList: (type) => {
