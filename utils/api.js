@@ -1,4 +1,4 @@
-const BASE_URL = 'https://tiaozhanbei-backer.onrender.com'
+const BASE_URL = 'https://api.fashijie.top'
 
 function getAuthHeader() {
   const token = wx.getStorageSync('token')
