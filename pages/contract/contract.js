@@ -86,7 +86,7 @@ Page({
           wx.chooseMessageFile({
             count: 1,
             type: 'file',
-            extension: ['.pdf', '.doc', '.docx', '.txt'],
+            extension: ['pdf', 'doc', 'docx', 'txt'],
             success: (res) => {
               const file = res.tempFiles[0];
               this.setData({
