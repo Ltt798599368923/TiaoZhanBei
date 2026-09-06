@@ -1,7 +1,7 @@
 <view class="template-page">
-<view wx:if="{{false}}" class="template-header">
-    <view class="back-button" bindtap="goBack">←</view>
-    <text>文书模板</text>
+  <view class="page-heading">
+    <text class="heading-title">文书模板</text>
+    <text class="heading-copy">按类型查找、收藏和使用常用法律文书</text>
   </view>
 
   <view class="template-section">
@@ -31,8 +31,8 @@
           <text class="template-description">{{item.description || item.category}}</text>
           <text class="template-meta">使用 {{item.downloadCount || 0}} 次</text>
         </view>
-        <view style="display: flex; align-items: center;">
-          <text catchtap="addFavorite" data-id="{{item.id}}" data-title="{{item.title}}" data-description="{{item.description || item.category}}" style="color: #888; font-size: 24rpx; margin-right: 20rpx;">收藏</text>
+        <view class="template-tools">
+          <text catchtap="addFavorite" data-id="{{item.id}}" data-title="{{item.title}}" data-description="{{item.description || item.category}}" class="favorite-action">收藏</text>
           <text class="template-action">使用</text>
         </view>
       </view>

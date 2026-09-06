@@ -1,13 +1,12 @@
 <!-- lawsearch.wxml -->
 <view class="container">
-<view wx:if="{{false}}" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
-    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">←</view>
-    <text style="flex: 1; text-align: center; padding-right: 60rpx;">法条检索</text>
+  <view class="page-heading">
+    <text class="heading-title">法条检索</text>
+    <text class="heading-copy">检索建议仅供参考，请通过官方渠道核验</text>
   </view>
 
   <view class="search-header">
     <view class="search-bar">
-      <text class="search-icon">🔍</text>
       <input 
         class="search-input" 
         placeholder="请输入法条关键词" 
@@ -16,14 +15,14 @@
         bindinput="onSearchInput"
         bindconfirm="onSearch"
       />
-      <text class="clear-btn" wx:if="{{searchKeyword}}" bindtap="onClearSearch">✕</text>
+      <text class="clear-btn" wx:if="{{searchKeyword}}" bindtap="onClearSearch">清空</text>
     </view>
-    <text class="search-btn" bindtap="onSearch">搜索</text>
+    <text class="search-btn" bindtap="onSearch">检索</text>
   </view>
 
   <view class="hot-search" wx:if="{{!searchKeyword && !searchResults.length}}">
-    <view class="hot-search-header">
-      <text class="hot-search-title">热门搜索</text>
+    <view class="panel-heading">
+      <text class="panel-title">常用关键词</text>
     </view>
     <view class="hot-search-tags">
       <text 
@@ -39,9 +38,9 @@
   </view>
 
   <view class="search-results" wx:if="{{searchResults.length}}">
-    <view class="search-results-header">
-      <text class="search-results-title">搜索结果</text>
-      <text class="search-results-count">共 {{searchResults.length}} 条</text>
+    <view class="panel-heading">
+      <text class="panel-title">检索结果</text>
+      <text class="panel-count">{{searchResults.length}} 条</text>
     </view>
     <view class="result-list">
       <view 
@@ -78,7 +77,6 @@
   </view>
 
   <view class="empty-state" wx:if="{{hasSearched && !searching && !searchResults.length && !aiAdvice}}">
-    <text class="empty-icon">🔍</text>
     <text class="empty-text">未找到相关法条</text>
     <text class="empty-hint">请尝试其他关键词</text>
   </view>

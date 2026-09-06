@@ -1,203 +1,48 @@
-/* lawsearch.wxss */
 .container {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  padding: 28rpx 24rpx 48rpx;
+  background: #f4f5f7;
+  box-sizing: border-box;
 }
 
-/* 顶部搜索栏 */
-.search-header {
-  background-color: #ffffff;
-  padding: 20rpx 30rpx;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+.page-heading { padding: 4rpx 4rpx 24rpx; }
+.heading-title, .heading-copy, .advice-title, .source-title, .source-name, .source-desc, .advice-copy, .advice-note { display: block; }
+.heading-title { color: #202124; font-size: 40rpx; font-weight: 700; }
+.heading-copy { margin-top: 10rpx; color: #747b85; font-size: 26rpx; }
 
-.search-bar {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  background-color: #f0f0f0;
-  border-radius: 25rpx;
-  padding: 0 20rpx;
-  height: 70rpx;
-  margin-right: 20rpx;
-}
+.search-header { display: flex; align-items: center; padding: 12rpx; background: #ffffff; border: 1rpx solid #e1e4e8; border-radius: 8rpx; }
+.search-bar { display: flex; flex: 1; align-items: center; height: 70rpx; padding: 0 16rpx; background: #f6f7f8; border: 1rpx solid #e8eaed; border-radius: 6rpx; }
+.search-input { flex: 1; min-width: 0; height: 100%; color: #30343a; font-size: 27rpx; }
+.placeholder-text { color: #9298a1; }
+.clear-btn { padding-left: 12rpx; color: #747b85; font-size: 24rpx; }
+.search-btn { padding: 0 14rpx 0 18rpx; color: #a61d18; font-size: 27rpx; font-weight: 600; }
 
-.search-icon {
-  font-size: 32rpx;
-  margin-right: 12rpx;
-  color: #999999;
-}
+.hot-search, .search-results, .ai-advice, .source-panel { margin-top: 22rpx; padding: 24rpx; background: #ffffff; border: 1rpx solid #e1e4e8; border-radius: 8rpx; }
+.panel-heading { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 18rpx; border-bottom: 1rpx solid #eceef0; }
+.panel-title, .advice-title, .source-title { color: #30343a; font-size: 30rpx; font-weight: 600; }
+.panel-count { color: #878d96; font-size: 24rpx; }
 
-.search-input {
-  flex: 1;
-  font-size: 28rpx;
-  color: #333333;
-  height: 100%;
-}
+.hot-search-tags { display: flex; flex-wrap: wrap; gap: 16rpx; padding-top: 22rpx; }
+.hot-tag { box-sizing: border-box; padding: 11rpx 18rpx; color: #535a63; background: #f8f9fa; border: 1rpx solid #e2e5e9; border-radius: 5rpx; font-size: 24rpx; }
+.hot-tag:active { color: #a61d18; background: #fff3f1; border-color: #d99790; }
 
-.placeholder-text {
-  color: #999999;
-}
+.result-list { display: flex; flex-direction: column; }
+.result-item { padding: 22rpx 0 22rpx 18rpx; border-bottom: 1rpx solid #eceef0; border-left: 4rpx solid #bd1d17; }
+.result-item:last-child { border-bottom: 0; }
+.result-item:active { background: #fafafa; }
+.result-title { display: flex; align-items: center; justify-content: space-between; gap: 16rpx; margin-bottom: 12rpx; }
+.law-name { color: #30343a; font-size: 28rpx; font-weight: 600; }
+.article-number { flex: 0 0 auto; color: #a61d18; font-size: 24rpx; }
+.result-content { color: #5d646d; font-size: 24rpx; line-height: 1.65; }
 
-.clear-btn {
-  font-size: 24rpx;
-  color: #999999;
-  padding: 0 10rpx;
-}
+.advice-copy { margin-top: 16rpx; color: #555d66; font-size: 26rpx; line-height: 1.7; }
+.advice-note { margin-top: 16rpx; color: #a61d18; font-size: 23rpx; line-height: 1.55; }
+.source-row { display: flex; align-items: center; justify-content: space-between; gap: 20rpx; padding: 20rpx 0; border-bottom: 1rpx solid #eceef0; }
+.source-row:last-child { border-bottom: 0; }
+.source-name { color: #30343a; font-size: 27rpx; font-weight: 600; }
+.source-desc { margin-top: 6rpx; color: #7a818a; font-size: 22rpx; }
+.source-action { flex: 0 0 auto; color: #a61d18; font-size: 23rpx; }
 
-.search-btn {
-  font-size: 28rpx;
-  color: #f5222d;
-  font-weight: bold;
-  padding: 0 20rpx;
-}
-
-/* 热门搜索 */
-.hot-search {
-  background-color: #ffffff;
-  margin: 20rpx;
-  border-radius: 16rpx;
-  padding: 30rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
-}
-
-.hot-search-header {
-  margin-bottom: 20rpx;
-}
-
-.hot-search-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333333;
-}
-
-.hot-search-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16rpx;
-}
-
-.hot-tag {
-  background-color: #f0f0f0;
-  padding: 12rpx 24rpx;
-  border-radius: 20rpx;
-  font-size: 24rpx;
-  color: #666666;
-  transition: all 0.2s;
-}
-
-.hot-tag:active {
-  background-color: #e0e0e0;
-  transform: scale(0.96);
-}
-
-/* 搜索结果 */
-.search-results {
-  background-color: #ffffff;
-  margin: 20rpx;
-  border-radius: 16rpx;
-  padding: 30rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
-}
-
-.search-results-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20rpx;
-  padding-bottom: 20rpx;
-  border-bottom: 1rpx solid #f0f0f0;
-}
-
-.search-results-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333333;
-}
-
-.search-results-count {
-  font-size: 24rpx;
-  color: #999999;
-}
-
-.result-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20rpx;
-}
-
-.result-item {
-  padding: 24rpx;
-  background-color: #f9f9f9;
-  border-radius: 12rpx;
-  transition: all 0.2s;
-  border-left: 4rpx solid #f5222d;
-}
-
-.result-item:active {
-  background-color: #f0f0f0;
-  transform: scale(0.98);
-}
-
-.result-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12rpx;
-}
-
-.law-name {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #333333;
-}
-
-.article-number {
-  font-size: 24rpx;
-  color: #f5222d;
-  font-weight: 500;
-}
-
-.result-content {
-  font-size: 24rpx;
-  color: #666666;
-  line-height: 1.6;
-}
-
-/* 空状态 */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 100rpx 0;
-  background-color: #ffffff;
-  margin: 20rpx;
-  border-radius: 16rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
-}
-
-.empty-icon {
-  font-size: 80rpx;
-  margin-bottom: 30rpx;
-  color: #cccccc;
-}
-
-.empty-text {
-  font-size: 32rpx;
-  color: #999999;
-  margin-bottom: 10rpx;
-}
-
-.empty-hint {
-  font-size: 24rpx;
-  color: #cccccc;
-}
-.ai-advice,.source-panel{margin:24rpx;padding:26rpx;border:1rpx solid #e1e4e8;border-radius:8rpx;background:#fff}.advice-title,.source-title,.source-name,.source-desc,.advice-copy,.advice-note{display:block}.advice-title,.source-title{color:#30343a;font-size:30rpx;font-weight:700}.advice-copy{margin-top:16rpx;color:#555d66;font-size:26rpx;line-height:1.7}.advice-note{margin-top:16rpx;color:#a61d18;font-size:23rpx;line-height:1.55}.source-row{display:flex;align-items:center;justify-content:space-between;gap:20rpx;padding:20rpx 0;border-bottom:1rpx solid #eceef0}.source-row:last-child{border:0}.source-name{color:#30343a;font-size:27rpx;font-weight:600}.source-desc{margin-top:6rpx;color:#7a818a;font-size:22rpx}.source-action{color:#a61d18;font-size:23rpx;flex-shrink:0}
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 22rpx; padding: 96rpx 28rpx; background: #ffffff; border: 1rpx solid #e1e4e8; border-radius: 8rpx; }
+.empty-text { color: #535a63; font-size: 30rpx; text-align: center; }
+.empty-hint { margin-top: 10rpx; color: #9298a1; font-size: 24rpx; }

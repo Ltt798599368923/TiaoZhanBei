@@ -1,35 +1,35 @@
 .template-page {
   min-height: 100vh;
-  background: #f6f7f9;
-  padding-bottom: 48rpx;
+  padding: 28rpx 24rpx 48rpx;
+  background: #f4f5f7;
+  box-sizing: border-box;
 }
 
-.template-header {
-  height: 128rpx;
-  background: #c0190e;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34rpx;
-  font-weight: 600;
-  position: relative;
+.page-heading {
+  padding: 4rpx 4rpx 24rpx;
 }
 
-.back-button {
-  position: absolute;
-  left: 24rpx;
-  width: 64rpx;
-  height: 64rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42rpx;
+.heading-title,
+.heading-copy {
+  display: block;
+}
+
+.heading-title {
+  color: #202124;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.heading-copy {
+  margin-top: 10rpx;
+  color: #747b85;
+  font-size: 26rpx;
 }
 
 .template-section {
-  margin: 24rpx;
+  margin: 0 0 22rpx;
   background: #ffffff;
+  border: 1rpx solid #e1e4e8;
   border-radius: 8rpx;
   overflow: hidden;
 }
@@ -40,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1rpx solid #eeeeee;
+  border-bottom: 1rpx solid #eceef0;
   font-size: 30rpx;
   font-weight: 600;
   color: #222222;
@@ -59,14 +59,15 @@
 .category-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16rpx;
+  gap: 12rpx;
   padding: 24rpx;
 }
 
 .category-item {
   min-height: 136rpx;
-  background: #f7f7f7;
-  border: 1rpx solid #eeeeee;
+  background: #f8f9fa;
+  border: 1rpx solid #e5e7ea;
+  border-radius: 6rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,9 +78,9 @@
 }
 
 .category-active {
-  border-color: #c0190e;
-  background: #fff4f2;
-  color: #c0190e;
+  border-color: #bd1d17;
+  background: #fff3f1;
+  color: #a61d18;
 }
 
 .category-icon {
@@ -92,7 +93,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1rpx solid #eeeeee;
+  border-bottom: 1rpx solid #eceef0;
 }
 
 .template-item:last-child {
@@ -107,7 +108,7 @@
 }
 
 .template-title {
-  color: #222222;
+  color: #30343a;
   font-size: 30rpx;
   font-weight: 500;
 }
@@ -121,8 +122,22 @@
 
 .template-action {
   flex: 0 0 auto;
-  font-size: 28rpx;
-  margin-left: 20rpx;
+  padding-left: 18rpx;
+  border-left: 1rpx solid #e2e4e7;
+  font-size: 25rpx;
+  font-weight: 600;
+}
+
+.template-tools {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.favorite-action {
+  margin-right: 18rpx;
+  color: #747b85;
+  font-size: 24rpx;
 }
 
 .empty-state {
