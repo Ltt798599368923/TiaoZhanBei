@@ -3,7 +3,8 @@ const api = require('../../utils/api.js')
 Page({
   data: {
     userInfo: null,
-    hasLogin: false
+    hasLogin: false,
+    loginLoading: false
   },
 
   onLoad(options) {
@@ -21,6 +22,10 @@ Page({
   },
 
   wechatLogin() {
+    if (this.data.loginLoading) {
+      return;
+    }
+    this.setData({ loginLoading: true });
     wx.showLoading({
       title: '登录中...',
       mask: true
@@ -41,6 +46,7 @@ Page({
           });
         } else {
           wx.hideLoading();
+          this.setData({ loginLoading: false });
           wx.showToast({
             title: '获取登录凭证失败',
             icon: 'none'
@@ -49,6 +55,7 @@ Page({
       },
       fail: () => {
         wx.hideLoading();
+        this.setData({ loginLoading: false });
         wx.showToast({
           title: '登录失败',
           icon: 'none'
@@ -61,6 +68,7 @@ Page({
     api.login(code, nickname, avatar)
       .then(res => {
         wx.hideLoading();
+        this.setData({ loginLoading: false });
         
         if (res.code === 200 && res.data) {
           const { token, userInfo } = res.data;
@@ -88,6 +96,7 @@ Page({
       })
       .catch(err => {
         wx.hideLoading();
+        this.setData({ loginLoading: false });
         wx.showToast({
           title: '网络错误，请稍后重试',
           icon: 'none'

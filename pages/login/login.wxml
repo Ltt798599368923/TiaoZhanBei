@@ -1,30 +1,20 @@
 
 
 <view class="container">
-  <!-- 品牌Logo -->
-  <view class="logo-container">
-    <view class="logo" style="position: relative; left: 0rpx; top: -80rpx">
-      <text style="font-size: 60rpx;">⚖️</text>
-    </view>
+  <view class="brand-block">
+    <view class="brand-mark">法</view>
+    <text class="title">法律咨询平台</text>
+    <text class="subtitle">专业法律服务，守护您的权益</text>
   </view>
-  
-  <!-- 标题 -->
-  <view class="title-container">
-    <text class="title" style="position: relative; left: 175rpx; top: -141rpx">法律咨询平台</text>
-    <text class="subtitle" style="position: relative; left: -139rpx; top: -56rpx">专业法律服务，守护您的权益</text>
+
+  <view class="login-panel">
+    <text class="panel-title">登录后使用法律服务</text>
+    <text class="panel-copy">咨询记录、预约进度和收藏内容会同步保存</text>
+    <button class="wechat-login-btn" loading="{{loginLoading}}" disabled="{{loginLoading}}" bindtap="wechatLogin">微信一键登录</button>
   </view>
-  
-  <!-- 登录按钮 -->
-  <view class="button-container" style="display: block; box-sizing: border-box">
-    <button class="wechat-login-btn" bindtap="wechatLogin" style="position: relative; left: -3rpx; top: -102rpx">
-      <image class="wechat-icon" src="https://res.wx.qq.com/open/res/ee4b253c23570358c78ab9a3a74f3332.png"></image>
-      <text class="wechat-login-text">微信一键登录</text>
-    </button>
-  </view>
-  
-  <!-- 底部说明 -->
+
   <view class="footer">
-    <text class="footer-text" style="width: 202rpx; height: 31rpx; display: block; box-sizing: border-box">登录即表示同意</text>
+    <text class="footer-text">登录即表示同意</text>
     <text class="footer-link" bindtap="showAgreement">《用户协议》</text>
     <text class="footer-text">和</text>
     <text class="footer-link" bindtap="showPrivacy">《隐私政策》</text>
