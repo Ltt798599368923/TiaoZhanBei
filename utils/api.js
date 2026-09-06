@@ -150,6 +150,14 @@ const api = {
     })
   },
 
+  uploadUserAvatar: (userId, filePath) => {
+    return uploadFile({ url: BASE_URL + '/api/user/avatar/' + userId, filePath, name: 'file' })
+  },
+
+  getFeedbacks: (userId) => request({ url: BASE_URL + '/api/feedback/list/' + userId, method: 'GET' }),
+
+  createFeedback: (userId, content) => request({ url: BASE_URL + '/api/feedback/create/' + userId, method: 'POST', data: { content } }),
+
   getFavorites: (userId) => {
     return request({ url: BASE_URL + '/api/favorite/list/' + userId, method: 'GET' })
   },

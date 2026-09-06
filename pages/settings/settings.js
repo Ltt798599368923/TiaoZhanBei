@@ -1,260 +1,56 @@
-const api = require('../../utils/api.js')
+const api = require('../../utils/api.js');
 
 Page({
-  data: {
-    isNotificationEnabled: true,
-    isDarkModeEnabled: false,
-    userInfo: {},
-    avatarInitial: '用',
-    editingProfile: false,
-    nickname: '',
-    phone: '',
-    savingProfile: false
-  },
-
-  onLoad() {
-    wx.setNavigationBarTitle({
-      title: '个人设置'
-    });
-    this.loadUserInfo();
-  },
-
-  loadUserInfo() {
+  data: { userInfo: {}, nickname: '', phone: '', editing: false, saving: false, notificationEnabled: true, feedbackVisible: false, feedbackContent: '', feedbacks: [] },
+  onLoad() { this.loadData(); },
+  onShow() { this.loadData(); },
+  loadData() {
     const userId = wx.getStorageSync('userId');
-    const cachedUserInfo = wx.getStorageSync('userInfo') || {};
-    this.setData({
-      userInfo: cachedUserInfo,
-      avatarInitial: (cachedUserInfo.nickname || '用').slice(0, 1),
-      nickname: cachedUserInfo.nickname || '',
-      phone: cachedUserInfo.phone || ''
-    });
+    const cached = wx.getStorageSync('userInfo') || {};
+    this.setData({ userInfo: cached, nickname: cached.nickname || '', phone: cached.phone || '', notificationEnabled: cached.notificationEnabled !== false });
     if (!userId) return;
     api.getUserInfo(userId).then(res => {
-      if (res.code !== 200 || !res.data) return;
-      wx.setStorageSync('userInfo', res.data);
-      this.setData({
-        userInfo: res.data,
-        avatarInitial: (res.data.nickname || '用').slice(0, 1),
-        nickname: res.data.nickname || '',
-        phone: res.data.phone || ''
-      });
+      if (res.code === 200 && res.data) this.applyUser(res.data);
+    }).catch(() => {});
+    api.getFeedbacks(userId).then(res => {
+      if (res.code === 200) this.setData({ feedbacks: res.data || [] });
     }).catch(() => {});
   },
-
-  goBack() {
-    wx.navigateBack({ delta: 1 });
+  applyUser(userInfo) {
+    wx.setStorageSync('userInfo', userInfo);
+    this.setData({ userInfo, nickname: userInfo.nickname || '', phone: userInfo.phone || '', notificationEnabled: userInfo.notificationEnabled !== false });
   },
-
-  navigateTo(e) {
-    const url = e.currentTarget.dataset.url;
-    if (url) {
-      wx.navigateTo({ url });
-    }
-  },
-
-
-
-  // 编辑个人信息
-  editProfile() {
-    this.setData({ editingProfile: true });
-  },
-
-  onNicknameInput(e) {
-    this.setData({ nickname: e.detail.value });
-  },
-
-  onPhoneInput(e) {
-    this.setData({ phone: e.detail.value });
-  },
-
-  cancelEditProfile() {
-    const userInfo = this.data.userInfo || {};
-    this.setData({
-      editingProfile: false,
-      nickname: userInfo.nickname || '',
-      phone: userInfo.phone || ''
-    });
-  },
-
+  onNicknameInput(e) { this.setData({ nickname: e.detail.value }); },
+  onPhoneInput(e) { this.setData({ phone: e.detail.value }); },
+  editProfile() { this.setData({ editing: true }); },
+  cancelEdit() { const { userInfo } = this.data; this.setData({ editing: false, nickname: userInfo.nickname || '', phone: userInfo.phone || '' }); },
   saveProfile() {
-    const userId = wx.getStorageSync('userId');
-    const nickname = this.data.nickname.trim();
-    const phone = this.data.phone.trim();
-    if (!userId) {
-      wx.showToast({ title: '请先登录', icon: 'none' });
-      return;
-    }
-    if (!nickname) {
-      wx.showToast({ title: '请输入昵称', icon: 'none' });
-      return;
-    }
-    if (phone && !/^1\d{10}$/.test(phone)) {
-      wx.showToast({ title: '请输入正确的手机号', icon: 'none' });
-      return;
-    }
-    this.setData({ savingProfile: true });
-    api.updateUser(userId, { nickname, phone }).then(res => {
-      if (res.code !== 200 || !res.data) {
-        wx.showToast({ title: res.message || '保存失败', icon: 'none' });
-        return;
-      }
-      wx.setStorageSync('userInfo', res.data);
-      this.setData({
-        userInfo: res.data,
-        avatarInitial: (res.data.nickname || '用').slice(0, 1),
-        editingProfile: false
-      });
-      wx.showToast({ title: '保存成功', icon: 'success' });
-    }).catch(() => {
-      wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' });
-    }).finally(() => {
-      this.setData({ savingProfile: false });
-    });
+    const userId = wx.getStorageSync('userId'); const nickname = this.data.nickname.trim(); const phone = this.data.phone.trim();
+    if (!nickname) return wx.showToast({ title: '请输入昵称', icon: 'none' });
+    if (phone && !/^1\d{10}$/.test(phone)) return wx.showToast({ title: '请输入正确的手机号', icon: 'none' });
+    this.setData({ saving: true });
+    api.updateUser(userId, { nickname, phone }).then(res => { if (res.code === 200) { this.applyUser(res.data); this.setData({ editing: false }); wx.showToast({ title: '保存成功', icon: 'success' }); } else wx.showToast({ title: res.message || '保存失败', icon: 'none' }); }).catch(() => wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' })).finally(() => this.setData({ saving: false }));
   },
-
-  // 修改密码
-  changePassword() {
-    wx.showToast({
-      title: '点击了修改密码',
-      icon: 'none'
-    });
+  onChooseAvatar(e) {
+    const userId = wx.getStorageSync('userId'); const filePath = e.detail.avatarUrl;
+    if (!userId || !filePath) return;
+    wx.showLoading({ title: '上传头像...', mask: true });
+    api.uploadUserAvatar(userId, filePath).then(res => { wx.hideLoading(); if (res.code === 200) { this.applyUser(res.data); wx.showToast({ title: '头像已更新', icon: 'success' }); } else wx.showToast({ title: res.message || '头像上传失败', icon: 'none' }); }).catch(() => { wx.hideLoading(); wx.showToast({ title: '头像上传失败', icon: 'none' }); });
   },
-
-  // 绑定手机号
-  bindPhone() {
-    wx.showToast({
-      title: '点击了绑定手机号',
-      icon: 'none'
-    });
+  toggleNotification(e) {
+    const userId = wx.getStorageSync('userId'); const notificationEnabled = e.detail.value;
+    this.setData({ notificationEnabled });
+    api.updateUser(userId, { notificationEnabled }).then(res => { if (res.code === 200) this.applyUser(res.data); else throw new Error(); }).catch(() => { this.setData({ notificationEnabled: !notificationEnabled }); wx.showToast({ title: '保存失败，请重试', icon: 'none' }); });
   },
-
-  // 第三方账号绑定
-  bindThirdParty() {
-    wx.showToast({
-      title: '点击了第三方账号绑定',
-      icon: 'none'
-    });
+  toggleFeedback() { this.setData({ feedbackVisible: !this.data.feedbackVisible }); },
+  onFeedbackInput(e) { this.setData({ feedbackContent: e.detail.value }); },
+  submitFeedback() {
+    const userId = wx.getStorageSync('userId'); const content = this.data.feedbackContent.trim();
+    if (content.length < 5) return wx.showToast({ title: '请至少填写 5 个字', icon: 'none' });
+    api.createFeedback(userId, content).then(res => { if (res.code === 200) { this.setData({ feedbackContent: '' }); wx.showToast({ title: '反馈已提交', icon: 'success' }); this.loadData(); } else wx.showToast({ title: res.message || '提交失败', icon: 'none' }); }).catch(() => wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' }));
   },
-
-  // 切换消息通知
-  toggleNotification() {
-    this.setData({
-      isNotificationEnabled: !this.data.isNotificationEnabled
-    });
-    wx.showToast({
-      title: this.data.isNotificationEnabled ? '消息通知已开启' : '消息通知已关闭',
-      icon: 'none'
-    });
-  },
-
-  // 隐私设置
-  privacySettings() {
-    wx.showToast({
-      title: '点击了隐私设置',
-      icon: 'none'
-    });
-  },
-
-  // 黑名单管理
-  blacklist() {
-    wx.showToast({
-      title: '点击了黑名单管理',
-      icon: 'none'
-    });
-  },
-
-  // 清除缓存
   clearCache() {
-    wx.showModal({
-      title: '清除缓存',
-      content: '确定要清除缓存吗？',
-      confirmText: '确定',
-      cancelText: '取消',
-      success: (res) => {
-        if (res.confirm) {
-          wx.showToast({
-            title: '缓存已清除',
-            icon: 'success'
-          });
-        }
-      }
-    });
+    wx.showModal({ title: '清理本地缓存', content: '将清理临时缓存，登录状态和个人资料会保留。', success: res => { if (!res.confirm) return; const token = wx.getStorageSync('token'); const userId = wx.getStorageSync('userId'); const userInfo = wx.getStorageSync('userInfo'); wx.clearStorageSync(); wx.setStorageSync('token', token); wx.setStorageSync('userId', userId); wx.setStorageSync('userInfo', userInfo); wx.showToast({ title: '缓存已清理', icon: 'success' }); } });
   },
-
-  // 语言选择
-  language() {
-    wx.showToast({
-      title: '点击了语言选择',
-      icon: 'none'
-    });
-  },
-
-  // 切换深色模式
-  toggleDarkMode() {
-    this.setData({
-      isDarkModeEnabled: !this.data.isDarkModeEnabled
-    });
-    wx.showToast({
-      title: this.data.isDarkModeEnabled ? '深色模式已开启' : '深色模式已关闭',
-      icon: 'none'
-    });
-  },
-
-  // 字体大小
-  fontSize() {
-    wx.showToast({
-      title: '点击了字体大小',
-      icon: 'none'
-    });
-  },
-
-  // 用户协议
-  userAgreement() {
-    wx.showToast({
-      title: '点击了用户协议',
-      icon: 'none'
-    });
-  },
-
-  // 隐私政策
-  privacyPolicy() {
-    wx.showToast({
-      title: '点击了隐私政策',
-      icon: 'none'
-    });
-  },
-
-  // 意见反馈
-  feedback() {
-    wx.showToast({
-      title: '点击了意见反馈',
-      icon: 'none'
-    });
-  },
-
-  // 去评分
-  rate() {
-    wx.showToast({
-      title: '点击了去评分',
-      icon: 'none'
-    });
-  },
-
-  // 退出登录
-  logout() {
-    wx.showModal({
-      title: '退出登录',
-      content: '确定退出登录？',
-      confirmText: '确定',
-      cancelText: '取消',
-      success: (res) => {
-        if (res.confirm) {
-          wx.removeStorageSync('token');
-          wx.removeStorageSync('userId');
-          wx.removeStorageSync('userInfo');
-          wx.reLaunch({ url: '/pages/login/login' });
-        }
-      }
-    });
-  }
-})
+  logout() { wx.showModal({ title: '退出登录', content: '确定退出当前账号吗？', success: res => { if (res.confirm) { wx.clearStorageSync(); wx.reLaunch({ url: '/pages/login/login' }); } } }); }
+});
