@@ -40,6 +40,10 @@
   background: #b8bec6;
 }
 
+.consult-card.declined::before {
+  background: #9299a3;
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;

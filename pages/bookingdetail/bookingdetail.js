@@ -28,7 +28,11 @@ Page({
     api.getConsultationDetail(userId, this.data.consultationId)
       .then(res => {
         if (res.code !== 200 || !res.data) throw new Error(res.message || '预约记录加载失败')
-        const detail = res.data
+        const detail = {
+          ...res.data,
+          statusText: this.getStatusText(res.data.status),
+          appointmentDisplay: this.formatAppointmentTime(res.data.appointmentTime)
+        }
         this.setData({ detail })
         const lawyerId = detail.lawyerId || initialLawyerId
         const tasks = [api.getConsultationMessages(userId, this.data.consultationId)]
@@ -63,5 +67,21 @@ Page({
       label: item.senderRole === 'user' ? '已提交预约申请' : '平台反馈',
       displayTime: date ? `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}` : ''
     }
+  },
+
+  getStatusText(status) {
+    return {
+      pending: '待平台确认', processing: '平台处理中', confirmed: '预约已确认',
+      need_info: '需要补充信息', declined: '暂无法承接', completed: '预约已完成',
+      cancelled: '预约已取消', closed: '预约已结束', replied: '平台已反馈'
+    }[status] || '平台处理中'
+  },
+
+  formatAppointmentTime(value) {
+    if (!value) return ''
+    const timestamp = new Date(String(value).replace(/-/g, '/')).getTime()
+    if (Number.isNaN(timestamp)) return String(value).replace('T', ' ').slice(0, 16)
+    const date = new Date(timestamp)
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`
   }
 })

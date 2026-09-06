@@ -26,8 +26,16 @@ Page({
       .then(res => {
         if (res.code === 200 && res.data) {
           const consults = res.data.map(item => {
-            item.displayTime = this.formatTime(item.time);
-            return item;
+            const isBooking = Boolean(item.lawyerId)
+            const activeBookingStatuses = ['pending', 'processing', 'replied', 'need_info', 'confirmed']
+            return {
+              ...item,
+              isBooking,
+              displayTime: this.formatTime(item.time),
+              statusText: this.getStatusText(item.status, Boolean(item.reply), isBooking),
+              statusClass: item.status === 'cancelled' ? 'cancelled' : (item.status === 'declined' ? 'declined' : (item.reply ? 'replied' : 'pending')),
+              canCancel: isBooking && activeBookingStatuses.includes(item.status)
+            };
           });
           this.setData({
             consults: consults
@@ -68,6 +76,17 @@ Page({
     } else {
       return month + '-' + day + ' ' + clock;
     }
+  },
+
+  getStatusText(status, hasReply, isBooking) {
+    const bookingLabels = {
+      pending: '待确认', processing: '处理中', confirmed: '已确认',
+      need_info: '需补充', declined: '无法承接', completed: '已完成',
+      cancelled: '已取消', closed: '预约已结束', replied: '已反馈'
+    }
+    if (isBooking) return bookingLabels[status] || '处理中'
+    if (status === 'closed') return '已结束'
+    return hasReply ? '已回复' : (status === 'pending' ? '待回复' : '处理中')
   },
 
   viewDetail(e) {
