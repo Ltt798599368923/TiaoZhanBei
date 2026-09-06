@@ -6,9 +6,9 @@
 
   <!-- 文章列表区域 -->
   <view class="article-list">
-    <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
-    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
-    <view wx:elif="{{articles.length === 0}}" class="empty-state">暂无已发布的普法文章</view>
+    <view wx:if="{{loading}}" class="state-panel">内容加载中...</view>
+    <view wx:elif="{{loadError}}" class="state-panel">{{loadError}}</view>
+    <view wx:elif="{{articles.length === 0}}" class="empty-state"><view class="empty-mark">解</view><text>暂未发布普法文章</text><text class="empty-copy">通俗的法律知识会在这里持续更新</text></view>
     <block wx:else>
     <view class="article-item" wx:for="{{articles}}" wx:key="id" bindtap="onArticleTap" data-id="{{item.id}}">
       <!-- 文章内容区域 -->

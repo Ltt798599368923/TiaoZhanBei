@@ -1,22 +1,23 @@
-
-
 <view class="container">
-  <view class="brand-block">
-    <view class="brand-mark">法</view>
+  <view class="login-hero">
+    <text class="hero-kicker">LEGAL SERVICE</text>
+    <view class="brand-line"><text class="brand-mark">法</text><view class="brand-rule"></view></view>
     <text class="title">法律咨询平台</text>
-    <text class="subtitle">专业法律服务，守护您的权益</text>
+    <text class="subtitle">把需要厘清的事，说清楚</text>
   </view>
 
   <view class="login-panel">
-    <text class="panel-title">登录后使用法律服务</text>
-    <text class="panel-copy">咨询记录、预约进度和收藏内容会同步保存</text>
+    <text class="panel-eyebrow">欢迎使用</text>
+    <text class="panel-title">登录后继续您的法律服务</text>
+    <text class="panel-copy">咨询记录、预约进度和收藏内容会同步保存。</text>
     <button class="wechat-login-btn" loading="{{loginLoading}}" disabled="{{loginLoading}}" bindtap="wechatLogin">微信一键登录</button>
+    <view class="service-note"><view class="note-dot"></view><text>平台服务不替代正式法律意见</text></view>
   </view>
 
   <view class="footer">
     <text class="footer-text">登录即表示同意</text>
-    <text class="footer-link" bindtap="showAgreement">《用户协议》</text>
-    <text class="footer-text">和</text>
-    <text class="footer-link" bindtap="showPrivacy">《隐私政策》</text>
+    <text class="footer-link" bindtap="showAgreement">用户协议</text>
+    <text class="footer-text">与</text>
+    <text class="footer-link" bindtap="showPrivacy">隐私政策</text>
   </view>
 </view>

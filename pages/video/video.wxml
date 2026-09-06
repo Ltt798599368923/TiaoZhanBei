@@ -9,9 +9,9 @@
       <text>已发布内容</text>
       <text wx:if="{{videos.length}}" class="section-count">{{videos.length}} 条</text>
     </view>
-    <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
-    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
-    <view wx:elif="{{videos.length === 0}}" class="empty-state">暂无已发布的视频内容</view>
+    <view wx:if="{{loading}}" class="state-panel">内容加载中...</view>
+    <view wx:elif="{{loadError}}" class="state-panel">{{loadError}}</view>
+    <view wx:elif="{{videos.length === 0}}" class="empty-state"><view class="empty-mark">视</view><text>暂未发布视频内容</text><text class="empty-copy">法律知识视频会在这里持续更新</text></view>
     <view wx:else class="video-list">
       <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="onVideoTap" data-id="{{item.id}}">
         <view class="video-mark"><text>视</text></view>

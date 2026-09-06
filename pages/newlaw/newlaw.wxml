@@ -6,9 +6,9 @@
 
   <!-- 法律法规列表区域 -->
   <view class="law-list">
-    <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
-    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
-    <view wx:elif="{{laws.length === 0}}" class="empty-state">暂无已发布的法规动态</view>
+    <view wx:if="{{loading}}" class="state-panel">内容加载中...</view>
+    <view wx:elif="{{loadError}}" class="state-panel">{{loadError}}</view>
+    <view wx:elif="{{laws.length === 0}}" class="empty-state"><view class="empty-mark">法</view><text>暂未发布法规动态</text><text class="empty-copy">新发布的法律法规会在这里展示</text></view>
     <block wx:else>
     <view class="law-item" wx:for="{{laws}}" wx:key="id" bindtap="onLawTap" data-id="{{item.id}}">
       <!-- 法律头部信息 -->

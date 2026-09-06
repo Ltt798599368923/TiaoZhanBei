@@ -1,1 +1,26 @@
-<view class="page"><view class="profile-head"><image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" class="avatar" mode="aspectFill"/><view wx:else class="avatar avatar-fallback">我</view><text class="name">{{userInfo.nickname || '用户'}}</text><text class="status">已登录</text></view><view class="summary"><view><text class="summary-label">绑定手机号</text><text class="summary-value">{{userInfo.phone || '未绑定'}}</text></view><view><text class="summary-label">法律服务热线</text><text class="summary-value accent">12348</text></view></view><view class="menu"><view class="menu-row" bindtap="goToSettings"><text>个人设置</text><text>></text></view><view class="menu-row" bindtap="goToFavorites"><text>我的收藏</text><text>></text></view><view class="menu-row" bindtap="goToMyConsult"><text>我的咨询</text><text>></text></view><view class="menu-row" bindtap="goToAbout"><text>关于我们</text><text>></text></view></view><button class="logout" bindtap="logout">退出登录</button></view>
+<view class="page">
+  <view class="profile-stage">
+    <text class="stage-kicker">ACCOUNT</text>
+    <view class="identity-row">
+      <image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" class="avatar" mode="aspectFill" />
+      <view wx:else class="avatar avatar-fallback">我</view>
+      <view class="identity-copy"><text class="name">{{userInfo.nickname || '用户'}}</text><text class="status">法律服务账户</text></view>
+    </view>
+  </view>
+
+  <view class="service-strip">
+    <view class="service-item"><text class="strip-label">绑定手机号</text><text class="strip-value">{{userInfo.phone || '未绑定'}}</text></view>
+    <view class="strip-rule"></view>
+    <view class="service-item"><text class="strip-label">法律服务热线</text><text class="strip-value hotline">12348</text></view>
+  </view>
+
+  <view class="menu-heading"><text>账户与服务</text></view>
+  <view class="menu">
+    <view class="menu-row" bindtap="goToSettings"><view><text class="menu-title">个人设置</text><text class="menu-copy">资料、通知与意见反馈</text></view><text class="menu-arrow">›</text></view>
+    <view class="menu-row" bindtap="goToFavorites"><view><text class="menu-title">我的收藏</text><text class="menu-copy">已保存的法律资料与模板</text></view><text class="menu-arrow">›</text></view>
+    <view class="menu-row" bindtap="goToMyConsult"><view><text class="menu-title">我的咨询</text><text class="menu-copy">咨询会话与预约进度</text></view><text class="menu-arrow">›</text></view>
+    <view class="menu-row" bindtap="goToAbout"><view><text class="menu-title">关于我们</text><text class="menu-copy">平台说明与服务理念</text></view><text class="menu-arrow">›</text></view>
+  </view>
+
+  <button class="logout" bindtap="logout">退出登录</button>
+</view>

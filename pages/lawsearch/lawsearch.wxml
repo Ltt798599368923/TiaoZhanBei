@@ -1,8 +1,9 @@
 <!-- lawsearch.wxml -->
 <view class="container">
-  <view class="page-heading">
+  <view class="search-stage">
+    <text class="stage-kicker">LEGAL REFERENCE</text>
     <text class="heading-title">法条检索</text>
-    <text class="heading-copy">检索建议仅供参考，请通过官方渠道核验</text>
+    <text class="heading-copy">输入关键词，获取检索建议与官方核验渠道</text>
   </view>
 
   <view class="search-header">
@@ -72,11 +73,12 @@
     <view wx:for="{{officialSources}}" wx:key="url" class="source-row" bindtap="copyOfficialSource" data-url="{{item.url}}"><view><text class="source-name">{{item.name}}</text><text class="source-desc">{{item.description}}</text></view><text class="source-action">复制地址</text></view>
   </view>
 
-  <view class="empty-state" wx:if="{{searching}}">
+  <view class="state-panel" wx:if="{{searching}}">
     <text class="empty-text">正在检索相关法条...</text>
   </view>
 
   <view class="empty-state" wx:if="{{hasSearched && !searching && !searchResults.length && !aiAdvice}}">
+    <view class="empty-mark">法</view>
     <text class="empty-text">未找到相关法条</text>
     <text class="empty-hint">请尝试其他关键词</text>
   </view>

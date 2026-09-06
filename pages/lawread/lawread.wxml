@@ -6,9 +6,9 @@
 
   <!-- 书籍列表区域 -->
   <view class="book-list">
-    <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
-    <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
-    <view wx:elif="{{books.length === 0}}" class="empty-state">暂无已发布的法规阅读内容</view>
+    <view wx:if="{{loading}}" class="state-panel">内容加载中...</view>
+    <view wx:elif="{{loadError}}" class="state-panel">{{loadError}}</view>
+    <view wx:elif="{{books.length === 0}}" class="empty-state"><view class="empty-mark">读</view><text>暂未发布阅读资料</text><text class="empty-copy">可阅读或下载的法律资料会在这里展示</text></view>
     <block wx:else>
     <view class="book-item" wx:for="{{books}}" wx:key="id" bindtap="onBookTap" data-id="{{item.id}}">
       <!-- 书籍封面 -->
