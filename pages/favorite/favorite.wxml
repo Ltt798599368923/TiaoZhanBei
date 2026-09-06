@@ -1,26 +1,29 @@
-<!-- favorite.wxml -->
-<view class="container">
-<view wx:if="{{false}}" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
-    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">←</view>
-    <text style="flex: 1; text-align: center; padding-right: 60rpx;">我的收藏</text>
+<view class="page">
+  <view class="page-lead">
+    <text class="lead-kicker">我的内容</text>
+    <text class="lead-title">我的收藏</text>
+    <text class="lead-copy">收藏的文书模板可在这里再次查看、复制或下载。</text>
   </view>
 
-  <view wx:if="{{loading}}" class="loading-wrap">加载中...</view>
+  <view wx:if="{{loading}}" class="state-panel">加载中...</view>
 
-  <view wx:elif="{{favoriteList.length > 0}}" class="fav-list">
-    <view wx:for="{{favoriteList}}" wx:key="id" class="fav-card">
-      <view class="fav-icon">{{item.icon || '📌'}}</view>
-      <view class="fav-info">
-        <text class="fav-title">{{item.title}}</text>
-        <text class="fav-desc">{{item.description || '暂无描述'}}</text>
+  <view wx:elif="{{favoriteList.length}}" class="favorite-list">
+    <view wx:for="{{favoriteList}}" wx:key="id" class="favorite-item" bindtap="viewFavorite" data-contenttype="{{item.contentType}}" data-contentid="{{item.contentId}}">
+      <view class="favorite-icon"><text>{{item.icon || '文书'}}</text></view>
+      <view class="favorite-copy">
+        <text class="favorite-title">{{item.title}}</text>
+        <text class="favorite-desc">{{item.description || '暂无说明'}}</text>
+        <text class="favorite-time">收藏于 {{item.time}}</text>
       </view>
-      <view class="fav-remove" data-id="{{item.id}}" bindtap="removeFavorite">取消</view>
+      <view class="favorite-actions">
+        <text class="open-label">查看</text>
+        <text catchtap="removeFavorite" data-id="{{item.id}}" class="remove-label">取消</text>
+      </view>
     </view>
   </view>
 
-  <view wx:else class="empty">
-    <view class="empty-icon">🌟</view>
-    <text class="empty-text">还没有收藏内容</text>
-    <text class="empty-hint">浏览内容时点击收藏按钮即可添加</text>
+  <view wx:else class="state-panel empty-panel">
+    <text class="empty-title">还没有收藏内容</text>
+    <text class="empty-copy">浏览文书模板时，点击“收藏”即可在此处保留。</text>
   </view>
 </view>
