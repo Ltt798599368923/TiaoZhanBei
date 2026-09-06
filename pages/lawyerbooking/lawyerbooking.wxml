@@ -1,0 +1,26 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="loading">正在加载律师信息...</view>
+  <block wx:else>
+    <view wx:if="{{lawyer}}" class="lawyer-summary">
+      <view class="avatar-wrap">
+        <image wx:if="{{lawyer.avatarUrl}}" class="avatar" src="{{lawyer.avatarUrl}}" mode="aspectFill" />
+        <text wx:else class="avatar-fallback">{{lawyer.initial}}</text>
+      </view>
+      <view class="lawyer-copy">
+        <text class="lawyer-name">{{lawyer.name}}律师</text>
+        <text class="lawyer-firm">{{lawyer.lawFirm || '律师事务所信息待补充'}}</text>
+        <text class="lawyer-specialties">{{lawyer.specialties || '法律咨询服务'}}</text>
+      </view>
+    </view>
+    <view class="notice">
+      <text class="notice-title">提交预约申请</text>
+      <text class="notice-copy">平台将先核对律师档期和服务范围，再通过预约进度向您反馈安排。</text>
+    </view>
+    <view class="form">
+      <view class="field"><text class="label">预约事项 <text class="required">*</text></text><input class="input" data-field="title" value="{{title}}" maxlength="50" placeholder="例如：劳动争议咨询预约" bindinput="bindInput" /></view>
+      <view class="field"><text class="label">情况说明 <text class="required">*</text></text><textarea class="textarea" data-field="content" value="{{content}}" maxlength="500" placeholder="请说明案件情况、需要咨询的问题和可联系的时间" bindinput="bindInput" /></view>
+      <view class="field"><text class="label">联系方式</text><input class="input" data-field="phone" value="{{phone}}" maxlength="11" type="number" placeholder="手机号，便于平台协调联系" bindinput="bindInput" /></view>
+      <button class="submit" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submitBooking">提交预约申请</button>
+    </view>
+  </block>
+</view>

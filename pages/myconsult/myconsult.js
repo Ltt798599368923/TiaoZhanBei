@@ -73,6 +73,12 @@ Page({
   viewDetail(e) {
     const id = e.currentTarget.dataset.id;
     const consultation = this.data.consults.find(item => String(item.id) === String(id));
+    if (consultation && consultation.lawyerId) {
+      wx.navigateTo({
+        url: `/pages/bookingdetail/bookingdetail?consultationId=${id}&lawyerId=${consultation.lawyerId}&lawyerName=${encodeURIComponent(consultation.lawyerName || '')}`
+      });
+      return;
+    }
     wx.navigateTo({
       url: `/pages/lawyerchat/lawyerchat?consultationId=${id}&title=${encodeURIComponent(consultation ? consultation.title : '咨询会话')}`
     });

@@ -7,6 +7,8 @@
     "pages/message/message",
     "pages/systemnotice/systemnotice",
     "pages/lawyerchat/lawyerchat",
+    "pages/lawyerbooking/lawyerbooking",
+    "pages/bookingdetail/bookingdetail",
     "pages/profile/profile",
     "pages/consult/consult",
     "pages/document/document",

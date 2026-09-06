@@ -8,7 +8,7 @@
     <view wx:if="{{messages.length === 0}}" class="empty-state">暂时没有消息，开始描述您的问题吧。</view>
     <view wx:for="{{messages}}" wx:key="id" class="chat-row {{item.isMine ? 'mine' : 'other'}}">
       <view class="chat-message">
-        <text class="chat-sender">{{item.isMine ? '我' : '管理台'}}</text>
+        <text class="chat-sender">{{item.isMine ? '我' : '平台顾问'}}</text>
         <text class="chat-content">{{item.content}}</text>
         <text class="chat-time">{{item.displayTime}}</text>
       </view>

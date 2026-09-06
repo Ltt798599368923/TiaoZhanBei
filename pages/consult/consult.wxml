@@ -1,8 +1,8 @@
 <view class="container">
   <view class="page-lead">
-    <text class="lead-kicker">法律咨询</text>
+    <text class="lead-kicker">平台法律咨询</text>
     <text class="lead-title">描述您的法律问题</text>
-    <text class="lead-copy">信息提交后，将由工作人员或您选择的律师跟进处理。</text>
+    <text class="lead-copy">提交后可在会话中继续补充信息，平台顾问将在线跟进。</text>
   </view>
 
   <view wx:if="{{lawyerName || serviceName}}" class="context-card">

@@ -1,0 +1,9 @@
+.page { min-height: 100vh; padding: 24rpx; background: #f4f5f7; box-sizing: border-box; }
+.loading { padding-top: 100rpx; color: #737981; font-size: 28rpx; text-align: center; }
+.lawyer-summary { display: flex; align-items: center; padding: 28rpx; background: #fff; border-left: 8rpx solid #bd1d17; border-radius: 8rpx; }
+.avatar-wrap { width: 104rpx; height: 104rpx; margin-right: 24rpx; overflow: hidden; border-radius: 52rpx; background: #fbe9e7; flex-shrink: 0; }.avatar { width: 100%; height: 100%; }.avatar-fallback { display: block; color: #a61d18; font-size: 42rpx; font-weight: 700; line-height: 104rpx; text-align: center; }
+.lawyer-copy { min-width: 0; }.lawyer-name { display: block; color: #202124; font-size: 35rpx; font-weight: 700; }.lawyer-firm, .lawyer-specialties { display: block; margin-top: 7rpx; color: #69707a; font-size: 24rpx; line-height: 1.45; }
+.notice { margin-top: 20rpx; padding: 24rpx 28rpx; border: 1rpx solid #f0d7d3; border-radius: 8rpx; background: #fff7f6; }.notice-title { display: block; color: #9e211b; font-size: 28rpx; font-weight: 700; }.notice-copy { display: block; margin-top: 10rpx; color: #765e5b; font-size: 25rpx; line-height: 1.65; }
+.form { margin-top: 20rpx; padding: 28rpx; border: 1rpx solid #e4e7eb; border-radius: 8rpx; background: #fff; }.field { margin-bottom: 28rpx; }.label { display: block; margin-bottom: 12rpx; color: #30343a; font-size: 27rpx; font-weight: 600; }.required { color: #bd1d17; }
+.input, .textarea { width: 100%; border: 1rpx solid #dfe3e8; border-radius: 6rpx; color: #25282d; font-size: 27rpx; background: #fff; box-sizing: border-box; }.input { height: 84rpx; padding: 0 20rpx; }.textarea { height: 210rpx; padding: 18rpx 20rpx; line-height: 1.55; }
+.submit { width: 100%; height: 84rpx; border: 0; border-radius: 6rpx; color: #fff; background: #bd1d17; font-size: 29rpx; font-weight: 600; line-height: 84rpx; }.submit::after { border: 0; }

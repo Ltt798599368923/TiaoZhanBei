@@ -7,11 +7,14 @@
   <view wx:if="{{loading}}" class="loading-wrap">加载中...</view>
 
   <view wx:elif="{{consults.length > 0}}" class="consult-list">
-    <view wx:for="{{consults}}" wx:key="id" class="consult-card {{item.reply ? 'replied' : 'pending'}}">
+    <view wx:for="{{consults}}" wx:key="id" class="consult-card {{item.reply ? 'replied' : 'pending'}} {{item.lawyerId ? 'booking-card' : ''}}">
       <view class="card-header">
-        <text class="card-title">{{item.title}}</text>
+        <view class="card-title-wrap">
+          <text class="card-title">{{item.title}}</text>
+          <text wx:if="{{item.lawyerId}}" class="booking-lawyer">预约 {{item.lawyerName || '律师'}}</text>
+        </view>
         <text class="card-status {{item.reply ? 'status-replied' : 'status-pending'}}">
-          {{item.reply ? '已回复' : (item.status === 'pending' ? '待回复' : '处理中')}}
+          {{item.reply ? (item.lawyerId ? '已反馈' : '已回复') : (item.status === 'pending' ? (item.lawyerId ? '待确认' : '待回复') : '处理中')}}
         </text>
       </view>
       <text class="card-content">
@@ -20,7 +23,7 @@
       <view class="card-footer">
         <text class="card-time">⏱ {{item.displayTime}}</text>
         <view class="card-actions">
-          <button class="btn-detail" data-id="{{item.id}}" bindtap="viewDetail">查看详情</button>
+          <button class="btn-detail" data-id="{{item.id}}" bindtap="viewDetail">{{item.lawyerId ? '查看进度' : '查看会话'}}</button>
           <button class="btn-delete" data-id="{{item.id}}" bindtap="deleteConsult">删除</button>
         </view>
       </view>

@@ -37,7 +37,7 @@ Page({
     const lawyerId = e.currentTarget.dataset.id
     const lawyerName = e.currentTarget.dataset.name
     wx.navigateTo({
-      url: `/pages/consult/consult?lawyerId=${lawyerId}&lawyerName=${encodeURIComponent(lawyerName)}`
+      url: `/pages/lawyerbooking/lawyerbooking?lawyerId=${lawyerId}&lawyerName=${encodeURIComponent(lawyerName)}`
     })
   },
 

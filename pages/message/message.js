@@ -51,9 +51,11 @@ Page({
       id: `consult-${item.id}`,
       sourceId: item.id,
       type: 'consultReply',
-      name: '咨询回复',
+      name: item.lawyerId ? '预约进度' : '咨询回复',
       subject: item.title || '您的法律咨询',
       content: item.reply.trim(),
+      lawyerId: item.lawyerId || '',
+      lawyerName: item.lawyerName || '',
       time: this.formatTime(rawTime),
       timestamp: this.toTimestamp(rawTime)
     }
@@ -114,6 +116,12 @@ Page({
     const message = this.data.messages.find(item => item.id === id)
     if (!message) return
     if (message.type === 'consultReply') {
+      if (message.lawyerId) {
+        wx.navigateTo({
+          url: `/pages/bookingdetail/bookingdetail?consultationId=${message.sourceId}&lawyerId=${message.lawyerId}&lawyerName=${encodeURIComponent(message.lawyerName || '')}`
+        })
+        return
+      }
       wx.navigateTo({
         url: `/pages/lawyerchat/lawyerchat?consultationId=${message.sourceId}&title=${encodeURIComponent(message.subject)}`
       })

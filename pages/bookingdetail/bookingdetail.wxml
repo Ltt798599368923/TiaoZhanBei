@@ -1,0 +1,9 @@
+<view class="page">
+  <view wx:if="{{loading && !detail}}" class="loading">正在加载预约进度...</view>
+  <block wx:elif="{{detail}}">
+    <view class="summary"><text class="eyebrow">律师预约</text><text class="title">{{detail.title}}</text><view class="status-row"><text class="status">{{detail.status === 'replied' ? '平台已反馈' : (detail.status === 'closed' ? '预约已结束' : '待平台确认')}}</text><text class="time">{{detail.createdTime}}</text></view></view>
+    <view wx:if="{{lawyer}}" class="lawyer-card"><view class="avatar-wrap"><image wx:if="{{lawyer.avatarUrl}}" class="avatar" src="{{lawyer.avatarUrl}}" mode="aspectFill" /><text wx:else class="avatar-fallback">{{lawyer.initial}}</text></view><view class="lawyer-copy"><text class="lawyer-name">{{lawyer.name}}律师</text><text class="lawyer-meta">{{lawyer.lawFirm || '律师事务所信息待补充'}}</text></view></view>
+    <view class="section"><text class="section-title">预约说明</text><text class="body">{{detail.content}}</text><text wx:if="{{detail.phone}}" class="contact">联系电话：{{detail.phone}}</text></view>
+    <view class="section"><text class="section-title">处理进度</text><view wx:if="{{updates.length}}" class="timeline"><view wx:for="{{updates}}" wx:key="id" class="timeline-item"><view class="dot {{item.senderRole === 'admin' ? 'feedback' : ''}}"></view><view class="update-copy"><text class="update-label">{{item.label}}</text><text class="update-content">{{item.content}}</text><text class="update-time">{{item.displayTime}}</text></view></view></view><text wx:else class="empty">平台正在核对律师档期，请耐心等待。</text></view>
+  </block>
+</view>
