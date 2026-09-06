@@ -1,4 +1,6 @@
 <view class="login-page">
+  <view class="top-accent"></view>
+
   <view class="brand-area">
     <view class="brand-icon">法</view>
     <text class="brand-name">法律咨询</text>
@@ -6,9 +8,9 @@
   </view>
 
   <view class="auth-area">
-    <text class="auth-title">微信授权登录</text>
-    <text class="auth-copy">登录后可查看咨询、预约与收藏记录</text>
+    <text class="auth-copy">登录后可同步保存咨询、预约和收藏记录</text>
     <button class="wechat-login-btn" loading="{{loginLoading}}" disabled="{{loginLoading}}" bindtap="wechatLogin">微信一键登录</button>
+    <text class="auth-hint">使用微信授权登录，安全便捷</text>
   </view>
 
   <view class="footer">
