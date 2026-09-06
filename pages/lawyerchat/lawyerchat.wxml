@@ -18,7 +18,7 @@
   <view class="composer">
     <view class="composer-input-shell">
       <textarea class="composer-input" value="{{inputValue}}" placeholder="输入消息" maxlength="2000" auto-height="true" fixed="true" bindinput="bindInput" />
-      <button class="send-button" aria-label="发送消息" bindtap="sendMessage" loading="{{sending}}" disabled="{{sending || !inputValue}}"><text class="send-icon">↑</text></button>
+      <view class="send-button {{sending || !inputValue ? 'is-disabled' : ''}}" role="button" aria-label="发送消息" bindtap="sendMessage" hover-class="send-button-active" hover-stay-time="70"><text class="send-icon">➤</text></view>
     </view>
   </view>
 </view>

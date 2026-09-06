@@ -33,7 +33,7 @@
           cursor-spacing="16"
           value="{{inputValue}}"
         />
-        <button class="send-button" aria-label="发送消息" loading="{{isLoading}}" disabled="{{isLoading || !inputValue}}" bindtap="sendMessage"><text class="send-icon">↑</text></button>
+        <view class="send-button {{isLoading || !inputValue ? 'is-disabled' : ''}}" role="button" aria-label="发送消息" bindtap="sendMessage" hover-class="send-button-active" hover-stay-time="70"><text class="send-icon">➤</text></view>
       </view>
     </view>
   </view>

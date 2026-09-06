@@ -128,28 +128,26 @@
   position: absolute;
   top: 50%;
   right: 12rpx;
+  display: flex;
   width: 56rpx;
   height: 56rpx;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  padding: 0;
   border-radius: 50%;
   background: #bd1d17;
   color: #ffffff;
-  font-size: 34rpx;
-  font-weight: 500;
-  line-height: 1;
-  box-shadow: none;
+  box-sizing: border-box;
   transform: translateY(-50%);
 }
 
-.send-button::after {
-  border: 0;
+.send-button-active {
+  background: #9f1712;
 }
 
-.send-button[disabled] {
+.send-button.is-disabled {
   background: #e1e4e8;
   color: #aeb5bc;
 }
 
-.send-button { display: flex; align-items: center; justify-content: center; padding: 0; line-height: 1; text-align: center; box-sizing: border-box; }
-.send-icon { display: block; margin-top: -2rpx; line-height: 1; }
+.send-icon { display: block; font-size: 25rpx; font-weight: 700; line-height: 1; transform: translate(2rpx, -1rpx) rotate(-28deg); }
