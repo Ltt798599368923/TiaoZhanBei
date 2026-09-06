@@ -310,6 +310,10 @@ const api = {
     return request({ url: BASE_URL + '/api/content/' + type + '/' + contentId, method: 'GET' })
   },
 
+  downloadContentFile: (type, contentId) => {
+    return downloadFile(BASE_URL + '/api/content/' + type + '/' + contentId + '/file')
+  },
+
   getLawyers: () => {
     return request({ url: BASE_URL + '/api/lawyer/list', method: 'GET' })
   },

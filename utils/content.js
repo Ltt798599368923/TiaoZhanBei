@@ -20,6 +20,27 @@ function open(type, id) {
       return
     }
     const item = res.data
+    if (item.hasFile) {
+      wx.showModal({
+        title: item.title,
+        content: item.summary || '该内容包含可下载的阅读附件。',
+        confirmText: '打开资料',
+        success: modalRes => {
+          if (!modalRes.confirm) return
+          wx.showLoading({ title: '下载中...', mask: true })
+          api.downloadContentFile(type, item.id)
+            .then(filePath => {
+              wx.hideLoading()
+              wx.openDocument({ filePath, showMenu: true })
+            })
+            .catch(() => {
+              wx.hideLoading()
+              wx.showToast({ title: '资料下载失败，请稍后重试', icon: 'none' })
+            })
+        }
+      })
+      return
+    }
     if (item.sourceUrl) {
       wx.showModal({
         title: item.title,
