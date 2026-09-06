@@ -53,8 +53,8 @@ Page({
     if (this.socketTask || !this.shouldReconnect) return
     const token = wx.getStorageSync('token')
     if (!token) return
-    const url = `${SOCKET_BASE_URL}?role=user&consultationId=${encodeURIComponent(this.data.consultationId)}&token=${encodeURIComponent(token)}`
-    const socketTask = wx.connectSocket({ url })
+    const url = `${SOCKET_BASE_URL}?role=user&consultationId=${encodeURIComponent(this.data.consultationId)}`
+    const socketTask = wx.connectSocket({ url, header: { Authorization: `Bearer ${token}` } })
     this.socketTask = socketTask
     socketTask.onOpen(() => this.setData({ connected: true }))
     socketTask.onMessage(event => {
