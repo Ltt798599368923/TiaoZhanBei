@@ -1,23 +1,25 @@
-/**
- * 官方服务页面样式
- */
-
-/* 全局容器样式 */
-.container {
-  display: flex;                /* 使用flex布局 */
-  flex-direction: column;       /* 垂直方向排列 */
-  align-items: center;          /* 水平居中 */
-  min-height: 100vh;            /* 最小高度为屏幕高度 */
-  background-color: #f5f5f5;    /* 背景色为浅灰色 */
-}
-
-/* 服务项样式 */
-.service-item {
-  transition: all 0.3s ease;    /* 过渡动画效果 */
-}
-
-/* 服务项点击效果 */
-.service-item:active {
-  transform: scale(0.98);       /* 点击时缩小 */
-  opacity: 0.9;                 /* 点击时半透明 */
-}
+.page { min-height: 100vh; padding: 24rpx 24rpx 56rpx; background: #f4f5f7; box-sizing: border-box; }
+.page-lead { padding: 32rpx; border-left: 8rpx solid #bd1d17; border-radius: 8rpx; background: #fff; }
+.lead-kicker, .lead-title, .lead-copy, .section-title, .section-note, .service-icon, .service-name, .service-desc, .service-action, .website-name, .website-desc, .copy-mark, .footer-note { display: block; }
+.lead-kicker { color: #a61d18; font-size: 22rpx; font-weight: 600; }
+.lead-title { margin-top: 10rpx; color: #202124; font-size: 38rpx; font-weight: 700; line-height: 1.35; }
+.lead-copy { margin-top: 14rpx; color: #6b7078; font-size: 26rpx; line-height: 1.7; }
+.section { margin-top: 28rpx; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; margin: 0 4rpx 16rpx; }
+.section-title { color: #292d32; font-size: 31rpx; font-weight: 700; }
+.section-note { color: #818891; font-size: 23rpx; }
+.service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16rpx; }
+.service-card { min-height: 246rpx; padding: 24rpx; border: 1rpx solid #e1e4e8; border-radius: 8rpx; background: #fff; box-sizing: border-box; }
+.service-card:active, .website-row:active { background: #fff7f6; border-color: #e9b6b0; }
+.service-icon { color: #a61d18; font-size: 24rpx; font-weight: 700; }
+.service-name { margin-top: 16rpx; color: #2b2f35; font-size: 29rpx; font-weight: 700; }
+.service-desc { margin-top: 10rpx; color: #6d747d; font-size: 23rpx; line-height: 1.55; }
+.service-action { margin-top: 16rpx; color: #a61d18; font-size: 23rpx; font-weight: 600; }
+.website-list { border: 1rpx solid #e1e4e8; border-radius: 8rpx; overflow: hidden; background: #fff; }
+.website-row { display: flex; align-items: center; justify-content: space-between; gap: 20rpx; min-height: 124rpx; padding: 20rpx 24rpx; border-bottom: 1rpx solid #eceef0; box-sizing: border-box; }
+.website-row:last-child { border-bottom: 0; }
+.website-copy { min-width: 0; flex: 1; }
+.website-name { color: #30343a; font-size: 28rpx; font-weight: 700; line-height: 1.35; }
+.website-desc { margin-top: 8rpx; color: #737981; font-size: 23rpx; line-height: 1.45; }
+.copy-mark { flex-shrink: 0; color: #a61d18; font-size: 24rpx; font-weight: 600; }
+.footer-note { margin: 32rpx 8rpx 0; color: #858b93; font-size: 22rpx; line-height: 1.6; text-align: center; }
