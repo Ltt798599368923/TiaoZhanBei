@@ -1,4 +1,5 @@
 const api = require('../../utils/api.js')
+const API_BASE_URL = 'https://api.fashijie.top'
 
 Page({
   data: {
@@ -22,6 +23,7 @@ Page({
         if (res.code !== 200) throw new Error(res.message || '加载失败')
         const lawyers = (res.data || []).map(item => ({
           ...item,
+          avatarUrl: item.avatarUrl && item.avatarUrl.startsWith('/') ? API_BASE_URL + item.avatarUrl : item.avatarUrl,
           initial: item.name ? item.name.slice(0, 1) : '律'
         }))
         this.setData({ lawyers })
