@@ -19,20 +19,22 @@
 
   <view id="chat-input-bar" class="input-bar" style="bottom: {{keyboardHeight}}px;">
     <view class="input-row">
-      <input
-        class="message-input"
-        placeholder="输入法律问题"
-        confirm-type="send"
-        bindconfirm="sendMessage"
-        bindinput="bindInput"
-        bindfocus="onInputFocus"
-        bindblur="onInputBlur"
-        bindkeyboardheightchange="onKeyboardHeightChange"
-        adjust-position="false"
-        cursor-spacing="16"
-        value="{{inputValue}}"
-      />
-      <button class="send-button" loading="{{isLoading}}" disabled="{{isLoading || !inputValue}}" bindtap="sendMessage">发送</button>
+      <view class="input-shell">
+        <input
+          class="message-input"
+          placeholder="输入法律问题"
+          confirm-type="send"
+          bindconfirm="sendMessage"
+          bindinput="bindInput"
+          bindfocus="onInputFocus"
+          bindblur="onInputBlur"
+          bindkeyboardheightchange="onKeyboardHeightChange"
+          adjust-position="false"
+          cursor-spacing="16"
+          value="{{inputValue}}"
+        />
+        <button class="send-button" aria-label="发送消息" loading="{{isLoading}}" disabled="{{isLoading || !inputValue}}" bindtap="sendMessage"><text class="send-icon">↑</text></button>
+      </view>
     </view>
   </view>
 </view>
