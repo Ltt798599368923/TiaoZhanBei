@@ -4,6 +4,8 @@ Page({
   data: {
     searchKeyword: '',
     searchResults: [],
+    aiAdvice: '',
+    officialSources: [],
     searching: false,
     hasSearched: false,
     hotKeywords: [
@@ -25,6 +27,8 @@ Page({
     this.setData({
       searchKeyword: '',
       searchResults: [],
+      aiAdvice: '',
+      officialSources: [],
       searching: false,
       hasSearched: false
     });
@@ -58,16 +62,10 @@ Page({
           ...item,
           id: item.id || 'law-' + index
         }));
-        if (results.length === 0 && res.aiAdvice) {
-          results.push({
-            id: 'ai-advice',
-            lawName: '法律检索建议',
-            article: '',
-            content: res.aiAdvice
-          });
-        }
         this.setData({
           searchResults: results,
+          aiAdvice: res.aiAdvice || '',
+          officialSources: res.officialSources || [],
           hasSearched: true
         });
       } else {
@@ -105,5 +103,11 @@ Page({
       content: result.content,
       showCancel: false
     });
+  }
+
+  copyOfficialSource(e) {
+    const url = e.currentTarget.dataset.url
+    if (!url) return
+    wx.setClipboardData({ data: url, success: () => wx.showToast({ title: '官方地址已复制', icon: 'success' }) })
   }
 })

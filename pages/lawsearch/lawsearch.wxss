@@ -200,3 +200,4 @@
   font-size: 24rpx;
   color: #cccccc;
 }
+.ai-advice,.source-panel{margin:24rpx;padding:26rpx;border:1rpx solid #e1e4e8;border-radius:8rpx;background:#fff}.advice-title,.source-title,.source-name,.source-desc,.advice-copy,.advice-note{display:block}.advice-title,.source-title{color:#30343a;font-size:30rpx;font-weight:700}.advice-copy{margin-top:16rpx;color:#555d66;font-size:26rpx;line-height:1.7}.advice-note{margin-top:16rpx;color:#a61d18;font-size:23rpx;line-height:1.55}.source-row{display:flex;align-items:center;justify-content:space-between;gap:20rpx;padding:20rpx 0;border-bottom:1rpx solid #eceef0}.source-row:last-child{border:0}.source-name{color:#30343a;font-size:27rpx;font-weight:600}.source-desc{margin-top:6rpx;color:#7a818a;font-size:22rpx}.source-action{color:#a61d18;font-size:23rpx;flex-shrink:0}

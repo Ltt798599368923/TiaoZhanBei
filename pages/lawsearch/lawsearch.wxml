@@ -62,11 +62,22 @@
     </view>
   </view>
 
+  <view wx:if="{{aiAdvice}}" class="ai-advice">
+    <text class="advice-title">AI 检索建议</text>
+    <text class="advice-copy">{{aiAdvice}}</text>
+    <text class="advice-note">该内容不构成法条、法律意见或法律效力判断，请以下列官方渠道为准。</text>
+  </view>
+
+  <view wx:if="{{officialSources.length}}" class="source-panel">
+    <text class="source-title">官方核验渠道</text>
+    <view wx:for="{{officialSources}}" wx:key="url" class="source-row" bindtap="copyOfficialSource" data-url="{{item.url}}"><view><text class="source-name">{{item.name}}</text><text class="source-desc">{{item.description}}</text></view><text class="source-action">复制地址</text></view>
+  </view>
+
   <view class="empty-state" wx:if="{{searching}}">
     <text class="empty-text">正在检索相关法条...</text>
   </view>
 
-  <view class="empty-state" wx:if="{{hasSearched && !searching && !searchResults.length}}">
+  <view class="empty-state" wx:if="{{hasSearched && !searching && !searchResults.length && !aiAdvice}}">
     <text class="empty-icon">🔍</text>
     <text class="empty-text">未找到相关法条</text>
     <text class="empty-hint">请尝试其他关键词</text>
