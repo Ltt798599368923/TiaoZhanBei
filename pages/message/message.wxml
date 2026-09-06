@@ -1,62 +1,38 @@
-<!-- 消息中心页面结构 -->
 <view class="container">
-<!-- 顶部标题 -->
-  
-
-  <!-- 搜索框 -->
-  <view class="search-container">
-    <view class="search-box">
-      <text class="search-icon">🔍</text>
-      <input 
-        class="search-input" 
-        placeholder="搜索联系人或消息" 
-        placeholder-style="color: #999;" 
-        bindinput="onSearchInput"
-      />
-      <text 
-        wx:if="{{searchText}}" 
-        class="search-clear" 
-        bindtap="clearSearch"
-      >✕</text>
-    </view>
+  <view class="page-heading">
+    <text class="heading-title">消息</text>
+    <text class="heading-copy">咨询回复与系统通知</text>
   </view>
 
-  <!-- 消息列表 -->
-  <view class="message-list">
-    <!-- 消息分组标题 -->
-    
+  <view class="search-box">
+    <input class="search-input" value="{{searchText}}" placeholder="搜索消息内容" bindinput="onSearchInput" />
+    <text wx:if="{{searchText}}" class="search-clear" bindtap="clearSearch">清空</text>
+  </view>
 
-    <!-- 消息项 - 动态渲染 -->
-    <view 
-      wx:for="{{filteredMessages}}" 
-      wx:key="{{item.id}}"
-      class="message-item"
-      bindtap="goToDetail"
-      data-id="{{item.id}}"
-      data-name="{{item.name}}"
-      data-type="{{item.type || 'chat'}}"
-    >
-      <!-- 头像 -->
-      <view class="avatar {{item.name === '系统通知' ? 'avatar-system' : item.id === 1 ? 'avatar-blue' : 'avatar-yellow'}}">
-        <text class="avatar-text">{{item.name === '系统通知' ? '📢' : item.id === 1 ? '张' : item.id === 3 ? '李' : item.name.charAt(0)}}</text>
-      </view>
-      
-      <!-- 消息内容 -->
-      <view class="message-content">
-        <view class="message-header">
-          <text class="message-name">{{item.name}}</text>
-          <text class="message-time">{{item.time}}</text>
-        </view>
-        <text class="message-preview">{{item.content}}</text>
-      </view>
-      
-      <!-- 未读标记 -->
-      <view wx:if="{{item.unread}}" class="unread-badge"></view>
+  <view class="message-section">
+    <view class="section-heading">
+      <text>全部消息</text>
+      <text class="section-count">{{filteredMessages.length}} 条</text>
     </view>
 
-    <!-- 无搜索结果提示 -->
-    <view wx:if="{{filteredMessages.length === 0 && searchText}}" class="empty-state">
-      未找到相关消息
+    <view wx:if="{{loading}}" class="empty-state">消息加载中...</view>
+    <view wx:elif="{{filteredMessages.length === 0 && searchText}}" class="empty-state">未找到相关消息</view>
+    <view wx:elif="{{filteredMessages.length === 0}}" class="empty-state">暂无消息</view>
+    <view wx:else class="message-list">
+      <view wx:for="{{filteredMessages}}" wx:key="id" class="message-item" bindtap="goToDetail" data-id="{{item.id}}">
+        <view class="message-mark {{item.type === 'consultReply' ? 'mark-reply' : 'mark-system'}}">
+          <text>{{item.type === 'consultReply' ? '答' : '通'}}</text>
+        </view>
+        <view class="message-content">
+          <view class="message-meta">
+            <text class="message-kind">{{item.name}}</text>
+            <text class="message-time">{{item.time}}</text>
+          </view>
+          <text class="message-subject">{{item.subject}}</text>
+          <text class="message-preview">{{item.content}}</text>
+        </view>
+        <text class="message-arrow">&gt;</text>
+      </view>
     </view>
   </view>
 </view>
