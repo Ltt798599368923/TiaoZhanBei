@@ -71,27 +71,11 @@ Page({
   },
 
   viewDetail(e) {
-    const userId = wx.getStorageSync('userId');
     const id = e.currentTarget.dataset.id;
-
-    api.getConsultationDetail(userId, id)
-      .then(res => {
-        if (res.code === 200 && res.data) {
-          const consultation = res.data;
-          const reply = consultation.reply
-            ? '\n\n处理回复：\n' + consultation.reply
-            : '\n\n当前状态：' + (consultation.status === 'pending' ? '待回复' : '处理中');
-          wx.showModal({
-            title: consultation.title,
-            content: (consultation.content || '暂无内容') + reply,
-            showCancel: false,
-            confirmText: '知道了'
-          });
-        }
-      })
-      .catch(err => {
-        console.error('获取咨询详情失败', err);
-      });
+    const consultation = this.data.consults.find(item => String(item.id) === String(id));
+    wx.navigateTo({
+      url: `/pages/lawyerchat/lawyerchat?consultationId=${id}&title=${encodeURIComponent(consultation ? consultation.title : '咨询会话')}`
+    });
   },
 
   deleteConsult(e) {

@@ -1,8 +1,22 @@
 <view class="container">
-  <view class="consult-entry">
-    <text class="entry-title">提交给{{name || '律师'}}的咨询</text>
-    <text class="entry-copy">平台暂未开通即时消息。提交后，咨询会保存到“我的咨询”，由后台处理后显示真实回复。</text>
-    <textarea class="entry-input" value="{{inputValue}}" placeholder="请简要说明您的法律问题" maxlength="500" bindinput="bindInput" />
-    <button class="send-btn" bindtap="sendMessage">继续填写咨询</button>
+  <view class="conversation-meta">
+    <text class="conversation-title">{{title}}</text>
+    <text class="conversation-status {{connected ? 'online' : ''}}">{{connected ? '实时连接已建立' : '正在连接消息服务'}}</text>
+  </view>
+
+  <scroll-view class="message-scroll" scroll-y="true" scroll-top="{{scrollTop}}">
+    <view wx:if="{{messages.length === 0}}" class="empty-state">暂时没有消息，开始描述您的问题吧。</view>
+    <view wx:for="{{messages}}" wx:key="id" class="chat-row {{item.isMine ? 'mine' : 'other'}}">
+      <view class="chat-message">
+        <text class="chat-sender">{{item.isMine ? '我' : '管理台'}}</text>
+        <text class="chat-content">{{item.content}}</text>
+        <text class="chat-time">{{item.displayTime}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="composer">
+    <textarea class="composer-input" value="{{inputValue}}" placeholder="输入消息" maxlength="2000" auto-height="true" fixed="true" bindinput="bindInput" />
+    <button class="send-button" bindtap="sendMessage" loading="{{sending}}" disabled="{{sending || !inputValue}}">发送</button>
   </view>
 </view>

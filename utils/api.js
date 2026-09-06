@@ -188,6 +188,21 @@ const api = {
     })
   },
 
+  getConsultationMessages: (userId, consultationId) => {
+    return request({
+      url: BASE_URL + '/api/consultation/messages/' + userId + '/' + consultationId,
+      method: 'GET'
+    })
+  },
+
+  sendConsultationMessage: (userId, consultationId, content) => {
+    return request({
+      url: BASE_URL + '/api/consultation/messages/' + userId + '/' + consultationId,
+      method: 'POST',
+      data: { content }
+    })
+  },
+
   deleteConsultation: (userId, consultationId) => {
     return request({
       url: BASE_URL + '/api/consultation/delete/' + userId + '/' + consultationId,

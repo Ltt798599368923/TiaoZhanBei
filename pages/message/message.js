@@ -34,7 +34,9 @@ Page({
           .map(item => this.toConsultationReply(item))
         : []
       const notices = noticeResult && noticeResult.code === 200
-        ? (noticeResult.data || []).map(item => this.toSystemNotice(item))
+        ? (noticeResult.data || [])
+          .filter(item => item.noticeType !== 'consultation_reply')
+          .map(item => this.toSystemNotice(item))
         : []
       const messages = [...consultationReplies, ...notices]
         .sort((first, second) => second.timestamp - first.timestamp)
@@ -112,11 +114,8 @@ Page({
     const message = this.data.messages.find(item => item.id === id)
     if (!message) return
     if (message.type === 'consultReply') {
-      wx.showModal({
-        title: message.subject,
-        content: message.content,
-        showCancel: false,
-        confirmText: '知道了'
+      wx.navigateTo({
+        url: `/pages/lawyerchat/lawyerchat?consultationId=${message.sourceId}&title=${encodeURIComponent(message.subject)}`
       })
       return
     }

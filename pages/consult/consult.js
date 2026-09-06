@@ -119,7 +119,14 @@ Page({
             icon: 'success'
           });
           setTimeout(() => {
-            wx.navigateBack();
+            const consultationId = res.data && res.data.id
+            if (consultationId) {
+              wx.redirectTo({
+                url: `/pages/lawyerchat/lawyerchat?consultationId=${consultationId}&title=${encodeURIComponent(title)}`
+              })
+              return
+            }
+            wx.navigateBack()
           }, 1500);
         } else {
           wx.showToast({
