@@ -12,17 +12,17 @@
 .avatar-ai { margin-right: 16rpx; color: #a61d18; background: #fff1f0; border: 1rpx solid #efc5c0; }
 .avatar-user { margin-left: 16rpx; color: #ffffff; background: #535a63; }
 .message-copy { max-width: 72%; min-width: 0; }
-.message-bubble { padding: 18rpx 20rpx; border: 1rpx solid #e1e4e8; border-radius: 8rpx; }
+.message-bubble { padding: 18rpx 22rpx; border: 1rpx solid #e1e4e8; border-radius: 20rpx; }
 .bubble-ai { color: #30343a; background: #ffffff; }
 .bubble-user { color: #ffffff; background: #bd1d17; border-color: #bd1d17; }
 .message-text { color: inherit; font-size: 28rpx; line-height: 1.65; white-space: pre-wrap; word-break: break-all; }
 .message-time { margin: 8rpx 6rpx 0; color: #9298a1; font-size: 22rpx; }
 .message-right .message-time { text-align: right; }
 
-.input-bar { position: fixed; right: 0; bottom: 0; left: 0; z-index: 1000; padding: 18rpx 20rpx calc(18rpx + env(safe-area-inset-bottom)); background: #ffffff; border-top: 1rpx solid #e1e4e8; box-sizing: border-box; }
-.input-row { display: flex; align-items: center; }
-.message-input { flex: 1; min-width: 0; height: 70rpx; padding: 0 18rpx; color: #30343a; background: #f6f7f8; border: 1rpx solid #e1e4e8; border-radius: 6rpx; font-size: 27rpx; box-sizing: border-box; }
-.send-button { flex: 0 0 auto; width: 112rpx; height: 70rpx; margin-left: 14rpx; color: #ffffff; background: #bd1d17; border: 0; border-radius: 6rpx; font-size: 27rpx; font-weight: 600; line-height: 70rpx; }
+.input-bar { position: fixed; right: 0; bottom: 0; left: 0; z-index: 1000; padding: 18rpx 24rpx calc(18rpx + env(safe-area-inset-bottom)); background: #ffffff; border-top: 1rpx solid #e1e4e8; box-shadow: 0 -8rpx 24rpx rgba(32, 33, 36, 0.05); box-sizing: border-box; }
+.input-row { display: flex; align-items: center; gap: 16rpx; }
+.message-input { flex: 1; min-width: 0; height: 76rpx; padding: 0 24rpx; color: #30343a; background: #f3f5f7; border: 1rpx solid #e1e4e8; border-radius: 38rpx; font-size: 27rpx; box-sizing: border-box; }
+.send-button { flex: 0 0 auto; width: 120rpx; height: 76rpx; margin-left: 0; color: #ffffff; background: #bd1d17; border: 0; border-radius: 38rpx; font-size: 27rpx; font-weight: 600; line-height: 76rpx; box-shadow: 0 6rpx 14rpx rgba(189, 29, 23, 0.2); }
 .send-button::after { border: 0; }
 .send-button[disabled] { color: rgba(255, 255, 255, 0.8); background: #c9827e; }
 

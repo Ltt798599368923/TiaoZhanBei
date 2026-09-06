@@ -73,9 +73,9 @@
 }
 
 .chat-content {
-  padding: 18rpx 20rpx;
+  padding: 18rpx 22rpx;
   border: 1rpx solid #e1e4e8;
-  border-radius: 8rpx;
+  border-radius: 20rpx;
   color: #34383e;
   font-size: 27rpx;
   line-height: 1.55;
@@ -99,35 +99,38 @@
 .composer {
   display: flex;
   align-items: flex-end;
-  gap: 16rpx;
+  gap: 18rpx;
   padding: 18rpx 24rpx calc(18rpx + env(safe-area-inset-bottom));
   background: #ffffff;
   border-top: 1rpx solid #e4e6e9;
+  box-shadow: 0 -8rpx 24rpx rgba(32, 33, 36, 0.05);
 }
 
 .composer-input {
   flex: 1;
-  min-height: 72rpx;
+  min-height: 80rpx;
   max-height: 180rpx;
-  padding: 16rpx;
+  padding: 18rpx 22rpx;
   border: 1rpx solid #dfe2e6;
-  border-radius: 6rpx;
+  border-radius: 22rpx;
   color: #31353b;
+  background: #f3f5f7;
   font-size: 27rpx;
   line-height: 1.4;
   box-sizing: border-box;
 }
 
 .send-button {
-  width: 104rpx;
-  height: 72rpx;
+  width: 120rpx;
+  height: 80rpx;
   margin: 0;
   padding: 0;
-  border-radius: 6rpx;
+  border-radius: 40rpx;
   background: #bd1d17;
   color: #ffffff;
   font-size: 26rpx;
-  line-height: 72rpx;
+  line-height: 80rpx;
+  box-shadow: 0 6rpx 14rpx rgba(189, 29, 23, 0.2);
 }
 
 .send-button::after {
