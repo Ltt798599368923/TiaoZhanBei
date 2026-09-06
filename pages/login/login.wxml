@@ -4,13 +4,10 @@
   <view class="brand-area">
     <view class="brand-icon">法</view>
     <text class="brand-name">法律咨询</text>
-    <text class="brand-slogan">专业法律服务，守护您的权益</text>
   </view>
 
   <view class="auth-area">
-    <text class="auth-copy">登录后可同步保存咨询、预约和收藏记录</text>
     <button class="wechat-login-btn" loading="{{loginLoading}}" disabled="{{loginLoading}}" bindtap="wechatLogin">微信一键登录</button>
-    <text class="auth-hint">使用微信授权登录，安全便捷</text>
   </view>
 
   <view class="footer">
