@@ -1,25 +1,38 @@
 <view class="container">
   <view class="lawyer-intro">
-    <text class="intro-title">律师预约</text>
-    <text class="intro-copy">选择已入驻且可预约的律师，提交咨询后由律师确认服务时间。</text>
+    <text class="intro-kicker">专业法律服务</text>
+    <text class="intro-title">选择服务律师</text>
+    <text class="intro-copy">提交咨询后，律师将结合您的问题与您确认服务时间。</text>
   </view>
 
   <view class="lawyer-list">
+    <view class="list-heading">
+      <text>可预约律师</text>
+      <text class="list-count">{{lawyerCount}} 位</text>
+    </view>
     <view wx:if="{{loading}}" class="empty-state">律师信息加载中...</view>
     <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
     <view wx:elif="{{lawyers.length === 0}}" class="empty-state">暂未有可预约律师</view>
     <block wx:else>
       <view wx:for="{{lawyers}}" wx:key="id" class="lawyer-card">
-        <view class="lawyer-avatar">
-          <image wx:if="{{item.avatarUrl}}" src="{{item.avatarUrl}}" mode="aspectFill" />
-          <text wx:else>{{item.initial}}</text>
+        <view class="lawyer-main">
+          <view class="lawyer-avatar">
+            <image wx:if="{{item.avatarUrl}}" class="avatar-image" src="{{item.avatarUrl}}" mode="aspectFill" binderror="onAvatarError" data-index="{{index}}" />
+            <text wx:else>{{item.initial}}</text>
+          </view>
+          <view class="lawyer-copy">
+            <view class="name-row">
+              <text class="lawyer-name">{{item.name}}</text>
+              <text class="availability">可预约</text>
+            </view>
+            <text class="lawyer-firm">{{item.lawFirm || '律师信息以后台发布为准'}}</text>
+            <view class="specialty-row">
+              <text class="specialty-label">擅长</text>
+              <text class="lawyer-specialties">{{item.specialties || '暂未填写擅长领域'}}</text>
+            </view>
+          </view>
         </view>
-        <view class="lawyer-copy">
-          <text class="lawyer-name">{{item.name}}</text>
-          <text class="lawyer-firm">{{item.lawFirm || '律师信息以后台发布为准'}}</text>
-          <text class="lawyer-specialties">{{item.specialties || '暂未填写擅长领域'}}</text>
-        </view>
-        <button class="reserve-button" bindtap="reserveLawyer" data-id="{{item.id}}" data-name="{{item.name}}">预约</button>
+        <button class="reserve-button" catchtap="reserveLawyer" data-id="{{item.id}}" data-name="{{item.name}}">预约咨询</button>
       </view>
     </block>
   </view>
