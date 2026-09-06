@@ -1,36 +1,29 @@
-<!-- 小视讲堂页面结构 -->
 <view class="container">
-<!-- 头部区域 -->
-  <view wx:if="{{false}}" class="header" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 50rpx; box-sizing: border-box; color: white;">
-    <view style="display: flex; align-items: center; margin-bottom: 16rpx;">
-      <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0;">←</view>
-      <text style="flex: 1; text-align: center; padding-right: 60rpx; font-size: 34rpx; font-weight: bold;">小视讲堂</text>
-    </view>
-    <text style="display: block; text-align: center; font-size: 24rpx; opacity: 0.8;">法律知识视频讲解</text>
+  <view class="page-heading">
+    <text class="heading-title">小视讲堂</text>
+    <text class="heading-copy">通过视频了解常见法律知识</text>
   </view>
 
-  <!-- 视频列表区域 -->
-  <view class="video-list">
+  <view class="video-section">
+    <view class="section-heading">
+      <text>已发布内容</text>
+      <text wx:if="{{videos.length}}" class="section-count">{{videos.length}} 条</text>
+    </view>
     <view wx:if="{{loading}}" class="empty-state">内容加载中...</view>
     <view wx:elif="{{loadError}}" class="empty-state">{{loadError}}</view>
     <view wx:elif="{{videos.length === 0}}" class="empty-state">暂无已发布的视频内容</view>
-    <block wx:else>
-    <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="onVideoTap" data-id="{{item.id}}">
-      <!-- 视频缩略图 -->
-      <view class="video-thumbnail">
-        <text class="video-play">▶</text>
-        <text class="video-duration">{{item.publishedTime || item.createdTime}}</text>
-      </view>
-      <!-- 视频信息 -->
-      <view class="video-info">
+    <view wx:else class="video-list">
+      <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="onVideoTap" data-id="{{item.id}}">
+        <view class="video-mark"><text>视</text></view>
+        <view class="video-info">
         <text class="video-title">{{item.title}}</text>
-        <!-- 视频元数据 -->
         <view class="video-meta">
           <text class="video-author">{{item.sourceName || '视频内容'}}</text>
-          <text class="video-views">查看详情</text>
+          <text class="video-time">{{item.publishedTime || item.createdTime}}</text>
         </view>
+        </view>
+        <text class="video-action">查看</text>
       </view>
     </view>
-    </block>
   </view>
 </view>
