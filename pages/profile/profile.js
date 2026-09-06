@@ -22,6 +22,7 @@ Page({
     const cachedUserInfo = wx.getStorageSync('userInfo');
     
     if (cachedUserInfo) {
+      cachedUserInfo.avatar = api.toAbsoluteUrl(cachedUserInfo.avatar);
       this.setData({
         userInfo: cachedUserInfo
       });
@@ -31,6 +32,7 @@ Page({
       api.getUserInfo(userId)
         .then(res => {
           if (res.code === 200 && res.data) {
+            res.data.avatar = api.toAbsoluteUrl(res.data.avatar);
             this.setData({
               userInfo: res.data
             });

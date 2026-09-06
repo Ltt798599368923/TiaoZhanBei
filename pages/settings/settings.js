@@ -6,7 +6,8 @@ Page({
   onShow() { this.loadData(); },
   loadData() {
     const userId = wx.getStorageSync('userId');
-    const cached = wx.getStorageSync('userInfo') || {};
+    const cached = { ...(wx.getStorageSync('userInfo') || {}) };
+    cached.avatar = api.toAbsoluteUrl(cached.avatar);
     this.setData({ userInfo: cached, nickname: cached.nickname || '', phone: cached.phone || '', notificationEnabled: cached.notificationEnabled !== false });
     if (!userId) return;
     api.getUserInfo(userId).then(res => {
@@ -17,8 +18,9 @@ Page({
     }).catch(() => {});
   },
   applyUser(userInfo) {
-    wx.setStorageSync('userInfo', userInfo);
-    this.setData({ userInfo, nickname: userInfo.nickname || '', phone: userInfo.phone || '', notificationEnabled: userInfo.notificationEnabled !== false });
+    const normalized = { ...userInfo, avatar: api.toAbsoluteUrl(userInfo.avatar) };
+    wx.setStorageSync('userInfo', normalized);
+    this.setData({ userInfo: normalized, nickname: normalized.nickname || '', phone: normalized.phone || '', notificationEnabled: normalized.notificationEnabled !== false });
   },
   onNicknameInput(e) { this.setData({ nickname: e.detail.value }); },
   onPhoneInput(e) { this.setData({ phone: e.detail.value }); },

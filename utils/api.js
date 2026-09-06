@@ -100,6 +100,8 @@ function downloadFile(url) {
 }
 
 const api = {
+  toAbsoluteUrl: (url) => url && url.charAt(0) === '/' ? BASE_URL + url : url,
+
   health: () => {
     return request({ url: BASE_URL + '/api/ai/health', method: 'GET' })
   },
