@@ -21,7 +21,20 @@ function open(type, id) {
     }
     const item = res.data
     if (item.sourceUrl) {
-      wx.navigateTo({ url: `/pages/webview/webview?url=${encodeURIComponent(item.sourceUrl)}` })
+      wx.showModal({
+        title: item.title,
+        content: '该内容来自外部公开网站。点击“复制地址”后可在浏览器中打开原文。',
+        confirmText: '复制地址',
+        success: modalRes => {
+          if (modalRes.confirm) {
+            wx.setClipboardData({
+              data: item.sourceUrl,
+              success: () => wx.showToast({ title: '原文地址已复制', icon: 'success' }),
+              fail: () => wx.showToast({ title: '复制失败，请稍后重试', icon: 'none' })
+            })
+          }
+        }
+      })
       return
     }
     wx.showModal({

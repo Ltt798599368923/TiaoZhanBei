@@ -62,7 +62,11 @@
     </view>
   </view>
 
-  <view class="empty-state" wx:if="{{searchKeyword && !searchResults.length}}">
+  <view class="empty-state" wx:if="{{searching}}">
+    <text class="empty-text">正在检索相关法条...</text>
+  </view>
+
+  <view class="empty-state" wx:if="{{hasSearched && !searching && !searchResults.length}}">
     <text class="empty-icon">🔍</text>
     <text class="empty-text">未找到相关法条</text>
     <text class="empty-hint">请尝试其他关键词</text>

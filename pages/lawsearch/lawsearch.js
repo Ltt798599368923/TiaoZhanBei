@@ -4,6 +4,8 @@ Page({
   data: {
     searchKeyword: '',
     searchResults: [],
+    searching: false,
+    hasSearched: false,
     hotKeywords: [
       '民法典', '刑法', '劳动法', '合同法', '侵权责任',
       '婚姻家庭', '继承', '物权', '债权', '诉讼时效'
@@ -22,7 +24,9 @@ Page({
   onClearSearch() {
     this.setData({
       searchKeyword: '',
-      searchResults: []
+      searchResults: [],
+      searching: false,
+      hasSearched: false
     });
   },
 
@@ -44,6 +48,7 @@ Page({
       title: '搜索中...',
       mask: true
     });
+    this.setData({ searching: true, hasSearched: false, searchResults: [] });
 
     api.searchLaws(keyword).then(res => {
       wx.hideLoading();
@@ -62,9 +67,11 @@ Page({
           });
         }
         this.setData({
-          searchResults: results
+          searchResults: results,
+          hasSearched: true
         });
       } else {
+        this.setData({ hasSearched: true });
         wx.showToast({
           title: res.message || '搜索失败',
           icon: 'none'
@@ -72,11 +79,14 @@ Page({
       }
     }).catch(err => {
       wx.hideLoading();
+      this.setData({ hasSearched: true });
       wx.showToast({
         title: '搜索失败，请重试',
         icon: 'none'
       });
       console.error('搜索法条失败:', err);
+    }).finally(() => {
+      this.setData({ searching: false });
     });
   },
 
