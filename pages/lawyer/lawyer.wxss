@@ -1,4 +1,5 @@
 .container {
+  display: block;
   min-height: 100vh;
   padding: 28rpx 24rpx 56rpx;
   background: #f4f5f7;
@@ -6,10 +7,12 @@
 }
 
 .lawyer-intro {
+  width: 100%;
   padding: 32rpx;
   background: #ffffff;
   border-left: 8rpx solid #c0190e;
   border-radius: 8rpx;
+  box-sizing: border-box;
 }
 
 .intro-kicker {
@@ -37,7 +40,9 @@
 }
 
 .lawyer-list {
+  width: 100%;
   margin-top: 28rpx;
+  box-sizing: border-box;
 }
 
 .list-heading {
