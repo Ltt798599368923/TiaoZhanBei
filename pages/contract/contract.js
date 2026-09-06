@@ -6,19 +6,19 @@ Page({
       {
         type: 'employment',
         name: '劳动合同',
-        description: 'employment contracts',
+        description: '劳动关系与用工协议',
         icon: '📝'
       },
       {
         type: 'business',
         name: '商务合同',
-        description: 'business contracts',
+        description: '合作、采购与服务协议',
         icon: '💼'
       },
       {
         type: 'realestate',
         name: '房地产合同',
-        description: 'real estate contracts',
+        description: '租赁、买卖与房产协议',
         icon: '🏠'
       }
     ],
