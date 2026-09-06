@@ -1,16 +1,14 @@
 <view class="container">
-  <view class="login-hero">
+  <view class="brand-area">
     <view class="brand-icon">法</view>
-    <text class="title">法律咨询</text>
-    <text class="subtitle">专业法律服务，守护您的权益</text>
+    <text class="brand-name">法律咨询</text>
+    <text class="brand-slogan">专业法律服务，守护您的权益</text>
   </view>
 
-  <view class="login-panel">
-    <view class="welcome-row"><view class="welcome-mark">微</view><text>欢迎使用法律咨询平台</text></view>
-    <text class="panel-title">微信授权登录</text>
-    <text class="panel-copy">登录后可同步保存咨询、预约和收藏记录</text>
+  <view class="auth-area">
+    <text class="auth-title">微信授权登录</text>
+    <text class="auth-copy">登录后可查看咨询、预约与收藏记录</text>
     <button class="wechat-login-btn" loading="{{loginLoading}}" disabled="{{loginLoading}}" bindtap="wechatLogin">微信一键登录</button>
-    <text class="panel-hint">我们会严格保护您的个人信息</text>
   </view>
 
   <view class="footer">
