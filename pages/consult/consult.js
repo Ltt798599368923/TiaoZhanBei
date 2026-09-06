@@ -56,6 +56,12 @@ Page({
     });
   },
 
+  chooseConsultType(e) {
+    this.setData({
+      consultTypeIndex: Number(e.currentTarget.dataset.index)
+    });
+  },
+
   submitConsult() {
     const { title, content, phone, consultTypes, consultTypeIndex, lawyerId, serviceName } = this.data;
 

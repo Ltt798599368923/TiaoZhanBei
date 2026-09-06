@@ -1,77 +1,49 @@
-<!--consult.wxml-->
-<!-- 在线咨询页面结构 -->
 <view class="container">
-<!-- 顶部标题 -->
-  <view wx:if="{{false}}" style="background: linear-gradient(135deg, #f5222d, #ff4d4f); width: 100%; padding: 45rpx 30rpx; display: flex; align-items: center; color: white; font-size: 34rpx; font-weight: bold; box-sizing: border-box;">
-    <view bindtap="goBack" style="width: 60rpx; height: 60rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; flex-shrink: 0; position: relative; left: 0rpx; top: 30rpx">←</view>
-    <text style="flex: 1; text-align: center; padding-right: 60rpx; position: relative; left: -30rpx; top: 29rpx">在线咨询</text>
+  <view class="page-lead">
+    <text class="lead-kicker">法律咨询</text>
+    <text class="lead-title">描述您的法律问题</text>
+    <text class="lead-copy">信息提交后，将由工作人员或您选择的律师跟进处理。</text>
   </view>
 
-  <!-- 服务介绍 -->
-  <view class="service-intro">
-    <view class="intro-icon">💬</view>
-    <text class="intro-title">即时在线咨询</text>
-    <text class="intro-desc">24小时在线律师为您提供即时法律咨询，快速解答您的法律疑问</text>
+  <view wx:if="{{lawyerName || serviceName}}" class="context-card">
+    <view wx:if="{{lawyerName}}" class="context-row">
+      <text class="context-label">服务律师</text>
+      <text class="context-value">{{lawyerName}}</text>
+    </view>
+    <view wx:if="{{serviceName}}" class="context-row">
+      <text class="context-label">服务意向</text>
+      <text class="context-value">{{serviceName}}</text>
+    </view>
   </view>
 
-  <!-- 咨询类型选择 -->
-  <view class="consult-types">
-    <view class="type-item active">法律问题</view>
-    <view class="type-item">合同审查</view>
-    <view class="type-item">文书指导</view>
-    <view class="type-item">其他咨询</view>
-  </view>
-
-  <!-- 在线咨询表单 -->
   <view class="consult-form">
-    <view wx:if="{{lawyerName}}" class="selected-lawyer">已选择：{{lawyerName}}</view>
-    <view wx:if="{{serviceName}}" class="selected-lawyer">服务意向：{{serviceName}}</view>
-    <view class="form-item">
-      <text class="form-label">咨询标题</text>
-      <input class="form-input" placeholder="请输入咨询标题" maxlength="50" bindinput="onTitleInput"></input>
+    <view class="form-heading">
+      <text class="form-title">咨询信息</text>
+      <text class="form-note">带 * 的项目为必填项</text>
     </view>
 
     <view class="form-item">
-      <text class="form-label">咨询内容</text>
-      <textarea class="form-textarea" value="{{content}}" placeholder="请详细描述您的法律问题，以便律师更好地为您解答..." maxlength="500" bindinput="onContentInput"></textarea>
+      <view class="label-row"><text class="form-label">咨询领域</text><text class="required-mark">*</text></view>
+      <view class="type-grid">
+        <view wx:for="{{consultTypes}}" wx:key="*this" class="type-item {{consultTypeIndex === index ? 'active' : ''}}" bindtap="chooseConsultType" data-index="{{index}}">{{item}}</view>
+      </view>
     </view>
-    
+
+    <view class="form-item">
+      <view class="label-row"><text class="form-label">咨询标题</text><text class="required-mark">*</text></view>
+      <input class="form-input" placeholder="用一句话概括您的问题" maxlength="50" bindinput="onTitleInput" />
+    </view>
+
+    <view class="form-item">
+      <view class="label-row"><text class="form-label">咨询内容</text><text class="required-mark">*</text></view>
+      <textarea class="form-textarea" value="{{content}}" placeholder="请说明事件经过、您的疑问以及希望获得的帮助" maxlength="500" bindinput="onContentInput" />
+    </view>
+
     <view class="form-item">
       <text class="form-label">联系方式</text>
-      <input class="form-input" placeholder="请留下您的手机号，方便律师联系您" type="number" bindinput="onPhoneInput"></input>
+      <input class="form-input" placeholder="手机号，便于后续联系" type="number" maxlength="11" bindinput="onPhoneInput" />
     </view>
-    
-    <view class="form-item">
-      <text class="form-label">咨询类型</text>
-      <picker class="form-picker" range="{{consultTypes}}" value="{{consultTypeIndex}}" bindchange="onTypeChange">
-        <view class="picker-view">{{consultTypes[consultTypeIndex] || '请选择咨询类型'}}</view>
-      </picker>
-    </view>
-    
+
     <button class="submit-btn" bindtap="submitConsult" loading="{{submitting}}" disabled="{{submitting}}">提交咨询</button>
-  </view>
-
-  <!-- 常见问题 -->
-  <view class="faq-section">
-    <text class="faq-title">常见问题</text>
-    <view class="faq-list">
-      <view class="faq-item">
-        <text class="faq-question">如何选择适合的律师？</text>
-        <text class="faq-answer">根据您的案件类型，选择有相关经验的律师，查看律师的专业领域和成功案例。</text>
-      </view>
-      <view class="faq-item">
-        <text class="faq-question">咨询费用如何计算？</text>
-        <text class="faq-answer">首次在线咨询免费，后续咨询根据律师的收费标准而定，具体可与律师协商。</text>
-      </view>
-      <view class="faq-item">
-        <text class="faq-question">咨询回复时间？</text>
-        <text class="faq-answer">一般情况下，律师会在24小时内回复您的咨询，紧急情况可选择电话咨询。</text>
-      </view>
-    </view>
-  </view>
-
-  <!-- 底部提示 -->
-  <view class="bottom-tip">
-    <text class="tip-text">专业律师团队 · 24小时在线服务</text>
   </view>
 </view>
