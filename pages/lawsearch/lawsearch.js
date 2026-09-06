@@ -103,7 +103,7 @@ Page({
       content: result.content,
       showCancel: false
     });
-  }
+  },
 
   copyOfficialSource(e) {
     const url = e.currentTarget.dataset.url
