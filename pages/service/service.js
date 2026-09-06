@@ -66,9 +66,8 @@ Page({
 
     switch(serviceId) {
       case 1:
-        // 跳转到律师咨询与预约页面
         wx.navigateTo({
-          url: '/pages/consult/consult'
+          url: '/pages/lawyer/lawyer'
         });
         break;
       case 2:
@@ -79,7 +78,7 @@ Page({
         break;
       case 3:
         wx.navigateTo({
-          url: '/pages/template/template'
+          url: '/pages/consult/consult?service=' + encodeURIComponent('法律文书代写')
         });
         break;
       case 4:
