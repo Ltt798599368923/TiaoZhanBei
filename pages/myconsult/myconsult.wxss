@@ -36,6 +36,10 @@
   background: #52c41a;
 }
 
+.consult-card.cancelled::before {
+  background: #b8bec6;
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;

@@ -7,7 +7,7 @@
   <view wx:if="{{loading}}" class="loading-wrap">加载中...</view>
 
   <view wx:elif="{{consults.length > 0}}" class="consult-list">
-    <view wx:for="{{consults}}" wx:key="id" class="consult-card {{item.reply ? 'replied' : 'pending'}} {{item.lawyerId ? 'booking-card' : ''}}">
+    <view wx:for="{{consults}}" wx:key="id" class="consult-card {{item.status === 'cancelled' ? 'cancelled' : (item.reply ? 'replied' : 'pending')}} {{item.lawyerId ? 'booking-card' : ''}}">
       <view class="card-header">
         <view class="card-title-wrap">
           <text class="card-title">{{item.title}}</text>
@@ -25,7 +25,7 @@
         <view class="card-actions">
           <button class="btn-detail" data-id="{{item.id}}" bindtap="viewDetail">{{item.lawyerId ? '查看进度' : '查看会话'}}</button>
           <button wx:if="{{item.lawyerId && item.status !== 'closed' && item.status !== 'cancelled'}}" class="btn-delete" data-id="{{item.id}}" bindtap="deleteConsult">取消预约</button>
-          <button wx:else class="btn-delete" data-id="{{item.id}}" bindtap="deleteConsult">删除</button>
+          <button wx:elif="{{!item.lawyerId}}" class="btn-delete" data-id="{{item.id}}" bindtap="deleteConsult">删除</button>
         </view>
       </view>
     </view>
