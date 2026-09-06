@@ -16,4 +16,4 @@
 .menu { overflow: hidden; background: #ffffff; border: 1rpx solid #e1e4e8; border-radius: 8rpx; }
 .menu-row { display: flex; align-items: center; justify-content: space-between; min-height: 106rpx; padding: 18rpx 22rpx; border-bottom: 1rpx solid #eceef0; box-sizing: border-box; }.menu-row:last-child { border-bottom: 0; }.menu-row:active { background: #fafafa; }
 .menu-title { color: #30343a; font-size: 28rpx; font-weight: 600; }.menu-copy { margin-top: 6rpx; color: #858b93; font-size: 22rpx; }.menu-arrow { color: #a61d18; font-size: 40rpx; font-weight: 300; }
-.logout { width: 100%; height: 78rpx; margin-top: 28rpx; color: #a61d18; background: transparent; border: 1rpx solid #d99790; border-radius: 5rpx; font-size: 27rpx; font-weight: 600; line-height: 76rpx; }.logout::after { border: 0; }
+.logout { display: flex; width: 100%; height: 78rpx; align-items: center; justify-content: center; margin-top: 28rpx; padding: 0; color: #a61d18; background: transparent; border: 1rpx solid #d99790; border-radius: 5rpx; font-size: 27rpx; font-weight: 600; line-height: 1; text-align: center; box-sizing: border-box; }.logout::after { border: 0; }

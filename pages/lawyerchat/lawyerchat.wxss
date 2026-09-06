@@ -138,3 +138,5 @@
   background: #d9dcdf;
   color: #ffffff;
 }
+
+.send-button { display: flex; align-items: center; justify-content: center; padding: 0; line-height: 1; text-align: center; box-sizing: border-box; }

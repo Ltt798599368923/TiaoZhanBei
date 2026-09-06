@@ -25,3 +25,5 @@
 .send-button { flex: 0 0 auto; width: 112rpx; height: 70rpx; margin-left: 14rpx; color: #ffffff; background: #bd1d17; border: 0; border-radius: 6rpx; font-size: 27rpx; font-weight: 600; line-height: 70rpx; }
 .send-button::after { border: 0; }
 .send-button[disabled] { color: rgba(255, 255, 255, 0.8); background: #c9827e; }
+
+.send-button { display: flex; align-items: center; justify-content: center; padding: 0; line-height: 1; text-align: center; box-sizing: border-box; }

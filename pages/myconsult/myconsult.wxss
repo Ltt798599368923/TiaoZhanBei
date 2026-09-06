@@ -203,6 +203,16 @@
   border: 0;
 }
 
+.btn-detail,
+.btn-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 .loading-wrap {
   margin-top: 4rpx;
   border: 1rpx solid #e1e4e8;
