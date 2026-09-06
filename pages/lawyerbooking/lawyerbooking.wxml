@@ -19,7 +19,7 @@
     <view class="form">
       <view class="field"><text class="label">预约事项 <text class="required">*</text></text><input class="input" data-field="title" value="{{title}}" maxlength="50" placeholder="例如：劳动争议咨询预约" bindinput="bindInput" /></view>
       <view class="field"><text class="label">情况说明 <text class="required">*</text></text><textarea class="textarea" data-field="content" value="{{content}}" maxlength="500" placeholder="请说明案件情况、需要咨询的问题和可联系的时间" bindinput="bindInput" /></view>
-      <view class="field"><text class="label">联系方式</text><input class="input" data-field="phone" value="{{phone}}" maxlength="11" type="number" placeholder="手机号，便于平台协调联系" bindinput="bindInput" /></view>
+      <view class="field"><text class="label">联系方式 <text class="required">*</text></text><input class="input" data-field="phone" value="{{phone}}" maxlength="11" type="number" placeholder="手机号，便于平台协调联系" bindinput="bindInput" /></view>
       <button class="submit" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submitBooking">提交预约申请</button>
     </view>
   </block>

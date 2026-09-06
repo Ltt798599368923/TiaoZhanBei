@@ -46,6 +46,10 @@ Page({
       wx.showToast({ title: '请填写预约事项和情况说明', icon: 'none' })
       return
     }
+    if (!/^1\d{10}$/.test(phone.trim())) {
+      wx.showToast({ title: '请填写正确的 11 位手机号码', icon: 'none' })
+      return
+    }
     const userId = wx.getStorageSync('userId')
     if (!userId) {
       wx.showToast({ title: '请先登录', icon: 'none' })

@@ -87,17 +87,20 @@ Page({
   deleteConsult(e) {
     const userId = wx.getStorageSync('userId');
     const id = e.currentTarget.dataset.id;
+    const consultation = this.data.consults.find(item => String(item.id) === String(id));
+    const isBooking = consultation && consultation.lawyerId;
 
     wx.showModal({
-      title: '确认删除',
-      content: '确定要删除这条咨询吗？',
+      title: isBooking ? '取消预约' : '确认删除',
+      content: isBooking ? '取消后平台将保留该预约记录，您可重新发起预约。' : '确定要删除这条咨询吗？',
       success: (res) => {
         if (res.confirm) {
-          api.deleteConsultation(userId, id)
+          const action = isBooking ? api.cancelBooking(userId, id) : api.deleteConsultation(userId, id);
+          action
             .then(res => {
               if (res.code === 200) {
                 wx.showToast({
-                  title: '删除成功',
+                  title: isBooking ? '预约已取消' : '删除成功',
                   icon: 'success'
                 });
                 this.loadConsults();

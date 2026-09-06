@@ -14,7 +14,7 @@
           <text wx:if="{{item.lawyerId}}" class="booking-lawyer">预约 {{item.lawyerName || '律师'}}</text>
         </view>
         <text class="card-status {{item.reply ? 'status-replied' : 'status-pending'}}">
-          {{item.reply ? (item.lawyerId ? '已反馈' : '已回复') : (item.status === 'pending' ? (item.lawyerId ? '待确认' : '待回复') : '处理中')}}
+          {{item.status === 'cancelled' ? '已取消' : (item.status === 'closed' ? (item.lawyerId ? '预约已结束' : '已结束') : (item.reply ? (item.lawyerId ? '已反馈' : '已回复') : (item.status === 'pending' ? (item.lawyerId ? '待确认' : '待回复') : '处理中')))}}
         </text>
       </view>
       <text class="card-content">
@@ -24,7 +24,8 @@
         <text class="card-time">⏱ {{item.displayTime}}</text>
         <view class="card-actions">
           <button class="btn-detail" data-id="{{item.id}}" bindtap="viewDetail">{{item.lawyerId ? '查看进度' : '查看会话'}}</button>
-          <button class="btn-delete" data-id="{{item.id}}" bindtap="deleteConsult">删除</button>
+          <button wx:if="{{item.lawyerId && item.status !== 'closed' && item.status !== 'cancelled'}}" class="btn-delete" data-id="{{item.id}}" bindtap="deleteConsult">取消预约</button>
+          <button wx:else class="btn-delete" data-id="{{item.id}}" bindtap="deleteConsult">删除</button>
         </view>
       </view>
     </view>

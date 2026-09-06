@@ -210,6 +210,13 @@ const api = {
     })
   },
 
+  cancelBooking: (userId, consultationId) => {
+    return request({
+      url: BASE_URL + '/api/consultation/cancel/' + userId + '/' + consultationId,
+      method: 'POST'
+    })
+  },
+
   getContracts: (userId) => {
     return request({ url: BASE_URL + '/api/contract/list/' + userId, method: 'GET' })
   },
