@@ -1,1 +1,12 @@
-/* pages/systemnotice/systemnotice.wxss */
+.container { min-height: 100vh; padding: 28rpx 24rpx 48rpx; background: #f4f5f7; box-sizing: border-box; }
+.page-heading { padding: 4rpx 4rpx 24rpx; }
+.heading-title, .heading-copy, .notice-title, .notice-time, .notice-content { display: block; }
+.heading-title { color: #202124; font-size: 40rpx; font-weight: 700; }
+.heading-copy { margin-top: 10rpx; color: #747b85; font-size: 26rpx; }
+
+.notice-panel { padding: 30rpx 28rpx; background: #ffffff; border: 1rpx solid #e1e4e8; border-left: 8rpx solid #bd1d17; border-radius: 8rpx; }
+.notice-title { color: #30343a; font-size: 33rpx; font-weight: 700; line-height: 1.45; }
+.notice-time { margin-top: 16rpx; color: #9298a1; font-size: 24rpx; }
+.notice-divider { height: 1rpx; margin: 26rpx 0; background: #eceef0; }
+.notice-content { color: #4f5760; font-size: 28rpx; line-height: 1.8; white-space: pre-wrap; }
+.state-panel { padding: 96rpx 28rpx; color: #858b94; background: #ffffff; border: 1rpx solid #e1e4e8; border-radius: 8rpx; font-size: 27rpx; text-align: center; }

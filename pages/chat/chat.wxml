@@ -1,39 +1,27 @@
-<view class="container" style="background-color: #f5f7fa; height: 100vh; overflow: hidden; position: relative;">
-  <!-- 聊天内容区域 -->
-  <scroll-view scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrollIntoView}}" style="position: absolute; left: 0; right: 0; top: 0; bottom: {{inputBarHeight + keyboardHeight}}px; padding: 24rpx; box-sizing: border-box;">
-    <view wx:if="{{messages.length === 0}}" style="padding: 88rpx 36rpx; color: #8c8c8c; font-size: 28rpx; line-height: 1.7; text-align: center;">
-      输入法律问题后，AI 将基于已配置的在线服务回复。回答仅供一般法律信息参考。
+<view class="container">
+  <scroll-view class="message-scroll" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrollIntoView}}" style="bottom: {{inputBarHeight + keyboardHeight}}px;">
+    <view wx:if="{{messages.length === 0}}" class="empty-state">
+      <text class="empty-title">向 AI 法律助手提问</text>
+      <text class="empty-copy">输入法律问题后，AI 将基于已配置的在线服务回复。回答仅供一般法律信息参考。</text>
     </view>
-    <!-- 动态渲染消息列表 -->
-    <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}" class="message-item" style="display: flex; {{item.type === 'right' ? 'justify-content: flex-end' : ''}}; margin-bottom: 24rpx;">
-      <!-- 对方消息 -->
-      <view wx:if="{{item.type === 'left'}}">
-        <image src="../../images/4b38120f3c97795437a1e773c126ed3e.jpg" style="width: 80rpx; height: 80rpx; border-radius: 50%; margin-right: 20rpx;" mode="aspectFill"></image>
-      </view>
-      
-      <!-- 消息内容 -->
-      <view style="max-width: 70%;">
-        <view style="background-color: {{item.type === 'right' ? '#C0190E' : 'white'}}; border-radius: 24rpx; padding: 20rpx; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-          <text style="font-size: 30rpx; color: {{item.type === 'right' ? 'white' : '#333'}}; line-height: 1.5;">{{item.content}}</text>
+
+    <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}" class="message-item {{item.type === 'right' ? 'message-right' : 'message-left'}}">
+      <view wx:if="{{item.type === 'left'}}" class="avatar avatar-ai">AI</view>
+      <view class="message-copy">
+        <view class="message-bubble {{item.type === 'right' ? 'bubble-user' : 'bubble-ai'}}">
+          <text class="message-text">{{item.content}}</text>
         </view>
-        <text style="font-size: 24rpx; color: #999; margin-top: 8rpx; {{item.type === 'right' ? 'text-align: right; margin-right: 8rpx;' : 'margin-left: 8rpx;'}}">{{item.time}}</text>
+        <text class="message-time">{{item.time}}</text>
       </view>
-      
-      <!-- 我的消息头像 -->
-      <view wx:if="{{item.type === 'right'}}">
-        <view style="width: 80rpx; height: 80rpx; border-radius: 50%; background-color: #52c41a; display: flex; align-items: center; justify-content: center; margin-left: 20rpx;">
-          <text style="font-size: 36rpx; color: white;">我</text>
-        </view>
-      </view>
+      <view wx:if="{{item.type === 'right'}}" class="avatar avatar-user">我</view>
     </view>
   </scroll-view>
 
-  <!-- 输入区域 -->
-  <view id="chat-input-bar" style="background-color: white; padding: 20rpx 20rpx calc(20rpx + env(safe-area-inset-bottom)); border-top: 1rpx solid #f0f0f0; width: 100%; box-sizing: border-box; position: fixed; left: 0; right: 0; bottom: {{keyboardHeight}}px; z-index: 1000;">
-    <view style="display: flex; align-items: center;">
-      <input 
-        placeholder="输入消息..." 
-        style="flex: 1; border: 1rpx solid #e8e8e8; border-radius: 30rpx; padding: 16rpx 24rpx; font-size: 28rpx; margin-right: 20rpx;"
+  <view id="chat-input-bar" class="input-bar" style="bottom: {{keyboardHeight}}px;">
+    <view class="input-row">
+      <input
+        class="message-input"
+        placeholder="输入法律问题"
         confirm-type="send"
         bindconfirm="sendMessage"
         bindinput="bindInput"
@@ -43,13 +31,8 @@
         adjust-position="false"
         cursor-spacing="16"
         value="{{inputValue}}"
-      ></input>
-      <button 
-        style="background-color: #C0190E; color: white; border: none; border-radius: 30rpx; padding: 0 32rpx; height: 64rpx; display: flex; align-items: center; justify-content: center; width: 121rpx; box-sizing: border-box; left: 0rpx; top: 0rpx"
-        bindtap="sendMessage"
-      >
-        <text style="font-size: 28rpx;">发送</text>
-      </button>
+      />
+      <button class="send-button" loading="{{isLoading}}" disabled="{{isLoading || !inputValue}}" bindtap="sendMessage">发送</button>
     </view>
   </view>
 </view>

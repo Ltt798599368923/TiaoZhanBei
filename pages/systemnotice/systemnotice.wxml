@@ -1,13 +1,15 @@
-<view class="container" style="min-height: 100vh; background: #f6f7f9;">
-<view wx:if="{{false}}" style="height: 128rpx; background: #c0190e; color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; font-size: 34rpx; font-weight: 600;">
-    <view bindtap="goBack" style="position: absolute; left: 24rpx; width: 64rpx; height: 64rpx; display: flex; align-items: center; justify-content: center; font-size: 42rpx;">←</view>
-    <text>系统通知</text>
+<view class="container">
+  <view class="page-heading">
+    <text class="heading-title">系统通知</text>
+    <text class="heading-copy">查看服务处理和平台消息</text>
   </view>
-  <view wx:if="{{loading}}" style="padding: 80rpx; text-align: center; color: #888;">加载中...</view>
-  <view wx:elif="{{notice}}" style="margin: 24rpx; padding: 32rpx; background: #ffffff; border-radius: 8rpx;">
-    <text style="display: block; font-size: 34rpx; line-height: 1.45; color: #222; font-weight: 600;">{{notice.title}}</text>
-    <text style="display: block; margin-top: 16rpx; color: #888; font-size: 24rpx;">{{notice.createdTime}}</text>
-    <text style="display: block; margin-top: 36rpx; color: #333; font-size: 30rpx; line-height: 1.75; white-space: pre-wrap;">{{notice.content}}</text>
+
+  <view wx:if="{{loading}}" class="state-panel">加载中...</view>
+  <view wx:elif="{{notice}}" class="notice-panel">
+    <text class="notice-title">{{notice.title}}</text>
+    <text class="notice-time">{{notice.createdTime}}</text>
+    <view class="notice-divider"></view>
+    <text class="notice-content">{{notice.content}}</text>
   </view>
-  <view wx:else style="padding: 80rpx; text-align: center; color: #888;">通知不存在或已删除</view>
+  <view wx:else class="state-panel">通知不存在或已删除</view>
 </view>
