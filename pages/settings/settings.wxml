@@ -1,1 +1,74 @@
-<view class="page"><view class="lead"><text class="kicker">个人账户</text><text class="title">个人设置</text></view><view class="profile"><image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" class="avatar" mode="aspectFill"/><view wx:else class="avatar fallback">我</view><view class="profile-copy"><text class="name">{{userInfo.nickname || '用户'}}</text><text class="phone">{{userInfo.phone || '未绑定手机号'}}</text></view><button class="avatar-button" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">换头像</button></view><view class="panel"><view class="row" bindtap="editProfile"><text>资料编辑</text><text class="action">编辑</text></view><view class="row"><text>接收系统通知</text><switch checked="{{notificationEnabled}}" color="#bd1d17" bindchange="toggleNotification"/></view><view class="row" bindtap="toggleFeedback"><text>意见反馈</text><text class="action">{{feedbackVisible ? '收起' : '填写'}}</text></view><view class="row" bindtap="clearCache"><text>清理本地缓存</text><text class="action">清理</text></view></view><view wx:if="{{editing}}" class="panel form"><input value="{{nickname}}" placeholder="昵称" bindinput="onNicknameInput"/><input value="{{phone}}" type="number" maxlength="11" placeholder="手机号（可选）" bindinput="onPhoneInput"/><view class="form-actions"><button bindtap="cancelEdit" class="secondary">取消</button><button bindtap="saveProfile" loading="{{saving}}" class="primary">保存</button></view></view><view wx:if="{{feedbackVisible}}" class="panel form"><textarea value="{{feedbackContent}}" maxlength="2000" placeholder="请描述你遇到的问题或改进建议" bindinput="onFeedbackInput"/><button bindtap="submitFeedback" class="primary">提交反馈</button><view wx:for="{{feedbacks}}" wx:key="id" class="feedback"><text>{{item.status === 'resolved' ? '已回复' : item.status === 'processing' ? '处理中' : '待处理'}} · {{item.createdTime}}</text><text>{{item.content}}</text><text wx:if="{{item.reply}}" class="reply">回复：{{item.reply}}</text></view></view><button class="logout" bindtap="logout">退出登录</button></view>
+<view class="page">
+  <view class="account-head">
+    <text class="head-kicker">法视界账户</text>
+    <view class="identity-row">
+      <image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" class="avatar" mode="aspectFill" />
+      <view wx:else class="avatar avatar-fallback">我</view>
+      <view class="identity-copy">
+        <text class="name">{{userInfo.nickname || '用户'}}</text>
+        <text class="phone">{{userInfo.phone || '暂未绑定手机号'}}</text>
+      </view>
+      <button class="avatar-action" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">更换</button>
+    </view>
+  </view>
+
+  <view class="section-title">账户设置</view>
+  <view class="settings-list">
+    <view class="setting-row" bindtap="editProfile">
+      <view class="row-copy"><text class="row-title">个人资料</text><text class="row-subtitle">昵称与联系电话</text></view>
+      <text class="row-action">编辑</text>
+    </view>
+    <view class="setting-row" bindtap="goToMessages">
+      <view class="row-copy"><text class="row-title">消息中心</text><text class="row-subtitle">查看咨询与反馈回复</text></view>
+      <text class="row-arrow">›</text>
+    </view>
+    <view class="setting-row">
+      <view class="row-copy"><text class="row-title">系统通知</text><text class="row-subtitle">接收服务处理进度</text></view>
+      <switch checked="{{notificationEnabled}}" color="#D92320" bindchange="toggleNotification" />
+    </view>
+  </view>
+
+  <view wx:if="{{editing}}" class="form-section">
+    <view class="form-heading"><text class="form-title">编辑资料</text><text class="form-copy">信息仅用于平台服务联系</text></view>
+    <view class="field"><text class="field-label">昵称</text><input value="{{nickname}}" maxlength="30" placeholder="请输入昵称" bindinput="onNicknameInput" /></view>
+    <view class="field"><text class="field-label">手机号</text><input value="{{phone}}" type="number" maxlength="11" placeholder="可选，用于服务联系" bindinput="onPhoneInput" /></view>
+    <view class="form-actions">
+      <button class="button secondary" bindtap="cancelEdit">取消</button>
+      <button class="button primary" bindtap="saveProfile" loading="{{saving}}">保存</button>
+    </view>
+  </view>
+
+  <view class="section-title feedback-title">意见反馈</view>
+  <view class="settings-list">
+    <view class="setting-row" bindtap="toggleFeedback">
+      <view class="row-copy"><text class="row-title">提交建议或问题</text><text class="row-subtitle">处理回复会同步到消息中心</text></view>
+      <text class="row-action">{{feedbackVisible ? '收起' : '填写'}}</text>
+    </view>
+    <view class="setting-row" bindtap="clearCache">
+      <view class="row-copy"><text class="row-title">清理临时缓存</text><text class="row-subtitle">不会退出当前登录账户</text></view>
+      <text class="row-action">清理</text>
+    </view>
+  </view>
+
+  <view wx:if="{{feedbackVisible}}" class="feedback-section">
+    <view class="form-heading"><text class="form-title">反馈内容</text><text class="form-copy">请描述问题或改进建议</text></view>
+    <view class="feedback-input-wrap">
+      <textarea value="{{feedbackContent}}" maxlength="2000" placeholder="至少填写 5 个字" bindinput="onFeedbackInput" />
+      <text class="counter">{{feedbackLength}} / 2000</text>
+    </view>
+    <button class="submit-feedback" bindtap="submitFeedback" loading="{{feedbackSubmitting}}" disabled="{{feedbackSubmitting}}">提交反馈</button>
+
+    <view class="history-heading"><text>我的反馈</text><text wx:if="{{feedbacks.length}}" class="history-count">{{feedbacks.length}} 条</text></view>
+    <view wx:if="{{feedbackLoading}}" class="feedback-state">反馈加载中...</view>
+    <view wx:elif="{{feedbacks.length === 0}}" class="feedback-state">暂未提交过反馈</view>
+    <view wx:else class="feedback-list">
+      <view wx:for="{{feedbacks}}" wx:key="id" class="feedback-item">
+        <view class="feedback-meta"><text class="feedback-status status-{{item.status}}">{{item.statusLabel}}</text><text class="feedback-time">{{item.displayTime}}</text></view>
+        <text class="feedback-content">{{item.content}}</text>
+        <view wx:if="{{item.reply}}" class="reply-box"><text class="reply-label">平台回复</text><text class="reply-content">{{item.reply}}</text></view>
+      </view>
+    </view>
+  </view>
+
+  <button class="logout" bindtap="logout">退出登录</button>
+</view>

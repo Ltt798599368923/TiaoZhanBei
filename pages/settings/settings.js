@@ -1,7 +1,20 @@
 const api = require('../../utils/api.js');
 
 Page({
-  data: { userInfo: {}, nickname: '', phone: '', editing: false, saving: false, notificationEnabled: true, feedbackVisible: false, feedbackContent: '', feedbacks: [] },
+  data: {
+    userInfo: {},
+    nickname: '',
+    phone: '',
+    editing: false,
+    saving: false,
+    notificationEnabled: true,
+    feedbackVisible: false,
+    feedbackContent: '',
+    feedbackLength: 0,
+    feedbackSubmitting: false,
+    feedbackLoading: false,
+    feedbacks: []
+  },
   onLoad() { this.loadData(); },
   onShow() { this.loadData(); },
   loadData() {
@@ -13,9 +26,31 @@ Page({
     api.getUserInfo(userId).then(res => {
       if (res.code === 200 && res.data) this.applyUser(res.data);
     }).catch(() => {});
-    api.getFeedbacks(userId).then(res => {
-      if (res.code === 200) this.setData({ feedbacks: res.data || [] });
-    }).catch(() => {});
+    this.loadFeedbacks(userId);
+  },
+  loadFeedbacks(userId = wx.getStorageSync('userId')) {
+    if (!userId) return Promise.resolve();
+    this.setData({ feedbackLoading: true });
+    return api.getFeedbacks(userId).then(res => {
+      if (res.code === 200) {
+        this.setData({ feedbacks: (res.data || []).map(item => this.formatFeedback(item)) });
+      }
+    }).catch(() => {}).finally(() => this.setData({ feedbackLoading: false }));
+  },
+  formatFeedback(item) {
+    const labels = { pending: '待处理', processing: '处理中', resolved: '已回复' };
+    return {
+      ...item,
+      statusLabel: labels[item.status] || '处理中',
+      displayTime: this.formatTime(item.updatedTime || item.createdTime)
+    };
+  },
+  formatTime(value) {
+    if (!value) return '';
+    const date = new Date(String(value).replace(/-/g, '/'));
+    if (Number.isNaN(date.getTime())) return String(value).replace('T', ' ').slice(0, 16);
+    const pad = number => String(number).padStart(2, '0');
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
   },
   applyUser(userInfo) {
     const normalized = { ...userInfo, avatar: api.toAbsoluteUrl(userInfo.avatar) };
@@ -44,13 +79,32 @@ Page({
     this.setData({ notificationEnabled });
     api.updateUser(userId, { notificationEnabled }).then(res => { if (res.code === 200) this.applyUser(res.data); else throw new Error(); }).catch(() => { this.setData({ notificationEnabled: !notificationEnabled }); wx.showToast({ title: '保存失败，请重试', icon: 'none' }); });
   },
-  toggleFeedback() { this.setData({ feedbackVisible: !this.data.feedbackVisible }); },
-  onFeedbackInput(e) { this.setData({ feedbackContent: e.detail.value }); },
+  toggleFeedback() {
+    const feedbackVisible = !this.data.feedbackVisible;
+    this.setData({ feedbackVisible });
+    if (feedbackVisible) this.loadFeedbacks();
+  },
+  onFeedbackInput(e) {
+    const feedbackContent = e.detail.value;
+    this.setData({ feedbackContent, feedbackLength: feedbackContent.length });
+  },
   submitFeedback() {
     const userId = wx.getStorageSync('userId'); const content = this.data.feedbackContent.trim();
     if (content.length < 5) return wx.showToast({ title: '请至少填写 5 个字', icon: 'none' });
-    api.createFeedback(userId, content).then(res => { if (res.code === 200) { this.setData({ feedbackContent: '' }); wx.showToast({ title: '反馈已提交', icon: 'success' }); this.loadData(); } else wx.showToast({ title: res.message || '提交失败', icon: 'none' }); }).catch(() => wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' }));
+    if (this.data.feedbackSubmitting) return;
+    this.setData({ feedbackSubmitting: true });
+    api.createFeedback(userId, content).then(res => {
+      if (res.code === 200) {
+        this.setData({ feedbackContent: '', feedbackLength: 0 });
+        wx.showToast({ title: '反馈已提交', icon: 'success' });
+        this.loadFeedbacks(userId);
+      } else {
+        wx.showToast({ title: res.message || '提交失败', icon: 'none' });
+      }
+    }).catch(() => wx.showToast({ title: '网络错误，请稍后重试', icon: 'none' }))
+      .finally(() => this.setData({ feedbackSubmitting: false }));
   },
+  goToMessages() { wx.switchTab({ url: '/pages/message/message' }); },
   clearCache() {
     wx.showModal({ title: '清理本地缓存', content: '将清理临时缓存，登录状态和个人资料会保留。', success: res => { if (!res.confirm) return; const token = wx.getStorageSync('token'); const userId = wx.getStorageSync('userId'); const userInfo = wx.getStorageSync('userInfo'); wx.clearStorageSync(); wx.setStorageSync('token', token); wx.setStorageSync('userId', userId); wx.setStorageSync('userInfo', userInfo); wx.showToast({ title: '缓存已清理', icon: 'success' }); } });
   },
