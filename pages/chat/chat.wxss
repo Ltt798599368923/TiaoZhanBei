@@ -9,7 +9,7 @@
 .message-item { display: flex; align-items: flex-start; margin-bottom: 24rpx; }
 .message-right { justify-content: flex-end; }
 .avatar { display: flex; flex: 0 0 72rpx; width: 72rpx; height: 72rpx; align-items: center; justify-content: center; border-radius: 50%; font-size: 24rpx; font-weight: 700; }
-.avatar-ai { margin-right: 16rpx; color: #a61d18; background: #fff1f0; border: 1rpx solid #efc5c0; }
+.avatar-ai { margin-right: 16rpx; overflow: hidden; background: #fff1f0; border: 1rpx solid #efc5c0; box-sizing: border-box; }
 .avatar-user { margin-left: 16rpx; color: #ffffff; background: #535a63; }
 .message-copy { max-width: 72%; min-width: 0; }
 .message-bubble { padding: 18rpx 22rpx; border: 1rpx solid #e1e4e8; border-radius: 20rpx; }

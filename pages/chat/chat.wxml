@@ -6,7 +6,7 @@
     </view>
 
     <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}" class="message-item {{item.type === 'right' ? 'message-right' : 'message-left'}}">
-      <view wx:if="{{item.type === 'left'}}" class="avatar avatar-ai">AI</view>
+      <image wx:if="{{item.type === 'left'}}" class="avatar avatar-ai" src="../../images/4b38120f3c97795437a1e773c126ed3e.jpg" mode="aspectFill" />
       <view class="message-copy">
         <view class="message-bubble {{item.type === 'right' ? 'bubble-user' : 'bubble-ai'}}">
           <text class="message-text">{{item.content}}</text>
