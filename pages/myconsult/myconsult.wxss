@@ -127,6 +127,9 @@
   flex-shrink: 0;
 }
 
+.card-status-wrap { display: flex; align-items: center; gap: 10rpx; flex-shrink: 0; }
+.unread-badge { display: flex; min-width: 32rpx; height: 32rpx; align-items: center; justify-content: center; padding: 0 7rpx; color: #ffffff; background: #bd1d17; border-radius: 16rpx; font-size: 20rpx; font-weight: 700; box-sizing: border-box; }
+
 .status-pending {
   background: #fff7e6;
   color: #d48806;

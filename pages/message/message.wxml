@@ -19,13 +19,13 @@
     <view wx:elif="{{filteredMessages.length === 0 && searchText}}" class="empty-state">未找到相关消息</view>
     <view wx:elif="{{filteredMessages.length === 0}}" class="empty-state">暂无消息</view>
     <view wx:else class="message-list">
-      <view wx:for="{{filteredMessages}}" wx:key="id" class="message-item" bindtap="goToDetail" data-id="{{item.id}}">
+      <view wx:for="{{filteredMessages}}" wx:key="id" class="message-item {{item.hasUnread ? 'unread-message' : ''}}" bindtap="goToDetail" data-id="{{item.id}}">
         <view class="message-mark {{item.type === 'consultReply' ? 'mark-reply' : 'mark-system'}}">
           <text>{{item.type === 'consultReply' ? '答' : '通'}}</text>
         </view>
         <view class="message-content">
           <view class="message-meta">
-            <text class="message-kind">{{item.name}}</text>
+            <view class="message-kind-wrap"><text class="message-kind">{{item.name}}</text><text wx:if="{{item.hasUnread}}" class="message-unread">{{item.unreadCount > 99 ? '99+' : item.unreadCount}}</text></view>
             <text class="message-time">{{item.time}}</text>
           </view>
           <text class="message-subject">{{item.subject}}</text>

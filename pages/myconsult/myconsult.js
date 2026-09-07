@@ -28,10 +28,16 @@ Page({
           const consults = res.data.map(item => {
             const isBooking = Boolean(item.lawyerId)
             const activeBookingStatuses = ['pending', 'processing', 'replied', 'need_info', 'confirmed']
+            const latestSenderRole = item.latestSenderRole || 'user'
+            const latestMessage = item.latestMessage || item.content || '暂无内容'
             return {
               ...item,
               isBooking,
-              displayTime: this.formatTime(item.time),
+              latestSenderRole,
+              displayPreview: latestMessage,
+              displayTime: this.formatTime(item.latestMessageTime || item.repliedTime || item.time),
+              unreadCount: Number(item.unreadCount) || 0,
+              hasUnread: Number(item.unreadCount) > 0,
               statusText: this.getStatusText(item.status, Boolean(item.reply), isBooking),
               statusClass: item.status === 'cancelled' ? 'cancelled' : (item.status === 'declined' ? 'declined' : (item.reply ? 'replied' : 'pending')),
               canCancel: isBooking && activeBookingStatuses.includes(item.status)

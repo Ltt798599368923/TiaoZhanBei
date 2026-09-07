@@ -46,18 +46,21 @@ Page({
   },
 
   toConsultationReply(item) {
-    const rawTime = item.repliedTime || item.time
+    const latestIsReply = item.latestSenderRole === 'admin'
+    const rawTime = latestIsReply ? (item.latestMessageTime || item.repliedTime || item.time) : (item.repliedTime || item.time)
     return {
       id: `consult-${item.id}`,
       sourceId: item.id,
       type: 'consultReply',
       name: item.lawyerId ? '预约进度' : '咨询回复',
       subject: item.title || '您的法律咨询',
-      content: item.reply.trim(),
+      content: (latestIsReply ? item.latestMessage : item.reply).trim(),
       lawyerId: item.lawyerId || '',
       lawyerName: item.lawyerName || '',
       time: this.formatTime(rawTime),
-      timestamp: this.toTimestamp(rawTime)
+      timestamp: this.toTimestamp(rawTime),
+      unreadCount: Number(item.unreadCount) || 0,
+      hasUnread: Number(item.unreadCount) > 0
     }
   },
 

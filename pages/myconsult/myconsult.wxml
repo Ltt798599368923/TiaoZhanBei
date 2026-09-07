@@ -18,10 +18,13 @@
           <text class="card-title">{{item.title}}</text>
           <text wx:if="{{item.isBooking}}" class="booking-lawyer">预约 {{item.lawyerName || '律师'}}</text>
         </view>
-        <text class="card-status {{item.reply ? 'status-replied' : 'status-pending'}}">{{item.statusText}}</text>
+        <view class="card-status-wrap">
+          <text class="card-status {{item.reply ? 'status-replied' : 'status-pending'}}">{{item.statusText}}</text>
+          <text wx:if="{{item.hasUnread}}" class="unread-badge">{{item.unreadCount > 99 ? '99+' : item.unreadCount}}</text>
+        </view>
       </view>
       <text class="card-content">
-        <text class="card-label">咨询内容：</text>{{item.content || '暂无内容'}}
+        <text class="card-label">{{item.latestSenderRole === 'admin' ? '平台回复：' : '咨询内容：'}}</text>{{item.displayPreview}}
       </text>
       <view class="card-footer">
         <text class="card-time">{{item.displayTime}}</text>
