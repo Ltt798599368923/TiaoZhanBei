@@ -16,6 +16,7 @@
     "pages/newlaw/newlaw",
     "pages/lawread/lawread",
     "pages/video/video",
+    "pages/contentdetail/contentdetail",
     "pages/lawyer/lawyer",
     "pages/official/official",
     "pages/contract/contract",

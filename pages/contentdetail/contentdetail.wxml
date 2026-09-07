@@ -1,0 +1,49 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="state-panel">内容加载中...</view>
+
+  <view wx:elif="{{loadError}}" class="state-panel error-panel">
+    <text>{{loadError}}</text>
+    <button class="retry-button" bindtap="retry">重新加载</button>
+  </view>
+
+  <block wx:else>
+    <view class="article-head">
+      <text class="type-label">{{typeLabel}}</text>
+      <text class="title">{{item.title}}</text>
+      <view class="meta">
+        <text>{{item.sourceName || '法视界'}}</text>
+        <text>{{item.publishedTime || '已发布'}}</text>
+      </view>
+    </view>
+
+    <image wx:if="{{item.coverUrl}}" class="cover" src="{{item.coverUrl}}" mode="widthFix" />
+
+    <view wx:if="{{item.summary}}" class="summary">
+      <text>{{item.summary}}</text>
+    </view>
+
+    <view wx:if="{{canPlayVideo}}" class="video-wrap">
+      <video class="video" src="{{item.sourceUrl}}" controls enable-play-gesture show-center-play-btn />
+    </view>
+
+    <view wx:if="{{item.content}}" class="body">
+      <text>{{item.content}}</text>
+    </view>
+
+    <view wx:if="{{!item.content && !item.hasFile && !hasSource}}" class="empty-content">
+      <text>该内容暂未提供正文或资料。</text>
+    </view>
+
+    <view wx:if="{{item.hasFile || hasSource}}" class="resource-panel">
+      <text class="resource-title">相关资料</text>
+      <button wx:if="{{item.hasFile}}" class="resource-button primary" bindtap="openAttachment">
+        <text class="button-name">打开附件</text>
+        <text class="button-tip">{{item.fileName || '阅读资料'}}</text>
+      </button>
+      <button wx:if="{{hasSource && !canPlayVideo}}" class="resource-button secondary" bindtap="copySourceUrl">
+        <text class="button-name">复制原文地址</text>
+        <text class="button-tip">可在浏览器中打开</text>
+      </button>
+    </view>
+  </block>
+</view>
