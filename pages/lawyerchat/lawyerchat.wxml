@@ -1,11 +1,22 @@
 <view class="container">
   <view class="conversation-meta">
-    <text class="conversation-title">{{title}}</text>
-    <text class="conversation-status {{connected ? 'online' : ''}}">{{connected ? '实时连接已建立' : '正在连接消息服务'}}</text>
+    <view class="conversation-title-row">
+      <text class="conversation-title">{{title}}</text>
+      <view class="connection-badge {{connectionState}}"><view class="connection-dot"></view><text>{{connectionLabel}}</text></view>
+    </view>
+    <text class="conversation-status">平台回复会同步显示在这里</text>
   </view>
 
   <scroll-view class="message-scroll" scroll-y="true" scroll-top="{{scrollTop}}">
-    <view wx:if="{{messages.length === 0}}" class="empty-state">暂时没有消息，开始描述您的问题吧。</view>
+    <view wx:if="{{loadingMessages}}" class="state-panel">正在加载会话记录</view>
+    <view wx:elif="{{loadFailed}}" class="state-panel failed-state">
+      <text>会话记录加载失败</text>
+      <view class="retry-load" role="button" bindtap="retryLoadMessages" hover-class="retry-load-active" hover-stay-time="70">重新加载</view>
+    </view>
+    <view wx:elif="{{messages.length === 0}}" class="empty-state">
+      <text class="empty-title">开始咨询</text>
+      <text class="empty-copy">把你的问题、相关时间和已掌握的材料描述清楚，平台顾问会在会话中回复。</text>
+    </view>
     <view wx:for="{{messages}}" wx:key="id" class="chat-row {{item.isMine ? 'mine' : 'other'}}">
       <view class="chat-message">
         <text class="chat-sender">{{item.isMine ? '我' : '平台顾问'}}</text>
@@ -13,6 +24,7 @@
         <text class="chat-time">{{item.displayTime}}</text>
       </view>
     </view>
+    <view wx:if="{{sendError}}" class="send-error">{{sendError}}</view>
   </scroll-view>
 
   <view class="composer">

@@ -6,30 +6,33 @@
 }
 
 .conversation-meta {
-  padding: 22rpx 28rpx;
+  padding: 24rpx 28rpx 22rpx;
   background: #ffffff;
   border-bottom: 1rpx solid #e7e9ed;
 }
 
+.conversation-title-row { display: flex; align-items: center; justify-content: space-between; gap: 20rpx; }
 .conversation-title {
   display: block;
+  flex: 1;
+  min-width: 0;
   overflow: hidden;
   color: #292d33;
-  font-size: 28rpx;
-  font-weight: 600;
+  font-size: 30rpx;
+  font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.connection-badge { display: flex; flex: 0 0 auto; align-items: center; gap: 7rpx; padding: 8rpx 12rpx; border-radius: 20rpx; color: #737981; background: #f3f5f7; font-size: 21rpx; }
+.connection-badge.online { color: #237a4c; background: #edf7f1; }
+.connection-badge.reconnecting, .connection-badge.connecting { color: #9a6a12; background: #fff8e8; }
+.connection-dot { width: 10rpx; height: 10rpx; border-radius: 50%; background: currentColor; }
 .conversation-status {
   display: block;
-  margin-top: 8rpx;
+  margin-top: 10rpx;
   color: #8a9099;
   font-size: 22rpx;
-}
-
-.conversation-status.online {
-  color: #237a4c;
 }
 
 .message-scroll {
@@ -90,11 +93,22 @@
 }
 
 .empty-state {
-  margin-top: 80rpx;
-  color: #858b94;
-  font-size: 27rpx;
+  margin-top: 40rpx;
+  padding: 46rpx 32rpx;
+  background: #ffffff;
+  border: 1rpx solid #e1e4e8;
+  border-radius: 16rpx;
   text-align: center;
 }
+
+.empty-title, .empty-copy { display: block; }
+.empty-title { color: #30343a; font-size: 30rpx; font-weight: 700; }
+.empty-copy { margin-top: 14rpx; color: #747b85; font-size: 25rpx; line-height: 1.65; }
+.state-panel { margin-top: 40rpx; padding: 80rpx 32rpx; color: #858b94; background: #ffffff; border: 1rpx solid #e1e4e8; border-radius: 16rpx; font-size: 26rpx; text-align: center; }
+.failed-state { color: #6d5350; }
+.retry-load { display: inline-flex; align-items: center; justify-content: center; height: 60rpx; margin-top: 20rpx; padding: 0 22rpx; color: #a61d18; background: #fff3f1; border: 1rpx solid #efc5c0; border-radius: 30rpx; font-size: 24rpx; box-sizing: border-box; }
+.retry-load-active { background: #ffebe8; }
+.send-error { margin: 0 0 22rpx; color: #9e211b; font-size: 23rpx; text-align: center; }
 
 .composer {
   display: block;
