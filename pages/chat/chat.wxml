@@ -1,8 +1,15 @@
 <view class="container">
   <scroll-view class="message-scroll" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrollIntoView}}" style="bottom: {{inputBarHeight + keyboardHeight}}px;">
     <view wx:if="{{messages.length === 0}}" class="empty-state">
-      <text class="empty-title">向 AI 法律助手提问</text>
-      <text class="empty-copy">输入法律问题后，AI 将基于已配置的在线服务回复。回答仅供一般法律信息参考。</text>
+      <image class="empty-mascot" src="../../images/4b38120f3c97795437a1e773c126ed3e.jpg" mode="aspectFill" />
+      <text class="empty-title">你好，我是法视界 AI 助手</text>
+      <text class="empty-copy">可以帮你梳理法律问题、了解基本处理路径。涉及重大权益时，建议咨询专业律师。</text>
+      <view class="quick-question-list">
+        <view wx:for="{{quickQuestions}}" wx:key="*this" class="quick-question" role="button" data-question="{{item}}" bindtap="onQuickQuestion" hover-class="quick-question-active" hover-stay-time="70">
+          <text>{{item}}</text>
+          <text class="quick-question-arrow">›</text>
+        </view>
+      </view>
     </view>
 
     <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}" class="message-item {{item.type === 'right' ? 'message-right' : 'message-left'}}">
@@ -14,6 +21,11 @@
         <text class="message-time">{{item.time}}</text>
       </view>
       <view wx:if="{{item.type === 'right'}}" class="avatar avatar-user">我</view>
+    </view>
+
+    <view wx:if="{{isLoading}}" class="message-item message-left thinking-row">
+      <image class="avatar avatar-ai" src="../../images/4b38120f3c97795437a1e773c126ed3e.jpg" mode="aspectFill" />
+      <view class="thinking-bubble"><text>正在整理回复</text><text class="thinking-dots">...</text></view>
     </view>
   </scroll-view>
 

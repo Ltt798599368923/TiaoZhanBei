@@ -8,7 +8,12 @@ Page({
     isLoading: false,
     scrollIntoView: '',
     inputBarHeight: 0,
-    keyboardHeight: 0
+    keyboardHeight: 0,
+    quickQuestions: [
+      '劳动合同纠纷可以怎样处理？',
+      '朋友借钱不还，我该怎么办？',
+      '租房押金被扣，如何维权？'
+    ]
   },
 
   onLoad(options) {
@@ -39,6 +44,12 @@ Page({
     this.setData({
       inputValue: e.detail.value
     })
+  },
+
+  onQuickQuestion(e) {
+    const question = e.currentTarget.dataset.question;
+    if (!question || this.data.isLoading) return;
+    this.setData({ inputValue: question }, () => this.sendMessage());
   },
 
   onInputFocus() {
@@ -85,11 +96,6 @@ Page({
       scrollIntoView: 'msg-' + userMessage.id
     })
     
-    wx.showLoading({
-      title: 'AI思考中...',
-      mask: true
-    });
-    
     const history = this.data.messages.slice(0, -1).map(msg => ({
       role: msg.type === 'left' ? 'assistant' : 'user',
       content: msg.content
@@ -97,8 +103,6 @@ Page({
     
     api.chat(userMessage.content, history)
       .then(res => {
-        wx.hideLoading();
-        
         if (res.code === 200) {
           const botMessage = {
             id: this.data.messages.length + 1,
@@ -122,7 +126,6 @@ Page({
         }
       })
       .catch(err => {
-        wx.hideLoading();
         wx.showToast({
           title: '网络错误，请稍后重试',
           icon: 'none'
