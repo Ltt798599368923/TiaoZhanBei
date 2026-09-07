@@ -1,0 +1,40 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="state-panel">模板加载中...</view>
+
+  <view wx:elif="{{loadError}}" class="state-panel error-panel">
+    <text>{{loadError}}</text>
+    <button class="retry-button" bindtap="retry">重新加载</button>
+  </view>
+
+  <block wx:else>
+    <view class="template-head">
+      <text class="type-label">{{categoryLabel}}</text>
+      <text class="title">{{item.title}}</text>
+      <text class="description">{{item.description || '可作为法律文书起草时的参考。'}}</text>
+      <view class="meta">
+        <text>法视界模板库</text>
+        <text>使用 {{item.downloadCount || 0}} 次</text>
+      </view>
+    </view>
+
+    <view wx:if="{{item.content}}" class="body">
+      <text>{{item.content}}</text>
+    </view>
+
+    <view wx:else class="empty-content">
+      <text>该模板暂未提供正文，请查看附件资料。</text>
+    </view>
+
+    <view wx:if="{{item.content || item.hasFile}}" class="resource-panel">
+      <text class="resource-title">使用模板</text>
+      <button wx:if="{{item.content}}" class="resource-button primary" bindtap="copyTemplate">
+        <text class="button-name">复制模板正文</text>
+        <text class="button-tip">复制后可直接编辑</text>
+      </button>
+      <button wx:if="{{item.hasFile}}" class="resource-button secondary" bindtap="openAttachment">
+        <text class="button-name">打开附件</text>
+        <text class="button-tip">{{item.fileName || '模板文件'}}</text>
+      </button>
+    </view>
+  </block>
+</view>

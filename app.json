@@ -27,7 +27,8 @@
     "pages/settings/settings",
     "pages/myconsult/myconsult",
     "pages/webview/webview",
-    "pages/template/template"
+    "pages/template/template",
+    "pages/templatedetail/templatedetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,5 +1,6 @@
 <view class="template-page">
   <view class="page-heading">
+    <text class="heading-kicker">DOCUMENT LIBRARY</text>
     <text class="heading-title">文书模板</text>
     <text class="heading-copy">按类型查找、收藏和使用常用法律文书</text>
   </view>
@@ -11,7 +12,7 @@
     </view>
     <view class="category-grid">
       <view wx:for="{{categories}}" wx:key="id" class="category-item {{selectedCategory === item.id ? 'category-active' : ''}}" bindtap="selectCategory" data-category="{{item.id}}">
-        <text class="category-icon">{{item.icon}}</text>
+        <view class="category-mark"><text>{{item.mark}}</text></view>
         <text>{{item.name}}</text>
       </view>
     </view>
@@ -33,7 +34,7 @@
         </view>
         <view class="template-tools">
           <text catchtap="addFavorite" data-id="{{item.id}}" data-title="{{item.title}}" data-description="{{item.description || item.category}}" class="favorite-action">收藏</text>
-          <text class="template-action">使用</text>
+          <view class="template-action"><text>></text></view>
         </view>
       </view>
     </block>
