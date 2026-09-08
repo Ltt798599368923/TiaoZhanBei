@@ -3,7 +3,7 @@ const api = require('../../utils/api.js')
 const TYPE_LABELS = {
   article: '普法文章',
   law: '法规动态',
-  book: '阅读资料',
+  book: '法规阅读',
   video: '视频内容'
 }
 
@@ -24,6 +24,8 @@ Page({
     loadError: '',
     typeLabel: '',
     hasSource: false,
+    showSource: false,
+    showAttachment: false,
     canPlayVideo: false
   },
 
@@ -50,10 +52,14 @@ Page({
           throw new Error(res.message || '内容不存在')
         }
         const item = res.data
+        const canShowSource = this.data.type !== 'article' && Boolean(item.sourceUrl)
+        const canShowAttachment = this.data.type === 'book' && Boolean(item.hasFile)
         wx.setNavigationBarTitle({ title: item.title || '内容详情' })
         this.setData({
           item,
           hasSource: Boolean(item.sourceUrl),
+          showSource: canShowSource,
+          showAttachment: canShowAttachment,
           canPlayVideo: this.data.type === 'video' && isDirectVideo(item.sourceUrl)
         })
       })

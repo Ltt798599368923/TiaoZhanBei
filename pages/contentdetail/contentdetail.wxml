@@ -30,17 +30,17 @@
       <text>{{item.content}}</text>
     </view>
 
-    <view wx:if="{{!item.content && !item.hasFile && !hasSource}}" class="empty-content">
-      <text>该内容暂未提供正文或资料。</text>
+    <view wx:if="{{!item.content && (type === 'article' || (!item.hasFile && !hasSource))}}" class="empty-content">
+      <text>{{type === 'article' ? '该文章暂未提供可在线阅读的正文。' : '该内容暂未提供正文或资料。'}}</text>
     </view>
 
-    <view wx:if="{{item.hasFile || hasSource}}" class="resource-panel">
-      <text class="resource-title">相关资料</text>
-      <button wx:if="{{item.hasFile}}" class="resource-button primary" bindtap="openAttachment">
+    <view wx:if="{{showAttachment || (showSource && !canPlayVideo)}}" class="resource-panel">
+      <text class="resource-title">补充资料</text>
+      <button wx:if="{{showAttachment}}" class="resource-button primary" bindtap="openAttachment">
         <text class="button-name">打开附件</text>
-        <text class="button-tip">{{item.fileName || '阅读资料'}}</text>
+        <text class="button-tip">{{item.fileName || '法规资料'}}</text>
       </button>
-      <button wx:if="{{hasSource && !canPlayVideo}}" class="resource-button secondary" bindtap="copySourceUrl">
+      <button wx:if="{{showSource && !canPlayVideo}}" class="resource-button secondary" bindtap="copySourceUrl">
         <text class="button-name">复制原文地址</text>
         <text class="button-tip">可在浏览器中打开</text>
       </button>

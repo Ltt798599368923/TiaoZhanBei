@@ -1,7 +1,7 @@
 <view class="container">
   <view class="page-heading">
-    <text class="heading-title">法理白话</text>
-    <text class="heading-copy">用易懂的方式了解常见法律知识</text>
+    <text class="heading-title">普法文章</text>
+    <text class="heading-copy">法理白话，用易懂的方式了解常见法律知识</text>
   </view>
 
   <!-- 文章列表区域 -->

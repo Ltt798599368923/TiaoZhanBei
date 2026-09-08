@@ -85,12 +85,12 @@
       </view>
       <text class="feature-label">文书模板</text>
     </view>
-    <!-- 法理白话 -->
+    <!-- 普法文章 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="lawexplain">
       <view class="feature-icon">
         <image class="feature-image" src="/images/Law-language.png" mode="aspectFit"></image>
       </view>
-      <text class="feature-label">法理白话</text>
+      <text class="feature-label">普法文章</text>
     </view>
     <!-- 法治新程 -->
     <view class="feature-item" bindtap="onFeatureTap" data-type="newlaw">

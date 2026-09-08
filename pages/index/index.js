@@ -231,7 +231,7 @@ Page({
     const urlMap = {
       lawyer: '/pages/lawyer/lawyer',//律师咨询
       document: '/pages/template/template',//文书模版
-      lawexplain: '/pages/lawexplain/lawexplain',//法理白话
+      lawexplain: '/pages/lawexplain/lawexplain',//普法文章
       newlaw: '/pages/newlaw/newlaw',//法治新程
       lawread: '/pages/lawread/lawread',//法文阅读
       video: '/pages/video/video'//小视课堂
