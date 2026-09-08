@@ -7,8 +7,7 @@
 
   <view class="template-section">
     <view class="section-header">
-      <text>模板分类</text>
-      <text class="all-link" bindtap="viewAllTemplates">全部</text>
+      <text>按文书类型查找</text>
     </view>
     <view class="category-grid">
       <view wx:for="{{categories}}" wx:key="id" class="category-item {{selectedCategory === item.id ? 'category-active' : ''}}" bindtap="selectCategory" data-category="{{item.id}}">
@@ -18,9 +17,22 @@
     </view>
   </view>
 
+  <view class="filter-section">
+    <text class="filter-label">业务领域</text>
+    <scroll-view class="filter-scroll" scroll-x="true" enable-flex="true">
+      <view class="filter-row">
+        <view wx:for="{{practiceAreas}}" wx:key="id" class="filter-chip {{selectedPracticeArea === item.id ? 'filter-active' : ''}}" bindtap="selectPracticeArea" data-practice-area="{{item.id}}">{{item.name}}</view>
+      </view>
+    </scroll-view>
+    <text class="filter-label material-label">资料形态</text>
+    <view class="material-row">
+      <view wx:for="{{materialTypes}}" wx:key="id" class="material-chip {{selectedMaterialType === item.id ? 'filter-active' : ''}}" bindtap="selectMaterialType" data-material-type="{{item.id}}">{{item.name}}</view>
+    </view>
+  </view>
+
   <view class="template-section">
     <view class="section-header">
-      <text>{{selectedCategory ? '分类模板' : '全部模板'}}</text>
+      <text>文书列表</text>
       <text class="template-count">{{templates.length}} 项</text>
     </view>
     <view wx:if="{{loading}}" class="empty-state">加载中...</view>
@@ -29,11 +41,16 @@
       <view wx:for="{{templates}}" wx:key="id" class="template-item" bindtap="viewTemplateDetail" data-id="{{item.id}}">
         <view class="template-copy">
           <text class="template-title">{{item.title}}</text>
-          <text class="template-description">{{item.description || item.category}}</text>
-          <text class="template-meta">使用 {{item.downloadCount || 0}} 次</text>
+          <text class="template-description">{{item.description || item.practiceAreaLabel}}</text>
+          <view class="template-tags">
+            <text>{{item.categoryLabel}}</text>
+            <text>{{item.practiceAreaLabel}}</text>
+            <text>{{item.materialTypeLabel}}</text>
+          </view>
+          <text class="template-meta">{{item.readingLabel}} · 使用 {{item.downloadCount || 0}} 次</text>
         </view>
         <view class="template-tools">
-          <text catchtap="addFavorite" data-id="{{item.id}}" data-title="{{item.title}}" data-description="{{item.description || item.category}}" class="favorite-action">收藏</text>
+          <text catchtap="addFavorite" data-id="{{item.id}}" data-title="{{item.title}}" data-description="{{item.description || item.practiceAreaLabel}}" class="favorite-action">收藏</text>
           <view class="template-action"><text>></text></view>
         </view>
       </view>

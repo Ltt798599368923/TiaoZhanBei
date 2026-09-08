@@ -1,12 +1,61 @@
 const api = require('../../utils/api.js')
 
 const CATEGORY_LABELS = {
-  civil: '民事类',
-  criminal: '刑事类',
-  contract: '合同类',
-  administrative: '行政类',
-  company: '公司类',
-  other: '其他类'
+  complaint: '起诉状 / 自诉状',
+  defense: '答辩状',
+  appeal: '上诉状',
+  application: '申请书 / 申诉书',
+  authorization: '授权委托',
+  preservation: '保全措施',
+  execution: '执行程序',
+  statement: '意见 / 陈述',
+  other: '其他文书',
+  civil: '民事类'
+}
+
+const PRACTICE_AREA_LABELS = {
+  civil_commercial: '民商事',
+  criminal: '刑事',
+  administrative: '行政',
+  intellectual_property: '知识产权',
+  state_compensation: '国家赔偿',
+  enforcement: '执行',
+  maritime: '海事',
+  environmental: '环境资源',
+  other: '其他领域'
+}
+
+const MATERIAL_TYPE_LABELS = {
+  template: '空白模板',
+  example: '填写实例',
+  guide: '填写说明'
+}
+
+const inferCategory = item => {
+  if (CATEGORY_LABELS[item.category]) return item.category
+  const text = `${item.title || ''}${item.category || ''}`
+  if (text.includes('答辩')) return 'defense'
+  if (text.includes('上诉')) return 'appeal'
+  if (text.includes('委托')) return 'authorization'
+  if (text.includes('保全')) return 'preservation'
+  if (text.includes('执行')) return 'execution'
+  if (text.includes('起诉') || text.includes('自诉') || text.includes('反诉')) return 'complaint'
+  if (text.includes('申请') || text.includes('申诉') || text.includes('复议')) return 'application'
+  if (text.includes('意见') || text.includes('陈述')) return 'statement'
+  return 'other'
+}
+
+const inferPracticeArea = item => {
+  if (PRACTICE_AREA_LABELS[item.practiceArea]) return item.practiceArea
+  const text = `${item.title || ''}${item.category || ''}`
+  if (text.includes('刑事') || text.includes('criminal')) return 'criminal'
+  if (text.includes('行政') || text.includes('administrative')) return 'administrative'
+  if (text.includes('知识产权') || text.includes('intellectual')) return 'intellectual_property'
+  if (text.includes('赔偿') || text.includes('compensation')) return 'state_compensation'
+  if (text.includes('执行') || text.includes('enforcement')) return 'enforcement'
+  if (text.includes('海事') || text.includes('maritime')) return 'maritime'
+  if (text.includes('环境') || text.includes('environmental')) return 'environmental'
+  return 'civil_commercial'
 }
 
 Page({
@@ -15,7 +64,10 @@ Page({
     item: null,
     loading: true,
     loadError: '',
-    categoryLabel: ''
+    categoryLabel: '',
+    practiceAreaLabel: '',
+    materialTypeLabel: '',
+    isExample: false
   },
 
   onLoad(options) {
@@ -36,10 +88,16 @@ Page({
           throw new Error(res.message || '模板不存在')
         }
         const item = res.data
+        const category = inferCategory(item)
+        const practiceArea = inferPracticeArea(item)
+        const materialType = MATERIAL_TYPE_LABELS[item.materialType] ? item.materialType : 'template'
         wx.setNavigationBarTitle({ title: item.title || '模板详情' })
         this.setData({
-          item,
-          categoryLabel: CATEGORY_LABELS[item.category] || item.category || '法律文书'
+          item: { ...item, category, practiceArea, materialType },
+          categoryLabel: CATEGORY_LABELS[category],
+          practiceAreaLabel: PRACTICE_AREA_LABELS[practiceArea],
+          materialTypeLabel: MATERIAL_TYPE_LABELS[materialType],
+          isExample: materialType === 'example'
         })
       })
       .catch(error => {

@@ -9,6 +9,12 @@
   padding: 16rpx 8rpx 28rpx;
 }
 
+.type-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
 .type-label {
   display: inline-flex;
   min-height: 42rpx;
@@ -19,6 +25,11 @@
   border-radius: 22rpx;
   font-size: 22rpx;
   font-weight: 600;
+}
+
+.type-label.soft {
+  color: #7f6764;
+  background: #f6f5f4;
 }
 
 .title,
@@ -59,6 +70,33 @@
   line-height: 1.9;
   white-space: pre-wrap;
   box-sizing: border-box;
+}
+
+.body-title {
+  display: block;
+  margin-bottom: 20rpx;
+  color: #25282d;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.example-notice {
+  margin-bottom: 20rpx;
+  padding: 22rpx 24rpx;
+  color: #8a5a18;
+  background: #fff9eb;
+  border: 1rpx solid #f0dfb5;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  line-height: 1.65;
+}
+
+.notice-title {
+  display: block;
+  margin-bottom: 6rpx;
+  color: #6e4510;
+  font-size: 27rpx;
+  font-weight: 700;
 }
 
 .resource-panel {

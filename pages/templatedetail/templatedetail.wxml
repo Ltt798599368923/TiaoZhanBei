@@ -8,7 +8,11 @@
 
   <block wx:else>
     <view class="template-head">
-      <text class="type-label">{{categoryLabel}}</text>
+      <view class="type-row">
+        <text class="type-label">{{categoryLabel}}</text>
+        <text class="type-label soft">{{practiceAreaLabel}}</text>
+        <text class="type-label soft">{{materialTypeLabel}}</text>
+      </view>
       <text class="title">{{item.title}}</text>
       <text class="description">{{item.description || '可作为法律文书起草时的参考。'}}</text>
       <view class="meta">
@@ -17,23 +21,29 @@
       </view>
     </view>
 
+    <view wx:if="{{isExample}}" class="example-notice">
+      <text class="notice-title">填写实例仅供参考</text>
+      <text>请勿直接照搬；涉及个人、企业或案件信息时，请先核对并完成脱敏处理。</text>
+    </view>
+
     <view wx:if="{{item.content}}" class="body">
+      <text class="body-title">在线阅读</text>
       <text>{{item.content}}</text>
     </view>
 
     <view wx:else class="empty-content">
-      <text>该模板暂未提供正文，请查看附件资料。</text>
+      <text>该文书暂未提供在线正文，请打开原件查看。</text>
     </view>
 
     <view wx:if="{{item.content || item.hasFile}}" class="resource-panel">
-      <text class="resource-title">使用模板</text>
+      <text class="resource-title">文书操作</text>
       <button wx:if="{{item.content}}" class="resource-button primary" bindtap="copyTemplate">
         <text class="button-name">复制模板正文</text>
         <text class="button-tip">复制后可直接编辑</text>
       </button>
       <button wx:if="{{item.hasFile}}" class="resource-button secondary" bindtap="openAttachment">
-        <text class="button-name">打开附件</text>
-        <text class="button-tip">{{item.fileName || '模板文件'}}</text>
+        <text class="button-name">打开 Word / PDF 原件</text>
+        <text class="button-tip">{{item.fileName || '文书原件'}}</text>
       </button>
     </view>
   </block>

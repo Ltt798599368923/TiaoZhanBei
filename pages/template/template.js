@@ -1,17 +1,97 @@
 const api = require('../../utils/api.js')
 
+const CATEGORY_LABELS = {
+  complaint: '起诉状 / 自诉状',
+  defense: '答辩状',
+  appeal: '上诉状',
+  application: '申请书 / 申诉书',
+  authorization: '授权委托',
+  preservation: '保全措施',
+  execution: '执行程序',
+  statement: '意见 / 陈述',
+  other: '其他文书'
+}
+
+const PRACTICE_AREA_LABELS = {
+  civil_commercial: '民商事',
+  criminal: '刑事',
+  administrative: '行政',
+  intellectual_property: '知识产权',
+  state_compensation: '国家赔偿',
+  enforcement: '执行',
+  maritime: '海事',
+  environmental: '环境资源',
+  other: '其他领域'
+}
+
+const MATERIAL_TYPE_LABELS = {
+  template: '空白模板',
+  example: '填写实例',
+  guide: '填写说明'
+}
+
+const inferCategory = item => {
+  if (CATEGORY_LABELS[item.category]) return item.category
+  const text = `${item.title || ''}${item.category || ''}`
+  if (text.includes('答辩')) return 'defense'
+  if (text.includes('上诉')) return 'appeal'
+  if (text.includes('委托')) return 'authorization'
+  if (text.includes('保全')) return 'preservation'
+  if (text.includes('执行')) return 'execution'
+  if (text.includes('起诉') || text.includes('自诉') || text.includes('反诉')) return 'complaint'
+  if (text.includes('申请') || text.includes('申诉') || text.includes('复议')) return 'application'
+  if (text.includes('意见') || text.includes('陈述')) return 'statement'
+  return 'other'
+}
+
+const inferPracticeArea = item => {
+  if (PRACTICE_AREA_LABELS[item.practiceArea]) return item.practiceArea
+  const text = `${item.title || ''}${item.category || ''}`
+  if (text.includes('刑事')) return 'criminal'
+  if (text.includes('行政')) return 'administrative'
+  if (text.includes('知识产权')) return 'intellectual_property'
+  if (text.includes('赔偿')) return 'state_compensation'
+  if (text.includes('执行')) return 'enforcement'
+  if (text.includes('海事')) return 'maritime'
+  if (text.includes('环境')) return 'environmental'
+  return 'civil_commercial'
+}
+
 Page({
   data: {
     categories: [
-      { id: 'civil', name: '民事类', mark: '民' },
-      { id: 'criminal', name: '刑事类', mark: '刑' },
-      { id: 'contract', name: '合同类', mark: '合' },
-      { id: 'administrative', name: '行政类', mark: '行' },
-      { id: 'company', name: '公司类', mark: '企' },
-      { id: 'other', name: '其他类', mark: '其' }
+      { id: '', name: '全部', mark: '全' },
+      { id: 'complaint', name: '起诉状', mark: '诉' },
+      { id: 'defense', name: '答辩状', mark: '辩' },
+      { id: 'appeal', name: '上诉状', mark: '上' },
+      { id: 'application', name: '申请书', mark: '申' },
+      { id: 'authorization', name: '委托书', mark: '委' },
+      { id: 'preservation', name: '保全', mark: '保' },
+      { id: 'execution', name: '执行', mark: '执' },
+      { id: 'other', name: '其他', mark: '其' }
     ],
+    practiceAreas: [
+      { id: '', name: '全部领域' },
+      { id: 'civil_commercial', name: '民商事' },
+      { id: 'criminal', name: '刑事' },
+      { id: 'administrative', name: '行政' },
+      { id: 'intellectual_property', name: '知识产权' },
+      { id: 'state_compensation', name: '国家赔偿' },
+      { id: 'enforcement', name: '执行程序' },
+      { id: 'maritime', name: '海事' },
+      { id: 'environmental', name: '环境资源' }
+    ],
+    materialTypes: [
+      { id: '', name: '全部资料' },
+      { id: 'template', name: '空白模板' },
+      { id: 'example', name: '填写实例' },
+      { id: 'guide', name: '填写说明' }
+    ],
+    allTemplates: [],
     templates: [],
     selectedCategory: '',
+    selectedPracticeArea: '',
+    selectedMaterialType: '',
     loading: false
   },
 
@@ -22,20 +102,51 @@ Page({
 
   selectCategory(e) {
     const category = e.currentTarget.dataset.category
-    this.loadTemplates(this.data.selectedCategory === category ? '' : category)
+    this.setData({ selectedCategory: category })
+    this.applyFilters()
   },
 
-  viewAllTemplates() {
-    this.loadTemplates()
+  selectPracticeArea(e) {
+    this.setData({ selectedPracticeArea: e.currentTarget.dataset.practiceArea })
+    this.applyFilters()
   },
 
-  loadTemplates(category = '') {
-    this.setData({ loading: true, selectedCategory: category })
-    const request = category ? api.getTemplatesByCategory(category) : api.getAllTemplates()
+  selectMaterialType(e) {
+    this.setData({ selectedMaterialType: e.currentTarget.dataset.materialType })
+    this.applyFilters()
+  },
 
-    request.then(res => {
+  applyFilters() {
+    const { allTemplates, selectedCategory, selectedPracticeArea, selectedMaterialType } = this.data
+    const templates = allTemplates.filter(item => {
+      return (!selectedCategory || item.displayCategory === selectedCategory) &&
+        (!selectedPracticeArea || item.displayPracticeArea === selectedPracticeArea) &&
+        (!selectedMaterialType || item.displayMaterialType === selectedMaterialType)
+    })
+    this.setData({ templates })
+  },
+
+  loadTemplates() {
+    this.setData({ loading: true })
+
+    api.getAllTemplates().then(res => {
       if (res.code === 200) {
-        this.setData({ templates: res.data || [] })
+        const allTemplates = (res.data || []).map(item => {
+          const displayCategory = inferCategory(item)
+          const displayPracticeArea = inferPracticeArea(item)
+          const displayMaterialType = MATERIAL_TYPE_LABELS[item.materialType] ? item.materialType : 'template'
+          return {
+            ...item,
+            displayCategory,
+            displayPracticeArea,
+            displayMaterialType,
+            categoryLabel: CATEGORY_LABELS[displayCategory],
+            practiceAreaLabel: PRACTICE_AREA_LABELS[displayPracticeArea],
+            materialTypeLabel: MATERIAL_TYPE_LABELS[displayMaterialType],
+            readingLabel: item.hasContent ? '可在线阅读' : '打开原件'
+          }
+        })
+        this.setData({ allTemplates }, () => this.applyFilters())
       } else {
         wx.showToast({ title: res.message || '加载失败', icon: 'none' })
       }
